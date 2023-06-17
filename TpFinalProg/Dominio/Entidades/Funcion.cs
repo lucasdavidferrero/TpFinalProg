@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalProg.Entidades {
+namespace TpFinalProg.Dominio.Entidades {
     internal class Funcion {
         private int idFuncion { get; }
         private string descripcion { get; }

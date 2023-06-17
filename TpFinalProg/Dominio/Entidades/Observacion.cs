@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalProg.Entidades {
+namespace TpFinalProg.Dominio.Entidades {
     internal class Observacion {
         private int idObservacion { get; }
         private DateOnly fecha { get; }
@@ -15,7 +15,7 @@ namespace TpFinalProg.Entidades {
             this.idObservacion = idObservacion;
             this.fecha = fecha;
             this.observacion = observacion;
-            this.nroLegajo = legajo;
+            nroLegajo = legajo;
         }
     }
 }

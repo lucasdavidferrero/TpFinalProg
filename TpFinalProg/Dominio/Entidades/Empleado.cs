@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalProg.Entidades {
+namespace TpFinalProg.Dominio.Entidades {
     internal class Empleado {
         private int nroLegajo { get; }
         private DateOnly fechaIngreso { get; }
@@ -16,7 +16,7 @@ namespace TpFinalProg.Entidades {
         private bool baja { get; }
 
         public Empleado(int legajo, DateOnly fechaIngreso, string nombre, string apellido, string celular, string email) {
-            this.nroLegajo = legajo;
+            nroLegajo = legajo;
             this.fechaIngreso = fechaIngreso;
             this.nombre = nombre;
             this.apellido = apellido;
