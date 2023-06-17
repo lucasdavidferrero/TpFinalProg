@@ -23,5 +23,13 @@ namespace TpFinalProg.Entidades {
             this.celular = celular;
             this.email = email;
         }
+
+        public Empleado(DateOnly fechaIngreso, string nombre, string apellido, string celular, string email) {
+            this.fechaIngreso = fechaIngreso;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.celular = celular;
+            this.email = email;
+        }
     }
 }
