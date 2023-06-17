@@ -1,3 +1,5 @@
+using TpFinalProg.Controlador;
+
 namespace TpFinalProg
 {
     internal static class Program
@@ -12,6 +14,7 @@ namespace TpFinalProg
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new MenuFrm());
+
         }
     }
 }

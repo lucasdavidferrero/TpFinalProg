@@ -1,69 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Configuration;
 
-//ESTO ES AGG PARA QUE SIRVA LO DEMAS
-using System.Data.SqlClient;
-using System.Data;
-
-
-namespace TpFinalProg.Clases
-{
-    internal class Conexion
-    {
-
-        //SI ME TOMA EN ROJITO LO DE ABAJO VOY A DEPENDENCIAS Y A AGREGAR NUGETS Y PONGO SQLCLIENT
+namespace TpFinalProg.Clases {
+    internal class Conexion {
         SqlConnection conexion = new SqlConnection();
         SqlCommand cmd = new SqlCommand();
 
-        private string stringCox = "Data Source=EMI\\LOCALHOST;Initial Catalog=TPProg;Integrated Security=True";
+        private string strConx = ConfigurationManager.ConnectionStrings["Proyectos"].ConnectionString;
+        public Conexion() { }
 
-        public void AbrirConexion()
-        {
-            try
-            {
-                conexion.ConnectionString = stringCox;
+        private void abrirConexion() {
+            try {
+                conexion.ConnectionString = strConx;
                 conexion.Open();
-                MessageBox.Show("Se conecto");
+            } catch (SqlException e) {
+                MessageBox.Show("No hay conexión: " + e.ToString());
             }
-            catch (SqlException e)
-            {
-                MessageBox.Show("No se conecto" + e.ToString());
-            }
+
         }
-        public void CerrarConexion()
-        {
-            try
-            {
+
+        private void cerrarConexion() {
+            try {
                 this.conexion.Close();
-                MessageBox.Show("Se cero");
+                this.conexion.Dispose();
+            } catch (SqlException e) {
+                MessageBox.Show("No hay conexión: " + e.ToString());
             }
-            catch (SqlException e)
-            {
-                MessageBox.Show("No se cerro" + e.ToString());
-            }
+
         }
-        public DataSet cargarCombo()
-        {
-            DataSet ds = new DataSet("Funcion");
-            string sql = "SELECT id_funcion, descripcion FROM Funcion order by descripcion";
 
-            try
-            {
-                cmd = new SqlCommand(sql);
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Connection = this.conexion; //la q tengo abierta no el conexion de la propiedad 
+        public void SetComandoSQL(string queryString) {
+            this.cmd.CommandText = queryString;
+            this.cmd.CommandType = System.Data.CommandType.Text;
+            this.abrirConexion();
+            this.cmd.Connection = this.conexion;
+        }
 
-                SqlDataAdapter sqlDat = new SqlDataAdapter(cmd); //trae todo
-                sqlDat.Fill(ds); //me llena el data set
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se cerro" + ex.ToString());
-            }
-            return ds;
+        public SqlCommand getComando() {
+            return this.cmd;
+        }
+
+        public void cerrarConexionLiberarRecursos() {
+            this.cmd.Dispose();
+            this.cerrarConexion();
         }
     }
 }

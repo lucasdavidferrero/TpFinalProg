@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TpFinalProg.Controlador;
 
 namespace TpFinalProg
 {
@@ -32,6 +33,9 @@ namespace TpFinalProg
 
         private void btnProyectos_Click(object sender, EventArgs e)
         {
+            // Pruebas de ejecuciones de funciones: (temporal)
+            PropietarioControlador.listarTodo();
+
             ProyectoFrm proy = new ProyectoFrm();
             proy.Show();
         }

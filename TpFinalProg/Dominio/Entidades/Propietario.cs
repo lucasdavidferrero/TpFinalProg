@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TpFinalProg.Dominio.Mappers;
 
 namespace TpFinalProg.Dominio.Entidades {
     internal class Propietario {
@@ -44,8 +46,8 @@ namespace TpFinalProg.Dominio.Entidades {
             }
         }
 
-        public List<Propietario> getAll() {
-            return null;
+        public DataTable getAll() {
+            return PropietarioDataMapper.getAll();
         }
 
         public bool delete(int id) {
