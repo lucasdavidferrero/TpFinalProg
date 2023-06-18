@@ -11,6 +11,8 @@ namespace TpFinalProg.Dominio.Entidades {
         private string descripcion { get; }
 
         private int horasEstimadas { get; }
+
+        private int horasAvance { get; }
         private float costoEstimado { get; }
         private int horasReales { get; }
         private float costoReal { get; }
@@ -18,11 +20,12 @@ namespace TpFinalProg.Dominio.Entidades {
 
         public Tarea() { }
 
-        public Tarea(int idProyecto, int idTarea, string descripcion, int horasEstimadas, float costoEstimado, int horasReales, float costoReal, DateOnly fechaFinal) {
+        public Tarea(int idProyecto, int idTarea, string descripcion, int horasEstimadas, int horasAvance, float costoEstimado, int horasReales, float costoReal, DateOnly fechaFinal) {
             this.idProyecto = idProyecto;
             this.idTarea = idTarea;
             this.descripcion = descripcion;
             this.horasEstimadas = horasEstimadas;
+            this.horasAvance = horasAvance;
             this.costoEstimado = costoEstimado;
             this.horasReales = horasReales;
             this.costoReal = costoReal;
