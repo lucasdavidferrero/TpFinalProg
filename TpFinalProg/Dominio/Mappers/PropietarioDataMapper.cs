@@ -13,7 +13,7 @@ namespace TpFinalProg.Dominio.Mappers {
 
         public static int insertNew (Propietario p) {
             // Construcción del query parametrizado.
-            string q = "INSERT INTO Propietario(razon_social,telefono,email,cuit,persona_contacto) VALUES(@razonSocial,@telefono,@email,@cuit,@personaContacto) OUTPUT INSERTED.Id;";
+            string q = "INSERT INTO Propietario(razon_social,telefono,email,cuit,persona_contacto) VALUES(@razonSocial,@telefono,@email,@cuit,@personaContacto); SELECT SCOPE_IDENTITY();";
             int idGenerado = -1;
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
@@ -35,7 +35,7 @@ namespace TpFinalProg.Dominio.Mappers {
             // Ejecución del SQL
             try {
                 cx.SetComandoSQL(q);
-                idGenerado = (int)cmd.ExecuteScalar();
+                idGenerado = Convert.ToInt32(cmd.ExecuteScalar());
                 return idGenerado;
             } catch(SqlException e) {
                 Console.WriteLine("Error en la base de datos. [Insertar Propietario]");
