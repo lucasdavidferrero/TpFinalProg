@@ -9,11 +9,11 @@ using TpFinalProg.Dominio.Mappers;
 namespace TpFinalProg.Dominio.Entidades {
     internal class Propietario {
         private int idPropietario { get; set; }
-        private string razonSocial { get; }
-        private string telefono { get; }
-        private string email { get; }
-        private long cuit { get; }
-        private string personaContacto { get; }
+        public string razonSocial { get; }
+        public string telefono { get; }
+        public string email { get; }
+        public long cuit { get; }
+        public string personaContacto { get; }
 
         public Propietario() { }
 
@@ -30,11 +30,11 @@ namespace TpFinalProg.Dominio.Entidades {
         /* Los métodos guardar, en general serían así en todas las entidades. */
         public int save() {
             if (idPropietario == 0) {
-                // Insert en DB...
-
-                idPropietario = 234234234; // Guardar ID generado.
-                return idPropietario;
+                // TODO: Regla de negocio: Verificar que no exista un propietario con el CUIT que nos dan.
+                int id = PropietarioDataMapper.insertNew(this);
+                return id;
             }
+
             // Obtener Propietario y verificar q existe
             // Guardar cambios en la DB
             bool propietarioEncontrado = true; // crear funcion q haga select por id y retorne true/false

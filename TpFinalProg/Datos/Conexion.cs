@@ -11,7 +11,7 @@ using System.Configuration;
 namespace TpFinalProg.Clases {
     internal class Conexion {
         SqlConnection conexion = new SqlConnection();
-        SqlCommand cmd = new SqlCommand();
+        private SqlCommand cmd = new SqlCommand();
 
         private string strConx = ConfigurationManager.ConnectionStrings["Proyectos"].ConnectionString;
         public Conexion() { }
