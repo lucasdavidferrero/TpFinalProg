@@ -7,11 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using System.Transactions;
 
 namespace TpFinalProg.Clases {
     internal class Conexion {
         SqlConnection conexion = new SqlConnection();
         private SqlCommand cmd = new SqlCommand();
+        private SqlTransaction transaccion;
 
         private string strConx = ConfigurationManager.ConnectionStrings["Proyectos"].ConnectionString;
         public Conexion() { }
@@ -45,6 +47,20 @@ namespace TpFinalProg.Clases {
 
         public SqlCommand getComando() {
             return this.cmd;
+        }
+
+
+        private void IniciarTransaccion() {
+            transaccion = conexion.BeginTransaction();
+            cmd.Transaction = transaccion;
+        }
+
+        private void CommitTransaccion() {
+            transaccion.Commit();
+        }
+
+        private void RollbackTransaccion() {
+            transaccion.Rollback();
         }
 
         public void cerrarConexionLiberarRecursos() {
