@@ -18,15 +18,12 @@ namespace TpFinalProg
             StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private void butObservacion_Click(object sender, EventArgs e)
-        {
-            //  Observacion observ = new Observacion();
-            //  observ.Show();
-        }
-
         private void btnObservacion_Click(object sender, EventArgs e)
         {
-
+            ObservacionFrm observ = new ObservacionFrm();
+            observ.Show();
         }
+
+        
     }
 }

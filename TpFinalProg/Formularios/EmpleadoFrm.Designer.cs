@@ -255,7 +255,7 @@
             btnObservacion.UseVisualStyleBackColor = true;
             btnObservacion.Click += btnObservacion_Click;
             // 
-            // Empleado
+            // EmpleadoFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -279,7 +279,7 @@
             Controls.Add(txtLegajo);
             Controls.Add(label1);
             Controls.Add(label6);
-            Name = "Empleado";
+            Name = "EmpleadoFrm";
             Text = "Empleado";
             ((System.ComponentModel.ISupportInitialize)dgvEmpleado).EndInit();
             ResumeLayout(false);
