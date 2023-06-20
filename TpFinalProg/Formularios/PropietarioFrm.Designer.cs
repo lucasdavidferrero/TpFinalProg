@@ -117,7 +117,6 @@
             btnBuscar.TabIndex = 27;
             btnBuscar.Text = "🔍︎";
             btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += btnBuscar_Click;
             // 
             // label5
             // 

@@ -231,6 +231,7 @@
             // 
             // dateFechaIngreso
             // 
+            dateFechaIngreso.Format = DateTimePickerFormat.Short;
             dateFechaIngreso.Location = new Point(481, 47);
             dateFechaIngreso.Name = "dateFechaIngreso";
             dateFechaIngreso.Size = new Size(217, 23);

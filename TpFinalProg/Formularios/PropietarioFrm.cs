@@ -18,11 +18,7 @@ namespace TpFinalProg
             StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void Propietario_Load(object sender, EventArgs e)
         {
 

@@ -20,10 +20,19 @@ namespace TpFinalProg
 
         private void btnObservacion_Click(object sender, EventArgs e)
         {
-            ObservacionFrm observ = new ObservacionFrm();
-            observ.Show();
+            Form frm_observacion = Application.OpenForms.OfType<Form>().
+                            Where(pre => pre.Name == "ObservacionFrm").SingleOrDefault();
+
+            if (frm_observacion != null) {
+                frm_observacion.Select();
+                frm_observacion.WindowState = FormWindowState.Normal;
+                frm_observacion.Show();
+            } else {
+                ObservacionFrm frm_observaciones = new ObservacionFrm();
+                frm_observaciones.Show();
+            }
         }
 
-        
+
     }
 }
