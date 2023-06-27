@@ -50,6 +50,7 @@ namespace TpFinalProg.Clases {
         }
 
 
+
         private void IniciarTransaccion() {
             transaccion = conexion.BeginTransaction();
             cmd.Transaction = transaccion;

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TpFinalProg.Controlador;
 
 namespace TpFinalProg
 {
@@ -16,12 +17,18 @@ namespace TpFinalProg
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
+            Controlador.PropietarioControlador.listarTodo();
         }
 
-      
+
         private void Propietario_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            Controlador.PropietarioControlador.crear();
         }
     }
 }

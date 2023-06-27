@@ -185,6 +185,7 @@
             btnGuardar.TabIndex = 17;
             btnGuardar.Text = "GUARDAR";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // txtRazonSocial
             // 
@@ -227,7 +228,7 @@
             label6.TabIndex = 33;
             label6.Text = "ABM PROPIETARIO";
             // 
-            // Propietario
+            // PropietarioFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -248,7 +249,7 @@
             Controls.Add(txtEmail);
             Controls.Add(btnGuardar);
             Controls.Add(txtRazonSocial);
-            Name = "Propietario";
+            Name = "PropietarioFrm";
             Text = "Propietario";
             Load += Propietario_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPropietario).EndInit();

@@ -228,7 +228,7 @@
             label6.TabIndex = 34;
             label6.Text = "ABM PROYECTO";
             // 
-            // Proyecto
+            // ProyectoFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -249,7 +249,7 @@
             Controls.Add(txtPropietario);
             Controls.Add(btnGuardar);
             Controls.Add(txtNombre);
-            Name = "Proyecto";
+            Name = "ProyectoFrm";
             Text = "Proyecto";
             ((System.ComponentModel.ISupportInitialize)dgvProyecto).EndInit();
             ResumeLayout(false);
