@@ -13,7 +13,7 @@ namespace TpFinalProg.Clases {
     internal class Conexion {
         SqlConnection conexion = new SqlConnection();
         private SqlCommand cmd = new SqlCommand();
-        private SqlTransaction transaccion;
+        private SqlTransaction tran = null;
 
         private string strConx = ConfigurationManager.ConnectionStrings["Proyectos"].ConnectionString;
         public Conexion() { }
@@ -50,17 +50,17 @@ namespace TpFinalProg.Clases {
         }
 
 
-        private void IniciarTransaccion() {
-            transaccion = conexion.BeginTransaction();
-            cmd.Transaction = transaccion;
+        public void SetTransaccion() {
+            tran = conexion.BeginTransaction();
+            this.cmd.Transaction = tran;
         }
 
-        private void CommitTransaccion() {
-            transaccion.Commit();
+        public void ComitTransaccion() {
+            tran.Commit();
         }
 
-        private void RollbackTransaccion() {
-            transaccion.Rollback();
+        public void TransaccionRollback() {
+            tran.Rollback();
         }
 
         public void cerrarConexionLiberarRecursos() {
