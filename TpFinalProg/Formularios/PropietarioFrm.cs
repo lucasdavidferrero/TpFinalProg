@@ -28,7 +28,13 @@ namespace TpFinalProg
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            Controlador.PropietarioControlador.crear();
+            string razonSocial = txtRazonSocial.Text;
+            string telefono = txtTelefono.Text;
+            string email = txtEmail.Text;
+            Int64 cuit = Convert.ToInt64(txtCuit.Text);
+            string contacto = txtContacto.Text;
+
+            Controlador.PropietarioControlador.crear(razonSocial, telefono, email, cuit, contacto);
         }
     }
 }

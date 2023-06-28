@@ -11,8 +11,9 @@ using TpFinalProg.Dominio.Entidades;
 namespace TpFinalProg.Controlador {
     internal class PropietarioControlador {
 
-        public static void crear () {
-            Propietario clsPropietario = new Propietario(0, "Ferreros S.A", 38981227, "3493435048", "luki@gmail.com", "Nicolás Ferrero");
+        public static void crear (int id_propietario, string razon_social, Int64 cuit, string telefono,
+            string email, string persona_contacto) {
+            Propietario clsPropietario = new Propietario(0, razon_social, telefono, email, cuit, persona_contacto);
             int idGenerado = clsPropietario.save();
             Console.WriteLine("Id generado: " + idGenerado);
         }

@@ -17,7 +17,7 @@ namespace TpFinalProg.Dominio.Entidades {
 
         public Propietario() { }
 
-        public Propietario(int id_propietario, string razon_social, long cuit, string telefono,
+        public Propietario(int id_propietario, string razon_social, Int64 cuit, string telefono,
             string email, string persona_contacto) {
             idPropietario = id_propietario;
             razonSocial = razon_social;
