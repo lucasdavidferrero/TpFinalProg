@@ -10,7 +10,9 @@ using System.Windows.Forms;
 using TpFinalProg.Controlador;
 
 namespace TpFinalProg {
+
     public partial class PropietarioFrm : Form {
+        private int idRowSeleccionado = -1;
         public PropietarioFrm() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
@@ -19,8 +21,19 @@ namespace TpFinalProg {
 
 
         private void Propietario_Load(object sender, EventArgs e) {
+            listarPropietarios();
+        }
+
+        private void limpiarCampos() {
+            txtRazonSocial.Text = "";
+            txtTelefono.Text = "";
+            txtEmail.Text = "";
+            txtCuit.Text = "";
+            txtContacto.Text = "";
+        }
+
+        private void listarPropietarios() {
             DataTable listadoPropietarios = Controlador.PropietarioControlador.listarTodo();
-            dgvPropietario.DataMember = "ListarPropietarios";
             dgvPropietario.DataSource = listadoPropietarios;
         }
 
@@ -31,18 +44,37 @@ namespace TpFinalProg {
             Int64 cuit = Convert.ToInt64(txtCuit.Text);
             string contacto = txtContacto.Text;
 
-            int idGenerado = Controlador.PropietarioControlador.crear(razonSocial, cuit, telefono, email, contacto);
+            if (this.idRowSeleccionado < 0) {
+                Controlador.PropietarioControlador.crear(razonSocial, cuit, telefono, email, contacto);
+            } else {
+                // TODO Método para hacer un update en la DB... usar atributo idRowSeleccionado
+            }
 
-            // Una vez insertado satisfactoriamente en la DB, se procede a añadir el propietario al DataGridView. Por último se limpian los campos.
+
+
+
+            // Una vez insertado satisfactoriamente en la DB, se procede a listar nuevamente. Por último se limpian los campos.
+            listarPropietarios();
             limpiarCampos();
         }
 
-        private void limpiarCampos() {
-            txtRazonSocial.Text = "";
-            txtTelefono.Text = "";
-            txtEmail.Text = "";
-            txtCuit.Text = "";
-            txtContacto.Text = "";
+        private void dgvPropietario_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
+            idRowSeleccionado = e.RowIndex;
+
+            // El último row siempre esta vacío. No hacemos nada en ese caso.
+            if (dgvPropietario.Rows.Count - 1 == idRowSeleccionado)
+                return;
+
+            // Llenar los Textboxs con los correspondientes datos del Row seleccionado.
+            DataGridViewCellCollection celdas = dgvPropietario.Rows[idRowSeleccionado].Cells;
+            txtRazonSocial.Text = celdas["razon_social"].Value.ToString();
+            txtTelefono.Text = celdas["telefono"].Value.ToString();
+            txtEmail.Text = celdas["email"].Value.ToString();
+            txtCuit.Text = celdas["cuit"].Value.ToString();
+            txtContacto.Text = celdas["persona_contacto"].Value.ToString();
+
+            btnGuardar.Text = "Guardar cambios";
+            // TODO: No permitir que se modifique el CUIT. (invalidar el textbox)
         }
     }
 }

@@ -35,7 +35,6 @@
             txtRazonSocial = new TextBox();
             txtTelefono = new TextBox();
             txtCuit = new TextBox();
-            btnModificar = new Button();
             label6 = new Label();
             dgvPropietario = new DataGridView();
             id_propietario = new DataGridViewTextBoxColumn();
@@ -45,22 +44,23 @@
             cuit = new DataGridViewTextBoxColumn();
             persona_contacto = new DataGridViewTextBoxColumn();
             baja = new DataGridViewTextBoxColumn();
+            btnReiniciar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPropietario).BeginInit();
             SuspendLayout();
             // 
             // btnBorrar
             // 
-            btnBorrar.Location = new Point(814, 128);
+            btnBorrar.Location = new Point(784, 133);
             btnBorrar.Name = "btnBorrar";
             btnBorrar.Size = new Size(110, 30);
-            btnBorrar.TabIndex = 28;
-            btnBorrar.Text = "BORRAR";
+            btnBorrar.TabIndex = 7;
+            btnBorrar.Text = "Eliminar";
             btnBorrar.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(125, 136);
+            label5.Location = new Point(152, 136);
             label5.Name = "label5";
             label5.Size = new Size(67, 15);
             label5.TabIndex = 25;
@@ -69,7 +69,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(493, 86);
+            label4.Location = new Point(463, 91);
             label4.Name = "label4";
             label4.Size = new Size(143, 15);
             label4.TabIndex = 24;
@@ -78,7 +78,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(552, 47);
+            label3.Location = new Point(522, 52);
             label3.Name = "label3";
             label3.Size = new Size(44, 15);
             label3.TabIndex = 23;
@@ -87,7 +87,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(157, 89);
+            label2.Location = new Point(184, 89);
             label2.Name = "label2";
             label2.Size = new Size(35, 15);
             label2.TabIndex = 22;
@@ -96,7 +96,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(107, 50);
+            label1.Location = new Point(134, 50);
             label1.Name = "label1";
             label1.Size = new Size(93, 15);
             label1.TabIndex = 21;
@@ -104,57 +104,48 @@
             // 
             // txtContacto
             // 
-            txtContacto.Location = new Point(642, 81);
+            txtContacto.Location = new Point(612, 86);
             txtContacto.Name = "txtContacto";
             txtContacto.Size = new Size(282, 23);
-            txtContacto.TabIndex = 20;
+            txtContacto.TabIndex = 4;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(642, 39);
+            txtEmail.Location = new Point(612, 44);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(282, 23);
-            txtEmail.TabIndex = 19;
+            txtEmail.TabIndex = 3;
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(552, 128);
+            btnGuardar.Location = new Point(552, 133);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(110, 30);
-            btnGuardar.TabIndex = 17;
-            btnGuardar.Text = "GUARDAR";
+            btnGuardar.TabIndex = 5;
+            btnGuardar.Text = "Crear";
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
             // txtRazonSocial
             // 
-            txtRazonSocial.Location = new Point(201, 47);
+            txtRazonSocial.Location = new Point(228, 47);
             txtRazonSocial.Name = "txtRazonSocial";
             txtRazonSocial.Size = new Size(206, 23);
-            txtRazonSocial.TabIndex = 16;
+            txtRazonSocial.TabIndex = 0;
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(201, 133);
+            txtTelefono.Location = new Point(228, 133);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(206, 23);
-            txtTelefono.TabIndex = 30;
+            txtTelefono.TabIndex = 2;
             // 
             // txtCuit
             // 
-            txtCuit.Location = new Point(201, 86);
+            txtCuit.Location = new Point(228, 86);
             txtCuit.Name = "txtCuit";
             txtCuit.Size = new Size(206, 23);
-            txtCuit.TabIndex = 31;
-            // 
-            // btnModificar
-            // 
-            btnModificar.Location = new Point(685, 128);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(110, 30);
-            btnModificar.TabIndex = 32;
-            btnModificar.Text = "MODIFICAR";
-            btnModificar.UseVisualStyleBackColor = true;
+            txtCuit.TabIndex = 1;
             // 
             // label6
             // 
@@ -171,11 +162,13 @@
             // 
             dgvPropietario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPropietario.Columns.AddRange(new DataGridViewColumn[] { id_propietario, razon_social, telefono, email, cuit, persona_contacto, baja });
+            dgvPropietario.DataMember = "ListarPropietarios";
             dgvPropietario.Location = new Point(12, 199);
             dgvPropietario.Name = "dgvPropietario";
             dgvPropietario.RowTemplate.Height = 25;
             dgvPropietario.Size = new Size(970, 350);
             dgvPropietario.TabIndex = 34;
+            dgvPropietario.RowHeaderMouseDoubleClick += dgvPropietario_RowHeaderMouseDoubleClick;
             // 
             // id_propietario
             // 
@@ -226,14 +219,23 @@
             baja.Name = "baja";
             baja.Visible = false;
             // 
+            // btnReiniciar
+            // 
+            btnReiniciar.Location = new Point(668, 133);
+            btnReiniciar.Name = "btnReiniciar";
+            btnReiniciar.Size = new Size(110, 30);
+            btnReiniciar.TabIndex = 35;
+            btnReiniciar.Text = "Reiniciar";
+            btnReiniciar.UseVisualStyleBackColor = true;
+            // 
             // PropietarioFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1008, 561);
+            Controls.Add(btnReiniciar);
             Controls.Add(dgvPropietario);
             Controls.Add(label6);
-            Controls.Add(btnModificar);
             Controls.Add(txtCuit);
             Controls.Add(txtTelefono);
             Controls.Add(btnBorrar);
@@ -275,7 +277,6 @@
         private TextBox txtTelefono;
         private TextBox txtCuit;
         private Button btnBuscarPro;
-        private Button btnModificar;
         private Label label6;
         private DataGridView dgvPropietario;
         private DataGridViewTextBoxColumn id_propietario;
@@ -285,5 +286,6 @@
         private DataGridViewTextBoxColumn cuit;
         private DataGridViewTextBoxColumn persona_contacto;
         private DataGridViewTextBoxColumn baja;
+        private Button btnReiniciar;
     }
 }
