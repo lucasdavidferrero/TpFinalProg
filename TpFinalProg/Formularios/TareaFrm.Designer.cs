@@ -1,7 +1,5 @@
-﻿namespace TpFinalProg
-{
-    partial class TareaFrm
-    {
+﻿namespace TpFinalProg {
+    partial class TareaFrm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -11,10 +9,8 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -26,8 +22,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             txtDescripcion = new TextBox();
             dgvTarea = new DataGridView();
             PROYECTO = new DataGridViewTextBoxColumn();
@@ -37,7 +32,6 @@
             HORAREAL = new DataGridViewTextBoxColumn();
             COSTOREAL = new DataGridViewTextBoxColumn();
             btnBorrar = new Button();
-            btnBuscar = new Button();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -61,10 +55,10 @@
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(515, 76);
+            txtDescripcion.Location = new Point(414, 61);
             txtDescripcion.Multiline = true;
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(446, 232);
+            txtDescripcion.Size = new Size(405, 218);
             txtDescripcion.TabIndex = 45;
             // 
             // dgvTarea
@@ -73,7 +67,7 @@
             dgvTarea.AllowUserToDeleteRows = false;
             dgvTarea.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTarea.Columns.AddRange(new DataGridViewColumn[] { PROYECTO, NUMERO, HORAESTIMADA, COSTOESTIMADO, HORAREAL, COSTOREAL });
-            dgvTarea.Location = new Point(95, 346);
+            dgvTarea.Location = new Point(30, 314);
             dgvTarea.Name = "dgvTarea";
             dgvTarea.ReadOnly = true;
             dgvTarea.RowTemplate.Height = 25;
@@ -124,21 +118,12 @@
             // 
             // btnBorrar
             // 
-            btnBorrar.Location = new Point(820, 510);
+            btnBorrar.Location = new Point(728, 495);
             btnBorrar.Name = "btnBorrar";
             btnBorrar.Size = new Size(91, 30);
             btnBorrar.TabIndex = 42;
             btnBorrar.Text = "BORRAR";
             btnBorrar.UseVisualStyleBackColor = true;
-            // 
-            // btnBuscar
-            // 
-            btnBuscar.Location = new Point(402, 42);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(34, 23);
-            btnBuscar.TabIndex = 41;
-            btnBuscar.Text = "🔍︎";
-            btnBuscar.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -170,7 +155,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(525, 58);
+            label2.Location = new Point(424, 43);
             label2.Name = "label2";
             label2.Size = new Size(84, 15);
             label2.TabIndex = 37;
@@ -187,7 +172,7 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(820, 458);
+            btnGuardar.Location = new Point(728, 443);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(91, 30);
             btnGuardar.TabIndex = 33;
@@ -271,7 +256,7 @@
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(820, 403);
+            btnModificar.Location = new Point(728, 388);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(91, 30);
             btnModificar.TabIndex = 56;
@@ -298,11 +283,11 @@
             label10.TabIndex = 58;
             label10.Text = "UNITARIO";
             // 
-            // Tarea
+            // TareaFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1017, 644);
+            ClientSize = new Size(848, 598);
             Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(btnModificar);
@@ -317,7 +302,6 @@
             Controls.Add(txtDescripcion);
             Controls.Add(dgvTarea);
             Controls.Add(btnBorrar);
-            Controls.Add(btnBuscar);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -325,7 +309,7 @@
             Controls.Add(label1);
             Controls.Add(txtHoraReal);
             Controls.Add(btnGuardar);
-            Name = "Tarea";
+            Name = "TareaFrm";
             Text = "Tarea";
             ((System.ComponentModel.ISupportInitialize)dgvTarea).EndInit();
             ResumeLayout(false);
@@ -338,7 +322,6 @@
         private TextBox txtTelefono;
         private DataGridView dgvTarea;
         private Button btnBorrar;
-        private Button btnBuscar;
         private Label label5;
         private Label label4;
         private Label label3;

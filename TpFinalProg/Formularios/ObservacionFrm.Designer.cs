@@ -1,7 +1,5 @@
-﻿namespace TpFinalProg
-{
-    partial class ObservacionFrm
-    {
+﻿namespace TpFinalProg {
+    partial class ObservacionFrm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -11,10 +9,8 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -26,8 +22,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             label6 = new Label();
             label1 = new Label();
             txtLegajo = new TextBox();
@@ -77,7 +72,7 @@
             txtObservacion.Location = new Point(114, 84);
             txtObservacion.Multiline = true;
             txtObservacion.Name = "txtObservacion";
-            txtObservacion.Size = new Size(457, 97);
+            txtObservacion.Size = new Size(457, 116);
             txtObservacion.TabIndex = 46;
             // 
             // label2
@@ -93,10 +88,10 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { fecha, observacion });
-            dataGridView1.Location = new Point(50, 233);
+            dataGridView1.Location = new Point(114, 241);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(407, 150);
+            dataGridView1.Size = new Size(457, 150);
             dataGridView1.TabIndex = 49;
             // 
             // fecha
@@ -129,16 +124,17 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(587, 84);
+            btnAgregar.Location = new Point(588, 87);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(75, 35);
+            btnAgregar.Size = new Size(75, 26);
             btnAgregar.TabIndex = 52;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // btnListar
             // 
-            btnListar.Location = new Point(20, 186);
+            btnListar.Location = new Point(588, 177);
             btnListar.Name = "btnListar";
             btnListar.Size = new Size(75, 23);
             btnListar.TabIndex = 53;
@@ -147,7 +143,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(587, 158);
+            button1.Location = new Point(588, 148);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 54;
@@ -156,7 +152,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(587, 129);
+            button2.Location = new Point(588, 119);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 55;
@@ -167,7 +163,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 289);
+            ClientSize = new Size(704, 425);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(btnListar);
