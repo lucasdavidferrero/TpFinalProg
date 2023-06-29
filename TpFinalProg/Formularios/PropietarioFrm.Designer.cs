@@ -1,7 +1,5 @@
-﻿namespace TpFinalProg
-{
-    partial class PropietarioFrm
-    {
+﻿namespace TpFinalProg {
+    partial class PropietarioFrm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -11,10 +9,8 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -26,16 +22,8 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
-            dgvPropietario = new DataGridView();
-            RAZONSOCIAL = new DataGridViewTextBoxColumn();
-            CUIT = new DataGridViewTextBoxColumn();
-            TELEFONO = new DataGridViewTextBoxColumn();
-            EMAIL = new DataGridViewTextBoxColumn();
-            CONTACTO = new DataGridViewTextBoxColumn();
+        private void InitializeComponent() {
             btnBorrar = new Button();
-            btnBuscar = new Button();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -49,79 +37,30 @@
             txtCuit = new TextBox();
             btnModificar = new Button();
             label6 = new Label();
+            dgvPropietario = new DataGridView();
+            id_propietario = new DataGridViewTextBoxColumn();
+            razon_social = new DataGridViewTextBoxColumn();
+            telefono = new DataGridViewTextBoxColumn();
+            email = new DataGridViewTextBoxColumn();
+            cuit = new DataGridViewTextBoxColumn();
+            persona_contacto = new DataGridViewTextBoxColumn();
+            baja = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvPropietario).BeginInit();
             SuspendLayout();
             // 
-            // dgvPropietario
-            // 
-            dgvPropietario.AllowUserToAddRows = false;
-            dgvPropietario.AllowUserToDeleteRows = false;
-            dgvPropietario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPropietario.Columns.AddRange(new DataGridViewColumn[] { RAZONSOCIAL, CUIT, TELEFONO, EMAIL, CONTACTO });
-            dgvPropietario.Location = new Point(117, 227);
-            dgvPropietario.Name = "dgvPropietario";
-            dgvPropietario.ReadOnly = true;
-            dgvPropietario.RowTemplate.Height = 25;
-            dgvPropietario.Size = new Size(545, 271);
-            dgvPropietario.TabIndex = 29;
-            // 
-            // RAZONSOCIAL
-            // 
-            RAZONSOCIAL.Frozen = true;
-            RAZONSOCIAL.HeaderText = "RAZON SOCIAL";
-            RAZONSOCIAL.Name = "RAZONSOCIAL";
-            RAZONSOCIAL.ReadOnly = true;
-            // 
-            // CUIT
-            // 
-            CUIT.Frozen = true;
-            CUIT.HeaderText = "CUIT";
-            CUIT.Name = "CUIT";
-            CUIT.ReadOnly = true;
-            // 
-            // TELEFONO
-            // 
-            TELEFONO.Frozen = true;
-            TELEFONO.HeaderText = "TELEFONO";
-            TELEFONO.Name = "TELEFONO";
-            TELEFONO.ReadOnly = true;
-            // 
-            // EMAIL
-            // 
-            EMAIL.Frozen = true;
-            EMAIL.HeaderText = "EMAIL";
-            EMAIL.Name = "EMAIL";
-            EMAIL.ReadOnly = true;
-            // 
-            // CONTACTO
-            // 
-            CONTACTO.Frozen = true;
-            CONTACTO.HeaderText = "PERS. CONTACTO";
-            CONTACTO.Name = "CONTACTO";
-            CONTACTO.ReadOnly = true;
-            // 
             // btnBorrar
             // 
-            btnBorrar.Location = new Point(719, 390);
+            btnBorrar.Location = new Point(814, 128);
             btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(91, 30);
+            btnBorrar.Size = new Size(110, 30);
             btnBorrar.TabIndex = 28;
             btnBorrar.Text = "BORRAR";
             btnBorrar.UseVisualStyleBackColor = true;
             // 
-            // btnBuscar
-            // 
-            btnBuscar.Location = new Point(329, 98);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(35, 25);
-            btnBuscar.TabIndex = 27;
-            btnBuscar.Text = "🔍︎";
-            btnBuscar.UseVisualStyleBackColor = true;
-            // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(41, 150);
+            label5.Location = new Point(125, 136);
             label5.Name = "label5";
             label5.Size = new Size(67, 15);
             label5.TabIndex = 25;
@@ -130,7 +69,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(426, 108);
+            label4.Location = new Point(493, 86);
             label4.Name = "label4";
             label4.Size = new Size(143, 15);
             label4.TabIndex = 24;
@@ -139,7 +78,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(485, 69);
+            label3.Location = new Point(552, 47);
             label3.Name = "label3";
             label3.Size = new Size(44, 15);
             label3.TabIndex = 23;
@@ -148,7 +87,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(73, 103);
+            label2.Location = new Point(157, 89);
             label2.Name = "label2";
             label2.Size = new Size(35, 15);
             label2.TabIndex = 22;
@@ -157,7 +96,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(23, 64);
+            label1.Location = new Point(107, 50);
             label1.Name = "label1";
             label1.Size = new Size(93, 15);
             label1.TabIndex = 21;
@@ -165,23 +104,23 @@
             // 
             // txtContacto
             // 
-            txtContacto.Location = new Point(575, 103);
+            txtContacto.Location = new Point(642, 81);
             txtContacto.Name = "txtContacto";
             txtContacto.Size = new Size(282, 23);
             txtContacto.TabIndex = 20;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(575, 61);
+            txtEmail.Location = new Point(642, 39);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(282, 23);
             txtEmail.TabIndex = 19;
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(719, 344);
+            btnGuardar.Location = new Point(552, 128);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(91, 30);
+            btnGuardar.Size = new Size(110, 30);
             btnGuardar.TabIndex = 17;
             btnGuardar.Text = "GUARDAR";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -189,30 +128,30 @@
             // 
             // txtRazonSocial
             // 
-            txtRazonSocial.Location = new Point(117, 61);
+            txtRazonSocial.Location = new Point(201, 47);
             txtRazonSocial.Name = "txtRazonSocial";
             txtRazonSocial.Size = new Size(206, 23);
             txtRazonSocial.TabIndex = 16;
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(117, 147);
+            txtTelefono.Location = new Point(201, 133);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(206, 23);
             txtTelefono.TabIndex = 30;
             // 
             // txtCuit
             // 
-            txtCuit.Location = new Point(117, 100);
+            txtCuit.Location = new Point(201, 86);
             txtCuit.Name = "txtCuit";
             txtCuit.Size = new Size(206, 23);
             txtCuit.TabIndex = 31;
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(719, 299);
+            btnModificar.Location = new Point(685, 128);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(91, 30);
+            btnModificar.Size = new Size(110, 30);
             btnModificar.TabIndex = 32;
             btnModificar.Text = "MODIFICAR";
             btnModificar.UseVisualStyleBackColor = true;
@@ -228,18 +167,76 @@
             label6.TabIndex = 33;
             label6.Text = "ABM PROPIETARIO";
             // 
+            // dgvPropietario
+            // 
+            dgvPropietario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPropietario.Columns.AddRange(new DataGridViewColumn[] { id_propietario, razon_social, telefono, email, cuit, persona_contacto, baja });
+            dgvPropietario.Location = new Point(12, 199);
+            dgvPropietario.Name = "dgvPropietario";
+            dgvPropietario.RowTemplate.Height = 25;
+            dgvPropietario.Size = new Size(970, 350);
+            dgvPropietario.TabIndex = 34;
+            // 
+            // id_propietario
+            // 
+            id_propietario.DataPropertyName = "id_propietario";
+            id_propietario.HeaderText = "ID";
+            id_propietario.Name = "id_propietario";
+            id_propietario.Visible = false;
+            // 
+            // razon_social
+            // 
+            razon_social.DataPropertyName = "razon_social";
+            razon_social.HeaderText = "Razon Social";
+            razon_social.Name = "razon_social";
+            razon_social.Width = 150;
+            // 
+            // telefono
+            // 
+            telefono.DataPropertyName = "telefono";
+            telefono.HeaderText = "Tel.";
+            telefono.Name = "telefono";
+            telefono.Width = 150;
+            // 
+            // email
+            // 
+            email.DataPropertyName = "email";
+            email.HeaderText = "Email";
+            email.Name = "email";
+            email.Width = 200;
+            // 
+            // cuit
+            // 
+            cuit.DataPropertyName = "cuit";
+            cuit.HeaderText = "CUIT";
+            cuit.Name = "cuit";
+            cuit.Width = 200;
+            // 
+            // persona_contacto
+            // 
+            persona_contacto.DataPropertyName = "persona_contacto";
+            persona_contacto.HeaderText = "Per. Contacto";
+            persona_contacto.Name = "persona_contacto";
+            persona_contacto.Width = 200;
+            // 
+            // baja
+            // 
+            baja.DataPropertyName = "baja";
+            baja.HeaderText = "Baja";
+            baja.Name = "baja";
+            baja.Visible = false;
+            // 
             // PropietarioFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(900, 510);
+            ClientSize = new Size(1008, 561);
+            Controls.Add(dgvPropietario);
             Controls.Add(label6);
             Controls.Add(btnModificar);
             Controls.Add(txtCuit);
             Controls.Add(txtTelefono);
-            Controls.Add(dgvPropietario);
             Controls.Add(btnBorrar);
-            Controls.Add(btnBuscar);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -258,15 +255,12 @@
         }
 
         #endregion
-
-        private DataGridView dgvPropietario;
         private DataGridViewTextBoxColumn NOMBRE;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn MONTOESTIMADO;
         private DataGridViewTextBoxColumn TIEMPOESTIMADO;
         private DataGridViewTextBoxColumn RESPONSABLE;
         private Button btnBorrar;
-        private Button btnBuscar;
         private ComboBox cbResponsable;
         private Label label5;
         private Label label4;
@@ -278,15 +272,18 @@
         private TextBox txtPropietario;
         private Button btnGuardar;
         private TextBox txtRazonSocial;
-        private DataGridViewTextBoxColumn RAZONSOCIAL;
-        private DataGridViewTextBoxColumn CUIT;
-        private DataGridViewTextBoxColumn TELEFONO;
-        private DataGridViewTextBoxColumn EMAIL;
-        private DataGridViewTextBoxColumn CONTACTO;
         private TextBox txtTelefono;
         private TextBox txtCuit;
         private Button btnBuscarPro;
         private Button btnModificar;
         private Label label6;
+        private DataGridView dgvPropietario;
+        private DataGridViewTextBoxColumn id_propietario;
+        private DataGridViewTextBoxColumn razon_social;
+        private DataGridViewTextBoxColumn telefono;
+        private DataGridViewTextBoxColumn email;
+        private DataGridViewTextBoxColumn cuit;
+        private DataGridViewTextBoxColumn persona_contacto;
+        private DataGridViewTextBoxColumn baja;
     }
 }
