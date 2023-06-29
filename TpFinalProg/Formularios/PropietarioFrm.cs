@@ -23,7 +23,7 @@ namespace TpFinalProg
 
         private void Propietario_Load(object sender, EventArgs e)
         {
-
+            Console.WriteLine("Inicio del formulario Propietario.");
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -34,7 +34,18 @@ namespace TpFinalProg
             Int64 cuit = Convert.ToInt64(txtCuit.Text);
             string contacto = txtContacto.Text;
 
-            Controlador.PropietarioControlador.crear(razonSocial, cuit, telefono, email, contacto);
+            int idGenerado = Controlador.PropietarioControlador.crear(razonSocial, cuit, telefono, email, contacto);
+
+            // Una vez insertado satisfactoriamente en la DB, se procede a añadir el propietario al DataGridView. Por último se limpian los campos.
+            limpiarCampos();
+        }
+
+        private void limpiarCampos () {
+            txtRazonSocial.Text = "";
+            txtTelefono.Text = "";
+            txtEmail.Text = "";
+            txtCuit.Text = "";
+            txtContacto.Text = "";
         }
     }
 }

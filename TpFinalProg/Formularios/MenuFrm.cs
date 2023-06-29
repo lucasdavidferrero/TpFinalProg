@@ -33,9 +33,6 @@ namespace TpFinalProg
 
         private void btnProyectos_Click(object sender, EventArgs e)
         {
-            // Pruebas de ejecuciones de funciones: (temporal)
-            PropietarioControlador.crear();
-
             ProyectoFrm proy = new ProyectoFrm();
             proy.Show();
         }
