@@ -124,7 +124,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(588, 87);
+            btnAgregar.Location = new Point(600, 259);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(75, 26);
             btnAgregar.TabIndex = 52;
@@ -134,7 +134,7 @@
             // 
             // btnListar
             // 
-            btnListar.Location = new Point(588, 177);
+            btnListar.Location = new Point(600, 349);
             btnListar.Name = "btnListar";
             btnListar.Size = new Size(75, 23);
             btnListar.TabIndex = 53;
@@ -143,7 +143,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(588, 148);
+            button1.Location = new Point(600, 320);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 54;
@@ -152,7 +152,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(588, 119);
+            button2.Location = new Point(600, 291);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 55;
