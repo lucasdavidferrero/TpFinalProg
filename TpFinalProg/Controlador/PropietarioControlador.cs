@@ -13,7 +13,7 @@ namespace TpFinalProg.Controlador {
 
         public static void crear (int id_propietario, string razon_social, Int64 cuit, string telefono,
             string email, string persona_contacto) {
-            Propietario clsPropietario = new Propietario(0, razon_social, telefono, email, cuit, persona_contacto);
+            Propietario clsPropietario = new Propietario(0, razon_social, cuit, telefono, email, persona_contacto);
             int idGenerado = clsPropietario.save();
             Console.WriteLine("Id generado: " + idGenerado);
         }
