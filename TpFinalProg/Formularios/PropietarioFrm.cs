@@ -34,7 +34,7 @@ namespace TpFinalProg
             Int64 cuit = Convert.ToInt64(txtCuit.Text);
             string contacto = txtContacto.Text;
 
-            Controlador.PropietarioControlador.crear(razonSocial, telefono, email, cuit, contacto);
+            Controlador.PropietarioControlador.crear(razonSocial, cuit, telefono, email, contacto);
         }
     }
 }
