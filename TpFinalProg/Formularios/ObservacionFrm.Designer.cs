@@ -108,7 +108,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(243, 53);
+            label4.Location = new Point(275, 53);
             label4.Name = "label4";
             label4.Size = new Size(47, 15);
             label4.TabIndex = 50;
@@ -117,14 +117,14 @@
             // dateTimePicker1
             // 
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(298, 49);
+            dateTimePicker1.Location = new Point(330, 49);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(99, 23);
             dateTimePicker1.TabIndex = 51;
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(600, 259);
+            btnAgregar.Location = new Point(598, 87);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(75, 26);
             btnAgregar.TabIndex = 52;
@@ -134,7 +134,7 @@
             // 
             // btnListar
             // 
-            btnListar.Location = new Point(600, 349);
+            btnListar.Location = new Point(598, 177);
             btnListar.Name = "btnListar";
             btnListar.Size = new Size(75, 23);
             btnListar.TabIndex = 53;
@@ -143,7 +143,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(600, 320);
+            button1.Location = new Point(598, 148);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 54;
@@ -152,7 +152,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(600, 291);
+            button2.Location = new Point(598, 119);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 55;
