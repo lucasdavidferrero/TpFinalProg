@@ -35,6 +35,14 @@
             txtEmailEmp = new TextBox();
             txtTelefonoEmp = new TextBox();
             dgvEmpleado = new DataGridView();
+            dateFechaIngreso = new DateTimePicker();
+            label8 = new Label();
+            btnBaja = new Button();
+            btnReiniciar = new Button();
+            btnBorrar = new Button();
+            btnObesrvacion = new Button();
+            btnGuardar = new Button();
+            btnModificar = new Button();
             LEGAJO = new DataGridViewTextBoxColumn();
             ID = new DataGridViewTextBoxColumn();
             Baja = new DataGridViewTextBoxColumn();
@@ -43,15 +51,6 @@
             FECHAINGRESO = new DataGridViewTextBoxColumn();
             EMAIL = new DataGridViewTextBoxColumn();
             TELEFONO = new DataGridViewTextBoxColumn();
-            dateFechaIngreso = new DateTimePicker();
-            btnBuscar = new Button();
-            label8 = new Label();
-            btnBaja = new Button();
-            btnReiniciar = new Button();
-            btnBorrar = new Button();
-            btnObesrvacion = new Button();
-            btnGuardar = new Button();
-            btnModificar = new Button();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -63,7 +62,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(423, 70);
+            label2.Location = new Point(401, 70);
             label2.Name = "label2";
             label2.Size = new Size(44, 15);
             label2.TabIndex = 38;
@@ -72,7 +71,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(36, 69);
+            label3.Location = new Point(52, 69);
             label3.Name = "label3";
             label3.Size = new Size(59, 15);
             label3.TabIndex = 39;
@@ -81,7 +80,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(32, 109);
+            label4.Location = new Point(48, 109);
             label4.Name = "label4";
             label4.Size = new Size(63, 15);
             label4.TabIndex = 40;
@@ -90,7 +89,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(401, 113);
+            label5.Location = new Point(379, 113);
             label5.Name = "label5";
             label5.Size = new Size(67, 15);
             label5.TabIndex = 43;
@@ -99,7 +98,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(370, 27);
+            label7.Location = new Point(348, 27);
             label7.Name = "label7";
             label7.Size = new Size(98, 15);
             label7.TabIndex = 44;
@@ -109,7 +108,7 @@
             // 
             label1.AutoSize = true;
             label1.ImageAlign = ContentAlignment.BottomLeft;
-            label1.Location = new Point(43, 31);
+            label1.Location = new Point(59, 31);
             label1.Name = "label1";
             label1.Size = new Size(52, 15);
             label1.TabIndex = 36;
@@ -117,35 +116,36 @@
             // 
             // txtLegajo
             // 
-            txtLegajo.Location = new Point(101, 27);
+            txtLegajo.Enabled = false;
+            txtLegajo.Location = new Point(117, 27);
             txtLegajo.Name = "txtLegajo";
             txtLegajo.Size = new Size(199, 23);
             txtLegajo.TabIndex = 37;
             // 
             // txtNombreEmp
             // 
-            txtNombreEmp.Location = new Point(101, 65);
+            txtNombreEmp.Location = new Point(117, 65);
             txtNombreEmp.Name = "txtNombreEmp";
             txtNombreEmp.Size = new Size(199, 23);
             txtNombreEmp.TabIndex = 41;
             // 
             // txtApellidoEmp
             // 
-            txtApellidoEmp.Location = new Point(101, 105);
+            txtApellidoEmp.Location = new Point(117, 105);
             txtApellidoEmp.Name = "txtApellidoEmp";
             txtApellidoEmp.Size = new Size(199, 23);
             txtApellidoEmp.TabIndex = 42;
             // 
             // txtEmailEmp
             // 
-            txtEmailEmp.Location = new Point(474, 66);
+            txtEmailEmp.Location = new Point(452, 66);
             txtEmailEmp.Name = "txtEmailEmp";
             txtEmailEmp.Size = new Size(217, 23);
             txtEmailEmp.TabIndex = 45;
             // 
             // txtTelefonoEmp
             // 
-            txtTelefonoEmp.Location = new Point(474, 109);
+            txtTelefonoEmp.Location = new Point(452, 109);
             txtTelefonoEmp.Name = "txtTelefonoEmp";
             txtTelefonoEmp.Size = new Size(217, 23);
             txtTelefonoEmp.TabIndex = 46;
@@ -154,71 +154,19 @@
             // 
             dgvEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmpleado.Columns.AddRange(new DataGridViewColumn[] { LEGAJO, ID, Baja, NOMBRE, APELLIDO, FECHAINGRESO, EMAIL, TELEFONO });
-            dgvEmpleado.Location = new Point(36, 217);
+            dgvEmpleado.Location = new Point(23, 211);
             dgvEmpleado.Name = "dgvEmpleado";
             dgvEmpleado.RowTemplate.Height = 25;
-            dgvEmpleado.Size = new Size(655, 202);
+            dgvEmpleado.Size = new Size(690, 202);
             dgvEmpleado.TabIndex = 47;
-            // 
-            // LEGAJO
-            // 
-            LEGAJO.HeaderText = "LEGAJO";
-            LEGAJO.Name = "LEGAJO";
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            ID.Visible = false;
-            // 
-            // Baja
-            // 
-            Baja.HeaderText = "baja";
-            Baja.Name = "Baja";
-            Baja.Visible = false;
-            // 
-            // NOMBRE
-            // 
-            NOMBRE.HeaderText = "NOMBRE";
-            NOMBRE.Name = "NOMBRE";
-            // 
-            // APELLIDO
-            // 
-            APELLIDO.HeaderText = "APELLIDO";
-            APELLIDO.Name = "APELLIDO";
-            // 
-            // FECHAINGRESO
-            // 
-            FECHAINGRESO.HeaderText = "FECHA INGRESO";
-            FECHAINGRESO.Name = "FECHAINGRESO";
-            // 
-            // EMAIL
-            // 
-            EMAIL.HeaderText = "EMAIL";
-            EMAIL.Name = "EMAIL";
-            // 
-            // TELEFONO
-            // 
-            TELEFONO.HeaderText = "TELEFONO";
-            TELEFONO.Name = "TELEFONO";
             // 
             // dateFechaIngreso
             // 
             dateFechaIngreso.Format = DateTimePickerFormat.Short;
-            dateFechaIngreso.Location = new Point(474, 23);
+            dateFechaIngreso.Location = new Point(452, 23);
             dateFechaIngreso.Name = "dateFechaIngreso";
             dateFechaIngreso.Size = new Size(217, 23);
             dateFechaIngreso.TabIndex = 150;
-            // 
-            // btnBuscar
-            // 
-            btnBuscar.Location = new Point(306, 25);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(29, 27);
-            btnBuscar.TabIndex = 53;
-            btnBuscar.Text = "🔍︎";
-            btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += btnBuscar_Click;
             // 
             // label8
             // 
@@ -304,6 +252,52 @@
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = false;
             // 
+            // LEGAJO
+            // 
+            LEGAJO.HeaderText = "LEGAJO";
+            LEGAJO.Name = "LEGAJO";
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            ID.Visible = false;
+            // 
+            // Baja
+            // 
+            Baja.HeaderText = "baja";
+            Baja.Name = "Baja";
+            Baja.Visible = false;
+            // 
+            // NOMBRE
+            // 
+            NOMBRE.HeaderText = "NOMBRE";
+            NOMBRE.Name = "NOMBRE";
+            NOMBRE.Width = 120;
+            // 
+            // APELLIDO
+            // 
+            APELLIDO.HeaderText = "APELLIDO";
+            APELLIDO.Name = "APELLIDO";
+            APELLIDO.Width = 120;
+            // 
+            // FECHAINGRESO
+            // 
+            FECHAINGRESO.HeaderText = "FECHA INGRESO";
+            FECHAINGRESO.Name = "FECHAINGRESO";
+            // 
+            // EMAIL
+            // 
+            EMAIL.HeaderText = "EMAIL";
+            EMAIL.Name = "EMAIL";
+            EMAIL.Width = 120;
+            // 
+            // TELEFONO
+            // 
+            TELEFONO.HeaderText = "TELEFONO";
+            TELEFONO.Name = "TELEFONO";
+            TELEFONO.Width = 85;
+            // 
             // EmpleadoFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -317,7 +311,6 @@
             Controls.Add(btnReiniciar);
             Controls.Add(btnBorrar);
             Controls.Add(label8);
-            Controls.Add(btnBuscar);
             Controls.Add(dateFechaIngreso);
             Controls.Add(dgvEmpleado);
             Controls.Add(txtTelefonoEmp);
@@ -347,12 +340,13 @@
         private TextBox txtTelefonoEmp;
         private DataGridView dgvEmpleado;
         private DateTimePicker dateFechaIngreso;
-        private Button btnBuscar;
         private Label label8;
         private Button btnBaja;
         private Button btnReiniciar;
         private Button btnBorrar;
         private Button btnObesrvacion;
+        private Button btnGuardar;
+        private Button btnModificar;
         private DataGridViewTextBoxColumn LEGAJO;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Baja;
@@ -361,7 +355,5 @@
         private DataGridViewTextBoxColumn FECHAINGRESO;
         private DataGridViewTextBoxColumn EMAIL;
         private DataGridViewTextBoxColumn TELEFONO;
-        private Button btnGuardar;
-        private Button btnModificar;
     }
 }

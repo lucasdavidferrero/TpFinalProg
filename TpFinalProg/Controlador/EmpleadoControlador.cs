@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TpFinalProg.Controlador {
-    internal class FuncionesControlador {
+    internal class EmpleadoControlador {
+
 
     }
 }

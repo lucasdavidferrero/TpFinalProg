@@ -24,7 +24,6 @@
         /// </summary>
         private void InitializeComponent() {
             txtNombre = new TextBox();
-            txtPropietario = new TextBox();
             txtMonto = new TextBox();
             txtTiempo = new TextBox();
             label1 = new Label();
@@ -33,7 +32,6 @@
             label4 = new Label();
             label5 = new Label();
             cbResponsable = new ComboBox();
-            btnBuscar = new Button();
             dgvProyecto = new DataGridView();
             NOMBRE = new DataGridViewTextBoxColumn();
             id = new DataGridViewTextBoxColumn();
@@ -47,33 +45,27 @@
             btnLimpiar = new Button();
             btnBorrar = new Button();
             btnGuardar = new Button();
+            cbPropietario = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvProyecto).BeginInit();
             SuspendLayout();
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(112, 32);
+            txtNombre.Location = new Point(155, 28);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(223, 23);
             txtNombre.TabIndex = 1;
             // 
-            // txtPropietario
-            // 
-            txtPropietario.Location = new Point(112, 81);
-            txtPropietario.Name = "txtPropietario";
-            txtPropietario.Size = new Size(223, 23);
-            txtPropietario.TabIndex = 3;
-            // 
             // txtMonto
             // 
-            txtMonto.Location = new Point(566, 34);
+            txtMonto.Location = new Point(555, 30);
             txtMonto.Name = "txtMonto";
             txtMonto.Size = new Size(180, 23);
             txtMonto.TabIndex = 4;
             // 
             // txtTiempo
             // 
-            txtTiempo.Location = new Point(566, 84);
+            txtTiempo.Location = new Point(555, 80);
             txtTiempo.Name = "txtTiempo";
             txtTiempo.Size = new Size(180, 23);
             txtTiempo.TabIndex = 5;
@@ -81,7 +73,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(37, 35);
+            label1.Location = new Point(80, 31);
             label1.Name = "label1";
             label1.Size = new Size(59, 15);
             label1.TabIndex = 6;
@@ -90,7 +82,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(22, 84);
+            label2.Location = new Point(65, 80);
             label2.Name = "label2";
             label2.Size = new Size(81, 15);
             label2.TabIndex = 7;
@@ -99,7 +91,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(422, 37);
+            label3.Location = new Point(411, 33);
             label3.Name = "label3";
             label3.Size = new Size(130, 15);
             label3.TabIndex = 8;
@@ -108,7 +100,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(422, 87);
+            label4.Location = new Point(411, 83);
             label4.Name = "label4";
             label4.Size = new Size(135, 15);
             label4.TabIndex = 9;
@@ -117,7 +109,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(22, 132);
+            label5.Location = new Point(65, 128);
             label5.Name = "label5";
             label5.Size = new Size(87, 15);
             label5.TabIndex = 10;
@@ -126,19 +118,10 @@
             // cbResponsable
             // 
             cbResponsable.FormattingEnabled = true;
-            cbResponsable.Location = new Point(112, 129);
+            cbResponsable.Location = new Point(155, 125);
             cbResponsable.Name = "cbResponsable";
             cbResponsable.Size = new Size(223, 23);
             cbResponsable.TabIndex = 11;
-            // 
-            // btnBuscar
-            // 
-            btnBuscar.Location = new Point(352, 32);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(35, 23);
-            btnBuscar.TabIndex = 12;
-            btnBuscar.Text = "🔍︎";
-            btnBuscar.UseVisualStyleBackColor = true;
             // 
             // dgvProyecto
             // 
@@ -214,7 +197,7 @@
             btnModificar.BackColor = Color.Transparent;
             btnModificar.BackgroundImageLayout = ImageLayout.None;
             btnModificar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnModificar.Location = new Point(249, 175);
+            btnModificar.Location = new Point(241, 176);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(110, 30);
             btnModificar.TabIndex = 158;
@@ -226,7 +209,7 @@
             btnBaja.BackColor = Color.Transparent;
             btnBaja.BackgroundImageLayout = ImageLayout.None;
             btnBaja.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBaja.Location = new Point(481, 175);
+            btnBaja.Location = new Point(473, 176);
             btnBaja.Name = "btnBaja";
             btnBaja.Size = new Size(110, 30);
             btnBaja.TabIndex = 157;
@@ -238,7 +221,7 @@
             btnLimpiar.BackColor = Color.Transparent;
             btnLimpiar.BackgroundImageLayout = ImageLayout.None;
             btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(597, 175);
+            btnLimpiar.Location = new Point(589, 176);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(110, 30);
             btnLimpiar.TabIndex = 156;
@@ -250,7 +233,7 @@
             btnBorrar.BackColor = Color.Transparent;
             btnBorrar.BackgroundImageLayout = ImageLayout.None;
             btnBorrar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBorrar.Location = new Point(365, 175);
+            btnBorrar.Location = new Point(357, 176);
             btnBorrar.Name = "btnBorrar";
             btnBorrar.Size = new Size(110, 30);
             btnBorrar.TabIndex = 155;
@@ -262,12 +245,20 @@
             btnGuardar.BackColor = Color.Transparent;
             btnGuardar.BackgroundImageLayout = ImageLayout.None;
             btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardar.Location = new Point(133, 175);
+            btnGuardar.Location = new Point(125, 176);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(110, 30);
             btnGuardar.TabIndex = 154;
             btnGuardar.Text = "Crear";
             btnGuardar.UseVisualStyleBackColor = false;
+            // 
+            // cbPropietario
+            // 
+            cbPropietario.FormattingEnabled = true;
+            cbPropietario.Location = new Point(155, 77);
+            cbPropietario.Name = "cbPropietario";
+            cbPropietario.Size = new Size(223, 23);
+            cbPropietario.TabIndex = 159;
             // 
             // ProyectoFrm
             // 
@@ -275,13 +266,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(835, 518);
+            Controls.Add(cbPropietario);
             Controls.Add(btnModificar);
             Controls.Add(btnBaja);
             Controls.Add(btnLimpiar);
             Controls.Add(btnBorrar);
             Controls.Add(btnGuardar);
             Controls.Add(dgvProyecto);
-            Controls.Add(btnBuscar);
             Controls.Add(cbResponsable);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -290,7 +281,6 @@
             Controls.Add(label1);
             Controls.Add(txtTiempo);
             Controls.Add(txtMonto);
-            Controls.Add(txtPropietario);
             Controls.Add(txtNombre);
             Name = "ProyectoFrm";
             Text = "Proyecto";
@@ -303,7 +293,6 @@
 
         private Button btnBuscarPro;
         private TextBox txtNombre;
-        private TextBox txtPropietario;
         private TextBox txtMonto;
         private TextBox txtTiempo;
         private Label label1;
@@ -312,7 +301,6 @@
         private Label label4;
         private Label label5;
         private ComboBox cbResponsable;
-        private Button btnBuscar;
         private DataGridView dgvProyecto;
         private Button btnModificar;
         private Button btnBaja;
@@ -326,5 +314,6 @@
         private DataGridViewTextBoxColumn MONTOESTIMADO;
         private DataGridViewTextBoxColumn TIEMPOESTIMADO;
         private DataGridViewTextBoxColumn RESPONSABLE;
+        private ComboBox cbPropietario;
     }
 }
