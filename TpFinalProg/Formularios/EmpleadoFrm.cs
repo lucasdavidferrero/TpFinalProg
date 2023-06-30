@@ -8,18 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TpFinalProg
-{
-    public partial class EmpleadoFrm : Form
-    {
-        public EmpleadoFrm()
-        {
+namespace TpFinalProg {
+    public partial class EmpleadoFrm : Form {
+        public EmpleadoFrm() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private void btnObservacion_Click(object sender, EventArgs e)
-        {
+        private void btnObesrvacion_Click(object sender, EventArgs e) {
             Form frm_observacion = Application.OpenForms.OfType<Form>().
                             Where(pre => pre.Name == "ObservacionFrm").SingleOrDefault();
 
@@ -33,6 +29,12 @@ namespace TpFinalProg
             }
         }
 
+        private void btnBuscar_Click(object sender, EventArgs e) {
 
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e) {
+
+        }
     }
 }

@@ -8,18 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TpFinalProg
-{
-    public partial class AsignacionTareaFrm : Form
-    {
-        public AsignacionTareaFrm()
-        {
+namespace TpFinalProg {
+    public partial class AsignacionTareaFrm : Form {
+        public AsignacionTareaFrm() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private void butGuardar_Click(object sender, EventArgs e)
-        {
+        private void butGuardar_Click(object sender, EventArgs e) {
 
         }
     }

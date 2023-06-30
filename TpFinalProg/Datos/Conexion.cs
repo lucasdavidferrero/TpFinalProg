@@ -15,7 +15,7 @@ namespace TpFinalProg.Clases {
         private SqlCommand cmd = new SqlCommand();
         private SqlTransaction tran = null;
 
-        private string strConx = ConfigurationManager.ConnectionStrings["bd-stefi"].ConnectionString;
+        private string strConx = ConfigurationManager.ConnectionStrings["bd-emi"].ConnectionString;
         public Conexion() { }
 
         private void abrirConexion() {

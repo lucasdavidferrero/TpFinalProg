@@ -23,38 +23,29 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            label6 = new Label();
             label1 = new Label();
             txtLegajo = new TextBox();
             txtObservacion = new TextBox();
             label2 = new Label();
             dataGridView1 = new DataGridView();
             fecha = new DataGridViewTextBoxColumn();
-            observacion = new DataGridViewTextBoxColumn();
+            ID = new DataGridViewTextBoxColumn();
+            BAJA = new DataGridViewTextBoxColumn();
+            OBSERVACION = new DataGridViewTextBoxColumn();
             label4 = new Label();
             dateTimePicker1 = new DateTimePicker();
-            btnAgregar = new Button();
-            btnListar = new Button();
-            button1 = new Button();
-            button2 = new Button();
+            btnModificar = new Button();
+            btnBaja = new Button();
+            btnLimpiar = new Button();
+            btnBorrar = new Button();
+            btnGuardar = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.ForeColor = SystemColors.HotTrack;
-            label6.Location = new Point(24, 21);
-            label6.Name = "label6";
-            label6.Size = new Size(169, 20);
-            label6.TabIndex = 34;
-            label6.Text = "ABM OBSERVACIONES";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(56, 53);
+            label1.Location = new Point(129, 22);
             label1.Name = "label1";
             label1.Size = new Size(52, 15);
             label1.TabIndex = 35;
@@ -62,23 +53,23 @@
             // 
             // txtLegajo
             // 
-            txtLegajo.Location = new Point(114, 49);
+            txtLegajo.Location = new Point(187, 18);
             txtLegajo.Name = "txtLegajo";
-            txtLegajo.Size = new Size(100, 23);
+            txtLegajo.Size = new Size(110, 23);
             txtLegajo.TabIndex = 36;
             // 
             // txtObservacion
             // 
-            txtObservacion.Location = new Point(114, 84);
+            txtObservacion.Location = new Point(187, 70);
             txtObservacion.Multiline = true;
             txtObservacion.Name = "txtObservacion";
-            txtObservacion.Size = new Size(457, 116);
+            txtObservacion.Size = new Size(342, 123);
             txtObservacion.TabIndex = 46;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(20, 84);
+            label2.Location = new Point(93, 122);
             label2.Name = "label2";
             label2.Size = new Size(88, 15);
             label2.TabIndex = 47;
@@ -87,11 +78,11 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { fecha, observacion });
-            dataGridView1.Location = new Point(114, 241);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { fecha, ID, BAJA, OBSERVACION });
+            dataGridView1.Location = new Point(62, 263);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(457, 150);
+            dataGridView1.Size = new Size(594, 180);
             dataGridView1.TabIndex = 49;
             // 
             // fecha
@@ -99,16 +90,28 @@
             fecha.HeaderText = "FECHA";
             fecha.Name = "fecha";
             // 
-            // observacion
+            // ID
             // 
-            observacion.HeaderText = "Observacion";
-            observacion.Name = "observacion";
-            observacion.Width = 250;
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            ID.Visible = false;
+            // 
+            // BAJA
+            // 
+            BAJA.HeaderText = "BAJA";
+            BAJA.Name = "BAJA";
+            BAJA.Visible = false;
+            // 
+            // OBSERVACION
+            // 
+            OBSERVACION.HeaderText = "OBSERVACION";
+            OBSERVACION.Name = "OBSERVACION";
+            OBSERVACION.Width = 450;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(275, 53);
+            label4.Location = new Point(366, 21);
             label4.Name = "label4";
             label4.Size = new Size(47, 15);
             label4.TabIndex = 50;
@@ -117,57 +120,82 @@
             // dateTimePicker1
             // 
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(330, 49);
+            dateTimePicker1.Location = new Point(419, 18);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(99, 23);
+            dateTimePicker1.Size = new Size(110, 23);
             dateTimePicker1.TabIndex = 51;
             // 
-            // btnAgregar
+            // btnModificar
             // 
-            btnAgregar.Location = new Point(598, 87);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(75, 26);
-            btnAgregar.TabIndex = 52;
-            btnAgregar.Text = "Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
-            btnAgregar.Click += btnAgregar_Click;
+            btnModificar.BackColor = Color.Transparent;
+            btnModificar.BackgroundImageLayout = ImageLayout.None;
+            btnModificar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnModificar.Location = new Point(187, 213);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(110, 30);
+            btnModificar.TabIndex = 158;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = false;
             // 
-            // btnListar
+            // btnBaja
             // 
-            btnListar.Location = new Point(598, 177);
-            btnListar.Name = "btnListar";
-            btnListar.Size = new Size(75, 23);
-            btnListar.TabIndex = 53;
-            btnListar.Text = "Listar observaciones";
-            btnListar.UseVisualStyleBackColor = true;
+            btnBaja.BackColor = Color.Transparent;
+            btnBaja.BackgroundImageLayout = ImageLayout.None;
+            btnBaja.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBaja.Location = new Point(419, 213);
+            btnBaja.Name = "btnBaja";
+            btnBaja.Size = new Size(110, 30);
+            btnBaja.TabIndex = 157;
+            btnBaja.Text = "Baja";
+            btnBaja.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnLimpiar
             // 
-            button1.Location = new Point(598, 148);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 54;
-            button1.Text = "Borrar";
-            button1.UseVisualStyleBackColor = true;
+            btnLimpiar.BackColor = Color.Transparent;
+            btnLimpiar.BackgroundImageLayout = ImageLayout.None;
+            btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLimpiar.Location = new Point(535, 213);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(110, 30);
+            btnLimpiar.TabIndex = 156;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnBorrar
             // 
-            button2.Location = new Point(598, 119);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 55;
-            button2.Text = "Limpiar";
-            button2.UseVisualStyleBackColor = true;
+            btnBorrar.BackColor = Color.Transparent;
+            btnBorrar.BackgroundImageLayout = ImageLayout.None;
+            btnBorrar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBorrar.Location = new Point(303, 213);
+            btnBorrar.Name = "btnBorrar";
+            btnBorrar.Size = new Size(110, 30);
+            btnBorrar.TabIndex = 155;
+            btnBorrar.Text = "Eliminar";
+            btnBorrar.UseVisualStyleBackColor = false;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.BackColor = Color.Transparent;
+            btnGuardar.BackgroundImageLayout = ImageLayout.None;
+            btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGuardar.Location = new Point(71, 213);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(110, 30);
+            btnGuardar.TabIndex = 154;
+            btnGuardar.Text = "Crear";
+            btnGuardar.UseVisualStyleBackColor = false;
             // 
             // ObservacionFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(704, 425);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(btnListar);
-            Controls.Add(btnAgregar);
+            BackColor = Color.White;
+            ClientSize = new Size(704, 461);
+            Controls.Add(btnModificar);
+            Controls.Add(btnBaja);
+            Controls.Add(btnLimpiar);
+            Controls.Add(btnBorrar);
+            Controls.Add(btnGuardar);
             Controls.Add(dateTimePicker1);
             Controls.Add(label4);
             Controls.Add(dataGridView1);
@@ -175,7 +203,6 @@
             Controls.Add(txtObservacion);
             Controls.Add(txtLegajo);
             Controls.Add(label1);
-            Controls.Add(label6);
             Name = "ObservacionFrm";
             Text = "Observacion";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -184,8 +211,6 @@
         }
 
         #endregion
-
-        private Label label6;
         private Label label1;
         private TextBox txtLegajo;
         private TextBox txtObservacion;
@@ -194,10 +219,13 @@
         private Label label4;
         private DateTimePicker dateTimePicker1;
         private DataGridViewTextBoxColumn fecha;
-        private DataGridViewTextBoxColumn observacion;
-        private Button btnAgregar;
-        private Button btnListar;
-        private Button button1;
-        private Button button2;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn BAJA;
+        private DataGridViewTextBoxColumn OBSERVACION;
+        private Button btnModificar;
+        private Button btnBaja;
+        private Button btnLimpiar;
+        private Button btnBorrar;
+        private Button btnGuardar;
     }
 }

@@ -76,5 +76,13 @@ namespace TpFinalProg {
             btnGuardar.Text = "Guardar cambios";
             // TODO: No permitir que se modifique el CUIT. (invalidar el textbox)
         }
+
+        private void btnModificar_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e) {
+
+        }
     }
 }
