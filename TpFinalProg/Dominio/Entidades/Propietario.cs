@@ -8,7 +8,7 @@ using TpFinalProg.Dominio.Mappers;
 
 namespace TpFinalProg.Dominio.Entidades {
     internal class Propietario {
-        private int idPropietario { get; set; }
+        public int idPropietario { get; set; }
         public string razonSocial { get; }
         public string telefono { get; }
         public string email { get; }
@@ -26,8 +26,6 @@ namespace TpFinalProg.Dominio.Entidades {
             this.cuit = cuit;
             personaContacto = persona_contacto;
         }
-
-        /* Los métodos guardar, en general serían así en todas las entidades. */
         public int save() {
             if (idPropietario == 0) {
                 // TODO: Regla de negocio: Verificar que no exista un propietario con el CUIT que nos dan.
@@ -35,11 +33,9 @@ namespace TpFinalProg.Dominio.Entidades {
                 return id;
             }
 
-            // Obtener Propietario y verificar q existe
-            // Guardar cambios en la DB
-            bool propietarioEncontrado = true; // crear funcion q haga select por id y retorne true/false
-            if (propietarioEncontrado) {
-                // UPDATE usando los nuevos atributos
+            Propietario propEncontrado = PropietarioDataMapper.findById(this.idPropietario);
+            if (propEncontrado != null) {
+                PropietarioDataMapper.update(this);
                 return idPropietario;
             } else {
                 return -1; // no se encontró un propietario con el ID provisto.
