@@ -18,7 +18,11 @@ namespace TpFinalProg.Controlador {
             return idGenerado;
         }
 
-        public static void actualizar () { }
+        public static void actualizar (int id_propietario, string razon_social, Int64 cuit, string telefono,
+            string email, string persona_contacto) {
+            Propietario p = new Propietario(id_propietario, razon_social, cuit, telefono, email, persona_contacto);
+            p.save();
+        }
 
         public static void eliminar() { }
 

@@ -30,6 +30,9 @@ namespace TpFinalProg {
             txtEmail.Text = "";
             txtCuit.Text = "";
             txtContacto.Text = "";
+            this.idRowSeleccionado = -1;
+            btnGuardar.Text = "Crear";
+            // validar la edición del campo CUIT.
         }
 
         private void listarPropietarios() {
@@ -48,10 +51,9 @@ namespace TpFinalProg {
                 Controlador.PropietarioControlador.crear(razonSocial, cuit, telefono, email, contacto);
             } else {
                 // TODO Método para hacer un update en la DB... usar atributo idRowSeleccionado
+                int idProp = Convert.ToInt32(dgvPropietario.Rows[this.idRowSeleccionado].Cells["id_propietario"].Value);
+                PropietarioControlador.actualizar(idProp, razonSocial, cuit, telefono, email, contacto);
             }
-
-
-
 
             // Una vez insertado satisfactoriamente en la DB, se procede a listar nuevamente. Por último se limpian los campos.
             listarPropietarios();
@@ -59,11 +61,11 @@ namespace TpFinalProg {
         }
 
         private void dgvPropietario_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
-            idRowSeleccionado = e.RowIndex;
-
             // El último row siempre esta vacío. No hacemos nada en ese caso.
-            if (dgvPropietario.Rows.Count - 1 == idRowSeleccionado)
+            if (dgvPropietario.Rows.Count - 1 == e.RowIndex)
                 return;
+
+            idRowSeleccionado = e.RowIndex;
 
             // Llenar los Textboxs con los correspondientes datos del Row seleccionado.
             DataGridViewCellCollection celdas = dgvPropietario.Rows[idRowSeleccionado].Cells;

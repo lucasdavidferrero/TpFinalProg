@@ -63,6 +63,38 @@ namespace TpFinalProg.Dominio.Mappers {
             return dtListAll;
         }
 
+        public static int update (Propietario p) {
+            // Construcción del query parametrizado.
+            string q = "UPDATE Propietario SET razon_social = @razonSocial , telefono = @telefono, email = @email, persona_contacto = @personaContacto WHERE id_propietario = @Id";
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            // Asignación de tipos de datos correspondientes a la base de datos.
+            cmd.Parameters.Add("@razonSocial", SqlDbType.NVarChar);
+            cmd.Parameters.Add("@telefono", SqlDbType.NVarChar);
+            cmd.Parameters.Add("@email", SqlDbType.NVarChar);
+            cmd.Parameters.Add("@personaContacto", SqlDbType.NVarChar);
+
+            // Asignación de valores a cada parámetro SQL.
+            cmd.Parameters["@razonSocial"].Value = p.razonSocial;
+            cmd.Parameters["@telefono"].Value = p.telefono;
+            cmd.Parameters["@email"].Value = p.email;
+            cmd.Parameters["@personaContacto"].Value = p.personaContacto;
+
+            cmd.Parameters.AddWithValue("@Id", p.idPropietario);
+
+            // Ejecución del SQL
+            try {
+                cx.SetComandoSQL(q);
+                cmd.ExecuteScalar();
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Insertar Propietario]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+            return p.idPropietario;
+        }
+
         public static Propietario findById (int id) {
             Propietario propEncontrado = null;
             string q = "SELECT * FROM Propietario WHERE id_propietario = @Id";
