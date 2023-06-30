@@ -29,5 +29,13 @@ namespace TpFinalProg {
 
         private void txtHoraEstimada_TextChanged(object sender, EventArgs e) {
         }
+
+        private void btnModificar_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e) {
+
+        }
     }
 }
