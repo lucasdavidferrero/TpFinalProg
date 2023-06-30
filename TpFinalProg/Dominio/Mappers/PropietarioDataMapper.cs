@@ -62,5 +62,37 @@ namespace TpFinalProg.Dominio.Mappers {
 
             return dtListAll;
         }
+
+        public static Propietario findById (int id) {
+            Propietario propEncontrado = null;
+            string q = "SELECT * FROM Propietario WHERE id_propietario = @Id";
+            DataTable dt = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            try {
+                cx.SetComandoSQL(q);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+                if (dt.Rows.Count != 0) {
+                    DataRow row = dt.Rows[0];
+                    int pId = Convert.ToInt32(row["id_propietario"]);
+                    string pRazonSocial = row["razon_social"].ToString()!;
+                    Int64 pCuit = Convert.ToInt64(row["cuit"]);
+                    string pTel = row["telefono"].ToString()!;
+                    string pEmail = row["email"].ToString()!;
+                    string pPersonaContacto = row["persona_contacto"].ToString()!;
+                    propEncontrado = new Propietario(pId, pRazonSocial, pCuit, pTel, pEmail, pPersonaContacto);
+                }
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Id Propietario]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return propEncontrado;
+        }
     }
 }
