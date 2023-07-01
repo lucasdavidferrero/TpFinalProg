@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalProg.Controlador
-{
-    internal class Controlador
-    {
+namespace TpFinalProg.Controlador {
+    internal class EmpleadoControlador {
+
+
     }
 }

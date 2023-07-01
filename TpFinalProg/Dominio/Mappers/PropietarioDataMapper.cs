@@ -62,5 +62,69 @@ namespace TpFinalProg.Dominio.Mappers {
 
             return dtListAll;
         }
+
+        public static int update (Propietario p) {
+            // Construcción del query parametrizado.
+            string q = "UPDATE Propietario SET razon_social = @razonSocial , telefono = @telefono, email = @email, persona_contacto = @personaContacto WHERE id_propietario = @Id";
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            // Asignación de tipos de datos correspondientes a la base de datos.
+            cmd.Parameters.Add("@razonSocial", SqlDbType.NVarChar);
+            cmd.Parameters.Add("@telefono", SqlDbType.NVarChar);
+            cmd.Parameters.Add("@email", SqlDbType.NVarChar);
+            cmd.Parameters.Add("@personaContacto", SqlDbType.NVarChar);
+
+            // Asignación de valores a cada parámetro SQL.
+            cmd.Parameters["@razonSocial"].Value = p.razonSocial;
+            cmd.Parameters["@telefono"].Value = p.telefono;
+            cmd.Parameters["@email"].Value = p.email;
+            cmd.Parameters["@personaContacto"].Value = p.personaContacto;
+
+            cmd.Parameters.AddWithValue("@Id", p.idPropietario);
+
+            // Ejecución del SQL
+            try {
+                cx.SetComandoSQL(q);
+                cmd.ExecuteScalar();
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Insertar Propietario]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+            return p.idPropietario;
+        }
+
+        public static Propietario findById (int id) {
+            Propietario propEncontrado = null;
+            string q = "SELECT * FROM Propietario WHERE id_propietario = @Id";
+            DataTable dt = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            try {
+                cx.SetComandoSQL(q);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+                if (dt.Rows.Count != 0) {
+                    DataRow row = dt.Rows[0];
+                    int pId = Convert.ToInt32(row["id_propietario"]);
+                    string pRazonSocial = row["razon_social"].ToString()!;
+                    Int64 pCuit = Convert.ToInt64(row["cuit"]);
+                    string pTel = row["telefono"].ToString()!;
+                    string pEmail = row["email"].ToString()!;
+                    string pPersonaContacto = row["persona_contacto"].ToString()!;
+                    propEncontrado = new Propietario(pId, pRazonSocial, pCuit, pTel, pEmail, pPersonaContacto);
+                }
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Id Propietario]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return propEncontrado;
+        }
     }
 }

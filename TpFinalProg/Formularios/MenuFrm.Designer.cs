@@ -1,7 +1,5 @@
-﻿namespace TpFinalProg
-{
-    partial class MenuFrm
-    {
+﻿namespace TpFinalProg {
+    partial class MenuFrm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -11,10 +9,8 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -26,125 +22,84 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
-            btnEmpleados = new Button();
-            btnPropietarios = new Button();
-            btnProyectos = new Button();
+        private void InitializeComponent() {
             btnTareas = new Button();
-            btnListado = new Button();
-            btnAsigTarea = new Button();
-            label2 = new Label();
+            btnProyectos = new Button();
+            btnPropietarios = new Button();
+            btnEmpleados = new Button();
             SuspendLayout();
-            // 
-            // btnEmpleados
-            // 
-            btnEmpleados.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
-            btnEmpleados.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEmpleados.Location = new Point(64, 49);
-            btnEmpleados.Name = "btnEmpleados";
-            btnEmpleados.Size = new Size(147, 71);
-            btnEmpleados.TabIndex = 0;
-            btnEmpleados.Text = "EMPLEADOS";
-            btnEmpleados.UseVisualStyleBackColor = true;
-            btnEmpleados.Click += btnEmpleados_Click;
-            // 
-            // btnPropietarios
-            // 
-            btnPropietarios.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
-            btnPropietarios.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnPropietarios.Location = new Point(245, 49);
-            btnPropietarios.Name = "btnPropietarios";
-            btnPropietarios.Size = new Size(147, 71);
-            btnPropietarios.TabIndex = 1;
-            btnPropietarios.Text = "PROPIETARIO";
-            btnPropietarios.UseVisualStyleBackColor = true;
-            btnPropietarios.Click += btnPropietarios_Click;
-            // 
-            // btnProyectos
-            // 
-            btnProyectos.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
-            btnProyectos.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnProyectos.Location = new Point(423, 49);
-            btnProyectos.Name = "btnProyectos";
-            btnProyectos.Size = new Size(147, 71);
-            btnProyectos.TabIndex = 2;
-            btnProyectos.Text = "PROYECTOS";
-            btnProyectos.UseVisualStyleBackColor = true;
-            btnProyectos.Click += btnProyectos_Click;
             // 
             // btnTareas
             // 
+            btnTareas.BackColor = Color.Transparent;
             btnTareas.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
             btnTareas.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTareas.Location = new Point(423, 141);
+            btnTareas.Location = new Point(68, 337);
             btnTareas.Name = "btnTareas";
-            btnTareas.Size = new Size(147, 71);
-            btnTareas.TabIndex = 3;
+            btnTareas.Size = new Size(189, 73);
+            btnTareas.TabIndex = 15;
             btnTareas.Text = "TAREAS";
-            btnTareas.UseVisualStyleBackColor = true;
-            btnTareas.Click += btnTareas_Click;
+            btnTareas.UseVisualStyleBackColor = false;
+            btnTareas.Click += btnTareas_Click_1;
             // 
-            // btnListado
+            // btnProyectos
             // 
-            btnListado.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
-            btnListado.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnListado.Location = new Point(64, 141);
-            btnListado.Name = "btnListado";
-            btnListado.Size = new Size(149, 73);
-            btnListado.TabIndex = 4;
-            btnListado.Text = "LISTADOS";
-            btnListado.UseVisualStyleBackColor = true;
-            btnListado.Click += btnListado_Click;
+            btnProyectos.BackColor = Color.Transparent;
+            btnProyectos.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
+            btnProyectos.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnProyectos.Location = new Point(68, 243);
+            btnProyectos.Name = "btnProyectos";
+            btnProyectos.Size = new Size(189, 73);
+            btnProyectos.TabIndex = 14;
+            btnProyectos.Text = "ABM PROYECTOS";
+            btnProyectos.UseVisualStyleBackColor = false;
+            btnProyectos.Click += btnProyectos_Click_1;
             // 
-            // btnAsigTarea
+            // btnPropietarios
             // 
-            btnAsigTarea.FlatAppearance.BorderColor = Color.FromArgb(64, 64, 64);
-            btnAsigTarea.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
-            btnAsigTarea.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAsigTarea.Location = new Point(245, 140);
-            btnAsigTarea.Name = "btnAsigTarea";
-            btnAsigTarea.Size = new Size(147, 73);
-            btnAsigTarea.TabIndex = 5;
-            btnAsigTarea.Text = "ASIGNACIÓN TAREAS";
-            btnAsigTarea.UseVisualStyleBackColor = true;
-            btnAsigTarea.Click += btnAsigTarea_Click;
+            btnPropietarios.BackColor = Color.Transparent;
+            btnPropietarios.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
+            btnPropietarios.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnPropietarios.Location = new Point(68, 150);
+            btnPropietarios.Name = "btnPropietarios";
+            btnPropietarios.Size = new Size(189, 73);
+            btnPropietarios.TabIndex = 13;
+            btnPropietarios.Text = "ABM PROPIETARIO";
+            btnPropietarios.UseVisualStyleBackColor = false;
+            btnPropietarios.Click += btnPropietarios_Click_1;
             // 
-            // label2
+            // btnEmpleados
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(146, 302);
-            label2.Name = "label2";
-            label2.Size = new Size(346, 15);
-            label2.TabIndex = 23;
-            label2.Text = "ME OLVIDE DOWNDE IBA OBSERVACIONES JEJEJEJEJE, FALTA ESA";
+            btnEmpleados.BackColor = Color.Transparent;
+            btnEmpleados.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
+            btnEmpleados.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEmpleados.Location = new Point(68, 55);
+            btnEmpleados.Name = "btnEmpleados";
+            btnEmpleados.Size = new Size(189, 75);
+            btnEmpleados.TabIndex = 12;
+            btnEmpleados.Text = "ABM EMPLEADOS";
+            btnEmpleados.UseVisualStyleBackColor = false;
+            btnEmpleados.Click += btnEmpleados_Click_1;
             // 
-            // Menu
+            // MenuFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(629, 457);
-            Controls.Add(label2);
-            Controls.Add(btnAsigTarea);
-            Controls.Add(btnListado);
+            BackColor = Color.White;
+            ClientSize = new Size(342, 454);
             Controls.Add(btnTareas);
             Controls.Add(btnProyectos);
             Controls.Add(btnPropietarios);
             Controls.Add(btnEmpleados);
-            Name = "Menu";
+            Name = "MenuFrm";
             Text = "Menu";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Button btnEmpleados;
-        private Button btnPropietarios;
-        private Button btnProyectos;
         private Button btnTareas;
-        private Button btnListado;
-        private Button btnAsigTarea;
-        private Label label2;
+        private Button btnProyectos;
+        private Button btnPropietarios;
+        private Button btnEmpleados;
     }
 }

@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TpFinalProg
-{
-    public partial class ObservacionFrm : Form
-    {
-        public ObservacionFrm()
-        {
+namespace TpFinalProg {
+    public partial class ObservacionFrm : Form {
+        public ObservacionFrm() {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e) {
+
         }
     }
 }
