@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace TpFinalProg.Dominio.Entidades {
     internal class Proyecto {
-        private int idProyecto { get; }
+        public int idProyecto { get; }
 
-        private string nombre { get; }
+        public string nombre { get; set; }
 
-        private float montoEstimado { get; }
+        public float montoEstimado { get; }
 
-        private int tiempoEstimado { get; }
-        private int idPropietario { get; }
-        private int nroLegajo { get; }
+        public int tiempoEstimado { get; }
+        public int idPropietario { get; }
+        public int nroLegajo { get; }
 
         public Proyecto(int idProyecto, string nombre, float montoEstimado, int tiempoEstimado, int idPropietario, int legajo) {
             this.idProyecto = idProyecto;

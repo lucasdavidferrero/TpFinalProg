@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TpFinalProg.Dominio.Entidades {
     internal class Trabaja {
-        private int nroLegajo { get; }
-        private int idProyecto { get; }
-        private int idTarea { get; }
-        private int idFuncion { get; }
+        public int nroLegajo { get; }
+        public int idProyecto { get; }
+        public int idTarea { get; }
+        public int idFuncion { get; set; }
 
         public Trabaja(int legajo, int idProyecto, int idTarea, int idFuncion) {
             this.nroLegajo = legajo;
