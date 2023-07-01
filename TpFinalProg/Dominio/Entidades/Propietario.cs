@@ -26,24 +26,24 @@ namespace TpFinalProg.Dominio.Entidades {
             this.cuit = cuit;
             personaContacto = persona_contacto;
         }
-        public int save() {
+        public int guardar() {
             if (idPropietario == 0) {
                 // TODO: Regla de negocio: Verificar que no exista un propietario con el CUIT que nos dan.
-                int id = PropietarioDataMapper.insertNew(this);
+                int id = PropietarioDataMapper.insertarNuevo(this);
                 return id;
             }
 
-            Propietario propEncontrado = PropietarioDataMapper.findById(this.idPropietario);
+            Propietario propEncontrado = PropietarioDataMapper.encontrarPorId(this.idPropietario);
             if (propEncontrado != null) {
-                PropietarioDataMapper.update(this);
+                PropietarioDataMapper.modificar(this);
                 return idPropietario;
             } else {
                 return -1; // no se encontró un propietario con el ID provisto.
             }
         }
 
-        public DataTable getAll() {
-            return PropietarioDataMapper.getAll();
+        public DataTable obtenerTodos() {
+            return PropietarioDataMapper.obtenerTodos();
         }
 
         public void eliminarPorId(int id) {

@@ -57,17 +57,17 @@ namespace TpFinalProg {
                 hayAlMenosUnError = true;
             }
 
-            if (string.IsNullOrEmpty(txtCuit.Text) || !Validar.SoloNumeros(txtCuit.Text)) {
+            if (string.IsNullOrEmpty(txtCuit.Text) || !Validar.soloNumeros(txtCuit.Text) || !Validar.cuit(txtCuit.Text)){
                 mensajeError += "- El CUIT esta vacío o es inválido. \n";
                 hayAlMenosUnError = true;
             }
 
-            if (string.IsNullOrEmpty(txtTelefono.Text) || !Validar.SoloNumeros(txtTelefono.Text)) {
+            if (string.IsNullOrEmpty(txtTelefono.Text) || !Validar.soloNumeros(txtTelefono.Text)) {
                 mensajeError += "- El Teléfono esta vacío o es inválido. \n";
                 hayAlMenosUnError = true;
             }
 
-            if (string.IsNullOrEmpty(txtEmail.Text) || !Validar.Email(txtEmail.Text)) {
+            if (string.IsNullOrEmpty(txtEmail.Text) || !Validar.email(txtEmail.Text)) {
                 mensajeError += "- El email esta vacío o tiene un formato inválido. \n";
                 hayAlMenosUnError = true;
             }

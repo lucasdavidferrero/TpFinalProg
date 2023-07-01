@@ -11,7 +11,7 @@ using TpFinalProg.Dominio.Entidades;
 namespace TpFinalProg.Dominio.Mappers {
     internal class PropietarioDataMapper {
 
-        public static int insertNew (Propietario p) {
+        public static int insertarNuevo (Propietario p) {
             // Construcción del query parametrizado.
             string q = "INSERT INTO Propietario(razon_social,telefono,email,cuit,persona_contacto) VALUES(@razonSocial,@telefono,@email,@cuit,@personaContacto); SELECT SCOPE_IDENTITY();";
             int idGenerado = -1;
@@ -44,7 +44,7 @@ namespace TpFinalProg.Dominio.Mappers {
             }
             return idGenerado;
         }
-        public static DataTable getAll() {
+        public static DataTable obtenerTodos() {
             DataTable dtListAll = new DataTable("ListarPropietarios");
             string q = "SELECT * FROM Propietario WHERE baja = 0";
             Conexion cx = new Conexion();
@@ -63,7 +63,7 @@ namespace TpFinalProg.Dominio.Mappers {
             return dtListAll;
         }
 
-        public static int update (Propietario p) {
+        public static int modificar (Propietario p) {
             // Construcción del query parametrizado.
             string q = "UPDATE Propietario SET razon_social = @razonSocial , telefono = @telefono, email = @email, persona_contacto = @personaContacto WHERE id_propietario = @Id";
             Conexion cx = new Conexion();
@@ -95,7 +95,7 @@ namespace TpFinalProg.Dominio.Mappers {
             return p.idPropietario;
         }
 
-        public static Propietario findById (int id) {
+        public static Propietario encontrarPorId (int id) {
             Propietario propEncontrado = null;
             string q = "SELECT * FROM Propietario WHERE id_propietario = @Id";
             DataTable dt = new DataTable();

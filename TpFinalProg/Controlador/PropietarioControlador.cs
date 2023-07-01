@@ -14,14 +14,14 @@ namespace TpFinalProg.Controlador {
         public static int crear (string razon_social, Int64 cuit, string telefono,
             string email, string persona_contacto) {
             Propietario clsPropietario = new Propietario(0, razon_social, cuit, telefono, email, persona_contacto);
-            int idGenerado = clsPropietario.save();
+            int idGenerado = clsPropietario.guardar();
             return idGenerado;
         }
 
         public static void actualizar (int id_propietario, string razon_social, Int64 cuit, string telefono,
             string email, string persona_contacto) {
             Propietario p = new Propietario(id_propietario, razon_social, cuit, telefono, email, persona_contacto);
-            p.save();
+            p.guardar();
         }
 
         public static void eliminar(int id) {
@@ -31,7 +31,7 @@ namespace TpFinalProg.Controlador {
 
         public static DataTable listarTodo() {
             Propietario clsPropietario = new Propietario();
-            DataTable propietarios = clsPropietario.getAll();
+            DataTable propietarios = clsPropietario.obtenerTodos();
             return propietarios;
         }
 
