@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalProg.Controlador;
+using TpFinalProg.Utilidades;
 
 namespace TpFinalProg {
 
@@ -17,7 +19,6 @@ namespace TpFinalProg {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
-
 
         private void Propietario_Load(object sender, EventArgs e) {
             listarPropietarios();
@@ -43,12 +44,50 @@ namespace TpFinalProg {
             dgvPropietario.DataSource = listadoPropietarios;
         }
 
+        // Si existe error, retorna true.
+        private bool validarFrm () {
+            string mensajeError = "";
+            bool hayAlMenosUnError = false;
+            if (string.IsNullOrEmpty(txtRazonSocial.Text)) {
+                mensajeError += "- La Razón Social es obligatoria. \n";
+                hayAlMenosUnError = true;
+            }
+
+            if (string.IsNullOrEmpty(txtCuit.Text) || !Validar.SoloNumeros(txtCuit.Text)) {
+                mensajeError += "- El CUIT esta vacío o es inválido. \n";
+                hayAlMenosUnError = true;
+            }
+
+            if (string.IsNullOrEmpty(txtTelefono.Text) || !Validar.SoloNumeros(txtTelefono.Text)) {
+                mensajeError += "- El Teléfono esta vacío o es inválido. \n";
+                hayAlMenosUnError = true;
+            }
+
+            if (string.IsNullOrEmpty(txtEmail.Text) || !Validar.Email(txtEmail.Text)) {
+                mensajeError += "- El email esta vacío o tiene un formato inválido. \n";
+                hayAlMenosUnError = true;
+            }
+
+            if (string.IsNullOrEmpty(txtContacto.Text)) {
+                mensajeError += "- La Persona de Contacto es obligatoria. \n";
+                hayAlMenosUnError = true;
+            }
+
+            if (hayAlMenosUnError) {
+                Mensaje.Error(mensajeError);
+            }
+            return hayAlMenosUnError;
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e) {
-            string razonSocial = txtRazonSocial.Text;
-            string telefono = txtTelefono.Text;
-            string email = txtEmail.Text;
-            Int64 cuit = Convert.ToInt64(txtCuit.Text);
-            string contacto = txtContacto.Text;
+            if (validarFrm()) {
+                return;
+            }
+            string razonSocial = txtRazonSocial.Text.Trim();
+            string telefono = txtTelefono.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            Int64 cuit = Convert.ToInt64(txtCuit.Text.Trim());
+            string contacto = txtContacto.Text.Trim();
 
             if (this.idRowSeleccionado < 0) {
                 Controlador.PropietarioControlador.crear(razonSocial, cuit, telefono, email, contacto);
@@ -78,16 +117,16 @@ namespace TpFinalProg {
 
             btnGuardar.Text = "Guardar cambios";
             txtCuit.Enabled = false;
-            // TODO: No permitir que se modifique el CUIT. (invalidar el textbox)
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e) {
+            reiniciarFormulario();
         }
 
         private void btnModificar_Click(object sender, EventArgs e) {
 
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e) {
-
-        }
 
         private void label1_Click(object sender, EventArgs e) {
 

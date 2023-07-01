@@ -6,34 +6,15 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace TpFinalProg.Utilidades {
+    /*
+     *  Los métodos devolverán true si la validación es pasada correctamente (es válido).
+     *  En caso de que sea inválido se retorna false.
+     */
     internal class Validar {
 
-        private static int CalcularDigitoCuit(string cuit) {
-            int[] mult = new[] { 5, 4, 3, 2, 7, 6, 5, 4, 3, 2 };
-            char[] nums = cuit.ToCharArray();
-            int total = 0;
-
-            for (int i = 0; i < mult.Length; i++) {
-                total += int.Parse(nums[i].ToString()) * mult[i];
-            }
-
-            var resto = total % 11;
-            return resto == 0 ? 0 : resto == 1 ? 9 : 11 - resto;
-        }
-
-        public static bool Cuit(string cuit) {
-            if (cuit == null) {
-                return false;
-            }
-            //Quito los guiones, el cuit resultante debe tener 11 caracteres.
-            cuit = cuit.Replace("-", string.Empty);
-            if (cuit.Length != 11) {
-                return false;
-            } else {
-                int calculado = CalcularDigitoCuit(cuit);
-                int digito = int.Parse(cuit.Substring(10));
-                return calculado == digito;
-            }
+        public static bool SoloNumeros(string input) {
+            Regex regex = new Regex("^[0-9]+$");
+            return regex.IsMatch(input);
         }
 
         public static bool Email(string email) {
