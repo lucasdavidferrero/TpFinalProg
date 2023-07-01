@@ -15,6 +15,7 @@ namespace TpFinalProg {
 
     public partial class PropietarioFrm : Form {
         private int idRowSeleccionado = -1;
+        private int idRowSeleccionadoEliminar = -1;
         public PropietarioFrm() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
@@ -22,6 +23,7 @@ namespace TpFinalProg {
 
         private void Propietario_Load(object sender, EventArgs e) {
             listarPropietarios();
+            btnEliminar.Enabled = false;
         }
 
         private void limpiarCampos() {
@@ -35,8 +37,10 @@ namespace TpFinalProg {
         private void reiniciarFormulario() {
             limpiarCampos();
             this.idRowSeleccionado = -1;
+            this.idRowSeleccionadoEliminar = -1;
             btnGuardar.Text = "Crear";
             txtCuit.Enabled = true;
+            btnEliminar.Enabled = false;
         }
 
         private void listarPropietarios() {
@@ -45,7 +49,7 @@ namespace TpFinalProg {
         }
 
         // Si existe error, retorna true.
-        private bool validarFrm () {
+        private bool validarFrm() {
             string mensajeError = "";
             bool hayAlMenosUnError = false;
             if (string.IsNullOrEmpty(txtRazonSocial.Text)) {
@@ -101,6 +105,7 @@ namespace TpFinalProg {
         }
 
         private void dgvPropietario_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
+            btnEliminar.Enabled = false;
             // El último row siempre esta vacío. No hacemos nada en ese caso.
             if (dgvPropietario.Rows.Count - 1 == e.RowIndex)
                 return;
@@ -119,6 +124,19 @@ namespace TpFinalProg {
             txtCuit.Enabled = false;
         }
 
+        private void dgvPropietario_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
+            btnEliminar.Enabled = true;
+            this.idRowSeleccionadoEliminar = e.RowIndex;
+        }
+        private void btnEliminar_Click(object sender, EventArgs e) {
+            if (idRowSeleccionadoEliminar >= 0) {
+                int idPropietario = Convert.ToInt32(dgvPropietario.Rows[idRowSeleccionadoEliminar].Cells["id_propietario"].Value.ToString());
+                PropietarioControlador.eliminar(idPropietario);
+                reiniciarFormulario();
+                listarPropietarios();
+            }
+        }
+
         private void btnLimpiar_Click(object sender, EventArgs e) {
             reiniciarFormulario();
         }
@@ -127,9 +145,9 @@ namespace TpFinalProg {
 
         }
 
-
         private void label1_Click(object sender, EventArgs e) {
 
         }
+       
     }
 }

@@ -46,7 +46,7 @@ namespace TpFinalProg.Dominio.Mappers {
         }
         public static DataTable getAll() {
             DataTable dtListAll = new DataTable("ListarPropietarios");
-            string q = "SELECT * FROM Propietario";
+            string q = "SELECT * FROM Propietario WHERE baja = 0";
             Conexion cx = new Conexion();
             try {
                 cx.SetComandoSQL(q);
@@ -125,6 +125,26 @@ namespace TpFinalProg.Dominio.Mappers {
             }
 
             return propEncontrado;
+        }
+
+        public static void eliminar (int id) {
+            string q = "UPDATE Propietario SET baja = @baja WHERE id_propietario = @Id";
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.Add("@baja", SqlDbType.Bit);
+            cmd.Parameters["@baja"].Value = 1;
+
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            try {
+                cx.SetComandoSQL(q);
+                cmd.ExecuteScalar();
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Id Propietario]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
         }
     }
 }

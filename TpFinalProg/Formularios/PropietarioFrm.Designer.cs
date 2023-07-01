@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            btnBorrar = new Button();
+            btnEliminar = new Button();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -47,17 +47,18 @@
             ((System.ComponentModel.ISupportInitialize)dgvPropietario).BeginInit();
             SuspendLayout();
             // 
-            // btnBorrar
+            // btnEliminar
             // 
-            btnBorrar.BackColor = Color.Transparent;
-            btnBorrar.BackgroundImageLayout = ImageLayout.None;
-            btnBorrar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBorrar.Location = new Point(639, 125);
-            btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(110, 30);
-            btnBorrar.TabIndex = 7;
-            btnBorrar.Text = "Eliminar";
-            btnBorrar.UseVisualStyleBackColor = false;
+            btnEliminar.BackColor = Color.Transparent;
+            btnEliminar.BackgroundImageLayout = ImageLayout.None;
+            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEliminar.Location = new Point(639, 125);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(110, 30);
+            btnEliminar.TabIndex = 7;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // label5
             // 
@@ -163,6 +164,7 @@
             dgvPropietario.RowTemplate.Height = 25;
             dgvPropietario.Size = new Size(944, 196);
             dgvPropietario.TabIndex = 34;
+            dgvPropietario.RowHeaderMouseClick += dgvPropietario_RowHeaderMouseClick;
             dgvPropietario.RowHeaderMouseDoubleClick += dgvPropietario_RowHeaderMouseDoubleClick;
             // 
             // id_propietario
@@ -237,7 +239,7 @@
             Controls.Add(dgvPropietario);
             Controls.Add(txtCuit);
             Controls.Add(txtTelefono);
-            Controls.Add(btnBorrar);
+            Controls.Add(btnEliminar);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -261,7 +263,7 @@
         private DataGridViewTextBoxColumn MONTOESTIMADO;
         private DataGridViewTextBoxColumn TIEMPOESTIMADO;
         private DataGridViewTextBoxColumn RESPONSABLE;
-        private Button btnBorrar;
+        private Button btnEliminar;
         private ComboBox cbResponsable;
         private Label label5;
         private Label label4;

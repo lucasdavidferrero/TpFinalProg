@@ -24,7 +24,10 @@ namespace TpFinalProg.Controlador {
             p.save();
         }
 
-        public static void eliminar() { }
+        public static void eliminar(int id) {
+            Propietario clsPropietario = new Propietario();
+            clsPropietario.eliminarPorId(id);
+        }
 
         public static DataTable listarTodo() {
             Propietario clsPropietario = new Propietario();

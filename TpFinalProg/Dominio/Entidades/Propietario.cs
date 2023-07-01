@@ -46,10 +46,8 @@ namespace TpFinalProg.Dominio.Entidades {
             return PropietarioDataMapper.getAll();
         }
 
-        public bool delete(int id) {
-            // Verificar correctamente si existe propietario con el id.
-            // UPDATE el campo baja de la db
-            return true;
+        public void eliminarPorId(int id) {
+            PropietarioDataMapper.eliminar(id);
         }
     }
 }
