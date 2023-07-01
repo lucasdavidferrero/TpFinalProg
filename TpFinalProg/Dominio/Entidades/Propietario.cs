@@ -33,7 +33,7 @@ namespace TpFinalProg.Dominio.Entidades {
                 return id;
             }
 
-            Propietario propEncontrado = PropietarioDataMapper.encontrarPorId(this.idPropietario);
+            Propietario propEncontrado = PropietarioDataMapper.obtenerPorId(this.idPropietario);
             if (propEncontrado != null) {
                 PropietarioDataMapper.modificar(this);
                 return idPropietario;

@@ -95,7 +95,7 @@ namespace TpFinalProg.Dominio.Mappers {
             return p.idPropietario;
         }
 
-        public static Propietario encontrarPorId (int id) {
+        public static Propietario obtenerPorId (int id) {
             Propietario propEncontrado = null;
             string q = "SELECT * FROM Propietario WHERE id_propietario = @Id";
             DataTable dt = new DataTable();
