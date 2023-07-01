@@ -57,7 +57,7 @@ namespace TpFinalProg {
                 hayAlMenosUnError = true;
             }
 
-            if (string.IsNullOrEmpty(txtCuit.Text) || !Validar.soloNumeros(txtCuit.Text) || !Validar.cuit(txtCuit.Text)){
+            if (string.IsNullOrEmpty(txtCuit.Text) || !Validar.soloNumeros(txtCuit.Text)){
                 mensajeError += "- El CUIT esta vacío o es inválido. \n";
                 hayAlMenosUnError = true;
             }
@@ -93,15 +93,19 @@ namespace TpFinalProg {
             Int64 cuit = Convert.ToInt64(txtCuit.Text.Trim());
             string contacto = txtContacto.Text.Trim();
 
-            if (this.idRowSeleccionado < 0) {
-                Controlador.PropietarioControlador.crear(razonSocial, cuit, telefono, email, contacto);
-            } else {
-                int idProp = Convert.ToInt32(dgvPropietario.Rows[this.idRowSeleccionado].Cells["id_propietario"].Value);
-                PropietarioControlador.actualizar(idProp, razonSocial, cuit, telefono, email, contacto);
-            }
+            try {
+                if (this.idRowSeleccionado < 0) {
+                    Controlador.PropietarioControlador.crear(razonSocial, cuit, telefono, email, contacto);
+                } else {
+                    int idProp = Convert.ToInt32(dgvPropietario.Rows[this.idRowSeleccionado].Cells["id_propietario"].Value);
+                    PropietarioControlador.actualizar(idProp, razonSocial, cuit, telefono, email, contacto);
+                }
 
-            listarPropietarios();
-            reiniciarFormulario();
+                listarPropietarios();
+                reiniciarFormulario();
+            } catch (Exception ex) {
+                Mensaje.Advertencia(ex.Message);
+            }
         }
 
         private void dgvPropietario_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {

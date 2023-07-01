@@ -28,7 +28,10 @@ namespace TpFinalProg.Dominio.Entidades {
         }
         public int guardar() {
             if (idPropietario == 0) {
-                // TODO: Regla de negocio: Verificar que no exista un propietario con el CUIT que nos dan.
+                Propietario propietarioEncontradoPorCuit = PropietarioDataMapper.obtenerPorCuit(this.cuit);
+                if (propietarioEncontradoPorCuit != null) {
+                    throw new Exception("Ya existe un propietario con el CUIT ingresado.");
+                }
                 int id = PropietarioDataMapper.insertarNuevo(this);
                 return id;
             }
