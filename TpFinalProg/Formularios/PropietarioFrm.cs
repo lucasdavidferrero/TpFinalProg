@@ -16,7 +16,6 @@ namespace TpFinalProg {
         public PropietarioFrm() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-
         }
 
 
@@ -30,9 +29,13 @@ namespace TpFinalProg {
             txtEmail.Text = "";
             txtCuit.Text = "";
             txtContacto.Text = "";
+        }
+
+        private void reiniciarFormulario() {
+            limpiarCampos();
             this.idRowSeleccionado = -1;
             btnGuardar.Text = "Crear";
-            // validar la edición del campo CUIT.
+            txtCuit.Enabled = true;
         }
 
         private void listarPropietarios() {
@@ -50,14 +53,12 @@ namespace TpFinalProg {
             if (this.idRowSeleccionado < 0) {
                 Controlador.PropietarioControlador.crear(razonSocial, cuit, telefono, email, contacto);
             } else {
-                // TODO Método para hacer un update en la DB... usar atributo idRowSeleccionado
                 int idProp = Convert.ToInt32(dgvPropietario.Rows[this.idRowSeleccionado].Cells["id_propietario"].Value);
                 PropietarioControlador.actualizar(idProp, razonSocial, cuit, telefono, email, contacto);
             }
 
-            // Una vez insertado satisfactoriamente en la DB, se procede a listar nuevamente. Por último se limpian los campos.
             listarPropietarios();
-            limpiarCampos();
+            reiniciarFormulario();
         }
 
         private void dgvPropietario_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
@@ -76,6 +77,7 @@ namespace TpFinalProg {
             txtContacto.Text = celdas["persona_contacto"].Value.ToString();
 
             btnGuardar.Text = "Guardar cambios";
+            txtCuit.Enabled = false;
             // TODO: No permitir que se modifique el CUIT. (invalidar el textbox)
         }
 
@@ -84,6 +86,10 @@ namespace TpFinalProg {
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e) {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e) {
 
         }
     }

@@ -44,8 +44,6 @@
             persona_contacto = new DataGridViewTextBoxColumn();
             baja = new DataGridViewTextBoxColumn();
             btnLimpiar = new Button();
-            btnBaja = new Button();
-            btnModificar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPropietario).BeginInit();
             SuspendLayout();
             // 
@@ -54,7 +52,7 @@
             btnBorrar.BackColor = Color.Transparent;
             btnBorrar.BackgroundImageLayout = ImageLayout.None;
             btnBorrar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBorrar.Location = new Point(609, 125);
+            btnBorrar.Location = new Point(639, 125);
             btnBorrar.Name = "btnBorrar";
             btnBorrar.Size = new Size(110, 30);
             btnBorrar.TabIndex = 7;
@@ -64,29 +62,29 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(58, 125);
+            label5.Location = new Point(73, 125);
             label5.Name = "label5";
-            label5.Size = new Size(67, 15);
+            label5.Size = new Size(55, 15);
             label5.TabIndex = 25;
-            label5.Text = "TELÉFONO:";
+            label5.Text = "Teléfono:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(434, 83);
+            label4.Location = new Point(444, 81);
             label4.Name = "label4";
-            label4.Size = new Size(143, 15);
+            label4.Size = new Size(120, 15);
             label4.TabIndex = 24;
-            label4.Text = "PERSONA DE CONTACTO:";
+            label4.Text = "Persona de Contacto:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(493, 44);
+            label3.Location = new Point(515, 39);
             label3.Name = "label3";
-            label3.Size = new Size(44, 15);
+            label3.Size = new Size(39, 15);
             label3.TabIndex = 23;
-            label3.Text = "EMAIL:";
+            label3.Text = "Email:";
             // 
             // label2
             // 
@@ -100,11 +98,12 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(40, 39);
+            label1.Location = new Point(52, 39);
             label1.Name = "label1";
-            label1.Size = new Size(93, 15);
+            label1.Size = new Size(76, 15);
             label1.TabIndex = 21;
-            label1.Text = "RAZON SOCIAL:";
+            label1.Text = "Razón Social:";
+            label1.Click += label1_Click;
             // 
             // txtContacto
             // 
@@ -125,7 +124,7 @@
             btnGuardar.BackColor = Color.Transparent;
             btnGuardar.BackgroundImageLayout = ImageLayout.None;
             btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardar.Location = new Point(377, 125);
+            btnGuardar.Location = new Point(515, 125);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(110, 30);
             btnGuardar.TabIndex = 5;
@@ -169,28 +168,28 @@
             // id_propietario
             // 
             id_propietario.DataPropertyName = "id_propietario";
-            id_propietario.HeaderText = "ID";
+            id_propietario.HeaderText = "Id";
             id_propietario.Name = "id_propietario";
             id_propietario.Visible = false;
             // 
             // razon_social
             // 
             razon_social.DataPropertyName = "razon_social";
-            razon_social.HeaderText = "RAZON SOCIAL";
+            razon_social.HeaderText = "Razón Social";
             razon_social.Name = "razon_social";
             razon_social.Width = 150;
             // 
             // telefono
             // 
             telefono.DataPropertyName = "telefono";
-            telefono.HeaderText = "TELEFONO";
+            telefono.HeaderText = "Teléfono";
             telefono.Name = "telefono";
             telefono.Width = 150;
             // 
             // email
             // 
             email.DataPropertyName = "email";
-            email.HeaderText = "EMAIL";
+            email.HeaderText = "Email";
             email.Name = "email";
             email.Width = 200;
             // 
@@ -204,14 +203,14 @@
             // persona_contacto
             // 
             persona_contacto.DataPropertyName = "persona_contacto";
-            persona_contacto.HeaderText = "PERSONA CONTACTO";
+            persona_contacto.HeaderText = "Persona Contacto";
             persona_contacto.Name = "persona_contacto";
             persona_contacto.Width = 200;
             // 
             // baja
             // 
             baja.DataPropertyName = "baja";
-            baja.HeaderText = "BAJA";
+            baja.HeaderText = "Baja";
             baja.Name = "baja";
             baja.Visible = false;
             // 
@@ -220,38 +219,13 @@
             btnLimpiar.BackColor = Color.Transparent;
             btnLimpiar.BackgroundImageLayout = ImageLayout.None;
             btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(841, 125);
+            btnLimpiar.Location = new Point(755, 125);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(110, 30);
             btnLimpiar.TabIndex = 35;
-            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.Text = "Reiniciar";
             btnLimpiar.UseVisualStyleBackColor = false;
             btnLimpiar.Click += btnLimpiar_Click;
-            // 
-            // btnBaja
-            // 
-            btnBaja.BackColor = Color.Transparent;
-            btnBaja.BackgroundImageLayout = ImageLayout.None;
-            btnBaja.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBaja.Location = new Point(725, 125);
-            btnBaja.Name = "btnBaja";
-            btnBaja.Size = new Size(110, 30);
-            btnBaja.TabIndex = 36;
-            btnBaja.Text = "Baja";
-            btnBaja.UseVisualStyleBackColor = false;
-            // 
-            // btnModificar
-            // 
-            btnModificar.BackColor = Color.Transparent;
-            btnModificar.BackgroundImageLayout = ImageLayout.None;
-            btnModificar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnModificar.Location = new Point(493, 125);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(110, 30);
-            btnModificar.TabIndex = 153;
-            btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = false;
-            btnModificar.Click += btnModificar_Click;
             // 
             // PropietarioFrm
             // 
@@ -259,8 +233,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1003, 418);
-            Controls.Add(btnModificar);
-            Controls.Add(btnBaja);
             Controls.Add(btnLimpiar);
             Controls.Add(dgvPropietario);
             Controls.Add(txtCuit);
@@ -306,7 +278,6 @@
         private Button btnBuscarPro;
         private DataGridView dgvPropietario;
         private Button btnLimpiar;
-        private Button btnBaja;
         private DataGridViewTextBoxColumn id_propietario;
         private DataGridViewTextBoxColumn razon_social;
         private DataGridViewTextBoxColumn telefono;
@@ -314,6 +285,5 @@
         private DataGridViewTextBoxColumn cuit;
         private DataGridViewTextBoxColumn persona_contacto;
         private DataGridViewTextBoxColumn baja;
-        private Button btnModificar;
     }
 }
