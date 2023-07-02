@@ -57,7 +57,7 @@ namespace TpFinalProg {
                 hayAlMenosUnError = true;
             }
 
-            if (string.IsNullOrEmpty(txtCuit.Text) || !Validar.soloNumeros(txtCuit.Text) || !Validar.cuit(txtCuit.Text)){
+            if (string.IsNullOrEmpty(txtCuit.Text) || !Validar.soloNumeros(txtCuit.Text) || !Validar.cuit(txtCuit.Text)) {
                 mensajeError += "- El CUIT esta vacío o es inválido. \n";
                 hayAlMenosUnError = true;
             }
@@ -148,6 +148,6 @@ namespace TpFinalProg {
         private void label1_Click(object sender, EventArgs e) {
 
         }
-       
+
     }
 }

@@ -12,7 +12,7 @@ namespace PruebaTpFinal.Dominio.Mappers
 {
     internal class ProyectoDataMapper
     {
-        public static int InsertNew(Proyecto proyecto)
+        public static int insertarNuevo(Proyecto proyecto)
         {
             string query = @"INSERT INTO Proyecto(nombre, monto_estimado, tiempo_estimado, id_propietario_FK, legajo_FK)
                          VALUES (@nombre, @montoEstimado, @tiempoEstimado, @idPropietario, @nroLegajo);
@@ -51,7 +51,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return generatedId;
         }
 
-        public static DataTable GetAll()
+        public static DataTable obtenerTodos()
         {
             DataTable dtListAll = new DataTable("ListarProyectos");
             string query = "SELECT * FROM Proyecto WHERE baja = 0";
@@ -76,7 +76,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return dtListAll;
         }
 
-        public static int Update(Proyecto proyecto)
+        public static int modificar(Proyecto proyecto)
         {
             string query = @"UPDATE Proyecto
                          SET nombre = @nombre,
@@ -123,7 +123,7 @@ namespace PruebaTpFinal.Dominio.Mappers
         }
 
 
-        public static Proyecto FindByID(int id)
+        public static Proyecto encontrarPorId(int id)
         {
             Proyecto proyectoEncontrado = null;
             string query = "SELECT * FROM Proyecto WHERE id_proyecto = @Id AND baja = 0";

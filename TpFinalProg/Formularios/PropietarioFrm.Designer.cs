@@ -125,7 +125,7 @@
             btnGuardar.BackColor = Color.Transparent;
             btnGuardar.BackgroundImageLayout = ImageLayout.None;
             btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardar.Location = new Point(515, 125);
+            btnGuardar.Location = new Point(523, 125);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(110, 30);
             btnGuardar.TabIndex = 5;

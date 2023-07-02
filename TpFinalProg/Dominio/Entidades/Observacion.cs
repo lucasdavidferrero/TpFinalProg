@@ -10,12 +10,14 @@ namespace TpFinalProg.Dominio.Entidades {
         private DateOnly fecha { get; }
         private string observacion { get; }
         private int nroLegajo { get; }
+        private int baja { get; }
 
-        public Observacion(int idObservacion, DateOnly fecha, string observacion, int legajo) {
+        public Observacion(int idObservacion, DateOnly fecha, string observacion, int legajo, int baja) {
             this.idObservacion = idObservacion;
             this.fecha = fecha;
             this.observacion = observacion;
-            nroLegajo = legajo;
+            this.nroLegajo = legajo;
+            this.baja = baja;
         }
     }
 }
