@@ -5,15 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TpFinalProg.Dominio.Entidades {
-    internal class Funcion {
-        private int idFuncion { get; }
-        private string descripcion { get; }
-        private int baja { get; }
+    public class Funcion {
+        public int idFuncion { get; }
+        public string descripcion { get; }
 
-        public Funcion(int idFuncion, string descripcion, int baja) {
+        public Funcion(int idFuncion, string descripcion) {
             this.idFuncion = idFuncion;
             this.descripcion = descripcion;
-            this.baja = baja;
         }
     }
 }
