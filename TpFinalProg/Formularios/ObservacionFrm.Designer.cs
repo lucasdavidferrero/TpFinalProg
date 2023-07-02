@@ -28,17 +28,16 @@
             txtObservacion = new TextBox();
             label2 = new Label();
             dataGridView1 = new DataGridView();
+            label4 = new Label();
+            dateTimePicker1 = new DateTimePicker();
+            btnLimpiar = new Button();
+            btnBorrar = new Button();
+            btnGuardar = new Button();
+            btnBuscar = new Button();
             fecha = new DataGridViewTextBoxColumn();
             ID = new DataGridViewTextBoxColumn();
             BAJA = new DataGridViewTextBoxColumn();
             OBSERVACION = new DataGridViewTextBoxColumn();
-            label4 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            btnModificar = new Button();
-            btnBaja = new Button();
-            btnLimpiar = new Button();
-            btnBorrar = new Button();
-            btnGuardar = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -47,9 +46,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(129, 22);
             label1.Name = "label1";
-            label1.Size = new Size(52, 15);
+            label1.Size = new Size(45, 15);
             label1.TabIndex = 35;
-            label1.Text = "LEGAJO:";
+            label1.Text = "Legajo:";
             // 
             // txtLegajo
             // 
@@ -69,11 +68,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(93, 122);
+            label2.Location = new Point(98, 122);
             label2.Name = "label2";
-            label2.Size = new Size(88, 15);
+            label2.Size = new Size(76, 15);
             label2.TabIndex = 47;
-            label2.Text = "OBSERVACION:";
+            label2.Text = "Observacion:";
             // 
             // dataGridView1
             // 
@@ -85,37 +84,14 @@
             dataGridView1.Size = new Size(594, 180);
             dataGridView1.TabIndex = 49;
             // 
-            // fecha
-            // 
-            fecha.HeaderText = "FECHA";
-            fecha.Name = "fecha";
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            ID.Visible = false;
-            // 
-            // BAJA
-            // 
-            BAJA.HeaderText = "BAJA";
-            BAJA.Name = "BAJA";
-            BAJA.Visible = false;
-            // 
-            // OBSERVACION
-            // 
-            OBSERVACION.HeaderText = "OBSERVACION";
-            OBSERVACION.Name = "OBSERVACION";
-            OBSERVACION.Width = 450;
-            // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Location = new Point(366, 21);
             label4.Name = "label4";
-            label4.Size = new Size(47, 15);
+            label4.Size = new Size(41, 15);
             label4.TabIndex = 50;
-            label4.Text = "FECHA:";
+            label4.Text = "Fecha:";
             // 
             // dateTimePicker1
             // 
@@ -125,40 +101,16 @@
             dateTimePicker1.Size = new Size(110, 23);
             dateTimePicker1.TabIndex = 51;
             // 
-            // btnModificar
-            // 
-            btnModificar.BackColor = Color.Transparent;
-            btnModificar.BackgroundImageLayout = ImageLayout.None;
-            btnModificar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnModificar.Location = new Point(187, 213);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(110, 30);
-            btnModificar.TabIndex = 158;
-            btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = false;
-            // 
-            // btnBaja
-            // 
-            btnBaja.BackColor = Color.Transparent;
-            btnBaja.BackgroundImageLayout = ImageLayout.None;
-            btnBaja.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBaja.Location = new Point(419, 213);
-            btnBaja.Name = "btnBaja";
-            btnBaja.Size = new Size(110, 30);
-            btnBaja.TabIndex = 157;
-            btnBaja.Text = "Baja";
-            btnBaja.UseVisualStyleBackColor = false;
-            // 
             // btnLimpiar
             // 
             btnLimpiar.BackColor = Color.Transparent;
             btnLimpiar.BackgroundImageLayout = ImageLayout.None;
             btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(535, 213);
+            btnLimpiar.Location = new Point(419, 213);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(110, 30);
             btnLimpiar.TabIndex = 156;
-            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.Text = "Reiniciar";
             btnLimpiar.UseVisualStyleBackColor = false;
             // 
             // btnBorrar
@@ -178,12 +130,44 @@
             btnGuardar.BackColor = Color.Transparent;
             btnGuardar.BackgroundImageLayout = ImageLayout.None;
             btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardar.Location = new Point(71, 213);
+            btnGuardar.Location = new Point(187, 213);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(110, 30);
             btnGuardar.TabIndex = 154;
             btnGuardar.Text = "Crear";
             btnGuardar.UseVisualStyleBackColor = false;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Location = new Point(303, 18);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(30, 23);
+            btnBuscar.TabIndex = 159;
+            btnBuscar.Text = " 🔎";
+            btnBuscar.UseVisualStyleBackColor = true;
+            // 
+            // fecha
+            // 
+            fecha.HeaderText = "Fecha";
+            fecha.Name = "fecha";
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            ID.Visible = false;
+            // 
+            // BAJA
+            // 
+            BAJA.HeaderText = "BAJA";
+            BAJA.Name = "BAJA";
+            BAJA.Visible = false;
+            // 
+            // OBSERVACION
+            // 
+            OBSERVACION.HeaderText = "Observacion";
+            OBSERVACION.Name = "OBSERVACION";
+            OBSERVACION.Width = 450;
             // 
             // ObservacionFrm
             // 
@@ -191,8 +175,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(704, 461);
-            Controls.Add(btnModificar);
-            Controls.Add(btnBaja);
+            Controls.Add(btnBuscar);
             Controls.Add(btnLimpiar);
             Controls.Add(btnBorrar);
             Controls.Add(btnGuardar);
@@ -218,14 +201,13 @@
         private DataGridView dataGridView1;
         private Label label4;
         private DateTimePicker dateTimePicker1;
+        private Button btnLimpiar;
+        private Button btnBorrar;
+        private Button btnGuardar;
+        private Button btnBuscar;
         private DataGridViewTextBoxColumn fecha;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn BAJA;
         private DataGridViewTextBoxColumn OBSERVACION;
-        private Button btnModificar;
-        private Button btnBaja;
-        private Button btnLimpiar;
-        private Button btnBorrar;
-        private Button btnGuardar;
     }
 }

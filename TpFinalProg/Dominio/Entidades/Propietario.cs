@@ -26,30 +26,31 @@ namespace TpFinalProg.Dominio.Entidades {
             this.cuit = cuit;
             personaContacto = persona_contacto;
         }
-        public int save() {
+        public int guardar() {
             if (idPropietario == 0) {
-                // TODO: Regla de negocio: Verificar que no exista un propietario con el CUIT que nos dan.
-                int id = PropietarioDataMapper.insertNew(this);
+                Propietario propietarioEncontradoPorCuit = PropietarioDataMapper.obtenerPorCuit(this.cuit);
+                if (propietarioEncontradoPorCuit != null) {
+                    throw new Exception("Ya existe un propietario con el CUIT ingresado.");
+                }
+                int id = PropietarioDataMapper.insertarNuevo(this);
                 return id;
             }
 
-            Propietario propEncontrado = PropietarioDataMapper.findById(this.idPropietario);
+            Propietario propEncontrado = PropietarioDataMapper.obtenerPorId(this.idPropietario);
             if (propEncontrado != null) {
-                PropietarioDataMapper.update(this);
+                PropietarioDataMapper.modificar(this);
                 return idPropietario;
             } else {
                 return -1; // no se encontró un propietario con el ID provisto.
             }
         }
 
-        public DataTable getAll() {
-            return PropietarioDataMapper.getAll();
+        public DataTable obtenerTodos() {
+            return PropietarioDataMapper.obtenerTodos();
         }
 
-        public bool delete(int id) {
-            // Verificar correctamente si existe propietario con el id.
-            // UPDATE el campo baja de la db
-            return true;
+        public void eliminarPorId(int id) {
+            PropietarioDataMapper.eliminar(id);
         }
     }
 }

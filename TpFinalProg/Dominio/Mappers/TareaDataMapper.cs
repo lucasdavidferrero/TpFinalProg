@@ -12,7 +12,7 @@ namespace PruebaTpFinal.Dominio.Mappers
 {
     internal class TareaDataMapper
     {
-        public static Tuple<int, int> InsertNew(Tarea tarea)
+        public static Tuple<int, int> insertarNuevo(Tarea tarea)
         {
             string query = @"
         INSERT INTO Tarea (id_proyecto, nro_tarea, descripcion, horas_estimadas, horas_avance, costo_estimado, horas_reales, costo_real, fecha_final)
@@ -69,7 +69,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return generatedId;
         }
 
-        public static List<Tarea> GetAll()
+        public static List<Tarea> obtenerTodos()
         {
             List<Tarea> tareas = new List<Tarea>();
             string query = "SELECT * FROM Tarea";
@@ -110,7 +110,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return tareas;
         }
 
-        public static Tuple<int, int> Update(Tarea tarea)
+        public static Tuple<int, int> modificar(Tarea tarea)
         {
             string query = "UPDATE Tarea SET descripcion = @descripcion, horas_estimadas = @horasEstimadas, horas_avance = @horasAvance, " +
                            "costo_estimado = @costoEstimado, horas_reales = @horasReales, costo_real = @costoReal, fecha_final = @fechaFinal " +
@@ -165,7 +165,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return idEncontado;
         }
 
-        public static Tarea FindById(int idProyecto, int idTarea)
+        public static Tarea encontrarPorId(int idProyecto, int idTarea)
         {
             Tarea tareaEncontrada = null;
             string query = "SELECT * FROM Tarea WHERE id_proyecto = @idProyecto AND nro_tarea = @idTarea";

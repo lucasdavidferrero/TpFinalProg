@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using TpFinalProg.Clases;
@@ -11,7 +12,7 @@ using TpFinalProg.Dominio.Entidades;
 namespace TpFinalProg.Dominio.Mappers {
     internal class PropietarioDataMapper {
 
-        public static int insertNew (Propietario p) {
+        public static int insertarNuevo (Propietario p) {
             // Construcción del query parametrizado.
             string q = "INSERT INTO Propietario(razon_social,telefono,email,cuit,persona_contacto) VALUES(@razonSocial,@telefono,@email,@cuit,@personaContacto); SELECT SCOPE_IDENTITY();";
             int idGenerado = -1;
@@ -44,9 +45,9 @@ namespace TpFinalProg.Dominio.Mappers {
             }
             return idGenerado;
         }
-        public static DataTable getAll() {
+        public static DataTable obtenerTodos() {
             DataTable dtListAll = new DataTable("ListarPropietarios");
-            string q = "SELECT * FROM Propietario";
+            string q = "SELECT * FROM Propietario WHERE baja = 0";
             Conexion cx = new Conexion();
             try {
                 cx.SetComandoSQL(q);
@@ -63,7 +64,7 @@ namespace TpFinalProg.Dominio.Mappers {
             return dtListAll;
         }
 
-        public static int update (Propietario p) {
+        public static int modificar (Propietario p) {
             // Construcción del query parametrizado.
             string q = "UPDATE Propietario SET razon_social = @razonSocial , telefono = @telefono, email = @email, persona_contacto = @personaContacto WHERE id_propietario = @Id";
             Conexion cx = new Conexion();
@@ -95,7 +96,7 @@ namespace TpFinalProg.Dominio.Mappers {
             return p.idPropietario;
         }
 
-        public static Propietario findById (int id) {
+        public static Propietario obtenerPorId (int id) {
             Propietario propEncontrado = null;
             string q = "SELECT * FROM Propietario WHERE id_propietario = @Id";
             DataTable dt = new DataTable();
@@ -109,14 +110,7 @@ namespace TpFinalProg.Dominio.Mappers {
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dt);
                 if (dt.Rows.Count != 0) {
-                    DataRow row = dt.Rows[0];
-                    int pId = Convert.ToInt32(row["id_propietario"]);
-                    string pRazonSocial = row["razon_social"].ToString()!;
-                    Int64 pCuit = Convert.ToInt64(row["cuit"]);
-                    string pTel = row["telefono"].ToString()!;
-                    string pEmail = row["email"].ToString()!;
-                    string pPersonaContacto = row["persona_contacto"].ToString()!;
-                    propEncontrado = new Propietario(pId, pRazonSocial, pCuit, pTel, pEmail, pPersonaContacto);
+                    propEncontrado = construirPropietarioDesdeDataRow(dt.Rows[0]);
                 }
             } catch (SqlException e) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Id Propietario]");
@@ -125,6 +119,61 @@ namespace TpFinalProg.Dominio.Mappers {
             }
 
             return propEncontrado;
+        }
+
+        public static Propietario obtenerPorCuit (long cuit) {
+            Propietario propEncontrado = null;
+            string q = "SELECT * FROM Propietario WHERE cuit = @cuit";
+            DataTable dt = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.AddWithValue("@cuit", cuit);
+
+            try {
+                cx.SetComandoSQL(q);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+                if (dt.Rows.Count != 0) {
+                    propEncontrado = construirPropietarioDesdeDataRow(dt.Rows[0]);
+                }
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Cuit Propietario]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return propEncontrado;
+        }
+
+        public static void eliminar (int id) {
+            string q = "UPDATE Propietario SET baja = @baja WHERE id_propietario = @Id";
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.Add("@baja", SqlDbType.Bit);
+            cmd.Parameters["@baja"].Value = 1;
+
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            try {
+                cx.SetComandoSQL(q);
+                cmd.ExecuteScalar();
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Id Propietario]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+        }
+
+        private static Propietario construirPropietarioDesdeDataRow (DataRow dr) {
+            int pId = Convert.ToInt32(dr["id_propietario"]);
+            string pRazonSocial = dr["razon_social"].ToString()!;
+            Int64 pCuit = Convert.ToInt64(dr["cuit"]);
+            string pTel = dr["telefono"].ToString()!;
+            string pEmail = dr["email"].ToString()!;
+            string pPersonaContacto = dr["persona_contacto"].ToString()!;
+            return new Propietario(pId, pRazonSocial, pCuit, pTel, pEmail, pPersonaContacto);
         }
     }
 }

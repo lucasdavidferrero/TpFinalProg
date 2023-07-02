@@ -13,7 +13,7 @@ namespace PruebaTpFinal.Dominio.Mappers
 {
     internal class TrabajaDataMapper
     {
-        public static Tuple<int, int, int> InsertNew(Trabaja trabaja)
+        public static Tuple<int, int, int> insertarNuevo(Trabaja trabaja)
         {
             string query = @"INSERT INTO Trabaja(legajo, id_proyecto, id_tarea, id_funcion_fk)
                 OUTPUT inserted.legajo, inserted.id_proyecto, inserted.id_tarea
@@ -61,7 +61,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return generatedId;
         }
 
-        public static List<Trabaja> GetAll()
+        public static List<Trabaja> obtenerTodos()
         {
             List<Trabaja> trabajas = new List<Trabaja>();
             string query = "SELECT * FROM Trabaja";
@@ -97,7 +97,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return trabajas;
         }
 
-        public static Tuple<int, int, int> Update(Trabaja trabaja)
+        public static Tuple<int, int, int> modificar(Trabaja trabaja)
         {
             string query = "UPDATE Trabaja SET id_funcion_fk = @idFuncion WHERE legajo = @nroLegajo AND id_proyecto = @idProyecto AND id_tarea = @idTarea";
             Conexion cx = new Conexion();
@@ -129,7 +129,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return Tuple.Create(trabaja.nroLegajo, trabaja.idProyecto, trabaja.idTarea);
         }
 
-        public static Trabaja FindById(int nroLegajo, int idProyecto, int idTarea)
+        public static Trabaja encontrarPorId(int nroLegajo, int idProyecto, int idTarea)
         {
             Trabaja trabajaEncontrada = null;
             string query = "SELECT * FROM Trabaja WHERE legajo = @nroLegajo AND id_proyecto = @idProyecto AND id_tarea = @idTarea";

@@ -30,27 +30,24 @@
             Label label7;
             label1 = new Label();
             txtLegajo = new TextBox();
-            txtNombreEmp = new TextBox();
-            txtApellidoEmp = new TextBox();
-            txtEmailEmp = new TextBox();
-            txtTelefonoEmp = new TextBox();
-            dgvEmpleado = new DataGridView();
+            txtNombre = new TextBox();
+            txtApellido = new TextBox();
+            txtEmail = new TextBox();
+            txtCelular = new TextBox();
             dateFechaIngreso = new DateTimePicker();
             label8 = new Label();
-            btnBaja = new Button();
             btnReiniciar = new Button();
-            btnBorrar = new Button();
             btnObesrvacion = new Button();
             btnGuardar = new Button();
-            btnModificar = new Button();
-            LEGAJO = new DataGridViewTextBoxColumn();
-            ID = new DataGridViewTextBoxColumn();
-            Baja = new DataGridViewTextBoxColumn();
-            NOMBRE = new DataGridViewTextBoxColumn();
-            APELLIDO = new DataGridViewTextBoxColumn();
-            FECHAINGRESO = new DataGridViewTextBoxColumn();
-            EMAIL = new DataGridViewTextBoxColumn();
-            TELEFONO = new DataGridViewTextBoxColumn();
+            dgvEmpleado = new DataGridView();
+            legajo = new DataGridViewTextBoxColumn();
+            fecha_ingreso = new DataGridViewTextBoxColumn();
+            nombre = new DataGridViewTextBoxColumn();
+            apellido = new DataGridViewTextBoxColumn();
+            celular = new DataGridViewTextBoxColumn();
+            email = new DataGridViewTextBoxColumn();
+            baja = new DataGridViewTextBoxColumn();
+            btnEliminar = new Button();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -62,47 +59,47 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(401, 70);
+            label2.Location = new Point(407, 108);
             label2.Name = "label2";
-            label2.Size = new Size(44, 15);
+            label2.Size = new Size(39, 15);
             label2.TabIndex = 38;
-            label2.Text = "EMAIL:";
+            label2.Text = "Email:";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(52, 69);
             label3.Name = "label3";
-            label3.Size = new Size(59, 15);
+            label3.Size = new Size(54, 15);
             label3.TabIndex = 39;
-            label3.Text = "NOMBRE:";
+            label3.Text = "Nombre:";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Location = new Point(48, 109);
             label4.Name = "label4";
-            label4.Size = new Size(63, 15);
+            label4.Size = new Size(54, 15);
             label4.TabIndex = 40;
-            label4.Text = "APELLIDO:";
+            label4.Text = "Apellido:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(379, 113);
+            label5.Location = new Point(391, 69);
             label5.Name = "label5";
-            label5.Size = new Size(67, 15);
+            label5.Size = new Size(55, 15);
             label5.TabIndex = 43;
-            label5.Text = "TELEFONO:";
+            label5.Text = "Telefono:";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(348, 27);
+            label7.Location = new Point(363, 27);
             label7.Name = "label7";
-            label7.Size = new Size(98, 15);
+            label7.Size = new Size(83, 15);
             label7.TabIndex = 44;
-            label7.Text = "FECHA INGRESO:";
+            label7.Text = "Fecha Ingreso:";
             // 
             // label1
             // 
@@ -110,9 +107,9 @@
             label1.ImageAlign = ContentAlignment.BottomLeft;
             label1.Location = new Point(59, 31);
             label1.Name = "label1";
-            label1.Size = new Size(52, 15);
+            label1.Size = new Size(45, 15);
             label1.TabIndex = 36;
-            label1.Text = "LEGAJO:";
+            label1.Text = "Legajo:";
             // 
             // txtLegajo
             // 
@@ -122,43 +119,33 @@
             txtLegajo.Size = new Size(199, 23);
             txtLegajo.TabIndex = 37;
             // 
-            // txtNombreEmp
+            // txtNombre
             // 
-            txtNombreEmp.Location = new Point(117, 65);
-            txtNombreEmp.Name = "txtNombreEmp";
-            txtNombreEmp.Size = new Size(199, 23);
-            txtNombreEmp.TabIndex = 41;
+            txtNombre.Location = new Point(117, 65);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(199, 23);
+            txtNombre.TabIndex = 41;
             // 
-            // txtApellidoEmp
+            // txtApellido
             // 
-            txtApellidoEmp.Location = new Point(117, 105);
-            txtApellidoEmp.Name = "txtApellidoEmp";
-            txtApellidoEmp.Size = new Size(199, 23);
-            txtApellidoEmp.TabIndex = 42;
+            txtApellido.Location = new Point(117, 105);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(199, 23);
+            txtApellido.TabIndex = 42;
             // 
-            // txtEmailEmp
+            // txtEmail
             // 
-            txtEmailEmp.Location = new Point(452, 66);
-            txtEmailEmp.Name = "txtEmailEmp";
-            txtEmailEmp.Size = new Size(217, 23);
-            txtEmailEmp.TabIndex = 45;
+            txtEmail.Location = new Point(452, 105);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(217, 23);
+            txtEmail.TabIndex = 45;
             // 
-            // txtTelefonoEmp
+            // txtCelular
             // 
-            txtTelefonoEmp.Location = new Point(452, 109);
-            txtTelefonoEmp.Name = "txtTelefonoEmp";
-            txtTelefonoEmp.Size = new Size(217, 23);
-            txtTelefonoEmp.TabIndex = 46;
-            // 
-            // dgvEmpleado
-            // 
-            dgvEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmpleado.Columns.AddRange(new DataGridViewColumn[] { LEGAJO, ID, Baja, NOMBRE, APELLIDO, FECHAINGRESO, EMAIL, TELEFONO });
-            dgvEmpleado.Location = new Point(23, 211);
-            dgvEmpleado.Name = "dgvEmpleado";
-            dgvEmpleado.RowTemplate.Height = 25;
-            dgvEmpleado.Size = new Size(690, 202);
-            dgvEmpleado.TabIndex = 47;
+            txtCelular.Location = new Point(452, 65);
+            txtCelular.Name = "txtCelular";
+            txtCelular.Size = new Size(217, 23);
+            txtCelular.TabIndex = 46;
             // 
             // dateFechaIngreso
             // 
@@ -178,49 +165,25 @@
             label8.Size = new Size(0, 19);
             label8.TabIndex = 55;
             // 
-            // btnBaja
-            // 
-            btnBaja.BackColor = Color.Transparent;
-            btnBaja.BackgroundImageLayout = ImageLayout.None;
-            btnBaja.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBaja.Location = new Point(371, 159);
-            btnBaja.Name = "btnBaja";
-            btnBaja.Size = new Size(110, 30);
-            btnBaja.TabIndex = 59;
-            btnBaja.Text = "Baja";
-            btnBaja.UseVisualStyleBackColor = false;
-            // 
             // btnReiniciar
             // 
             btnReiniciar.BackColor = Color.Transparent;
             btnReiniciar.BackgroundImageLayout = ImageLayout.None;
             btnReiniciar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnReiniciar.Location = new Point(487, 159);
+            btnReiniciar.Location = new Point(353, 167);
             btnReiniciar.Name = "btnReiniciar";
             btnReiniciar.Size = new Size(110, 30);
             btnReiniciar.TabIndex = 58;
-            btnReiniciar.Text = "Limpiar";
+            btnReiniciar.Text = "Reiniciar";
             btnReiniciar.UseVisualStyleBackColor = false;
-            // 
-            // btnBorrar
-            // 
-            btnBorrar.BackColor = Color.Transparent;
-            btnBorrar.BackgroundImageLayout = ImageLayout.None;
-            btnBorrar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBorrar.Location = new Point(255, 159);
-            btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(110, 30);
-            btnBorrar.TabIndex = 57;
-            btnBorrar.Text = "Eliminar";
-            btnBorrar.UseVisualStyleBackColor = false;
-            btnBorrar.Click += btnBorrar_Click;
+            btnReiniciar.Click += btnReiniciar_Click;
             // 
             // btnObesrvacion
             // 
             btnObesrvacion.BackColor = Color.Transparent;
             btnObesrvacion.BackgroundImageLayout = ImageLayout.None;
             btnObesrvacion.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnObesrvacion.Location = new Point(603, 159);
+            btnObesrvacion.Location = new Point(469, 167);
             btnObesrvacion.Name = "btnObesrvacion";
             btnObesrvacion.Size = new Size(110, 30);
             btnObesrvacion.TabIndex = 60;
@@ -233,92 +196,112 @@
             btnGuardar.BackColor = Color.Transparent;
             btnGuardar.BackgroundImageLayout = ImageLayout.None;
             btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardar.Location = new Point(23, 159);
+            btnGuardar.Location = new Point(117, 167);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(110, 30);
             btnGuardar.TabIndex = 151;
             btnGuardar.Text = "Crear";
             btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
-            // btnModificar
+            // dgvEmpleado
             // 
-            btnModificar.BackColor = Color.Transparent;
-            btnModificar.BackgroundImageLayout = ImageLayout.None;
-            btnModificar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnModificar.Location = new Point(139, 159);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(110, 30);
-            btnModificar.TabIndex = 152;
-            btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = false;
+            dgvEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEmpleado.Columns.AddRange(new DataGridViewColumn[] { legajo, fecha_ingreso, nombre, apellido, celular, email, baja });
+            dgvEmpleado.Location = new Point(27, 222);
+            dgvEmpleado.Name = "dgvEmpleado";
+            dgvEmpleado.RowTemplate.Height = 25;
+            dgvEmpleado.Size = new Size(683, 150);
+            dgvEmpleado.TabIndex = 153;
+            dgvEmpleado.RowHeaderMouseClick += dgvEmpleado_RowHeaderMouseClick;
+            dgvEmpleado.RowHeaderMouseDoubleClick += dgvEmpleado_RowHeaderMouseDoubleClick;
             // 
-            // LEGAJO
+            // legajo
             // 
-            LEGAJO.HeaderText = "LEGAJO";
-            LEGAJO.Name = "LEGAJO";
+            legajo.DataPropertyName = "legajo";
+            legajo.Frozen = true;
+            legajo.HeaderText = "Legajo";
+            legajo.Name = "legajo";
+            legajo.Width = 80;
             // 
-            // ID
+            // fecha_ingreso
             // 
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            ID.Visible = false;
+            fecha_ingreso.DataPropertyName = "fecha_ingreso";
+            fecha_ingreso.Frozen = true;
+            fecha_ingreso.HeaderText = "Fecha Ingreso";
+            fecha_ingreso.Name = "fecha_ingreso";
             // 
-            // Baja
+            // nombre
             // 
-            Baja.HeaderText = "baja";
-            Baja.Name = "Baja";
-            Baja.Visible = false;
+            nombre.DataPropertyName = "nombre";
+            nombre.Frozen = true;
+            nombre.HeaderText = "Nombre";
+            nombre.Name = "nombre";
+            nombre.Width = 120;
             // 
-            // NOMBRE
+            // apellido
             // 
-            NOMBRE.HeaderText = "NOMBRE";
-            NOMBRE.Name = "NOMBRE";
-            NOMBRE.Width = 120;
+            apellido.DataPropertyName = "apellido";
+            apellido.Frozen = true;
+            apellido.HeaderText = "Apellido";
+            apellido.Name = "apellido";
+            apellido.Width = 120;
             // 
-            // APELLIDO
+            // celular
             // 
-            APELLIDO.HeaderText = "APELLIDO";
-            APELLIDO.Name = "APELLIDO";
-            APELLIDO.Width = 120;
+            celular.DataPropertyName = "celular";
+            celular.Frozen = true;
+            celular.HeaderText = "Celular";
+            celular.Name = "celular";
             // 
-            // FECHAINGRESO
+            // email
             // 
-            FECHAINGRESO.HeaderText = "FECHA INGRESO";
-            FECHAINGRESO.Name = "FECHAINGRESO";
+            email.DataPropertyName = "email";
+            email.Frozen = true;
+            email.HeaderText = "Email";
+            email.Name = "email";
+            email.Width = 120;
             // 
-            // EMAIL
+            // baja
             // 
-            EMAIL.HeaderText = "EMAIL";
-            EMAIL.Name = "EMAIL";
-            EMAIL.Width = 120;
+            baja.DataPropertyName = "baja";
+            baja.Frozen = true;
+            baja.HeaderText = "baja";
+            baja.Name = "baja";
+            baja.Visible = false;
             // 
-            // TELEFONO
+            // btnEliminar
             // 
-            TELEFONO.HeaderText = "TELEFONO";
-            TELEFONO.Name = "TELEFONO";
-            TELEFONO.Width = 85;
+            btnEliminar.BackColor = Color.Transparent;
+            btnEliminar.BackgroundImageLayout = ImageLayout.None;
+            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEliminar.Location = new Point(233, 167);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(110, 30);
+            btnEliminar.TabIndex = 154;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // EmpleadoFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(735, 450);
-            Controls.Add(btnModificar);
+            ClientSize = new Size(735, 398);
+            Controls.Add(btnEliminar);
+            Controls.Add(dgvEmpleado);
             Controls.Add(btnGuardar);
             Controls.Add(btnObesrvacion);
-            Controls.Add(btnBaja);
             Controls.Add(btnReiniciar);
-            Controls.Add(btnBorrar);
             Controls.Add(label8);
             Controls.Add(dateFechaIngreso);
-            Controls.Add(dgvEmpleado);
-            Controls.Add(txtTelefonoEmp);
-            Controls.Add(txtEmailEmp);
+            Controls.Add(txtCelular);
+            Controls.Add(txtEmail);
             Controls.Add(label7);
             Controls.Add(label5);
-            Controls.Add(txtApellidoEmp);
-            Controls.Add(txtNombreEmp);
+            Controls.Add(txtApellido);
+            Controls.Add(txtNombre);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -334,26 +317,23 @@
         #endregion
         private Label label1;
         private TextBox txtLegajo;
-        private TextBox txtNombreEmp;
-        private TextBox txtApellidoEmp;
-        private TextBox txtEmailEmp;
-        private TextBox txtTelefonoEmp;
-        private DataGridView dgvEmpleado;
+        private TextBox txtNombre;
+        private TextBox txtApellido;
+        private TextBox txtEmail;
+        private TextBox txtCelular;
         private DateTimePicker dateFechaIngreso;
         private Label label8;
-        private Button btnBaja;
         private Button btnReiniciar;
-        private Button btnBorrar;
         private Button btnObesrvacion;
         private Button btnGuardar;
-        private Button btnModificar;
-        private DataGridViewTextBoxColumn LEGAJO;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Baja;
-        private DataGridViewTextBoxColumn NOMBRE;
-        private DataGridViewTextBoxColumn APELLIDO;
-        private DataGridViewTextBoxColumn FECHAINGRESO;
-        private DataGridViewTextBoxColumn EMAIL;
-        private DataGridViewTextBoxColumn TELEFONO;
+        private DataGridView dgvEmpleado;
+        private Button btnEliminar;
+        private DataGridViewTextBoxColumn legajo;
+        private DataGridViewTextBoxColumn fecha_ingreso;
+        private DataGridViewTextBoxColumn nombre;
+        private DataGridViewTextBoxColumn apellido;
+        private DataGridViewTextBoxColumn celular;
+        private DataGridViewTextBoxColumn email;
+        private DataGridViewTextBoxColumn baja;
     }
 }
