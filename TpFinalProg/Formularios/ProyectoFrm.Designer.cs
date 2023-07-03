@@ -38,7 +38,9 @@
             btnGuardar = new Button();
             cbPropietario = new ComboBox();
             NOMBRE = new DataGridViewTextBoxColumn();
-            PROPIETARIO = new DataGridViewTextBoxColumn();
+            id_propietario = new DataGridViewTextBoxColumn();
+            legajo = new DataGridViewTextBoxColumn();
+            razon_social = new DataGridViewTextBoxColumn();
             RESPONSABLE = new DataGridViewTextBoxColumn();
             MONTO_ESTIMADO = new DataGridViewTextBoxColumn();
             tiempo_estimado = new DataGridViewTextBoxColumn();
@@ -124,7 +126,7 @@
             // dgvProyecto
             // 
             dgvProyecto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProyecto.Columns.AddRange(new DataGridViewColumn[] { NOMBRE, PROPIETARIO, RESPONSABLE, MONTO_ESTIMADO, tiempo_estimado, id_proyecto, baja });
+            dgvProyecto.Columns.AddRange(new DataGridViewColumn[] { NOMBRE, id_propietario, legajo, razon_social, RESPONSABLE, MONTO_ESTIMADO, tiempo_estimado, id_proyecto, baja });
             dgvProyecto.Location = new Point(51, 180);
             dgvProyecto.Name = "dgvProyecto";
             dgvProyecto.RowTemplate.Height = 25;
@@ -188,13 +190,29 @@
             NOMBRE.Name = "NOMBRE";
             NOMBRE.Width = 150;
             // 
-            // PROPIETARIO
+            // id_propietario
             // 
-            PROPIETARIO.DataPropertyName = "razon_social";
-            PROPIETARIO.Frozen = true;
-            PROPIETARIO.HeaderText = "Propietario";
-            PROPIETARIO.Name = "PROPIETARIO";
-            PROPIETARIO.Width = 150;
+            id_propietario.DataPropertyName = "id_propietario";
+            id_propietario.Frozen = true;
+            id_propietario.HeaderText = "Id Propietario";
+            id_propietario.Name = "id_propietario";
+            id_propietario.Visible = false;
+            // 
+            // legajo
+            // 
+            legajo.DataPropertyName = "legajo";
+            legajo.Frozen = true;
+            legajo.HeaderText = "Legajo Responsable";
+            legajo.Name = "legajo";
+            legajo.Visible = false;
+            // 
+            // razon_social
+            // 
+            razon_social.DataPropertyName = "razon_social";
+            razon_social.Frozen = true;
+            razon_social.HeaderText = "Propietario";
+            razon_social.Name = "razon_social";
+            razon_social.Width = 150;
             // 
             // RESPONSABLE
             // 
@@ -281,7 +299,9 @@
         private Button btnGuardar;
         private ComboBox cbPropietario;
         private DataGridViewTextBoxColumn NOMBRE;
-        private DataGridViewTextBoxColumn PROPIETARIO;
+        private DataGridViewTextBoxColumn id_propietario;
+        private DataGridViewTextBoxColumn legajo;
+        private DataGridViewTextBoxColumn razon_social;
         private DataGridViewTextBoxColumn RESPONSABLE;
         private DataGridViewTextBoxColumn MONTO_ESTIMADO;
         private DataGridViewTextBoxColumn tiempo_estimado;

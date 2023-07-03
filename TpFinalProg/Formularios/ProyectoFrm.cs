@@ -213,13 +213,15 @@ namespace TpFinalProg {
             // cbPropietario.Text = celdas["PROPIETARIO"].Value.ToString();
             // cbResponsable.Text = celdas["RESPONSABLE"].Value.ToString();
 
-            int idPropietario = Convert.ToInt32(cbPropietario.SelectedValue = celdas["PROPIETARIO"].Value);
+            int idPropietario = Convert.ToInt32(celdas["id_propietario"].Value);
+            cbPropietario.SelectedValue = idPropietario;
 
             PropietarioDataMapper.encontrarPorIdRazonSocial(idPropietario);
 
             cbPropietario.SelectedValue = idPropietario;
 
-            int idResponsable = Convert.ToInt32(cbResponsable.SelectedValue = celdas["RESPONSABLE"].Value);
+            int idResponsable = Convert.ToInt32(celdas["legajo"].Value);
+            cbResponsable.SelectedValue = idResponsable;
 
             EmpleadoDataMapper.encontrarPorIdNombre(idResponsable);
 
