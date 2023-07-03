@@ -30,11 +30,14 @@
             label2 = new Label();
             label3 = new Label();
             dgvTarea = new DataGridView();
-            Proyecto = new DataGridViewTextBoxColumn();
+            id_proyecto = new DataGridViewTextBoxColumn();
+            nombre_proyecto = new DataGridViewTextBoxColumn();
+            id_tarea = new DataGridViewTextBoxColumn();
+            legajo = new DataGridViewTextBoxColumn();
+            nombre_empleado = new DataGridViewTextBoxColumn();
+            id_funcion_fk = new DataGridViewTextBoxColumn();
+            nombre_funcion = new DataGridViewTextBoxColumn();
             BAJA = new DataGridViewTextBoxColumn();
-            Tarea = new DataGridViewTextBoxColumn();
-            Empleado = new DataGridViewTextBoxColumn();
-            FUNCION = new DataGridViewTextBoxColumn();
             cbFuncion = new ComboBox();
             label4 = new Label();
             label5 = new Label();
@@ -42,7 +45,7 @@
             btnLimpiar = new Button();
             btnBorrar = new Button();
             btnGuardar = new Button();
-            btnFinalizacion = new Button();
+            btnModificar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvTarea).BeginInit();
             SuspendLayout();
             // 
@@ -99,19 +102,62 @@
             // dgvTarea
             // 
             dgvTarea.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTarea.Columns.AddRange(new DataGridViewColumn[] { Proyecto, BAJA, Tarea, Empleado, FUNCION });
-            dgvTarea.Location = new Point(39, 279);
+            dgvTarea.Columns.AddRange(new DataGridViewColumn[] { id_proyecto, nombre_proyecto, id_tarea, legajo, nombre_empleado, id_funcion_fk, nombre_funcion, BAJA });
+            dgvTarea.Location = new Point(39, 275);
             dgvTarea.Name = "dgvTarea";
             dgvTarea.RowTemplate.Height = 25;
             dgvTarea.Size = new Size(604, 150);
             dgvTarea.TabIndex = 7;
+            dgvTarea.CellContentClick += dgvTarea_CellContentClick;
+            dgvTarea.CellFormatting += dgvTarea_CellFormatting;
+            dgvTarea.SelectionChanged += dgvTarea_SelectionChanged;
             // 
-            // Proyecto
+            // id_proyecto
             // 
-            Proyecto.DataPropertyName = "id_proyecto";
-            Proyecto.HeaderText = "Proyecto";
-            Proyecto.Name = "Proyecto";
-            Proyecto.Width = 120;
+            id_proyecto.DataPropertyName = "id_proyecto";
+            id_proyecto.HeaderText = "id_proyecto";
+            id_proyecto.Name = "id_proyecto";
+            id_proyecto.Visible = false;
+            id_proyecto.Width = 120;
+            // 
+            // nombre_proyecto
+            // 
+            nombre_proyecto.DataPropertyName = "proyecto";
+            nombre_proyecto.HeaderText = "Proyecto";
+            nombre_proyecto.Name = "nombre_proyecto";
+            // 
+            // id_tarea
+            // 
+            id_tarea.DataPropertyName = "id_tarea";
+            id_tarea.HeaderText = "Tarea";
+            id_tarea.Name = "id_tarea";
+            // 
+            // legajo
+            // 
+            legajo.DataPropertyName = "legajo";
+            legajo.HeaderText = "legajo_empleado";
+            legajo.Name = "legajo";
+            legajo.Visible = false;
+            legajo.Width = 120;
+            // 
+            // nombre_empleado
+            // 
+            nombre_empleado.DataPropertyName = "empleado";
+            nombre_empleado.HeaderText = "Empleado";
+            nombre_empleado.Name = "nombre_empleado";
+            // 
+            // id_funcion_fk
+            // 
+            id_funcion_fk.DataPropertyName = "id_funcion_fk";
+            id_funcion_fk.HeaderText = "id_funcion";
+            id_funcion_fk.Name = "id_funcion_fk";
+            id_funcion_fk.Visible = false;
+            // 
+            // nombre_funcion
+            // 
+            nombre_funcion.DataPropertyName = "funcion";
+            nombre_funcion.HeaderText = "Funcion";
+            nombre_funcion.Name = "nombre_funcion";
             // 
             // BAJA
             // 
@@ -119,26 +165,6 @@
             BAJA.HeaderText = "Baja";
             BAJA.Name = "BAJA";
             BAJA.Visible = false;
-            // 
-            // Tarea
-            // 
-            Tarea.DataPropertyName = "id_tarea";
-            Tarea.HeaderText = "Tarea";
-            Tarea.Name = "Tarea";
-            Tarea.Width = 120;
-            // 
-            // Empleado
-            // 
-            Empleado.DataPropertyName = "legajo";
-            Empleado.HeaderText = "Empleado";
-            Empleado.Name = "Empleado";
-            Empleado.Width = 120;
-            // 
-            // FUNCION
-            // 
-            FUNCION.DataPropertyName = "id_funcion_fk";
-            FUNCION.HeaderText = "Funcion";
-            FUNCION.Name = "FUNCION";
             // 
             // cbFuncion
             // 
@@ -184,8 +210,9 @@
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(110, 30);
             btnLimpiar.TabIndex = 156;
-            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.Text = "Resetear ";
             btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnBorrar
             // 
@@ -213,17 +240,18 @@
             btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
             // 
-            // btnFinalizacion
+            // btnModificar
             // 
-            btnFinalizacion.BackColor = Color.Transparent;
-            btnFinalizacion.BackgroundImageLayout = ImageLayout.None;
-            btnFinalizacion.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnFinalizacion.Location = new Point(472, 226);
-            btnFinalizacion.Name = "btnFinalizacion";
-            btnFinalizacion.Size = new Size(110, 30);
-            btnFinalizacion.TabIndex = 159;
-            btnFinalizacion.Text = "Finalizacion";
-            btnFinalizacion.UseVisualStyleBackColor = false;
+            btnModificar.BackColor = Color.Transparent;
+            btnModificar.BackgroundImageLayout = ImageLayout.None;
+            btnModificar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnModificar.Location = new Point(472, 226);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(110, 30);
+            btnModificar.TabIndex = 159;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = false;
+            btnModificar.Click += btnFinalizacion_Click;
             // 
             // AsignacionTareaFrm
             // 
@@ -231,7 +259,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(680, 450);
-            Controls.Add(btnFinalizacion);
+            Controls.Add(btnModificar);
             Controls.Add(btnLimpiar);
             Controls.Add(btnBorrar);
             Controls.Add(btnGuardar);
@@ -269,11 +297,14 @@
         private Button btnLimpiar;
         private Button btnBorrar;
         private Button btnGuardar;
-        private Button btnFinalizacion;
-        private DataGridViewTextBoxColumn Proyecto;
+        private Button btnModificar;
+        private DataGridViewTextBoxColumn id_proyecto;
+        private DataGridViewTextBoxColumn nombre_proyecto;
+        private DataGridViewTextBoxColumn id_tarea;
+        private DataGridViewTextBoxColumn legajo;
+        private DataGridViewTextBoxColumn nombre_empleado;
+        private DataGridViewTextBoxColumn id_funcion_fk;
+        private DataGridViewTextBoxColumn nombre_funcion;
         private DataGridViewTextBoxColumn BAJA;
-        private DataGridViewTextBoxColumn Tarea;
-        private DataGridViewTextBoxColumn Empleado;
-        private DataGridViewTextBoxColumn FUNCION;
     }
 }

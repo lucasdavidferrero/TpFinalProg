@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PruebaTpFinal.Dominio.Mappers;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -30,6 +31,28 @@ namespace TpFinalProg.Controlador {
              DataTable proyectos = clsProyecto.obtenerTodos();
              return proyectos;
          }
+
+        public static DataTable listarPorId(int id) {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("id_proyecto", typeof(int));
+            dt.Columns.Add("nombre", typeof(string));
+            dt.Columns.Add("monto_estimado", typeof(float));
+            dt.Columns.Add("tiempo_estimado", typeof(int));
+            dt.Columns.Add("id_propietario", typeof(int));
+            dt.Columns.Add("legajo", typeof(int));
+
+            Proyecto proyecto = ProyectoDataMapper.encontrarPorId(id);
+            DataRow row = dt.NewRow();
+            row["id_proyecto"] = proyecto.idProyecto;
+            row["nombre"] = proyecto.nombre;
+            row["monto_estimado"] = proyecto.montoEstimado;
+            row["tiempo_estimado"] = proyecto.tiempoEstimado;
+            row["id_propietario"] = proyecto.idPropietario;
+            row["legajo"] = proyecto.nroLegajo;
+
+            dt.Rows.Add(row);
+            return dt;
+        }
 
      }
 
