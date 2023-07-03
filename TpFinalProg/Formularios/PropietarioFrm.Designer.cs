@@ -36,6 +36,7 @@
             txtTelefono = new TextBox();
             txtCuit = new TextBox();
             dgvPropietario = new DataGridView();
+            btnLimpiar = new Button();
             id_propietario = new DataGridViewTextBoxColumn();
             razon_social = new DataGridViewTextBoxColumn();
             telefono = new DataGridViewTextBoxColumn();
@@ -43,7 +44,6 @@
             cuit = new DataGridViewTextBoxColumn();
             persona_contacto = new DataGridViewTextBoxColumn();
             baja = new DataGridViewTextBoxColumn();
-            btnLimpiar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPropietario).BeginInit();
             SuspendLayout();
             // 
@@ -167,6 +167,19 @@
             dgvPropietario.RowHeaderMouseClick += dgvPropietario_RowHeaderMouseClick;
             dgvPropietario.RowHeaderMouseDoubleClick += dgvPropietario_RowHeaderMouseDoubleClick;
             // 
+            // btnLimpiar
+            // 
+            btnLimpiar.BackColor = Color.Transparent;
+            btnLimpiar.BackgroundImageLayout = ImageLayout.None;
+            btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLimpiar.Location = new Point(755, 125);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(110, 30);
+            btnLimpiar.TabIndex = 35;
+            btnLimpiar.Text = "Reiniciar";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
+            // 
             // id_propietario
             // 
             id_propietario.DataPropertyName = "id_propietario";
@@ -215,19 +228,6 @@
             baja.HeaderText = "Baja";
             baja.Name = "baja";
             baja.Visible = false;
-            // 
-            // btnLimpiar
-            // 
-            btnLimpiar.BackColor = Color.Transparent;
-            btnLimpiar.BackgroundImageLayout = ImageLayout.None;
-            btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(755, 125);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(110, 30);
-            btnLimpiar.TabIndex = 35;
-            btnLimpiar.Text = "Reiniciar";
-            btnLimpiar.UseVisualStyleBackColor = false;
-            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // PropietarioFrm
             // 

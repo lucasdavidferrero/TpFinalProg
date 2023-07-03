@@ -33,17 +33,19 @@
             label5 = new Label();
             cbResponsable = new ComboBox();
             dgvProyecto = new DataGridView();
+            btnLimpiar = new Button();
+            btnEliminar = new Button();
+            btnGuardar = new Button();
+            cbPropietario = new ComboBox();
             NOMBRE = new DataGridViewTextBoxColumn();
-            PROPIETARIO = new DataGridViewTextBoxColumn();
+            id_propietario = new DataGridViewTextBoxColumn();
+            legajo = new DataGridViewTextBoxColumn();
+            razon_social = new DataGridViewTextBoxColumn();
             RESPONSABLE = new DataGridViewTextBoxColumn();
             MONTO_ESTIMADO = new DataGridViewTextBoxColumn();
             tiempo_estimado = new DataGridViewTextBoxColumn();
             id_proyecto = new DataGridViewTextBoxColumn();
             baja = new DataGridViewTextBoxColumn();
-            btnLimpiar = new Button();
-            btnEliminar = new Button();
-            btnGuardar = new Button();
-            cbPropietario = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvProyecto).BeginInit();
             SuspendLayout();
             // 
@@ -124,70 +126,14 @@
             // dgvProyecto
             // 
             dgvProyecto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProyecto.Columns.AddRange(new DataGridViewColumn[] { NOMBRE, PROPIETARIO, RESPONSABLE, MONTO_ESTIMADO, tiempo_estimado, id_proyecto, baja });
-            dgvProyecto.Location = new Point(51, 180);
+            dgvProyecto.Columns.AddRange(new DataGridViewColumn[] { NOMBRE, id_propietario, legajo, razon_social, RESPONSABLE, MONTO_ESTIMADO, tiempo_estimado, id_proyecto, baja });
+            dgvProyecto.Location = new Point(65, 188);
             dgvProyecto.Name = "dgvProyecto";
             dgvProyecto.RowTemplate.Height = 25;
             dgvProyecto.Size = new Size(733, 271);
             dgvProyecto.TabIndex = 14;
             dgvProyecto.RowHeaderMouseClick += dgvProyecto_RowHeaderMouseClick;
             dgvProyecto.RowHeaderMouseDoubleClick += dgvProyecto_RowHeaderMouseDoubleClick;
-            // 
-            // NOMBRE
-            // 
-            NOMBRE.DataPropertyName = "nombre";
-            NOMBRE.Frozen = true;
-            NOMBRE.HeaderText = "Nombre";
-            NOMBRE.Name = "NOMBRE";
-            NOMBRE.Width = 150;
-            // 
-            // PROPIETARIO
-            // 
-            PROPIETARIO.DataPropertyName = "id_propietario_FK";
-            PROPIETARIO.Frozen = true;
-            PROPIETARIO.HeaderText = "Propietario";
-            PROPIETARIO.Name = "PROPIETARIO";
-            PROPIETARIO.Width = 150;
-            // 
-            // RESPONSABLE
-            // 
-            RESPONSABLE.DataPropertyName = "legajo_FK";
-            RESPONSABLE.Frozen = true;
-            RESPONSABLE.HeaderText = "Responsable";
-            RESPONSABLE.Name = "RESPONSABLE";
-            RESPONSABLE.Width = 150;
-            // 
-            // MONTO_ESTIMADO
-            // 
-            MONTO_ESTIMADO.DataPropertyName = "monto_estimado";
-            MONTO_ESTIMADO.Frozen = true;
-            MONTO_ESTIMADO.HeaderText = "Monto Estimado";
-            MONTO_ESTIMADO.Name = "MONTO_ESTIMADO";
-            MONTO_ESTIMADO.Width = 120;
-            // 
-            // tiempo_estimado
-            // 
-            tiempo_estimado.DataPropertyName = "tiempo_estimado";
-            tiempo_estimado.Frozen = true;
-            tiempo_estimado.HeaderText = "Tiempo Estimado";
-            tiempo_estimado.Name = "tiempo_estimado";
-            tiempo_estimado.Width = 120;
-            // 
-            // id_proyecto
-            // 
-            id_proyecto.DataPropertyName = "id_proyecto";
-            id_proyecto.Frozen = true;
-            id_proyecto.HeaderText = "id";
-            id_proyecto.Name = "id_proyecto";
-            id_proyecto.Visible = false;
-            // 
-            // baja
-            // 
-            baja.DataPropertyName = "baja";
-            baja.Frozen = true;
-            baja.HeaderText = "baja";
-            baja.Name = "baja";
-            baja.Visible = false;
             // 
             // btnLimpiar
             // 
@@ -236,6 +182,78 @@
             cbPropietario.Size = new Size(223, 23);
             cbPropietario.TabIndex = 159;
             // 
+            // NOMBRE
+            // 
+            NOMBRE.DataPropertyName = "nombre";
+            NOMBRE.Frozen = true;
+            NOMBRE.HeaderText = "Nombre";
+            NOMBRE.Name = "NOMBRE";
+            NOMBRE.Width = 150;
+            // 
+            // id_propietario
+            // 
+            id_propietario.DataPropertyName = "id_propietario";
+            id_propietario.Frozen = true;
+            id_propietario.HeaderText = "Id Propietario";
+            id_propietario.Name = "id_propietario";
+            id_propietario.Visible = false;
+            // 
+            // legajo
+            // 
+            legajo.DataPropertyName = "legajo";
+            legajo.Frozen = true;
+            legajo.HeaderText = "Legajo Responsable";
+            legajo.Name = "legajo";
+            legajo.Visible = false;
+            // 
+            // razon_social
+            // 
+            razon_social.DataPropertyName = "razon_social";
+            razon_social.Frozen = true;
+            razon_social.HeaderText = "Propietario";
+            razon_social.Name = "razon_social";
+            razon_social.Width = 150;
+            // 
+            // RESPONSABLE
+            // 
+            RESPONSABLE.DataPropertyName = "column1";
+            RESPONSABLE.Frozen = true;
+            RESPONSABLE.HeaderText = "Responsable";
+            RESPONSABLE.Name = "RESPONSABLE";
+            RESPONSABLE.Width = 150;
+            // 
+            // MONTO_ESTIMADO
+            // 
+            MONTO_ESTIMADO.DataPropertyName = "monto_estimado";
+            MONTO_ESTIMADO.Frozen = true;
+            MONTO_ESTIMADO.HeaderText = "Monto Estimado";
+            MONTO_ESTIMADO.Name = "MONTO_ESTIMADO";
+            MONTO_ESTIMADO.Width = 120;
+            // 
+            // tiempo_estimado
+            // 
+            tiempo_estimado.DataPropertyName = "tiempo_estimado";
+            tiempo_estimado.Frozen = true;
+            tiempo_estimado.HeaderText = "Tiempo Estimado";
+            tiempo_estimado.Name = "tiempo_estimado";
+            tiempo_estimado.Width = 120;
+            // 
+            // id_proyecto
+            // 
+            id_proyecto.DataPropertyName = "id_proyecto";
+            id_proyecto.Frozen = true;
+            id_proyecto.HeaderText = "id";
+            id_proyecto.Name = "id_proyecto";
+            id_proyecto.Visible = false;
+            // 
+            // baja
+            // 
+            baja.DataPropertyName = "baja";
+            baja.Frozen = true;
+            baja.HeaderText = "baja";
+            baja.Name = "baja";
+            baja.Visible = false;
+            // 
             // ProyectoFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -281,7 +299,9 @@
         private Button btnGuardar;
         private ComboBox cbPropietario;
         private DataGridViewTextBoxColumn NOMBRE;
-        private DataGridViewTextBoxColumn PROPIETARIO;
+        private DataGridViewTextBoxColumn id_propietario;
+        private DataGridViewTextBoxColumn legajo;
+        private DataGridViewTextBoxColumn razon_social;
         private DataGridViewTextBoxColumn RESPONSABLE;
         private DataGridViewTextBoxColumn MONTO_ESTIMADO;
         private DataGridViewTextBoxColumn tiempo_estimado;

@@ -25,6 +25,17 @@
         private void InitializeComponent() {
             txtDescripcion = new TextBox();
             dgvTarea = new DataGridView();
+            PROYECTO = new DataGridViewTextBoxColumn();
+            NUMERO = new DataGridViewTextBoxColumn();
+            descripcion = new DataGridViewTextBoxColumn();
+            HORAESTIMADA = new DataGridViewTextBoxColumn();
+            COSTOESTIMADO = new DataGridViewTextBoxColumn();
+            HORAREAL = new DataGridViewTextBoxColumn();
+            COSTOREAL = new DataGridViewTextBoxColumn();
+            fecha_final = new DataGridViewTextBoxColumn();
+            horas_avance = new DataGridViewTextBoxColumn();
+            id = new DataGridViewTextBoxColumn();
+            baja = new DataGridViewTextBoxColumn();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -42,17 +53,9 @@
             btnLimpiar = new Button();
             btnBorrar = new Button();
             btnGuardar = new Button();
-            PROYECTO = new DataGridViewTextBoxColumn();
-            NUMERO = new DataGridViewTextBoxColumn();
-            descripcion = new DataGridViewTextBoxColumn();
-            HORAESTIMADA = new DataGridViewTextBoxColumn();
-            COSTOESTIMADO = new DataGridViewTextBoxColumn();
-            HORAREAL = new DataGridViewTextBoxColumn();
-            COSTOREAL = new DataGridViewTextBoxColumn();
-            fecha_final = new DataGridViewTextBoxColumn();
-            horas_avance = new DataGridViewTextBoxColumn();
-            id = new DataGridViewTextBoxColumn();
-            baja = new DataGridViewTextBoxColumn();
+            label9 = new Label();
+            textBox1 = new TextBox();
+            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvTarea).BeginInit();
             SuspendLayout();
             // 
@@ -76,164 +79,6 @@
             dgvTarea.RowTemplate.Height = 25;
             dgvTarea.Size = new Size(946, 271);
             dgvTarea.TabIndex = 43;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(134, 281);
-            label5.Name = "label5";
-            label5.Size = new Size(183, 15);
-            label5.TabIndex = 40;
-            label5.Text = "COSTO ESTIMADO (TOTAL CREO):";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(134, 240);
-            label4.Name = "label4";
-            label4.Size = new Size(182, 15);
-            label4.TabIndex = 39;
-            label4.Text = "HORAS ESTIMADAS (UNITARIAS):";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(513, 240);
-            label3.Name = "label3";
-            label3.Size = new Size(91, 15);
-            label3.TabIndex = 38;
-            label3.Text = "HORAS REALES:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(166, 158);
-            label2.Name = "label2";
-            label2.Size = new Size(84, 15);
-            label2.TabIndex = 37;
-            label2.Text = "DESCRIPCION:";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(148, 72);
-            label1.Name = "label1";
-            label1.Size = new Size(102, 15);
-            label1.TabIndex = 36;
-            label1.Text = "NUMERO ORDEN:";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(520, 281);
-            label6.Name = "label6";
-            label6.Size = new Size(77, 15);
-            label6.TabIndex = 47;
-            label6.Text = "COSTO REAL:";
-            // 
-            // txtCostoReal
-            // 
-            txtCostoReal.Location = new Point(626, 278);
-            txtCostoReal.Name = "txtCostoReal";
-            txtCostoReal.Size = new Size(118, 23);
-            txtCostoReal.TabIndex = 46;
-            txtCostoReal.TextChanged += txtCostoReal_TextChanged;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(182, 36);
-            label7.Name = "label7";
-            label7.Size = new Size(68, 15);
-            label7.TabIndex = 49;
-            label7.Text = "PROYECTO:";
-            // 
-            // txtHoraReal
-            // 
-            txtHoraReal.Location = new Point(626, 237);
-            txtHoraReal.Name = "txtHoraReal";
-            txtHoraReal.Size = new Size(118, 23);
-            txtHoraReal.TabIndex = 34;
-            txtHoraReal.TextChanged += txtHoraReal_TextChanged;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(460, 215);
-            label8.Name = "label8";
-            label8.Size = new Size(52, 86);
-            label8.TabIndex = 51;
-            label8.Text = "|";
-            // 
-            // txtHoraEstimada
-            // 
-            txtHoraEstimada.Location = new Point(322, 237);
-            txtHoraEstimada.Name = "txtHoraEstimada";
-            txtHoraEstimada.Size = new Size(129, 23);
-            txtHoraEstimada.TabIndex = 52;
-            txtHoraEstimada.TextChanged += txtHoraEstimada_TextChanged;
-            // 
-            // txtCostoEstimado
-            // 
-            txtCostoEstimado.Location = new Point(322, 278);
-            txtCostoEstimado.Name = "txtCostoEstimado";
-            txtCostoEstimado.Size = new Size(129, 23);
-            txtCostoEstimado.TabIndex = 53;
-            txtCostoEstimado.TextChanged += txtCostoEstimado_TextChanged;
-            // 
-            // txtNumero
-            // 
-            txtNumero.Location = new Point(267, 69);
-            txtNumero.Name = "txtNumero";
-            txtNumero.Size = new Size(477, 23);
-            txtNumero.TabIndex = 54;
-            txtNumero.TextChanged += txtNumero_TextChanged;
-            // 
-            // cbProyecto
-            // 
-            cbProyecto.FormattingEnabled = true;
-            cbProyecto.Location = new Point(267, 33);
-            cbProyecto.Name = "cbProyecto";
-            cbProyecto.Size = new Size(477, 23);
-            cbProyecto.TabIndex = 55;
-            // 
-            // btnLimpiar
-            // 
-            btnLimpiar.BackColor = Color.Transparent;
-            btnLimpiar.BackgroundImageLayout = ImageLayout.None;
-            btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(555, 334);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(110, 30);
-            btnLimpiar.TabIndex = 161;
-            btnLimpiar.Text = "Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = false;
-            // 
-            // btnBorrar
-            // 
-            btnBorrar.BackColor = Color.Transparent;
-            btnBorrar.BackgroundImageLayout = ImageLayout.None;
-            btnBorrar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBorrar.Location = new Point(439, 334);
-            btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(110, 30);
-            btnBorrar.TabIndex = 160;
-            btnBorrar.Text = "Eliminar";
-            btnBorrar.UseVisualStyleBackColor = false;
-            // 
-            // btnGuardar
-            // 
-            btnGuardar.BackColor = Color.Transparent;
-            btnGuardar.BackgroundImageLayout = ImageLayout.None;
-            btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardar.Location = new Point(323, 334);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(110, 30);
-            btnGuardar.TabIndex = 159;
-            btnGuardar.Text = "Crear";
-            btnGuardar.UseVisualStyleBackColor = false;
-            btnGuardar.Click += btnGuardar_Click;
             // 
             // PROYECTO
             // 
@@ -323,12 +168,199 @@
             baja.ReadOnly = true;
             baja.Visible = false;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(51, 283);
+            label5.Name = "label5";
+            label5.Size = new Size(183, 15);
+            label5.TabIndex = 40;
+            label5.Text = "COSTO ESTIMADO (TOTAL CREO):";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(51, 242);
+            label4.Name = "label4";
+            label4.Size = new Size(182, 15);
+            label4.TabIndex = 39;
+            label4.Text = "HORAS ESTIMADAS (UNITARIAS):";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(430, 242);
+            label3.Name = "label3";
+            label3.Size = new Size(91, 15);
+            label3.TabIndex = 38;
+            label3.Text = "HORAS REALES:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(166, 158);
+            label2.Name = "label2";
+            label2.Size = new Size(84, 15);
+            label2.TabIndex = 37;
+            label2.Text = "DESCRIPCION:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(148, 72);
+            label1.Name = "label1";
+            label1.Size = new Size(102, 15);
+            label1.TabIndex = 36;
+            label1.Text = "NUMERO ORDEN:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(437, 283);
+            label6.Name = "label6";
+            label6.Size = new Size(77, 15);
+            label6.TabIndex = 47;
+            label6.Text = "COSTO REAL:";
+            // 
+            // txtCostoReal
+            // 
+            txtCostoReal.Location = new Point(543, 280);
+            txtCostoReal.Name = "txtCostoReal";
+            txtCostoReal.Size = new Size(118, 23);
+            txtCostoReal.TabIndex = 46;
+            txtCostoReal.TextChanged += txtCostoReal_TextChanged;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(182, 36);
+            label7.Name = "label7";
+            label7.Size = new Size(68, 15);
+            label7.TabIndex = 49;
+            label7.Text = "PROYECTO:";
+            // 
+            // txtHoraReal
+            // 
+            txtHoraReal.Location = new Point(543, 239);
+            txtHoraReal.Name = "txtHoraReal";
+            txtHoraReal.Size = new Size(118, 23);
+            txtHoraReal.TabIndex = 34;
+            txtHoraReal.TextChanged += txtHoraReal_TextChanged;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(377, 217);
+            label8.Name = "label8";
+            label8.Size = new Size(52, 86);
+            label8.TabIndex = 51;
+            label8.Text = "|";
+            // 
+            // txtHoraEstimada
+            // 
+            txtHoraEstimada.Location = new Point(239, 239);
+            txtHoraEstimada.Name = "txtHoraEstimada";
+            txtHoraEstimada.Size = new Size(129, 23);
+            txtHoraEstimada.TabIndex = 52;
+            txtHoraEstimada.TextChanged += txtHoraEstimada_TextChanged;
+            // 
+            // txtCostoEstimado
+            // 
+            txtCostoEstimado.Location = new Point(239, 280);
+            txtCostoEstimado.Name = "txtCostoEstimado";
+            txtCostoEstimado.Size = new Size(129, 23);
+            txtCostoEstimado.TabIndex = 53;
+            txtCostoEstimado.TextChanged += txtCostoEstimado_TextChanged;
+            // 
+            // txtNumero
+            // 
+            txtNumero.Location = new Point(267, 69);
+            txtNumero.Name = "txtNumero";
+            txtNumero.Size = new Size(477, 23);
+            txtNumero.TabIndex = 54;
+            txtNumero.TextChanged += txtNumero_TextChanged;
+            // 
+            // cbProyecto
+            // 
+            cbProyecto.FormattingEnabled = true;
+            cbProyecto.Location = new Point(267, 33);
+            cbProyecto.Name = "cbProyecto";
+            cbProyecto.Size = new Size(477, 23);
+            cbProyecto.TabIndex = 55;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.BackColor = Color.Transparent;
+            btnLimpiar.BackgroundImageLayout = ImageLayout.None;
+            btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLimpiar.Location = new Point(555, 334);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(110, 30);
+            btnLimpiar.TabIndex = 161;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            // 
+            // btnBorrar
+            // 
+            btnBorrar.BackColor = Color.Transparent;
+            btnBorrar.BackgroundImageLayout = ImageLayout.None;
+            btnBorrar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBorrar.Location = new Point(439, 334);
+            btnBorrar.Name = "btnBorrar";
+            btnBorrar.Size = new Size(110, 30);
+            btnBorrar.TabIndex = 160;
+            btnBorrar.Text = "Eliminar";
+            btnBorrar.UseVisualStyleBackColor = false;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.BackColor = Color.Transparent;
+            btnGuardar.BackgroundImageLayout = ImageLayout.None;
+            btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGuardar.Location = new Point(323, 334);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(110, 30);
+            btnGuardar.TabIndex = 159;
+            btnGuardar.Text = "Crear";
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(789, 247);
+            label9.Name = "label9";
+            label9.Size = new Size(76, 15);
+            label9.TabIndex = 163;
+            label9.Text = "Horas Diarias";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(750, 275);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(164, 23);
+            textBox1.TabIndex = 162;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(679, 217);
+            label10.Name = "label10";
+            label10.Size = new Size(52, 86);
+            label10.TabIndex = 164;
+            label10.Text = "|";
+            // 
             // TareaFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(978, 688);
+            Controls.Add(label10);
+            Controls.Add(label9);
+            Controls.Add(textBox1);
             Controls.Add(btnLimpiar);
             Controls.Add(btnBorrar);
             Controls.Add(btnGuardar);
@@ -390,5 +422,8 @@
         private DataGridViewTextBoxColumn horas_avance;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn baja;
+        private Label label9;
+        private TextBox textBox1;
+        private Label label10;
     }
 }

@@ -141,7 +141,7 @@ namespace TpFinalProg {
         }
 
         private void listarProyecto() {
-            DataTable listadoProyecto = Controlador.ProyectoControlador.listarTodo();
+            DataTable listadoProyecto = Controlador.ProyectoControlador.listarTodoParametro();
             dgvProyecto.DataSource = listadoProyecto;
         }
 
@@ -151,21 +151,14 @@ namespace TpFinalProg {
             }
 
             string nombre = txtNombre.Text.Trim();
-            double montoEstimado = Convert.ToDouble(txtMonto.Text.Trim());
+            decimal montoEstimado = Convert.ToDecimal(txtMonto.Text.Trim());
             int tiempoEstimado = Convert.ToInt32(txtTiempo.Text.Trim());
             int idPropietario = Convert.ToInt32(cbPropietario.SelectedValue);
             int legajo = Convert.ToInt32(cbResponsable.SelectedValue);
 
 
-
             if (ValidacionDatos.PropietarioAdmiteProyecto(idPropietario)) {
                 try {
-                    /* DataRowView selectedRow = cbPropietario.SelectedItem as DataRowView;
-                if (selectedRow != null) {
-                    // Obtén el valor del elemento seleccionado
-                    idPropietario = Convert.ToInt32(selectedRow["id_propietario"]);
-
-                */
                     if (this.idRowSeleccionado < 0) {
                         Controlador.ProyectoControlador.crear(nombre, montoEstimado, tiempoEstimado, idPropietario, legajo);
                     } else {
@@ -209,33 +202,33 @@ namespace TpFinalProg {
             DataGridViewCellCollection celdas = dgvProyecto.Rows[idRowSeleccionado].Cells;
             txtNombre.Text = celdas["nombre"].Value.ToString();
             txtMonto.Text = celdas["MONTO_ESTIMADO"].Value.ToString();
+            txtTiempo.Text = celdas["tiempo_estimado"].Value.ToString();
 
-            //cbPropietario.SelectedValue = celdas["PROPIETARIO"];
-            cbPropietario.Text = celdas["PROPIETARIO"].Value.ToString();
+            cbPropietario.Text = celdas["razon_social"].Value.ToString();
             cbResponsable.Text = celdas["RESPONSABLE"].Value.ToString();
 
-            /* int idPropietario = Convert.ToInt32(cbPropietario.SelectedValue = celdas["PROPIETARIO"].Value);
+            /*  int idPropietario = Convert.ToInt32(celdas["id_propietario"].Value);
+               cbPropietario.SelectedValue = idPropietario;
 
-             PropietarioDataMapper.encontrarPorIdRazonSocial(idPropietario);
+               PropietarioDataMapper.encontrarPorIdRazonSocial(idPropietario);
 
-             cbPropietario.SelectedItem = idPropietario;
+               cbPropietario.SelectedValue = idPropietario;
 
-             int idResponsable = Convert.ToInt32(cbResponsable.SelectedValue = celdas["RESPONSABLE"].Value);
+               int idResponsable = Convert.ToInt32(celdas["legajo"].Value);
+               cbResponsable.SelectedValue = idResponsable;
 
-             EmpleadoDataMapper.encontrarPorIdNombre(idResponsable);
+               EmpleadoDataMapper.encontrarPorIdNombre(idResponsable);
 
-             cbResponsable.SelectedItem = idResponsable;*/
+               cbResponsable.SelectedValue = idResponsable;*/
 
-
-            txtTiempo.Text = celdas["tiempo_estimado"].Value.ToString();
 
             btnGuardar.Text = "Guardar cambios";
         }
 
         private void dgvProyecto_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
-                btnEliminar.Enabled = true;
-                this.idRowSeleccionadoEliminar = e.RowIndex;
-            }
+            btnEliminar.Enabled = true;
+            this.idRowSeleccionadoEliminar = e.RowIndex;
+        }
 
 
 
@@ -268,7 +261,7 @@ namespace TpFinalProg {
          }*/
     }
 
- 
 
-    }
+
+}
 

@@ -27,12 +27,12 @@ namespace TpFinalProg.Dominio.Entidades {
             if (dt.Rows.Count > 0) {
                 return;
             }
-            // Crear las funciones.
+            // Crear las funciones con sus respectivos IDS. Los IDS son utilizados para validar, por ejemplo, si un Empleado es Lider.
             Funcion[] funciones = {
-                new Funcion(0, "Lider"),
-                new Funcion(0, "Señor"),
-                new Funcion(0, "Semi-señor"),
-                new Funcion(0, "Junior")
+                new Funcion(1, "Lider"),
+                new Funcion(2, "Senior"),
+                new Funcion(3, "Semi-senior"),
+                new Funcion(4, "Junior")
             };
             FuncionDataMapper.crearFunciones(funciones);
         }
