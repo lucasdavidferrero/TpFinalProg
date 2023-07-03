@@ -104,8 +104,8 @@ namespace TpFinalProg {
             guardarTarea();
         }
 
-        
-        
+
+
         private void btnBorrar_Click(object sender, EventArgs e) {
             int id_proyecto = Convert.ToInt32(cbProyecto.SelectedIndex);
             int nro_tarea = Convert.ToInt32(cbTarea.SelectedIndex);
