@@ -72,7 +72,7 @@ namespace PruebaTpFinal.Dominio.Mappers
         public static List<Tarea> obtenerTodos()
         {
             List<Tarea> tareas = new List<Tarea>();
-            string query = "SELECT * FROM Tarea";
+            string query = "SELECT * FROM Tarea WHERE baja = 0";
             Conexion cx = new Conexion();
             DataTable dt = new DataTable();
 
@@ -114,7 +114,7 @@ namespace PruebaTpFinal.Dominio.Mappers
         {
             string query = "UPDATE Tarea SET descripcion = @descripcion, horas_estimadas = @horasEstimadas, horas_avance = @horasAvance, " +
                            "costo_estimado = @costoEstimado, horas_reales = @horasReales, costo_real = @costoReal, fecha_final = @fechaFinal " +
-                           "WHERE id_proyecto = @idProyecto AND nro_tarea = @idTarea";
+                           "WHERE id_proyecto = @idProyecto AND nro_tarea = @idTarea AND baja = 0";
 
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
@@ -168,7 +168,7 @@ namespace PruebaTpFinal.Dominio.Mappers
         public static Tarea encontrarPorId(int idProyecto, int idTarea)
         {
             Tarea tareaEncontrada = null;
-            string query = "SELECT * FROM Tarea WHERE id_proyecto = @idProyecto AND nro_tarea = @idTarea";
+            string query = "SELECT * FROM Tarea WHERE id_proyecto = @idProyecto AND nro_tarea = @idTarea AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
@@ -202,6 +202,42 @@ namespace PruebaTpFinal.Dominio.Mappers
             }
             finally
             {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return tareaEncontrada;
+        }
+
+        public static Tarea encontrarPorIdProyecto(int idProyecto) {
+            Tarea tareaEncontrada = null;
+            string query = "SELECT * FROM Tarea WHERE id_proyecto = @idProyecto AND baja = 0";
+            DataTable dt = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.AddWithValue("@idProyecto", idProyecto);
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+
+                if (dt.Rows.Count != 0) {
+                    DataRow row = dt.Rows[0];
+                    int idTarea = Convert.ToInt32(row["nro_tarea"]);
+                    string descripcion = row["descripcion"].ToString();
+                    int horasEstimadas = Convert.ToInt32(row["horas_estimadas"]);
+                    int horasAvance = Convert.ToInt32(row["horas_avance"]);
+                    float costoEstimado = Convert.ToSingle(row["costo_estimado"]);
+                    int horasReales = Convert.ToInt32(row["horas_reales"]);
+                    float costoReal = Convert.ToSingle(row["costo_real"]);
+                    DateTime fechaFinal = (DateTime)row["fecha_final"];
+
+                    tareaEncontrada = new Tarea(idProyecto, idTarea, descripcion, horasEstimadas, horasAvance, costoEstimado, horasReales, costoReal, fechaFinal);
+                }
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Id Tarea]");
+            } finally {
                 cx.cerrarConexionLiberarRecursos();
             }
 

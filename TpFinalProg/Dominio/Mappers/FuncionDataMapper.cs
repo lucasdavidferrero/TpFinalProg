@@ -66,7 +66,7 @@ namespace PruebaTpFinal.Dominio.Mappers
 
         public static int Update(Funcion f)
         {
-            string query = "UPDATE Funcion SET descripcion = @descripcion WHERE id_funcion = @Id";
+            string query = "UPDATE Funcion SET descripcion = @descripcion WHERE id_funcion = @Id AND baja = 0";
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 

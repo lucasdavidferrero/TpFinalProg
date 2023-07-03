@@ -167,7 +167,7 @@ namespace PruebaTpFinal.Dominio.Mappers
 
         public static int eliminar(int idProyecto)
         {
-            string query = @"UPDATE Proyecto SET baja = 1 WHERE id_proyecto = @idProyecto";
+            string query = @"UPDATE Proyecto SET baja = 1 WHERE id_proyecto = @idProyecto AND baja = 0";
 
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();

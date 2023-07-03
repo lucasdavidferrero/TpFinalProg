@@ -64,7 +64,7 @@ namespace PruebaTpFinal.Dominio.Mappers
         public static List<Trabaja> obtenerTodos()
         {
             List<Trabaja> trabajas = new List<Trabaja>();
-            string query = "SELECT * FROM Trabaja";
+            string query = "SELECT * FROM Trabaja WHERE baja = 0";
             Conexion cx = new Conexion();
             DataTable dt = new DataTable();
 
@@ -99,7 +99,7 @@ namespace PruebaTpFinal.Dominio.Mappers
 
         public static Tuple<int, int, int> modificar(Trabaja trabaja)
         {
-            string query = "UPDATE Trabaja SET id_funcion_fk = @idFuncion WHERE legajo = @nroLegajo AND id_proyecto = @idProyecto AND id_tarea = @idTarea";
+            string query = "UPDATE Trabaja SET id_funcion_fk = @idFuncion WHERE legajo = @nroLegajo AND id_proyecto = @idProyecto AND id_tarea = @idTarea AND baja = 0";
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 
@@ -132,7 +132,7 @@ namespace PruebaTpFinal.Dominio.Mappers
         public static Trabaja encontrarPorId(int nroLegajo, int idProyecto, int idTarea)
         {
             Trabaja trabajaEncontrada = null;
-            string query = "SELECT * FROM Trabaja WHERE legajo = @nroLegajo AND id_proyecto = @idProyecto AND id_tarea = @idTarea";
+            string query = "SELECT * FROM Trabaja WHERE legajo = @nroLegajo AND id_proyecto = @idProyecto AND id_tarea = @idTarea AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();

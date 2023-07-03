@@ -67,7 +67,7 @@ namespace TpFinalProg.Dominio.Mappers {
 
         public static int modificar (Propietario p) {
             // Construcción del query parametrizado.
-            string q = "UPDATE Propietario SET razon_social = @razonSocial , telefono = @telefono, email = @email, persona_contacto = @personaContacto WHERE id_propietario = @Id";
+            string q = "UPDATE Propietario SET razon_social = @razonSocial , telefono = @telefono, email = @email, persona_contacto = @personaContacto WHERE id_propietario = @Id AND baja = 0";
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 
@@ -99,7 +99,7 @@ namespace TpFinalProg.Dominio.Mappers {
 
         public static Propietario obtenerPorId (int id) {
             Propietario propEncontrado = null;
-            string q = "SELECT * FROM Propietario WHERE id_propietario = @Id";
+            string q = "SELECT * FROM Propietario WHERE id_propietario = @Id AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
@@ -124,7 +124,7 @@ namespace TpFinalProg.Dominio.Mappers {
 
         public static Propietario obtenerPorCuit (long cuit) {
             Propietario propEncontrado = null;
-            string q = "SELECT * FROM Propietario WHERE cuit = @cuit";
+            string q = "SELECT * FROM Propietario WHERE cuit = @cuit AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
@@ -199,7 +199,7 @@ namespace TpFinalProg.Dominio.Mappers {
 
         public static Propietario encontrarPorIdRazonSocial(int id) {
             Propietario propEncontrado = null;
-            string q = "SELECT razon_social FROM Propietario WHERE id_propietario = @Id";
+            string q = "SELECT razon_social FROM Propietario WHERE id_propietario = @Id AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();

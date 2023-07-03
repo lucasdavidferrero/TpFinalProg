@@ -65,7 +65,7 @@ namespace TpFinalProg.Dominio.Mappers {
         }
         public static int modificar(Empleado em) {
             // Construcción del query parametrizado.
-            string q = "UPDATE Empleado SET fecha_ingreso = @fecha_ingreso , nombre = @nombre, apellido = @apellido, celular = @celular, email = @email WHERE legajo = @Id";
+            string q = "UPDATE Empleado SET fecha_ingreso = @fecha_ingreso , nombre = @nombre, apellido = @apellido, celular = @celular, email = @email WHERE legajo = @Id AND baja = 0";
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 
@@ -100,7 +100,7 @@ namespace TpFinalProg.Dominio.Mappers {
 
         public static Empleado encontrarPorId(int id) {
             Empleado empEncontrado = null;
-            string q = "SELECT * FROM Empleado WHERE legajo = @Id";
+            string q = "SELECT * FROM Empleado WHERE legajo = @Id AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
@@ -132,7 +132,7 @@ namespace TpFinalProg.Dominio.Mappers {
         }
 
         public static void eliminar(int id) {
-            string q = "UPDATE Empleado SET baja = @baja WHERE legajo = @Id";
+            string q = "UPDATE Empleado SET baja = @baja WHERE legajo = @Id AND baja = 0";
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 

@@ -73,7 +73,7 @@ namespace PruebaTpFinal.Dominio.Mappers
 
         public static int Update(Observacion observacion)
         {
-            string query = "UPDATE Observacion SET fecha = @fecha, observacion = @observacion, legajo_FK = @nroLegajo WHERE id_observacion = @idObservacion";
+            string query = "UPDATE Observacion SET fecha = @fecha, observacion = @observacion, legajo_FK = @nroLegajo WHERE id_observacion = @idObservacion AND baja = 0";
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 
