@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TpFinalProg.Clases;
 using TpFinalProg.Dominio.Entidades;
@@ -69,7 +70,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return generatedId;
         }
 
-        public static List<Tarea> obtenerTodos()
+        public static DataTable obtenerTodos()
         {
             List<Tarea> tareas = new List<Tarea>();
             string query = "SELECT * FROM Tarea WHERE baja = 0";
@@ -82,21 +83,6 @@ namespace PruebaTpFinal.Dominio.Mappers
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dt);
 
-                foreach (DataRow row in dt.Rows)
-                {
-                    int idProyecto = Convert.ToInt32(row["id_proyecto"]);
-                    int idTarea = Convert.ToInt32(row["nro_tarea"]);
-                    string descripcion = row["descripcion"].ToString();
-                    int horasEstimadas = Convert.ToInt32(row["horas_estimadas"]);
-                    int horasAvance = Convert.ToInt32(row["horas_avance"]);
-                    float costoEstimado = Convert.ToSingle(row["costo_estimado"]);
-                    int horasReales = Convert.ToInt32(row["horas_reales"]);
-                    float costoReal = Convert.ToSingle(row["costo_real"]);
-                    DateTime fechaFinal = (DateTime)row["fecha_final"];
-
-                    Tarea tarea = new Tarea(idProyecto, idTarea, descripcion, horasEstimadas, horasAvance, costoEstimado, horasReales, costoReal, fechaFinal);
-                    tareas.Add(tarea);
-                }
             }
             catch (SqlException e)
             {
@@ -107,7 +93,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.cerrarConexionLiberarRecursos();
             }
 
-            return tareas;
+            return dt;
         }
 
         public static Tuple<int, int> modificar(Tarea tarea)
@@ -208,12 +194,13 @@ namespace PruebaTpFinal.Dominio.Mappers
             return tareaEncontrada;
         }
 
-        public static Tarea encontrarPorIdProyecto(int idProyecto) {
-            Tarea tareaEncontrada = null;
+        public static DataTable encontrarPorIdProyecto(int idProyecto) {
             string query = "SELECT * FROM Tarea WHERE id_proyecto = @idProyecto AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
+
+            List<Tarea> tareas = new();
 
             cmd.Parameters.AddWithValue("@idProyecto", idProyecto);
 
@@ -222,26 +209,14 @@ namespace PruebaTpFinal.Dominio.Mappers
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dt);
 
-                if (dt.Rows.Count != 0) {
-                    DataRow row = dt.Rows[0];
-                    int idTarea = Convert.ToInt32(row["nro_tarea"]);
-                    string descripcion = row["descripcion"].ToString();
-                    int horasEstimadas = Convert.ToInt32(row["horas_estimadas"]);
-                    int horasAvance = Convert.ToInt32(row["horas_avance"]);
-                    float costoEstimado = Convert.ToSingle(row["costo_estimado"]);
-                    int horasReales = Convert.ToInt32(row["horas_reales"]);
-                    float costoReal = Convert.ToSingle(row["costo_real"]);
-                    DateTime fechaFinal = (DateTime)row["fecha_final"];
-
-                    tareaEncontrada = new Tarea(idProyecto, idTarea, descripcion, horasEstimadas, horasAvance, costoEstimado, horasReales, costoReal, fechaFinal);
-                }
+                
             } catch (SqlException e) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Id Tarea]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
             }
 
-            return tareaEncontrada;
+            return dt;
         }
     }
 

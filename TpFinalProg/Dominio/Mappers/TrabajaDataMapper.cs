@@ -61,9 +61,8 @@ namespace PruebaTpFinal.Dominio.Mappers
             return generatedId;
         }
 
-        public static List<Trabaja> obtenerTodos()
+        public static DataTable obtenerTodos()
         {
-            List<Trabaja> trabajas = new List<Trabaja>();
             string query = "SELECT * FROM Trabaja WHERE baja = 0";
             Conexion cx = new Conexion();
             DataTable dt = new DataTable();
@@ -74,16 +73,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dt);
 
-                foreach (DataRow row in dt.Rows)
-                {
-                    int nroLegajo = Convert.ToInt32(row["legajo"]);
-                    int idProyecto = Convert.ToInt32(row["id_proyecto"]);
-                    int idTarea = Convert.ToInt32(row["id_tarea"]);
-                    int idFuncion = Convert.ToInt32(row["id_funcion_fk"]);
-
-                    Trabaja trabaja = new Trabaja(nroLegajo, idProyecto, idTarea, idFuncion);
-                    trabajas.Add(trabaja);
-                }
+                
             }
             catch (SqlException e)
             {
@@ -94,7 +84,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.cerrarConexionLiberarRecursos();
             }
 
-            return trabajas;
+            return dt;
         }
 
         public static Tuple<int, int, int> modificar(Trabaja trabaja)
@@ -165,6 +155,33 @@ namespace PruebaTpFinal.Dominio.Mappers
             }
 
             return trabajaEncontrada;
+        }
+
+        public static bool eliminar(Trabaja trabaja) {
+            string query = "UPDATE Trabaja SET baja = 1 WHERE legajo = @nroLegajo AND id_proyecto = @idProyecto AND id_tarea = @idTarea AND baja = 0";
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            
+            cmd.Parameters.Add("@nroLegajo", SqlDbType.Int);
+            cmd.Parameters.Add("@idProyecto", SqlDbType.Int);
+            cmd.Parameters.Add("@idTarea", SqlDbType.Int);
+
+            cmd.Parameters["@nroLegajo"].Value = trabaja.nroLegajo;
+            cmd.Parameters["@idProyecto"].Value = trabaja.idProyecto;
+            cmd.Parameters["@idTarea"].Value = trabaja.idTarea;
+
+            try {
+                cx.SetComandoSQL(query);
+                cmd.ExecuteScalar();
+                return true;
+
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Eliminar Trabaja]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+            return false;
         }
     }
 
