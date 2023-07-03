@@ -161,11 +161,10 @@ namespace TpFinalProg {
             if (ValidacionDatos.PropietarioAdmiteProyecto(idPropietario)) {
                 try {
                     /* DataRowView selectedRow = cbPropietario.SelectedItem as DataRowView;
-                if (selectedRow != null) {
-                    // Obtén el valor del elemento seleccionado
-                    idPropietario = Convert.ToInt32(selectedRow["id_propietario"]);
-
-                */
+                 if (selectedRow != null) {
+                     // Obtén el valor del elemento seleccionado
+                     idPropietario = Convert.ToInt32(selectedRow["id_propietario"]);
+                 */
                     if (this.idRowSeleccionado < 0) {
                         Controlador.ProyectoControlador.crear(nombre, montoEstimado, tiempoEstimado, idPropietario, legajo);
                     } else {
@@ -210,21 +209,21 @@ namespace TpFinalProg {
             txtNombre.Text = celdas["nombre"].Value.ToString();
             txtMonto.Text = celdas["MONTO_ESTIMADO"].Value.ToString();
 
-            //cbPropietario.SelectedValue = celdas["PROPIETARIO"];
-            cbPropietario.Text = celdas["PROPIETARIO"].Value.ToString();
-            cbResponsable.Text = celdas["RESPONSABLE"].Value.ToString();
+            // cbPropietario.SelectedValue = celdas["PROPIETARIO"];
+            // cbPropietario.Text = celdas["PROPIETARIO"].Value.ToString();
+            // cbResponsable.Text = celdas["RESPONSABLE"].Value.ToString();
 
-            /* int idPropietario = Convert.ToInt32(cbPropietario.SelectedValue = celdas["PROPIETARIO"].Value);
+            int idPropietario = Convert.ToInt32(cbPropietario.SelectedValue = celdas["PROPIETARIO"].Value);
 
-             PropietarioDataMapper.encontrarPorIdRazonSocial(idPropietario);
+            PropietarioDataMapper.encontrarPorIdRazonSocial(idPropietario);
 
-             cbPropietario.SelectedItem = idPropietario;
+            cbPropietario.SelectedValue = idPropietario;
 
-             int idResponsable = Convert.ToInt32(cbResponsable.SelectedValue = celdas["RESPONSABLE"].Value);
+            int idResponsable = Convert.ToInt32(cbResponsable.SelectedValue = celdas["RESPONSABLE"].Value);
 
-             EmpleadoDataMapper.encontrarPorIdNombre(idResponsable);
+            EmpleadoDataMapper.encontrarPorIdNombre(idResponsable);
 
-             cbResponsable.SelectedItem = idResponsable;*/
+            cbResponsable.SelectedValue = idResponsable;
 
 
             txtTiempo.Text = celdas["tiempo_estimado"].Value.ToString();
@@ -233,9 +232,9 @@ namespace TpFinalProg {
         }
 
         private void dgvProyecto_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
-                btnEliminar.Enabled = true;
-                this.idRowSeleccionadoEliminar = e.RowIndex;
-            }
+            btnEliminar.Enabled = true;
+            this.idRowSeleccionadoEliminar = e.RowIndex;
+        }
 
 
 
@@ -268,7 +267,7 @@ namespace TpFinalProg {
          }*/
     }
 
- 
 
-    }
+
+}
 
