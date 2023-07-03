@@ -12,7 +12,7 @@ namespace PruebaTpFinal.Dominio.Mappers
 {
     public class ObservacionDataMapper
     {
-        public static int InsertNew(Observacion observacion)
+        public static int insertarNuevo(Observacion observacion)
         {
             string query = "INSERT INTO Observacion(fecha, observacion, legajo_FK) VALUES (@fecha, @observacion, @nroLegajo);SELECT SCOPE_IDENTITY();";
             int generatedId = -1;
@@ -46,7 +46,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return generatedId;
         }
 
-        public static DataTable GetAll()
+        public static DataTable obtenerTodos()
         {
             DataTable dtListAll = new DataTable("ListarObservaciones");
             string query = "SELECT * FROM Observacion WHERE baja = 0";
@@ -71,7 +71,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return dtListAll;
         }
 
-        public static int Update(Observacion observacion)
+        public static int modificar(Observacion observacion)
         {
             string query = "UPDATE Observacion SET fecha = @fecha, observacion = @observacion, legajo_FK = @nroLegajo WHERE id_observacion = @idObservacion AND baja = 0";
             Conexion cx = new Conexion();
@@ -104,7 +104,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return observacion.idObservacion;
         }
 
-        public static Observacion FindByID(int id)
+        public static Observacion encontrarPorId(int id)
         {
             Observacion observacionEncontrada = null;
             string query = "SELECT * FROM Observacion WHERE id_observacion = @idObservacion AND baja = 0";
@@ -143,7 +143,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return observacionEncontrada;
         }
 
-        public static bool Delete(int id)
+        public static bool eliminar(int id)
         {
             string query = "UPDATE Observacion SET baja = 1 WHERE id_observacion = @idObservacion";
             Conexion cx = new Conexion();
@@ -166,6 +166,36 @@ namespace PruebaTpFinal.Dominio.Mappers
             {
                 cx.cerrarConexionLiberarRecursos();
             }
+        }
+        public static Observacion encontrarLegajo(int id) {
+            Observacion observacionEncontrada = null;
+            string query = "  SELECT id_observacion,fecha,Observacion FROM Observacion WHERE legajo_FK = @legajo AND baja = 0";
+            DataTable dt = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.AddWithValue("@legajo", id);
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlData = new SqlDataAdapter(cx.getComando());
+                sqlData.Fill(dt);
+
+                if (dt.Rows.Count != 0) {
+                    DataRow row = dt.Rows[0];
+                    int pIdObservacion = Convert.ToInt32(row["id_observacion"]);
+                    DateTime pFecha = Convert.ToDateTime(row["fecha"]);
+                    string pObservacion = row["observacion"].ToString();
+
+                    observacionEncontrada = new Observacion(pIdObservacion, pFecha, pObservacion);
+                }
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Obtener por ID de Observacion]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return observacionEncontrada;
         }
     }
 

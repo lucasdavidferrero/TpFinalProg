@@ -27,18 +27,19 @@
             txtLegajo = new TextBox();
             txtObservacion = new TextBox();
             label2 = new Label();
-            dataGridView1 = new DataGridView();
-            label4 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            btnLimpiar = new Button();
-            btnBorrar = new Button();
-            btnGuardar = new Button();
-            btnBuscar = new Button();
+            dgvObservacion = new DataGridView();
             fecha = new DataGridViewTextBoxColumn();
             ID = new DataGridViewTextBoxColumn();
             BAJA = new DataGridViewTextBoxColumn();
             OBSERVACION = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            legajo = new DataGridViewTextBoxColumn();
+            label4 = new Label();
+            date = new DateTimePicker();
+            btnLimpiar = new Button();
+            btnEliminar = new Button();
+            btnGuardar = new Button();
+            btnBuscar = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvObservacion).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -74,15 +75,51 @@
             label2.TabIndex = 47;
             label2.Text = "Observacion:";
             // 
-            // dataGridView1
+            // dgvObservacion
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { fecha, ID, BAJA, OBSERVACION });
-            dataGridView1.Location = new Point(62, 263);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(594, 180);
-            dataGridView1.TabIndex = 49;
+            dgvObservacion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvObservacion.Columns.AddRange(new DataGridViewColumn[] { fecha, ID, BAJA, OBSERVACION, legajo });
+            dgvObservacion.Location = new Point(62, 263);
+            dgvObservacion.Name = "dgvObservacion";
+            dgvObservacion.RowTemplate.Height = 25;
+            dgvObservacion.Size = new Size(594, 180);
+            dgvObservacion.TabIndex = 49;
+            dgvObservacion.RowHeaderMouseClick += dgvObservacion_RowHeaderMouseClick;
+            dgvObservacion.RowHeaderMouseDoubleClick += dgvObservacion_RowHeaderMouseDoubleClick;
+            // 
+            // fecha
+            // 
+            fecha.DataPropertyName = "fecha";
+            fecha.HeaderText = "Fecha";
+            fecha.Name = "fecha";
+            // 
+            // ID
+            // 
+            ID.DataPropertyName = "id_observacion";
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            ID.Visible = false;
+            // 
+            // BAJA
+            // 
+            BAJA.DataPropertyName = "baja";
+            BAJA.HeaderText = "BAJA";
+            BAJA.Name = "BAJA";
+            BAJA.Visible = false;
+            // 
+            // OBSERVACION
+            // 
+            OBSERVACION.DataPropertyName = "observacion";
+            OBSERVACION.HeaderText = "Observacion";
+            OBSERVACION.Name = "OBSERVACION";
+            OBSERVACION.Width = 450;
+            // 
+            // legajo
+            // 
+            legajo.DataPropertyName = "legajo_FK";
+            legajo.HeaderText = "Legajo";
+            legajo.Name = "legajo";
+            legajo.Visible = false;
             // 
             // label4
             // 
@@ -93,13 +130,13 @@
             label4.TabIndex = 50;
             label4.Text = "Fecha:";
             // 
-            // dateTimePicker1
+            // date
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(419, 18);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(110, 23);
-            dateTimePicker1.TabIndex = 51;
+            date.Format = DateTimePickerFormat.Short;
+            date.Location = new Point(419, 18);
+            date.Name = "date";
+            date.Size = new Size(110, 23);
+            date.TabIndex = 51;
             // 
             // btnLimpiar
             // 
@@ -112,18 +149,20 @@
             btnLimpiar.TabIndex = 156;
             btnLimpiar.Text = "Reiniciar";
             btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
-            // btnBorrar
+            // btnEliminar
             // 
-            btnBorrar.BackColor = Color.Transparent;
-            btnBorrar.BackgroundImageLayout = ImageLayout.None;
-            btnBorrar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBorrar.Location = new Point(303, 213);
-            btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(110, 30);
-            btnBorrar.TabIndex = 155;
-            btnBorrar.Text = "Eliminar";
-            btnBorrar.UseVisualStyleBackColor = false;
+            btnEliminar.BackColor = Color.Transparent;
+            btnEliminar.BackgroundImageLayout = ImageLayout.None;
+            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEliminar.Location = new Point(303, 213);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(110, 30);
+            btnEliminar.TabIndex = 155;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnBorrar_Click;
             // 
             // btnGuardar
             // 
@@ -136,6 +175,7 @@
             btnGuardar.TabIndex = 154;
             btnGuardar.Text = "Crear";
             btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // btnBuscar
             // 
@@ -145,29 +185,7 @@
             btnBuscar.TabIndex = 159;
             btnBuscar.Text = " 🔎";
             btnBuscar.UseVisualStyleBackColor = true;
-            // 
-            // fecha
-            // 
-            fecha.HeaderText = "Fecha";
-            fecha.Name = "fecha";
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            ID.Visible = false;
-            // 
-            // BAJA
-            // 
-            BAJA.HeaderText = "BAJA";
-            BAJA.Name = "BAJA";
-            BAJA.Visible = false;
-            // 
-            // OBSERVACION
-            // 
-            OBSERVACION.HeaderText = "Observacion";
-            OBSERVACION.Name = "OBSERVACION";
-            OBSERVACION.Width = 450;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // ObservacionFrm
             // 
@@ -177,18 +195,18 @@
             ClientSize = new Size(704, 461);
             Controls.Add(btnBuscar);
             Controls.Add(btnLimpiar);
-            Controls.Add(btnBorrar);
+            Controls.Add(btnEliminar);
             Controls.Add(btnGuardar);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(date);
             Controls.Add(label4);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvObservacion);
             Controls.Add(label2);
             Controls.Add(txtObservacion);
             Controls.Add(txtLegajo);
             Controls.Add(label1);
             Name = "ObservacionFrm";
             Text = "Observacion";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvObservacion).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -198,16 +216,17 @@
         private TextBox txtLegajo;
         private TextBox txtObservacion;
         private Label label2;
-        private DataGridView dataGridView1;
+        private DataGridView dgvObservacion;
         private Label label4;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker date;
         private Button btnLimpiar;
-        private Button btnBorrar;
+        private Button btnEliminar;
         private Button btnGuardar;
         private Button btnBuscar;
         private DataGridViewTextBoxColumn fecha;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn BAJA;
         private DataGridViewTextBoxColumn OBSERVACION;
+        private DataGridViewTextBoxColumn legajo;
     }
 }

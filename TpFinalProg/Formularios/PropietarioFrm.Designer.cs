@@ -90,7 +90,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(90, 78);
+            label2.Location = new Point(90, 86);
             label2.Name = "label2";
             label2.Size = new Size(35, 15);
             label2.TabIndex = 22;
@@ -149,7 +149,7 @@
             // 
             // txtCuit
             // 
-            txtCuit.Location = new Point(134, 75);
+            txtCuit.Location = new Point(134, 81);
             txtCuit.Name = "txtCuit";
             txtCuit.Size = new Size(206, 23);
             txtCuit.TabIndex = 1;
