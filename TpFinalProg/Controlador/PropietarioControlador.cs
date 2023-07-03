@@ -34,6 +34,12 @@ namespace TpFinalProg.Controlador {
             DataTable propietarios = clsPropietario.obtenerTodos();
             return propietarios;
         }
+        public static void encontrarPorIdRazonSocial(int id) {
+            Propietario clsPropietario = new Propietario();
+            clsPropietario.encontrarPorIdRazonSocial(id);
+        }
+
+
 
     }
 }

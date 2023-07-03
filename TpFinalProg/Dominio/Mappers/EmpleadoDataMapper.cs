@@ -150,6 +150,24 @@ namespace TpFinalProg.Dominio.Mappers {
                 cx.cerrarConexionLiberarRecursos();
             }
         }
+        public static DataSet cargarCombo() {
+            DataSet dt = new DataSet();
+            string sql = "  Select 0 as legajo, 'Seleccione...' as descripcion " +
+                "Union SELECT legajo, nombre +' '+ apellido FROM Empleado WHERE baja=0 order by legajo";
 
-}
+            try {
+                Conexion cx = new Conexion();
+                SqlCommand cmd = cx.getComando();
+                cx.SetComandoSQL(sql);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+                cx.cerrarConexionLiberarRecursos();
+
+            } catch (SqlException ex) {
+                return null;
+            }
+            return dt;
+        }
+
+    }
 }

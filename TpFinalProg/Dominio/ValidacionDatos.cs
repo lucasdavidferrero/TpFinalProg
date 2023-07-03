@@ -11,6 +11,8 @@ namespace TpFinalProg.Dominio {
     internal class ValidacionDatos {
         public static bool PropietarioAdmiteProyecto(int idPropietario) {
 
+            //NO HABRIA QUE PONER BAJA TAMBIEN ACA?
+
             string q = "SELECT id_proyecto FROM Proyecto WHERE id_propietario_FK = @Id;";
 
             Conexion cx = new Conexion();

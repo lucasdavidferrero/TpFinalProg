@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TpFinalProg.Dominio.Mappers;
+using TpFinalProg.Utilidades;
 
 namespace TpFinalProg.Dominio.Entidades {
     internal class Empleado {
@@ -57,6 +58,18 @@ namespace TpFinalProg.Dominio.Entidades {
 
         public void eliminarPorId(int id) {
             EmpleadoDataMapper.eliminar(id);
+        }
+        public static DataTable CargarCombo() {
+            DataSet ds = EmpleadoDataMapper.cargarCombo();
+            DataTable dtListaAll = null;
+            if (ds != null) {
+                dtListaAll = ds.Tables[0];
+
+            } else {
+                Mensaje.Error("No hay datos para de categoria");
+            }
+            return dtListaAll;
+
         }
     }
 }

@@ -128,6 +128,7 @@ namespace TpFinalProg {
             txtCuit.Enabled = false;
         }
 
+
         private void dgvPropietario_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
             btnEliminar.Enabled = true;
             this.idRowSeleccionadoEliminar = e.RowIndex;

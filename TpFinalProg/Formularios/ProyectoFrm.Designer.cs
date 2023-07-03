@@ -34,15 +34,15 @@
             cbResponsable = new ComboBox();
             dgvProyecto = new DataGridView();
             btnLimpiar = new Button();
-            btnBorrar = new Button();
+            btnEliminar = new Button();
             btnGuardar = new Button();
             cbPropietario = new ComboBox();
             NOMBRE = new DataGridViewTextBoxColumn();
             PROPIETARIO = new DataGridViewTextBoxColumn();
             RESPONSABLE = new DataGridViewTextBoxColumn();
-            MONTOESTIMADO = new DataGridViewTextBoxColumn();
-            TIEMPOESTIMADO = new DataGridViewTextBoxColumn();
-            id = new DataGridViewTextBoxColumn();
+            MONTO_ESTIMADO = new DataGridViewTextBoxColumn();
+            tiempo_estimado = new DataGridViewTextBoxColumn();
+            id_proyecto = new DataGridViewTextBoxColumn();
             baja = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProyecto).BeginInit();
             SuspendLayout();
@@ -123,16 +123,15 @@
             // 
             // dgvProyecto
             // 
-            dgvProyecto.AllowUserToAddRows = false;
-            dgvProyecto.AllowUserToDeleteRows = false;
             dgvProyecto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProyecto.Columns.AddRange(new DataGridViewColumn[] { NOMBRE, PROPIETARIO, RESPONSABLE, MONTOESTIMADO, TIEMPOESTIMADO, id, baja });
+            dgvProyecto.Columns.AddRange(new DataGridViewColumn[] { NOMBRE, PROPIETARIO, RESPONSABLE, MONTO_ESTIMADO, tiempo_estimado, id_proyecto, baja });
             dgvProyecto.Location = new Point(51, 180);
             dgvProyecto.Name = "dgvProyecto";
-            dgvProyecto.ReadOnly = true;
             dgvProyecto.RowTemplate.Height = 25;
             dgvProyecto.Size = new Size(733, 271);
             dgvProyecto.TabIndex = 14;
+            dgvProyecto.RowHeaderMouseClick += dgvProyecto_RowHeaderMouseClick;
+            dgvProyecto.RowHeaderMouseDoubleClick += dgvProyecto_RowHeaderMouseDoubleClick;
             // 
             // btnLimpiar
             // 
@@ -145,18 +144,20 @@
             btnLimpiar.TabIndex = 156;
             btnLimpiar.Text = "Limpiar";
             btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
-            // btnBorrar
+            // btnEliminar
             // 
-            btnBorrar.BackColor = Color.Transparent;
-            btnBorrar.BackgroundImageLayout = ImageLayout.None;
-            btnBorrar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBorrar.Location = new Point(531, 128);
-            btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(110, 30);
-            btnBorrar.TabIndex = 155;
-            btnBorrar.Text = "Eliminar";
-            btnBorrar.UseVisualStyleBackColor = false;
+            btnEliminar.BackColor = Color.Transparent;
+            btnEliminar.BackgroundImageLayout = ImageLayout.None;
+            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEliminar.Location = new Point(531, 128);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(110, 30);
+            btnEliminar.TabIndex = 155;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnGuardar
             // 
@@ -169,6 +170,7 @@
             btnGuardar.TabIndex = 154;
             btnGuardar.Text = "Crear";
             btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // cbPropietario
             // 
@@ -184,7 +186,6 @@
             NOMBRE.Frozen = true;
             NOMBRE.HeaderText = "Nombre";
             NOMBRE.Name = "NOMBRE";
-            NOMBRE.ReadOnly = true;
             NOMBRE.Width = 150;
             // 
             // PROPIETARIO
@@ -193,7 +194,6 @@
             PROPIETARIO.Frozen = true;
             PROPIETARIO.HeaderText = "Propietario";
             PROPIETARIO.Name = "PROPIETARIO";
-            PROPIETARIO.ReadOnly = true;
             PROPIETARIO.Width = 150;
             // 
             // RESPONSABLE
@@ -202,35 +202,31 @@
             RESPONSABLE.Frozen = true;
             RESPONSABLE.HeaderText = "Responsable";
             RESPONSABLE.Name = "RESPONSABLE";
-            RESPONSABLE.ReadOnly = true;
             RESPONSABLE.Width = 150;
             // 
-            // MONTOESTIMADO
+            // MONTO_ESTIMADO
             // 
-            MONTOESTIMADO.DataPropertyName = "monto_estimado";
-            MONTOESTIMADO.Frozen = true;
-            MONTOESTIMADO.HeaderText = "Monto Estimado";
-            MONTOESTIMADO.Name = "MONTOESTIMADO";
-            MONTOESTIMADO.ReadOnly = true;
-            MONTOESTIMADO.Width = 120;
+            MONTO_ESTIMADO.DataPropertyName = "monto_estimado";
+            MONTO_ESTIMADO.Frozen = true;
+            MONTO_ESTIMADO.HeaderText = "Monto Estimado";
+            MONTO_ESTIMADO.Name = "MONTO_ESTIMADO";
+            MONTO_ESTIMADO.Width = 120;
             // 
-            // TIEMPOESTIMADO
+            // tiempo_estimado
             // 
-            TIEMPOESTIMADO.DataPropertyName = "timepo_estimado";
-            TIEMPOESTIMADO.Frozen = true;
-            TIEMPOESTIMADO.HeaderText = "Tiempo Estimado";
-            TIEMPOESTIMADO.Name = "TIEMPOESTIMADO";
-            TIEMPOESTIMADO.ReadOnly = true;
-            TIEMPOESTIMADO.Width = 120;
+            tiempo_estimado.DataPropertyName = "tiempo_estimado";
+            tiempo_estimado.Frozen = true;
+            tiempo_estimado.HeaderText = "Tiempo Estimado";
+            tiempo_estimado.Name = "tiempo_estimado";
+            tiempo_estimado.Width = 120;
             // 
-            // id
+            // id_proyecto
             // 
-            id.DataPropertyName = "id_proyecto";
-            id.Frozen = true;
-            id.HeaderText = "id";
-            id.Name = "id";
-            id.ReadOnly = true;
-            id.Visible = false;
+            id_proyecto.DataPropertyName = "id_proyecto";
+            id_proyecto.Frozen = true;
+            id_proyecto.HeaderText = "id";
+            id_proyecto.Name = "id_proyecto";
+            id_proyecto.Visible = false;
             // 
             // baja
             // 
@@ -238,7 +234,6 @@
             baja.Frozen = true;
             baja.HeaderText = "baja";
             baja.Name = "baja";
-            baja.ReadOnly = true;
             baja.Visible = false;
             // 
             // ProyectoFrm
@@ -249,7 +244,7 @@
             ClientSize = new Size(835, 487);
             Controls.Add(cbPropietario);
             Controls.Add(btnLimpiar);
-            Controls.Add(btnBorrar);
+            Controls.Add(btnEliminar);
             Controls.Add(btnGuardar);
             Controls.Add(dgvProyecto);
             Controls.Add(cbResponsable);
@@ -282,15 +277,15 @@
         private ComboBox cbResponsable;
         private DataGridView dgvProyecto;
         private Button btnLimpiar;
-        private Button btnBorrar;
+        private Button btnEliminar;
         private Button btnGuardar;
         private ComboBox cbPropietario;
         private DataGridViewTextBoxColumn NOMBRE;
         private DataGridViewTextBoxColumn PROPIETARIO;
         private DataGridViewTextBoxColumn RESPONSABLE;
-        private DataGridViewTextBoxColumn MONTOESTIMADO;
-        private DataGridViewTextBoxColumn TIEMPOESTIMADO;
-        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn MONTO_ESTIMADO;
+        private DataGridViewTextBoxColumn tiempo_estimado;
+        private DataGridViewTextBoxColumn id_proyecto;
         private DataGridViewTextBoxColumn baja;
     }
 }

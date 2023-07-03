@@ -32,7 +32,7 @@ namespace TpFinalProg.Utilidades {
         }
 
 
-        private static int calcularDigitoCuit(string cuit) {
+      /*  private static int calcularDigitoCuit(string cuit) {
             int[] mult = new[] { 5, 4, 3, 2, 7, 6, 5, 4, 3, 2 };
             char[] nums = cuit.ToCharArray();
             int total = 0;
@@ -44,7 +44,7 @@ namespace TpFinalProg.Utilidades {
             var resto = total % 11;
             return resto == 0 ? 0 : resto == 1 ? 9 : 11 - resto;
         }
-
+      */
         public static bool cuit(string cuit) {
             if (cuit == null) {
                 return false;
@@ -52,11 +52,12 @@ namespace TpFinalProg.Utilidades {
 
             if (cuit.Length != 11) {
                 return false;
-            } else {
-                int calculado = calcularDigitoCuit(cuit);
-                int digito = int.Parse(cuit.Substring(10));
-                return calculado == digito;
-            }
+            }else {
+               // int calculado = calcularDigitoCuit(cuit);
+                //int digito = int.Parse(cuit.Substring(10));
+                //return calculado == digito;
+                return true;
+           }
         }
     }
 }

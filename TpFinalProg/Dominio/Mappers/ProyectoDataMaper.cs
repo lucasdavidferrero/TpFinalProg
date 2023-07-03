@@ -165,7 +165,7 @@ namespace PruebaTpFinal.Dominio.Mappers
         }
 
 
-        public static int Delete(int idProyecto)
+        public static int eliminar(int idProyecto)
         {
             string query = @"UPDATE Proyecto SET baja = 1 WHERE id_proyecto = @idProyecto";
 
@@ -193,6 +193,7 @@ namespace PruebaTpFinal.Dominio.Mappers
 
             return rowsAffected;
         }
+
     }
 
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TpFinalProg.Clases;
 using TpFinalProg.Dominio.Entidades;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace TpFinalProg.Dominio.Mappers {
     internal class PropietarioDataMapper {
@@ -174,6 +175,51 @@ namespace TpFinalProg.Dominio.Mappers {
             string pEmail = dr["email"].ToString()!;
             string pPersonaContacto = dr["persona_contacto"].ToString()!;
             return new Propietario(pId, pRazonSocial, pCuit, pTel, pEmail, pPersonaContacto);
+        }
+
+        //DE ACA
+        public static DataSet cargarCombo() {
+            DataSet dt = new DataSet();
+            string sql = "Select 0 as id_propietario, 'Seleccione...' as descripcion " +
+                "Union SELECT id_propietario, razon_social FROM Propietario WHERE baja=0 order by id_propietario ";
+
+            try {
+                Conexion cx = new Conexion();
+                SqlCommand cmd = cx.getComando();
+                cx.SetComandoSQL(sql);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+                cx.cerrarConexionLiberarRecursos();
+
+            } catch (SqlException ex) {
+                return null;
+            }
+            return dt;
+        }
+
+        public static Propietario encontrarPorIdRazonSocial(int id) {
+            Propietario propEncontrado = null;
+            string q = "SELECT razon_social FROM Propietario WHERE id_propietario = @Id";
+            DataTable dt = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            try {
+                cx.SetComandoSQL(q);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+                if (dt.Rows.Count != 0) {
+                    propEncontrado = construirPropietarioDesdeDataRow(dt.Rows[0]);
+                }
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Id Propietario Razon Social]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return propEncontrado;
         }
     }
 }

@@ -1,8 +1,11 @@
-﻿using System;
+﻿using PruebaTpFinal.Dominio.Mappers;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TpFinalProg.Dominio.Mappers;
 
 namespace TpFinalProg.Dominio.Entidades {
     internal class Proyecto {
@@ -23,6 +26,30 @@ namespace TpFinalProg.Dominio.Entidades {
             this.tiempoEstimado = tiempoEstimado;
             this.idPropietario = idPropietario;
             this.nroLegajo = legajo;
+        }
+
+         public Proyecto() { }
+        public int guardar() {
+            if (idProyecto == 0) {
+                int id = ProyectoDataMapper.insertarNuevo(this);
+                return id;
+            }
+
+            Proyecto proEncontrado = ProyectoDataMapper.encontrarPorId(this.idPropietario);
+            if (proEncontrado != null) {
+                ProyectoDataMapper.modificar(this);
+                return idProyecto;
+            } else {
+                return -1; // no se encontró un propietario con el ID provisto.
+            }
+        }
+
+        public DataTable obtenerTodos() {
+            return ProyectoDataMapper.obtenerTodos();
+        }
+
+        public void eliminarPorId(int id) {
+            ProyectoDataMapper.eliminar(id);
         }
     }
 }
