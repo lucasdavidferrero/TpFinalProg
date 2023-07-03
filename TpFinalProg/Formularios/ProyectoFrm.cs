@@ -209,21 +209,21 @@ namespace TpFinalProg {
             txtNombre.Text = celdas["nombre"].Value.ToString();
             txtMonto.Text = celdas["MONTO_ESTIMADO"].Value.ToString();
 
-            // cbPropietario.SelectedValue = celdas["PROPIETARIO"];
-            // cbPropietario.Text = celdas["PROPIETARIO"].Value.ToString();
-            // cbResponsable.Text = celdas["RESPONSABLE"].Value.ToString();
+             //cbPropietario.SelectedValue = celdas["PROPIETARIO"];
+             cbPropietario.Text = celdas["PROPIETARIO"].Value.ToString();
+             cbResponsable.Text = celdas["RESPONSABLE"].Value.ToString();
 
-            int idPropietario = Convert.ToInt32(cbPropietario.SelectedValue = celdas["PROPIETARIO"].Value);
+          /*  int idPropietario = Convert.ToInt32(cbPropietario.SelectedValue = celdas["PROPIETARIO"].Value);
 
             PropietarioDataMapper.encontrarPorIdRazonSocial(idPropietario);
 
-            cbPropietario.SelectedValue = idPropietario;
+            cbPropietario.SelectedValue = idPropietario;*/
 
-            int idResponsable = Convert.ToInt32(cbResponsable.SelectedValue = celdas["RESPONSABLE"].Value);
+            /*int idResponsable = Convert.ToInt32(cbResponsable.SelectedValue = celdas["RESPONSABLE"].Value);
 
             EmpleadoDataMapper.encontrarPorIdNombre(idResponsable);
 
-            cbResponsable.SelectedValue = idResponsable;
+            cbResponsable.SelectedValue = idResponsable;*/
 
 
             txtTiempo.Text = celdas["tiempo_estimado"].Value.ToString();
