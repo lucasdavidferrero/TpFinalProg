@@ -54,6 +54,22 @@ namespace TpFinalProg.Dominio.Mappers {
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dtListAll);
 
+                // Agrega una nueva columna al DataTable que contenga el nombre y apellido concatenados
+                dtListAll.Columns.Add("nombreCompleto", typeof(string));
+
+                // Recorre las filas del DataTable y concatena los valores de las columnas "nombre" y "apellido"
+                foreach (DataRow row in dtListAll.Rows) {
+                    string nombre = row["nombre"].ToString();
+                    string apellido = row["apellido"].ToString();
+
+                    // Concatena el nombre y apellido separados por un espacio
+                    string nombreCompleto = nombre + " " + apellido;
+
+                    // Asigna el valor concatenado a la nueva columna "nombreCompleto"
+                    row["nombreCompleto"] = nombreCompleto;
+                }
+
+
             } catch (SqlException e) {
                 dtListAll = null;
                 Console.WriteLine("Error en la base de datos. [Listado Empleado]");
