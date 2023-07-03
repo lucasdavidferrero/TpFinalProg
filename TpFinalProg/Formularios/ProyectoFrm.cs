@@ -18,24 +18,23 @@ namespace TpFinalProg {
     public partial class ProyectoFrm : Form {
         private int idRowSeleccionado = -1;
         private int idRowSeleccionadoEliminar = -1;
+
         public ProyectoFrm() {
             InitializeComponent();
-
             StartPosition = FormStartPosition.CenterScreen;
-            cargarr();
-            cargarp();
-            /*cargarCbPropietario();
-            cargarCbResponsable();*/
+
+            cargarCbResponsable();
+            cargarCbPropietario();
             listarProyecto();
             btnEliminar.Enabled = false;
         }
-        private void cargarr() {
+        private void cargarCbResponsable() {
             DataTable ta = Empleado.CargarCombo();
             cbResponsable.DataSource = ta.DefaultView;
             cbResponsable.ValueMember = "legajo";
             cbResponsable.DisplayMember = "descripcion";
         }
-        private void cargarp() {
+        private void cargarCbPropietario() {
             DataTable ta = Propietario.CargarCombo();
             cbPropietario.DataSource = ta.DefaultView;
             cbPropietario.ValueMember = "id_propietario";
@@ -71,11 +70,6 @@ namespace TpFinalProg {
               cbResponsable.ValueMember = "legajo";
           }
         */
-
-        private void button1_Click(object sender, EventArgs e) {
-            PropietarioFrm prop = new PropietarioFrm();
-            prop.Show();
-        }
 
         /*   private void cbPropietario_SelectedIndexChanged(object sender, EventArgs e) {
                // Agrega una fila vacía al DataGridView si no tiene filas
@@ -134,8 +128,8 @@ namespace TpFinalProg {
             txtNombre.Text = "";
             txtMonto.Text = "";
             txtTiempo.Text = "";
-            cbPropietario.SelectedIndex = 0;
-            cbResponsable.SelectedIndex = 0;
+            cargarCbResponsable();
+            cargarCbPropietario();
         }
 
         private void reiniciarFormulario() {
@@ -149,70 +143,58 @@ namespace TpFinalProg {
         private void listarProyecto() {
             DataTable listadoProyecto = Controlador.ProyectoControlador.listarTodo();
             dgvProyecto.DataSource = listadoProyecto;
-
-
-            /* foreach (DataRow row in listadoProyecto.Rows) {
-                 // Accede a los valores de cada columna en la fila actual
-                 foreach (DataColumn column in listadoProyecto.Columns) {
-                     // Accede al valor de la columna en la fila actual
-                     object value = row["id_propietario"];
-
-                     // Haz algo con el valor, como mostrarlo en la consola
-                     Console.WriteLine(value.ToString());
-                 }
-             }
-
-
-             // Obtén el elemento seleccionado del ComboBox
-             DataRowView selectedRow = cbPropietario.SelectedItem as DataRowView;
-
-             if (selectedRow != null) {
-                 // Obtén el valor del elemento seleccionado
-                 int selectedId = Convert.ToInt32(selectedRow["id_propietario"]);
-
-                 // Filtra los datos del DataTable original para obtener un nuevo DataTable con los datos seleccionados
-                 Propietario pSeleccionado = PropietarioDataMapper.obtenerPorId(selectedId);
-
-                 foreach (DataGridViewRow row in dgvProyecto.Rows) {
-                     // Asigna el valor del propietario a la columna correspondiente
-                     row.Cells["PROPIETARIO"].Value = pSeleccionado.razonSocial;
-                 }
-             }*/
         }
+
         private void btnGuardar_Click(object sender, EventArgs e) {
             if (validarFrm()) {
                 return;
             }
 
             string nombre = txtNombre.Text.Trim();
-            float montoEstimado = Convert.ToInt32(txtMonto.Text.Trim());
+            double montoEstimado = Convert.ToDouble(txtMonto.Text.Trim());
             int tiempoEstimado = Convert.ToInt32(txtTiempo.Text.Trim());
             int idPropietario = Convert.ToInt32(cbPropietario.SelectedValue);
             int legajo = Convert.ToInt32(cbResponsable.SelectedValue);
 
+
+
             if (ValidacionDatos.PropietarioAdmiteProyecto(idPropietario)) {
-            try {
-                /* DataRowView selectedRow = cbPropietario.SelectedItem as DataRowView;
-            if (selectedRow != null) {
-                // Obtén el valor del elemento seleccionado
-                idPropietario = Convert.ToInt32(selectedRow["id_propietario"]);
+                try {
+                    /* DataRowView selectedRow = cbPropietario.SelectedItem as DataRowView;
+                if (selectedRow != null) {
+                    // Obtén el valor del elemento seleccionado
+                    idPropietario = Convert.ToInt32(selectedRow["id_propietario"]);
 
-            */
-                if (this.idRowSeleccionado < 0) {
-                    Controlador.ProyectoControlador.crear(nombre, montoEstimado, tiempoEstimado, idPropietario, legajo);
-                } else {
-                    int idProp = Convert.ToInt32(dgvProyecto.Rows[this.idRowSeleccionado].Cells["id_propietario"].Value);
-                    ProyectoControlador.actualizar(idProp, nombre, montoEstimado, tiempoEstimado, idPropietario, legajo);
+                */
+                    if (this.idRowSeleccionado < 0) {
+                        Controlador.ProyectoControlador.crear(nombre, montoEstimado, tiempoEstimado, idPropietario, legajo);
+                    } else {
+                        int idProy = Convert.ToInt32(dgvProyecto.Rows[this.idRowSeleccionado].Cells["id_proyecto"].Value);
+                        ProyectoControlador.actualizar(idProy, nombre, montoEstimado, tiempoEstimado, idPropietario, legajo);
+                    }
+
+                    listarProyecto();
+                    reiniciarFormulario();
+
+                } catch (Exception ex) {
+                    Mensaje.Advertencia(ex.Message);
                 }
-                listarProyecto();
-                reiniciarFormulario();
+            } else {
+                Mensaje.Error("El propietario tiene mas de 3 proyectos cargados");
+            }
+        }
 
-            } catch (Exception ex) {
-                Mensaje.Advertencia(ex.Message);
+        private void btnEliminar_Click(object sender, EventArgs e) {
+            if (idRowSeleccionadoEliminar >= 0) {
+                int id_proyecto = Convert.ToInt32(dgvProyecto.Rows[idRowSeleccionadoEliminar].Cells["id_proyecto"].Value.ToString());
+                ProyectoControlador.eliminar(id_proyecto);
+                reiniciarFormulario();
+                listarProyecto();
             }
-             } else {
-                 Mensaje.Error("El propietario tiene mas de 3 proyectos cargados");
-            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e) {
+            reiniciarFormulario();
         }
 
         private void dgvProyecto_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
@@ -228,39 +210,65 @@ namespace TpFinalProg {
             txtNombre.Text = celdas["nombre"].Value.ToString();
             txtMonto.Text = celdas["MONTO_ESTIMADO"].Value.ToString();
 
-
-
-            //int razonsocial = cbPropietario.Text = celdas["PROPIETARIO"];
-            //PropietarioControlador.encontrarPorIdRazonSocial(razonsocial);
-
+            //cbPropietario.SelectedValue = celdas["PROPIETARIO"];
             cbPropietario.Text = celdas["PROPIETARIO"].Value.ToString();
-
             cbResponsable.Text = celdas["RESPONSABLE"].Value.ToString();
+
+            /* int idPropietario = Convert.ToInt32(cbPropietario.SelectedValue = celdas["PROPIETARIO"].Value);
+
+             PropietarioDataMapper.encontrarPorIdRazonSocial(idPropietario);
+
+             cbPropietario.SelectedItem = idPropietario;
+
+             int idResponsable = Convert.ToInt32(cbResponsable.SelectedValue = celdas["RESPONSABLE"].Value);
+
+             EmpleadoDataMapper.encontrarPorIdNombre(idResponsable);
+
+             cbResponsable.SelectedItem = idResponsable;*/
+
 
             txtTiempo.Text = celdas["tiempo_estimado"].Value.ToString();
 
             btnGuardar.Text = "Guardar cambios";
-
-
-        }
-
-        private void btnLimpiar_Click(object sender, EventArgs e) {
-            reiniciarFormulario();
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e) {
-            if (idRowSeleccionadoEliminar >= 0) {
-                int id_proyecto = Convert.ToInt32(dgvProyecto.Rows[idRowSeleccionadoEliminar].Cells["id_proyecto"].Value.ToString());
-                ProyectoControlador.eliminar(id_proyecto);
-                reiniciarFormulario();
-                listarProyecto();
-            }
         }
 
         private void dgvProyecto_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
-            btnEliminar.Enabled = true;
-            this.idRowSeleccionadoEliminar = e.RowIndex;
-        }
+                btnEliminar.Enabled = true;
+                this.idRowSeleccionadoEliminar = e.RowIndex;
+            }
+
+
+
+        /* foreach (DataRow row in listadoProyecto.Rows) {
+             // Accede a los valores de cada columna en la fila actual
+             foreach (DataColumn column in listadoProyecto.Columns) {
+                 // Accede al valor de la columna en la fila actual
+                 object value = row["id_propietario"];
+
+                 // Haz algo con el valor, como mostrarlo en la consola
+                 Console.WriteLine(value.ToString());
+             }
+         }
+
+
+         // Obtén el elemento seleccionado del ComboBox
+         DataRowView selectedRow = cbPropietario.SelectedItem as DataRowView;
+
+         if (selectedRow != null) {
+             // Obtén el valor del elemento seleccionado
+             int selectedId = Convert.ToInt32(selectedRow["id_propietario"]);
+
+             // Filtra los datos del DataTable original para obtener un nuevo DataTable con los datos seleccionados
+             Propietario pSeleccionado = PropietarioDataMapper.obtenerPorId(selectedId);
+
+             foreach (DataGridViewRow row in dgvProyecto.Rows) {
+                 // Asigna el valor del propietario a la columna correspondiente
+                 row.Cells["PROPIETARIO"].Value = pSeleccionado.razonSocial;
+             }
+         }*/
     }
-}
+
+ 
+
+    }
 

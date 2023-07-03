@@ -33,10 +33,6 @@
             label5 = new Label();
             cbResponsable = new ComboBox();
             dgvProyecto = new DataGridView();
-            btnLimpiar = new Button();
-            btnEliminar = new Button();
-            btnGuardar = new Button();
-            cbPropietario = new ComboBox();
             NOMBRE = new DataGridViewTextBoxColumn();
             PROPIETARIO = new DataGridViewTextBoxColumn();
             RESPONSABLE = new DataGridViewTextBoxColumn();
@@ -44,6 +40,10 @@
             tiempo_estimado = new DataGridViewTextBoxColumn();
             id_proyecto = new DataGridViewTextBoxColumn();
             baja = new DataGridViewTextBoxColumn();
+            btnLimpiar = new Button();
+            btnEliminar = new Button();
+            btnGuardar = new Button();
+            cbPropietario = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvProyecto).BeginInit();
             SuspendLayout();
             // 
@@ -133,53 +133,6 @@
             dgvProyecto.RowHeaderMouseClick += dgvProyecto_RowHeaderMouseClick;
             dgvProyecto.RowHeaderMouseDoubleClick += dgvProyecto_RowHeaderMouseDoubleClick;
             // 
-            // btnLimpiar
-            // 
-            btnLimpiar.BackColor = Color.Transparent;
-            btnLimpiar.BackgroundImageLayout = ImageLayout.None;
-            btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(647, 128);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(110, 30);
-            btnLimpiar.TabIndex = 156;
-            btnLimpiar.Text = "Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = false;
-            btnLimpiar.Click += btnLimpiar_Click;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.BackColor = Color.Transparent;
-            btnEliminar.BackgroundImageLayout = ImageLayout.None;
-            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEliminar.Location = new Point(531, 128);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(110, 30);
-            btnEliminar.TabIndex = 155;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = false;
-            btnEliminar.Click += btnEliminar_Click;
-            // 
-            // btnGuardar
-            // 
-            btnGuardar.BackColor = Color.Transparent;
-            btnGuardar.BackgroundImageLayout = ImageLayout.None;
-            btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardar.Location = new Point(415, 128);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(110, 30);
-            btnGuardar.TabIndex = 154;
-            btnGuardar.Text = "Crear";
-            btnGuardar.UseVisualStyleBackColor = false;
-            btnGuardar.Click += btnGuardar_Click;
-            // 
-            // cbPropietario
-            // 
-            cbPropietario.FormattingEnabled = true;
-            cbPropietario.Location = new Point(155, 77);
-            cbPropietario.Name = "cbPropietario";
-            cbPropietario.Size = new Size(223, 23);
-            cbPropietario.TabIndex = 159;
-            // 
             // NOMBRE
             // 
             NOMBRE.DataPropertyName = "nombre";
@@ -235,6 +188,53 @@
             baja.HeaderText = "baja";
             baja.Name = "baja";
             baja.Visible = false;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.BackColor = Color.Transparent;
+            btnLimpiar.BackgroundImageLayout = ImageLayout.None;
+            btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLimpiar.Location = new Point(647, 128);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(110, 30);
+            btnLimpiar.TabIndex = 156;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.BackColor = Color.Transparent;
+            btnEliminar.BackgroundImageLayout = ImageLayout.None;
+            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEliminar.Location = new Point(531, 128);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(110, 30);
+            btnEliminar.TabIndex = 155;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.BackColor = Color.Transparent;
+            btnGuardar.BackgroundImageLayout = ImageLayout.None;
+            btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGuardar.Location = new Point(415, 128);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(110, 30);
+            btnGuardar.TabIndex = 154;
+            btnGuardar.Text = "Crear";
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
+            // 
+            // cbPropietario
+            // 
+            cbPropietario.FormattingEnabled = true;
+            cbPropietario.Location = new Point(155, 77);
+            cbPropietario.Name = "cbPropietario";
+            cbPropietario.Size = new Size(223, 23);
+            cbPropietario.TabIndex = 159;
             // 
             // ProyectoFrm
             // 

@@ -3,10 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using TpFinalProg.Clases;
 using TpFinalProg.Dominio.Entidades;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace PruebaTpFinal.Dominio.Mappers
 {
@@ -51,7 +54,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return generatedId;
         }
 
-        public static DataTable obtenerTodos()
+       public static DataTable obtenerTodos()
         {
             DataTable dtListAll = new DataTable("ListarProyectos");
             string query = "SELECT * FROM Proyecto WHERE baja = 0";
@@ -75,7 +78,27 @@ namespace PruebaTpFinal.Dominio.Mappers
 
             return dtListAll;
         }
+        /*public static DataTable obtenerTodos() {
+            DataTable dtListAll = new DataTable("ListarProyectos");
+            string query = "SELECT Proyecto.nombre, Proyecto.monto_estimado, Proyecto.tiempo_estimado, Propietario.razon_social, Empleado.nombre+' '+apellido" +
+                " FROM Proyecto INNER JOIN Propietario ON Proyecto.id_propietario_FK = Propietario.id_propietario" +
+                " INNER JOIN Empleado ON Proyecto.legajo_FK = Empleado.legajo where Proyecto.baja = 0";
+            Conexion cx = new Conexion();
 
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtListAll);
+            } catch (SqlException e) {
+                dtListAll = null;
+                Console.WriteLine("Error en la base de datos. [Listado Proyectos]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return dtListAll;
+        }
+        */
         public static int modificar(Proyecto proyecto)
         {
             string query = @"UPDATE Proyecto
@@ -193,6 +216,7 @@ namespace PruebaTpFinal.Dominio.Mappers
 
             return rowsAffected;
         }
+
 
     }
 

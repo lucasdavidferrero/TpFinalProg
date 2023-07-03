@@ -13,13 +13,13 @@ namespace TpFinalProg.Dominio.Entidades {
 
         public string nombre { get; set; }
 
-        public float montoEstimado { get; }
+        public double montoEstimado { get; }
 
         public int tiempoEstimado { get; }
         public int idPropietario { get; }
         public int nroLegajo { get; }
 
-        public Proyecto(int idProyecto, string nombre, float montoEstimado, int tiempoEstimado, int idPropietario, int legajo) {
+        public Proyecto(int idProyecto, string nombre, double montoEstimado, int tiempoEstimado, int idPropietario, int legajo) {
             this.idProyecto = idProyecto;
             this.nombre = nombre;
             this.montoEstimado = montoEstimado;
@@ -51,5 +51,6 @@ namespace TpFinalProg.Dominio.Entidades {
         public void eliminarPorId(int id) {
             ProyectoDataMapper.eliminar(id);
         }
+
     }
 }

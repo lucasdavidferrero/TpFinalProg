@@ -209,17 +209,16 @@ namespace TpFinalProg.Dominio.Mappers {
             try {
                 cx.SetComandoSQL(q);
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
-                sqlDat.Fill(dt);
-                if (dt.Rows.Count != 0) {
-                    propEncontrado = construirPropietarioDesdeDataRow(dt.Rows[0]);
-                }
+                cmd.ExecuteScalar();
             } catch (SqlException e) {
-                Console.WriteLine("Error en la base de datos. [Obtener por Id Propietario Razon Social]");
+                Console.WriteLine("Error en la base de datos. [Obtener por Razon Social]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
             }
 
             return propEncontrado;
         }
+
+        
     }
 }

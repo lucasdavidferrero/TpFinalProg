@@ -150,6 +150,8 @@ namespace TpFinalProg.Dominio.Mappers {
                 cx.cerrarConexionLiberarRecursos();
             }
         }
+
+        //DE ACA
         public static DataSet cargarCombo() {
             DataSet dt = new DataSet();
             string sql = "  Select 0 as legajo, 'Seleccione...' as descripcion " +
@@ -167,6 +169,28 @@ namespace TpFinalProg.Dominio.Mappers {
                 return null;
             }
             return dt;
+        }
+
+        public static Empleado encontrarPorIdNombre(int id) {
+            Empleado empEncontrado = null;
+            string q = "  SELECT nombre +' '+ apellido  FROM Empleado WHERE legajo = @Id";
+            DataTable dt = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            try {
+                cx.SetComandoSQL(q);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                cmd.ExecuteScalar();
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Empleado Legajo]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return empEncontrado;
         }
 
     }

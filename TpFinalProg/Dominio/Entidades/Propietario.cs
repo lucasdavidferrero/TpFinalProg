@@ -1,16 +1,18 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TpFinalProg.Clases;
 using TpFinalProg.Dominio.Mappers;
 using TpFinalProg.Utilidades;
 
 namespace TpFinalProg.Dominio.Entidades {
     internal class Propietario {
         public int idPropietario { get; set; }
-        public string razonSocial { get; }
+        public string razonSocial { get;  }
         public string telefono { get; }
         public string email { get; }
         public long cuit { get; }
@@ -70,6 +72,7 @@ namespace TpFinalProg.Dominio.Entidades {
         public void encontrarPorIdRazonSocial(int id) {
             PropietarioDataMapper.encontrarPorIdRazonSocial(id);
         }
+
 
     }
 }

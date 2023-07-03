@@ -12,7 +12,7 @@ namespace TpFinalProg.Utilidades {
      */
     internal class Validar {
 
-        public static bool soloNumeros(string input) {
+       public static bool soloNumeros(string input) {
             Regex regex = new Regex("^[0-9]+$");
             return regex.IsMatch(input);
         }
