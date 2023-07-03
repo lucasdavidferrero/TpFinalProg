@@ -31,33 +31,10 @@ namespace TpFinalProg.Utilidades {
             }
         }
 
-
-      /*  private static int calcularDigitoCuit(string cuit) {
-            int[] mult = new[] { 5, 4, 3, 2, 7, 6, 5, 4, 3, 2 };
-            char[] nums = cuit.ToCharArray();
-            int total = 0;
-
-            for (int i = 0; i < mult.Length; i++) {
-                total += int.Parse(nums[i].ToString()) * mult[i];
-            }
-
-            var resto = total % 11;
-            return resto == 0 ? 0 : resto == 1 ? 9 : 11 - resto;
-        }
-      */
-        public static bool cuit(string cuit) {
-            if (cuit == null) {
-                return false;
-            }
-
-            if (cuit.Length != 11) {
-                return false;
-            }else {
-               // int calculado = calcularDigitoCuit(cuit);
-                //int digito = int.Parse(cuit.Substring(10));
-                //return calculado == digito;
-                return true;
-           }
+        // https://es.wikipedia.org/wiki/Clave_%C3%9Anica_de_Identificaci%C3%B3n_Tributaria
+        public static bool cuit (string str) {
+            Regex regex = new Regex("^\\b(20|23|24|27|30|33|34)\\d{8}\\d{1}$");
+            return regex.IsMatch(str);
         }
     }
 }
