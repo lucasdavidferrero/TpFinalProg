@@ -78,11 +78,11 @@ namespace PruebaTpFinal.Dominio.Mappers
 
             return dtListAll;
         }
-        /*public static DataTable obtenerTodos() {
+        public static DataTable obtenerTodosParametros() {
             DataTable dtListAll = new DataTable("ListarProyectos");
-            string query = "SELECT Proyecto.nombre, Proyecto.monto_estimado, Proyecto.tiempo_estimado, Propietario.razon_social, Empleado.nombre+' '+apellido" +
-                " FROM Proyecto INNER JOIN Propietario ON Proyecto.id_propietario_FK = Propietario.id_propietario" +
-                " INNER JOIN Empleado ON Proyecto.legajo_FK = Empleado.legajo where Proyecto.baja = 0";
+            string query = "SELECT Proyecto.nombre,Propietario.razon_social, Empleado.nombre+ ' '+apellido, Proyecto.monto_estimado, Proyecto.tiempo_estimado "+
+                " FROM Proyecto INNER JOIN Propietario ON Propietario.id_propietario = Proyecto.id_propietario_FK" +
+                " INNER JOIN Empleado ON Empleado.legajo =Proyecto.legajo_FK where Proyecto.baja = 0";
             Conexion cx = new Conexion();
 
             try {
@@ -98,7 +98,7 @@ namespace PruebaTpFinal.Dominio.Mappers
 
             return dtListAll;
         }
-        */
+        
         public static int modificar(Proyecto proyecto)
         {
             string query = @"UPDATE Proyecto
