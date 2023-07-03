@@ -48,8 +48,8 @@ namespace TpFinalProg {
                 hayAlMenosUnError = true;
             }
 
-            if (string.IsNullOrEmpty(txtMonto.Text)) {
-                mensajeError += "- El Monto esta vacío o es inválido. \n";
+            if (string.IsNullOrEmpty(txtMonto.Text) || !Validar.dinero(txtMonto.Text)) {
+                mensajeError += "- El Monto esta vacío o posee un formato inválido. \n";
                 hayAlMenosUnError = true;
             }
 
