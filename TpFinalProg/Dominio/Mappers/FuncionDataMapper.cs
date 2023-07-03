@@ -12,47 +12,39 @@ namespace PruebaTpFinal.Dominio.Mappers
 {
     internal class FuncionDataMapper
     {
-        public static int InsertNew(Funcion f)
-        {
-            string query = "INSERT INTO Funcion(descripcion) VALUES (@descripcion); SELECT SCOPE_IDENTITY();";
-
-            int idGenerado = -1;
+        public static void crearFunciones(Funcion[] funciones) {
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
-
-            cmd.Parameters.Add("@descripcion", SqlDbType.NVarChar);
-            cmd.Parameters["@descripcion"].Value = f.descripcion;
-
-            try
-            {
-                cx.SetComandoSQL(query);
-                idGenerado = Convert.ToInt32(cmd.ExecuteScalar());
-                return idGenerado;
+            try {
+                int i = 0;
+                foreach (var f in funciones) {
+                    cx.cerrarConexionLiberarRecursos();
+                    string query = "INSERT INTO Funcion(descripcion) VALUES (@descripcion" + i + ");";
+                    cmd.Parameters.Add("@descripcion" + i, SqlDbType.NVarChar);
+                    cmd.Parameters["@descripcion" + i].Value = f.descripcion;
+                    cx.SetComandoSQL(query);
+                    cmd.ExecuteScalar();
+                    i++;
+                }
             }
-            catch (SqlException e)
-            {
+            catch (SqlException e) {
                 Console.WriteLine("Error en la base de datos. [Insertar Funcion]");
             }
-            finally
-            {
+            finally {
                 cx.cerrarConexionLiberarRecursos();
             }
-            return idGenerado;
         }
 
-        public static DataTable GetAll()
-        {
+        public static DataTable obtenerTodos() {
             DataTable dtListAll = new DataTable("ListarFunciones");
             string query = "SELECT * FROM Funcion WHERE baja = 0";
             Conexion cx = new Conexion();
-            try
-            {
+            try {
                 cx.SetComandoSQL(query);
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dtListAll);
             }
-            catch (SqlException e)
-            {
+            catch (SqlException e) {
                 dtListAll = null;
                 Console.WriteLine("Error en la base de datos. [Listado Funciones]");
             }

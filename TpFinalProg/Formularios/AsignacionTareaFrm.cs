@@ -51,7 +51,7 @@ namespace TpFinalProg {
         }
 
         private void cargarCbFuncion() {
-            DataTable funciones = FuncionDataMapper.GetAll();
+            DataTable funciones = FuncionDataMapper.obtenerTodos();
             cbFuncion.DataSource = funciones;
             cbFuncion.DisplayMember = "descripcion";
             cbFuncion.ValueMember = "id_funcion";
