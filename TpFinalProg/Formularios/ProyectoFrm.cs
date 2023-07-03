@@ -209,9 +209,9 @@ namespace TpFinalProg {
             txtNombre.Text = celdas["nombre"].Value.ToString();
             txtMonto.Text = celdas["MONTO_ESTIMADO"].Value.ToString();
 
-            // cbPropietario.SelectedValue = celdas["PROPIETARIO"];
-            // cbPropietario.Text = celdas["PROPIETARIO"].Value.ToString();
-            // cbResponsable.Text = celdas["RESPONSABLE"].Value.ToString();
+             //cbPropietario.SelectedValue = celdas["PROPIETARIO"];
+             cbPropietario.Text = celdas["PROPIETARIO"].Value.ToString();
+             cbResponsable.Text = celdas["RESPONSABLE"].Value.ToString();
 
             int idPropietario = Convert.ToInt32(celdas["id_propietario"].Value);
             cbPropietario.SelectedValue = idPropietario;

@@ -97,7 +97,7 @@ namespace TpFinalProg {
         private void btnBuscar_Click(object sender, EventArgs e) {
             int id =Convert.ToInt32(txtLegajo.Text.Trim());
             ObservacionDataMapper.encontrarLegajo(id);
-            //VER COMO BUSCAR Y QUE ME SALGA LA TABLA
+           
         }
 
         private void dgvObservacion_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
