@@ -47,6 +47,9 @@ namespace TpFinalProg.Dominio.Entidades {
         public DataTable obtenerTodos() {
             return ProyectoDataMapper.obtenerTodos();
         }
+        public DataTable obtenerTodosParametros() {
+            return ProyectoDataMapper.obtenerTodosParametros();
+        }
 
         public void eliminarPorId(int id) {
             ProyectoDataMapper.eliminar(id);

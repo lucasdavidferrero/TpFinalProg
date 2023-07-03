@@ -54,7 +54,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return generatedId;
         }
 
-     /*  public static DataTable obtenerTodos()
+       public static DataTable obtenerTodos()
         {
             DataTable dtListAll = new DataTable("ListarProyectos");
             string query = "SELECT * FROM Proyecto WHERE baja = 0";
@@ -77,8 +77,8 @@ namespace PruebaTpFinal.Dominio.Mappers
             }
 
             return dtListAll;
-        }*/
-        public static DataTable obtenerTodos() {
+        }
+        public static DataTable obtenerTodosParametros() {
             DataTable dtListAll = new DataTable("ListarProyectos");
             string query = "SELECT Proyecto.nombre,Propietario.razon_social, Empleado.nombre+ ' '+apellido, Proyecto.monto_estimado, Proyecto.tiempo_estimado "+
                 " FROM Proyecto INNER JOIN Propietario ON Propietario.id_propietario = Proyecto.id_propietario_FK" +

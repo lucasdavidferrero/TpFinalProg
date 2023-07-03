@@ -31,7 +31,13 @@ namespace TpFinalProg.Controlador {
              return proyectos;
          }
 
-     }
+        public static DataTable listarTodoParametro() {
+            Proyecto clsProyecto = new Proyecto();
+            DataTable proyectos = clsProyecto.obtenerTodosParametros();
+            return proyectos;
+        }
+
+    }
 
    
 

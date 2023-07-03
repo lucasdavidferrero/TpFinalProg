@@ -141,7 +141,7 @@ namespace TpFinalProg {
         }
 
         private void listarProyecto() {
-            DataTable listadoProyecto = Controlador.ProyectoControlador.listarTodo();
+            DataTable listadoProyecto = Controlador.ProyectoControlador.listarTodoParametro();
             dgvProyecto.DataSource = listadoProyecto;
         }
 
