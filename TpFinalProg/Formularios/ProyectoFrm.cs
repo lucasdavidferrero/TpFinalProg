@@ -102,7 +102,7 @@ namespace TpFinalProg {
                 hayAlMenosUnError = true;
             }
 
-            if (string.IsNullOrEmpty(txtMonto.Text) || !Validar.soloNumeros(txtMonto.Text)) {
+            if (string.IsNullOrEmpty(txtMonto.Text)) {
                 mensajeError += "- El Monto esta vacío o es inválido. \n";
                 hayAlMenosUnError = true;
             }

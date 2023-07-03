@@ -11,7 +11,8 @@ namespace TpFinalProg.Dominio {
     internal class ValidacionDatos {
         public static bool PropietarioAdmiteProyecto(int idPropietario) {
 
-            //NO HABRIA QUE PONER BAJA TAMBIEN ACA?
+            // Las Reglas de negocio (validaciones de datos) van en las entidades.
+            //NO HABRIA QUE PONER BAJA TAMBIEN ACA. 
 
             string q = "SELECT id_proyecto FROM Proyecto WHERE id_propietario_FK = @Id;";
 
@@ -57,7 +58,8 @@ namespace TpFinalProg.Dominio {
                 sqlDat.Fill(dtListAll);
 
                 foreach (DataRow row in dtListAll.Rows) {
-                    // Acceder a los valores de cada columna en la fila actual
+                    // Acceder a los valores de cada columna en la fila actual.
+                    // TODO: Usar descripcion=="Lider"
                     int id = Convert.ToInt32(row["id_funcion_fk"]);
 
                     if (id == 1) {
