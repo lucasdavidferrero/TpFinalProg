@@ -167,7 +167,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.cerrarConexionLiberarRecursos();
             }
         }
-        public DataTable Observacion encontrarLegajo(int id) {
+        public static Observacion encontrarLegajo(int id) {
             Observacion observacionEncontrada = null;
             string query = "  SELECT id_observacion,fecha,Observacion FROM Observacion WHERE legajo_FK = @legajo AND baja = 0";
             DataTable dt = new DataTable();

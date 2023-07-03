@@ -37,9 +37,9 @@ namespace TpFinalProg.Utilidades {
             return regex.IsMatch(str);
         }
 
-        /* public static bool dinero (string str) {
+         public static bool dinero (string str) {
             Regex regex = new Regex("/^\\d+(?:\\.\\d{0,2})?$");
             return regex.IsMatch(str);
-        }*/ 
+        }
     }
 }

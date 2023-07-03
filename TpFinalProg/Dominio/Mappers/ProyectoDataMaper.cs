@@ -26,7 +26,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             SqlCommand cmd = cx.getComando();
 
             cmd.Parameters.Add("@nombre", SqlDbType.NVarChar);
-            cmd.Parameters.Add("@montoEstimado", SqlDbType.Float);
+            cmd.Parameters.Add("@montoEstimado", SqlDbType.Decimal);
             cmd.Parameters.Add("@tiempoEstimado", SqlDbType.Int);
             cmd.Parameters.Add("@idPropietario", SqlDbType.Int);
             cmd.Parameters.Add("@nroLegajo", SqlDbType.Int);
@@ -80,9 +80,10 @@ namespace PruebaTpFinal.Dominio.Mappers
         }
         public static DataTable obtenerTodosParametros() {
             DataTable dtListAll = new DataTable("ListarProyectos");
-            string query = "SELECT Proyecto.nombre,Propietario.razon_social, Empleado.nombre+ ' '+apellido, Proyecto.monto_estimado, Proyecto.tiempo_estimado "+
-                " FROM Proyecto INNER JOIN Propietario ON Propietario.id_propietario = Proyecto.id_propietario_FK" +
-                " INNER JOIN Empleado ON Empleado.legajo =Proyecto.legajo_FK where Proyecto.baja = 0";
+            string query = "SELECT Proyecto.id_proyecto, Proyecto.nombre,Propietario.razon_social, Empleado.nombre+ ' '+apellido, " +
+                "Proyecto.monto_estimado, Proyecto.tiempo_estimado, Proyecto.baja FROM Proyecto INNER JOIN " +
+                "Propietario ON Propietario.id_propietario = Proyecto.id_propietario_FK INNER JOIN " +
+                "Empleado ON Empleado.legajo = Proyecto.legajo_FK where Proyecto.baja = 0";
             Conexion cx = new Conexion();
 
             try {
@@ -113,7 +114,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             SqlCommand cmd = cx.getComando();
 
             cmd.Parameters.Add("@nombre", SqlDbType.NVarChar);
-            cmd.Parameters.Add("@montoEstimado", SqlDbType.Float);
+            cmd.Parameters.Add("@montoEstimado", SqlDbType.Decimal);
             cmd.Parameters.Add("@tiempoEstimado", SqlDbType.Int);
             cmd.Parameters.Add("@idPropietario", SqlDbType.Int);
             cmd.Parameters.Add("@nroLegajo", SqlDbType.Int);
@@ -167,7 +168,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                     DataRow row = dt.Rows[0];
                     int pId = Convert.ToInt32(row["id_proyecto"]);
                     string pNombre = row["nombre"].ToString();
-                    float pMontoEstimado = Convert.ToSingle(row["monto_estimado"]);
+                    Decimal pMontoEstimado = Convert.ToDecimal(row["monto_estimado"]);
                     int pTiempoEstimado = Convert.ToInt32(row["tiempo_estimado"]);
                     int pIdPropietario = Convert.ToInt32(row["id_propietario_FK"]);
                     int pNroLegajo = Convert.ToInt32(row["legajo_FK"]);

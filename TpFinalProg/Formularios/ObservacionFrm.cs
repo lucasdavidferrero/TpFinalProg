@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalProg.Controlador;
+using TpFinalProg.Dominio.Entidades;
 using TpFinalProg.Utilidades;
 
 namespace TpFinalProg {
@@ -96,8 +97,9 @@ namespace TpFinalProg {
 
         private void btnBuscar_Click(object sender, EventArgs e) {
             int id =Convert.ToInt32(txtLegajo.Text.Trim());
-            ObservacionDataMapper.encontrarLegajo(id);
-           
+             ObservacionDataMapper.encontrarLegajo(id);
+           // dgvObservacion.DataSource = trabaja;
+
         }
 
         private void dgvObservacion_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
