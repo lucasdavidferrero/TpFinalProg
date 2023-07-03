@@ -190,7 +190,7 @@ namespace TpFinalProg {
             int idPropietario = cbPropietario.SelectedIndex;
             int legajo = cbResponsable.SelectedIndex;
 
-            // if (ValidacionDatos.PropietarioAdmiteProyecto(idPropietario) == false) {
+             if (ValidacionDatos.PropietarioAdmiteProyecto(idPropietario)) {
             try {
                 /* DataRowView selectedRow = cbPropietario.SelectedItem as DataRowView;
             if (selectedRow != null) {
@@ -210,9 +210,9 @@ namespace TpFinalProg {
             } catch (Exception ex) {
                 Mensaje.Advertencia(ex.Message);
             }
-            //  } else {
-            //      Mensaje.Error("El propietario tiene mas de 3 proyectos cargados");
-            // }
+             } else {
+                 Mensaje.Error("El propietario tiene mas de 3 proyectos cargados");
+            }
         }
 
         private void dgvProyecto_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
