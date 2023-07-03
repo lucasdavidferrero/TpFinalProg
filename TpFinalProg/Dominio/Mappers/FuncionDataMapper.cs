@@ -16,12 +16,20 @@ namespace PruebaTpFinal.Dominio.Mappers
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
             try {
+                /* 
+                 Se crea un índice que lueg oserá utilizado en los nombres de los parámetros. .net no deja tener
+                 mismos nombres de parámetros en una instancia de query.
+                 */
                 int i = 0;
                 foreach (var f in funciones) {
                     cx.cerrarConexionLiberarRecursos();
-                    string query = "INSERT INTO Funcion(descripcion) VALUES (@descripcion" + i + ");";
+                    // Habilitamos IDENTITY_INSERT por cada sesión para que SQL server nos permita insertar el ID. Cada vez que se cierra la conexión, también se cierra la sesión.
+                    string query = $"SET IDENTITY_INSERT Funcion ON; INSERT INTO Funcion(id_funcion,descripcion) VALUES (@Id{i},@descripcion{i});";
+
                     cmd.Parameters.Add("@descripcion" + i, SqlDbType.NVarChar);
                     cmd.Parameters["@descripcion" + i].Value = f.descripcion;
+                    cmd.Parameters.AddWithValue("@Id" + i, f.idFuncion);
+
                     cx.SetComandoSQL(query);
                     cmd.ExecuteScalar();
                     i++;
