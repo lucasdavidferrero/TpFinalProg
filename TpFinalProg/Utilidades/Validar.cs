@@ -36,10 +36,10 @@ namespace TpFinalProg.Utilidades {
             Regex regex = new Regex("^\\b(20|23|24|27|30|33|34)\\d{8}\\d{1}$");
             return regex.IsMatch(str);
         }
-
+/*
          public static bool dinero (string str) {
             Regex regex = new Regex("/^\\d+(?:\\.\\d{0,2})?$");
             return regex.IsMatch(str);
-        }
+        }*/
     }
 }

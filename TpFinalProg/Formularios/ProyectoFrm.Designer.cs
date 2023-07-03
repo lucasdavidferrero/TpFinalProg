@@ -127,10 +127,10 @@
             // 
             dgvProyecto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProyecto.Columns.AddRange(new DataGridViewColumn[] { NOMBRE, id_propietario, legajo, razon_social, RESPONSABLE, MONTO_ESTIMADO, tiempo_estimado, id_proyecto, baja });
-            dgvProyecto.Location = new Point(12, 179);
+            dgvProyecto.Location = new Point(65, 188);
             dgvProyecto.Name = "dgvProyecto";
             dgvProyecto.RowTemplate.Height = 25;
-            dgvProyecto.Size = new Size(828, 271);
+            dgvProyecto.Size = new Size(733, 271);
             dgvProyecto.TabIndex = 14;
             dgvProyecto.RowHeaderMouseClick += dgvProyecto_RowHeaderMouseClick;
             dgvProyecto.RowHeaderMouseDoubleClick += dgvProyecto_RowHeaderMouseDoubleClick;
@@ -244,6 +244,7 @@
             id_proyecto.Frozen = true;
             id_proyecto.HeaderText = "id";
             id_proyecto.Name = "id_proyecto";
+            id_proyecto.Visible = false;
             // 
             // baja
             // 
