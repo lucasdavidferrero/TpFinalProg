@@ -26,7 +26,7 @@ namespace TpFinalProg.Dominio {
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dt);
 
-                if (dt.Rows.Count < 3) {
+                if (dt.Rows.Count <= 3) {
                     return true;
                 }
             } catch (SqlException e) {
