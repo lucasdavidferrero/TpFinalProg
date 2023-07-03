@@ -187,10 +187,10 @@ namespace TpFinalProg {
             string nombre = txtNombre.Text.Trim();
             float montoEstimado = Convert.ToInt32(txtMonto.Text.Trim());
             int tiempoEstimado = Convert.ToInt32(txtTiempo.Text.Trim());
-            int idPropietario = cbPropietario.SelectedIndex;
-            int legajo = cbResponsable.SelectedIndex;
+            int idPropietario = Convert.ToInt32(cbPropietario.SelectedValue);
+            int legajo = Convert.ToInt32(cbResponsable.SelectedValue);
 
-             if (ValidacionDatos.PropietarioAdmiteProyecto(idPropietario)) {
+            if (ValidacionDatos.PropietarioAdmiteProyecto(idPropietario)) {
             try {
                 /* DataRowView selectedRow = cbPropietario.SelectedItem as DataRowView;
             if (selectedRow != null) {
