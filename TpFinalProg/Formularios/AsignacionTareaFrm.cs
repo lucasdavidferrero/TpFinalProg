@@ -18,10 +18,7 @@ namespace TpFinalProg {
         public AsignacionTareaFrm() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-            cargarCbProyecto();
-            cargarCbEmpleado();
-            cargarCbFuncion();
-            cargarDgvTarea();
+            cargarTodo();
         }
 
         private void butGuardar_Click(object sender, EventArgs e) {
@@ -59,6 +56,7 @@ namespace TpFinalProg {
 
 
         private void cbProyecto_SelectedIndexChanged(object sender, EventArgs e) {
+            cbTarea.Text = "";
             // Obtén el elemento seleccionado del ComboBox
             DataRowView selectedRow = cbProyecto.SelectedItem as DataRowView;
 
@@ -68,51 +66,122 @@ namespace TpFinalProg {
 
                 cargarCbTarea(selectedId);
             }
+
         }
 
         private void cargarDgvTarea() {
-            DataTable tareas = TareaDataMapper.obtenerTodos();
-            DataTable trabaja = TrabajaDataMapper.obtenerTodos();
-            tareas.Columns.Add("empleado");
-            tareas.Columns.Add("funcion");
-
-            foreach (DataRow row in tareas.Rows) {
-                foreach (DataRow row2 in trabaja.Rows) {
-                    if (row["id_proyecto"] == row2["id_proyecto"] && row["nro_tarea"] == row2["id_tarea"]) {
-                        row["empleado"] = row2["legajo"];
-                        row["funcion"] = row2["id_funcion_fk"];
-                    }
-                }
-
-            }
-
-            dgvTarea.DataSource = trabaja;
+            DataTable dtRelacional = TrabajaControlador.cargarDgvTrabaja();
+            dgvTarea.DataSource = dtRelacional;
 
         }
 
 
         private void guardarTarea() {
-            int id_proyecto = Convert.ToInt32(cbProyecto.SelectedIndex);
-            int nro_tarea = Convert.ToInt32(cbTarea.SelectedIndex);
-            int legajo = Convert.ToInt32(cbEmpleado.SelectedIndex);
-            int id_funcion = Convert.ToInt32(cbFuncion.SelectedIndex);
+            int id_proyecto = Convert.ToInt32(cbProyecto.SelectedValue);
+            int nro_tarea = Convert.ToInt32(cbTarea.SelectedValue);
+            int legajo = Convert.ToInt32(cbEmpleado.SelectedValue);
+            int id_funcion = Convert.ToInt32(cbFuncion.SelectedValue);
 
             TrabajaControlador.guardar(id_proyecto, nro_tarea, legajo, id_funcion);
+
+            cargarDgvTarea();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e) {
             guardarTarea();
         }
 
+        private bool mensajeDeELiminacion() {
+            // Mostrar ventana de confirmación
+            DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar la asignación de tarea?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            // Verificar la respuesta del usuario
+            if (result == DialogResult.Yes) {
+                // Usuario ha confirmado, realizar la eliminación
+                return true;
+            } else if (result == DialogResult.No) {
+                // Usuario ha cancelado, no hacer nada
+                // Opcional: Puedes mostrar un mensaje de cancelación
+                MessageBox.Show("La eliminación de la asignación de tarea ha sido cancelada.", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return false;
+        }
 
         private void btnBorrar_Click(object sender, EventArgs e) {
-            int id_proyecto = Convert.ToInt32(cbProyecto.SelectedIndex);
-            int nro_tarea = Convert.ToInt32(cbTarea.SelectedIndex);
-            int legajo = Convert.ToInt32(cbEmpleado.SelectedIndex);
+            if (mensajeDeELiminacion()) {
+                int id_proyecto = Convert.ToInt32(cbProyecto.SelectedValue);
+                int nro_tarea = Convert.ToInt32(cbTarea.SelectedValue);
+                int legajo = Convert.ToInt32(cbEmpleado.SelectedValue);
 
-            TrabajaControlador.eliminar(id_proyecto, nro_tarea, legajo);
+                TrabajaControlador.eliminar(id_proyecto, nro_tarea, legajo);
+                cargarDgvTarea();
+            }
 
+
+        }
+
+        private void cargarTodo() {
+            cargarCbProyecto();
+            cargarCbEmpleado();
+            cargarCbFuncion();
+            cargarDgvTarea();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e) {
+            cargarTodo();
+        }
+
+        private void cargarCbProyecto(int id) {
+            DataTable proyecto = ProyectoControlador.listarPorId(id);
+            cbProyecto.DataSource = proyecto;
+            cbProyecto.DisplayMember = "nombre";
+            cbProyecto.ValueMember = "id_proyecto";
+        }
+
+        private void cargarCbEmpleado(int id) {
+            DataTable empleado = EmpleadoControlador.listarPorId(id);
+            cbProyecto.DataSource = empleado;
+            cbProyecto.DisplayMember = "nombreCompleto";
+            cbProyecto.ValueMember = "legajo";
+        }
+
+        private void dgvTarea_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+
+        }
+
+        private void dgvTarea_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
+        }
+
+
+        private void seleccionarFila() {
+            if (dgvTarea.SelectedRows.Count > 0) // Verifica si hay una fila seleccionada
+    {
+                // Obtiene los valores de los IDs de la fila seleccionada
+                int idProyecto = Convert.ToInt32(dgvTarea.SelectedRows[0].Cells["id_proyecto"].Value);
+                int idEmpleado = Convert.ToInt32(dgvTarea.SelectedRows[0].Cells["legajo"].Value);
+                int idFuncion = Convert.ToInt32(dgvTarea.SelectedRows[0].Cells["id_funcion_fk"].Value);
+
+                // Selecciona los elementos correspondientes en los ComboBox
+                cbProyecto.SelectedValue = idProyecto;
+                cbEmpleado.SelectedValue = idEmpleado;
+                cbFuncion.SelectedValue = idFuncion;
+            }
+        }
+
+        private void dgvTarea_SelectionChanged(object sender, EventArgs e) {
+            seleccionarFila();
+        }
+
+        private void btnFinalizacion_Click(object sender, EventArgs e) {
+            int id_proyecto = Convert.ToInt32(cbProyecto.SelectedValue);
+            int nro_tarea = Convert.ToInt32(cbTarea.SelectedValue);
+            int legajo = Convert.ToInt32(cbEmpleado.SelectedValue);
+            int id_funcion = Convert.ToInt32(cbFuncion.SelectedValue);
+
+            TrabajaControlador.modificar(id_proyecto, nro_tarea, legajo, id_funcion);
+
+            cargarDgvTarea();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TpFinalProg.Dominio.Entidades;
+using TpFinalProg.Dominio.Mappers;
 
 namespace TpFinalProg.Controlador {
     internal class EmpleadoControlador {
@@ -31,6 +32,33 @@ namespace TpFinalProg.Controlador {
             Empleado clsEmpleado = new Empleado();
             DataTable empleados = clsEmpleado.obtenerTodos();
             return empleados;
+        }
+
+        public static DataTable listarPorId(int id) {
+            Empleado empleado = EmpleadoDataMapper.encontrarPorId(id);
+            DataTable dt = new DataTable();
+            dt.Columns.Add("legajo", typeof(int));
+            dt.Columns.Add("nombre", typeof(string));
+            dt.Columns.Add("apellido", typeof(string));
+            dt.Columns.Add("email", typeof(int));
+            dt.Columns.Add("celular", typeof(string));
+            dt.Columns.Add("fecha_ingreso", typeof(string));
+            dt.Columns.Add("nombreCompleto", typeof(string));
+
+
+
+            DataRow row = dt.NewRow();
+            row["legajo"] = empleado.legajo;
+            row["nombre"] = empleado.nombre;
+            row["apellido"] = empleado.apellido;
+            row["email"] = empleado.email;
+            row["celular"] = empleado.celular;
+            row["fecha_ingreso"] = empleado.fechaIngreso.ToString();
+            row["nombreCompleto"] = empleado.nombre + " " + empleado.apellido;
+
+
+            dt.Rows.Add(row);
+            return dt;
         }
     }
 }
