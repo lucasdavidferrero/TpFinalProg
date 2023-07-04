@@ -149,7 +149,8 @@ namespace TpFinalProg {
             if (idRowSeleccionadoEliminar >= 0) {
                 int id_proyecto = Convert.ToInt32(dgvTarea.Rows[idRowSeleccionadoEliminar].Cells["PROYECTO"].Value.ToString());
                 int id_tarea = Convert.ToInt32(dgvTarea.Rows[idRowSeleccionadoEliminar].Cells["NUMERO"].Value.ToString());
-                //TareaControlador.eliminar(id_proyecto, id_tarea);
+
+                TareaControlador.eliminar(id_proyecto, id_tarea);
                 reiniciarFormulario();
                 cargarDgvTarea();
             }

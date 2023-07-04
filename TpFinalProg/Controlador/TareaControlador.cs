@@ -34,7 +34,7 @@ namespace TpFinalProg.Controlador {
             
         }
 
-        /*
+        
         public static void eliminar(int idProyecto, int idTarea) {
             Tarea clsTarea = new Tarea();
             clsTarea.eliminarPorId(idProyecto, idTarea);
@@ -50,7 +50,7 @@ namespace TpFinalProg.Controlador {
             Tarea clsTarea = new Tarea();
             DataTable tareas = clsTarea.obtenerTodos();
             return tareas;
-        }*/
+        }
 
         public static DataTable cargarDtv() {
             DataTable dt = TareaDataMapper.obtenerTodos();
