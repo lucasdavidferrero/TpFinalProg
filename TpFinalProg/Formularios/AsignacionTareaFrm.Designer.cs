@@ -256,6 +256,69 @@
             btnModificar.UseVisualStyleBackColor = false;
             btnModificar.Click += btnFinalizacion_Click;
             // 
+            // id_proyecto
+            // 
+            id_proyecto.DataPropertyName = "id_proyecto";
+            id_proyecto.HeaderText = "id_proyecto";
+            id_proyecto.Name = "id_proyecto";
+            id_proyecto.Visible = false;
+            id_proyecto.Width = 120;
+            // 
+            // nombre_proyecto
+            // 
+            nombre_proyecto.DataPropertyName = "proyecto";
+            nombre_proyecto.HeaderText = "Proyecto";
+            nombre_proyecto.Name = "nombre_proyecto";
+            nombre_proyecto.Width = 150;
+            // 
+            // id_tarea
+            // 
+            id_tarea.DataPropertyName = "id_tarea";
+            id_tarea.HeaderText = "TareaId";
+            id_tarea.Name = "id_tarea";
+            id_tarea.Visible = false;
+            // 
+            // descripcion
+            // 
+            descripcion.HeaderText = "Tarea";
+            descripcion.Name = "descripcion";
+            // 
+            // legajo
+            // 
+            legajo.DataPropertyName = "legajo";
+            legajo.HeaderText = "legajo_empleado";
+            legajo.Name = "legajo";
+            legajo.Visible = false;
+            legajo.Width = 120;
+            // 
+            // nombre_empleado
+            // 
+            nombre_empleado.DataPropertyName = "empleado";
+            nombre_empleado.HeaderText = "Empleado";
+            nombre_empleado.Name = "nombre_empleado";
+            nombre_empleado.Width = 150;
+            // 
+            // id_funcion_fk
+            // 
+            id_funcion_fk.DataPropertyName = "id_funcion_fk";
+            id_funcion_fk.HeaderText = "id_funcion";
+            id_funcion_fk.Name = "id_funcion_fk";
+            id_funcion_fk.Visible = false;
+            // 
+            // nombre_funcion
+            // 
+            nombre_funcion.DataPropertyName = "funcion";
+            nombre_funcion.HeaderText = "Funcion";
+            nombre_funcion.Name = "nombre_funcion";
+            nombre_funcion.Width = 150;
+            // 
+            // BAJA
+            // 
+            BAJA.DataPropertyName = "baja";
+            BAJA.HeaderText = "Baja";
+            BAJA.Name = "BAJA";
+            BAJA.Visible = false;
+            // 
             // AsignacionTareaFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
