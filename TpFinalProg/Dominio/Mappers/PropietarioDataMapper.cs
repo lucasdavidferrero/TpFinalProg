@@ -177,7 +177,6 @@ namespace TpFinalProg.Dominio.Mappers {
             return new Propietario(pId, pRazonSocial, pCuit, pTel, pEmail, pPersonaContacto);
         }
 
-        //DE ACA
         public static DataSet cargarCombo() {
             DataSet dt = new DataSet();
             string sql = "Select 0 as id_propietario, 'Seleccione...' as descripcion " +

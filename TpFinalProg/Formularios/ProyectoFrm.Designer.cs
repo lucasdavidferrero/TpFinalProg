@@ -33,19 +33,22 @@
             label5 = new Label();
             cbResponsable = new ComboBox();
             dgvProyecto = new DataGridView();
+            NOMBRE = new DataGridViewTextBoxColumn();
+            id_propietario = new DataGridViewTextBoxColumn();
+            id_proyect = new DataGridViewTextBoxColumn();
+            legajo = new DataGridViewTextBoxColumn();
+            razon_social = new DataGridViewTextBoxColumn();
+            RESPONSABLE = new DataGridViewTextBoxColumn();
+            MONTO_ESTIMADO = new DataGridViewTextBoxColumn();
+            tiempo_estimado = new DataGridViewTextBoxColumn();
+            baj = new DataGridViewTextBoxColumn();
             btnLimpiar = new Button();
             btnEliminar = new Button();
             btnGuardar = new Button();
             cbPropietario = new ComboBox();
             id_proyecto = new DataGridViewTextBoxColumn();
             baja = new DataGridViewTextBoxColumn();
-            NOMBRE = new DataGridViewTextBoxColumn();
-            id_propietario = new DataGridViewTextBoxColumn();
-            legajo = new DataGridViewTextBoxColumn();
-            razon_social = new DataGridViewTextBoxColumn();
-            RESPONSABLE = new DataGridViewTextBoxColumn();
-            MONTO_ESTIMADO = new DataGridViewTextBoxColumn();
-            tiempo_estimado = new DataGridViewTextBoxColumn();
+            txtid = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvProyecto).BeginInit();
             SuspendLayout();
             // 
@@ -126,78 +129,15 @@
             // dgvProyecto
             // 
             dgvProyecto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProyecto.Columns.AddRange(new DataGridViewColumn[] { NOMBRE, id_propietario, legajo, razon_social, RESPONSABLE, MONTO_ESTIMADO, tiempo_estimado });
-            dgvProyecto.Location = new Point(65, 188);
+            dgvProyecto.Columns.AddRange(new DataGridViewColumn[] { NOMBRE, id_propietario, id_proyect, legajo, razon_social, RESPONSABLE, MONTO_ESTIMADO, tiempo_estimado, baj });
+            dgvProyecto.Location = new Point(51, 189);
             dgvProyecto.Name = "dgvProyecto";
             dgvProyecto.ReadOnly = true;
             dgvProyecto.RowTemplate.Height = 25;
-            dgvProyecto.Size = new Size(733, 271);
+            dgvProyecto.Size = new Size(735, 256);
             dgvProyecto.TabIndex = 14;
             dgvProyecto.RowHeaderMouseClick += dgvProyecto_RowHeaderMouseClick;
             dgvProyecto.RowHeaderMouseDoubleClick += dgvProyecto_RowHeaderMouseDoubleClick;
-            // 
-            // btnLimpiar
-            // 
-            btnLimpiar.BackColor = Color.Transparent;
-            btnLimpiar.BackgroundImageLayout = ImageLayout.None;
-            btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(647, 128);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(110, 30);
-            btnLimpiar.TabIndex = 156;
-            btnLimpiar.Text = "Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = false;
-            btnLimpiar.Click += btnLimpiar_Click;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.BackColor = Color.Transparent;
-            btnEliminar.BackgroundImageLayout = ImageLayout.None;
-            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEliminar.Location = new Point(531, 128);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(110, 30);
-            btnEliminar.TabIndex = 155;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = false;
-            btnEliminar.Click += btnEliminar_Click;
-            // 
-            // btnGuardar
-            // 
-            btnGuardar.BackColor = Color.Transparent;
-            btnGuardar.BackgroundImageLayout = ImageLayout.None;
-            btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardar.Location = new Point(415, 128);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(110, 30);
-            btnGuardar.TabIndex = 154;
-            btnGuardar.Text = "Crear";
-            btnGuardar.UseVisualStyleBackColor = false;
-            btnGuardar.Click += btnGuardar_Click;
-            // 
-            // cbPropietario
-            // 
-            cbPropietario.FormattingEnabled = true;
-            cbPropietario.Location = new Point(155, 77);
-            cbPropietario.Name = "cbPropietario";
-            cbPropietario.Size = new Size(223, 23);
-            cbPropietario.TabIndex = 159;
-            // 
-            // id_proyecto
-            // 
-            id_proyecto.DataPropertyName = "id_proyecto";
-            id_proyecto.Frozen = true;
-            id_proyecto.HeaderText = "id";
-            id_proyecto.Name = "id_proyecto";
-            id_proyecto.Visible = false;
-            // 
-            // baja
-            // 
-            baja.DataPropertyName = "baja";
-            baja.Frozen = true;
-            baja.HeaderText = "baja";
-            baja.Name = "baja";
-            baja.Visible = false;
             // 
             // NOMBRE
             // 
@@ -217,6 +157,15 @@
             id_propietario.Name = "id_propietario";
             id_propietario.ReadOnly = true;
             id_propietario.Visible = false;
+            // 
+            // id_proyect
+            // 
+            id_proyect.DataPropertyName = "id_proyecto";
+            id_proyect.Frozen = true;
+            id_proyect.HeaderText = "id_proyecto";
+            id_proyect.Name = "id_proyect";
+            id_proyect.ReadOnly = true;
+            id_proyect.Visible = false;
             // 
             // legajo
             // 
@@ -263,12 +212,93 @@
             tiempo_estimado.ReadOnly = true;
             tiempo_estimado.Width = 120;
             // 
+            // baj
+            // 
+            baj.DataPropertyName = "baja";
+            baj.Frozen = true;
+            baj.HeaderText = "baja";
+            baj.Name = "baj";
+            baj.ReadOnly = true;
+            baj.Visible = false;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.BackColor = Color.Transparent;
+            btnLimpiar.BackgroundImageLayout = ImageLayout.None;
+            btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLimpiar.Location = new Point(656, 128);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(110, 30);
+            btnLimpiar.TabIndex = 156;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.BackColor = Color.Transparent;
+            btnEliminar.BackgroundImageLayout = ImageLayout.None;
+            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEliminar.Location = new Point(540, 128);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(110, 30);
+            btnEliminar.TabIndex = 155;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.BackColor = Color.Transparent;
+            btnGuardar.BackgroundImageLayout = ImageLayout.None;
+            btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGuardar.Location = new Point(424, 128);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(110, 30);
+            btnGuardar.TabIndex = 154;
+            btnGuardar.Text = "Crear";
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
+            // 
+            // cbPropietario
+            // 
+            cbPropietario.FormattingEnabled = true;
+            cbPropietario.Location = new Point(155, 77);
+            cbPropietario.Name = "cbPropietario";
+            cbPropietario.Size = new Size(223, 23);
+            cbPropietario.TabIndex = 159;
+            // 
+            // id_proyecto
+            // 
+            id_proyecto.DataPropertyName = "id_proyecto";
+            id_proyecto.Frozen = true;
+            id_proyecto.HeaderText = "id";
+            id_proyecto.Name = "id_proyecto";
+            id_proyecto.Visible = false;
+            // 
+            // baja
+            // 
+            baja.DataPropertyName = "baja";
+            baja.Frozen = true;
+            baja.HeaderText = "baja";
+            baja.Name = "baja";
+            baja.Visible = false;
+            // 
+            // txtid
+            // 
+            txtid.Location = new Point(780, 48);
+            txtid.Name = "txtid";
+            txtid.Size = new Size(34, 23);
+            txtid.TabIndex = 160;
+            txtid.Visible = false;
+            // 
             // ProyectoFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(835, 487);
+            ClientSize = new Size(835, 468);
+            Controls.Add(txtid);
             Controls.Add(cbPropietario);
             Controls.Add(btnLimpiar);
             Controls.Add(btnEliminar);
@@ -311,10 +341,13 @@
         private DataGridViewTextBoxColumn baja;
         private DataGridViewTextBoxColumn NOMBRE;
         private DataGridViewTextBoxColumn id_propietario;
+        private DataGridViewTextBoxColumn id_proyect;
         private DataGridViewTextBoxColumn legajo;
         private DataGridViewTextBoxColumn razon_social;
         private DataGridViewTextBoxColumn RESPONSABLE;
         private DataGridViewTextBoxColumn MONTO_ESTIMADO;
         private DataGridViewTextBoxColumn tiempo_estimado;
+        private DataGridViewTextBoxColumn baj;
+        private TextBox txtid;
     }
 }

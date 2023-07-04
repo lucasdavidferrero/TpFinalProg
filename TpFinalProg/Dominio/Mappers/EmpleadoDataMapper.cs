@@ -167,7 +167,6 @@ namespace TpFinalProg.Dominio.Mappers {
             }
         }
 
-        //DE ACA
         public static DataSet cargarCombo() {
             DataSet dt = new DataSet();
             string sql = "  Select 0 as legajo, 'Seleccione...' as descripcion " +
@@ -208,6 +207,23 @@ namespace TpFinalProg.Dominio.Mappers {
 
             return empEncontrado;
         }
+        public static DataTable obtenerTodosTodos() {
+            DataTable dtListAll = new DataTable("ListarEmpleado");
+            string q = "SELECT * FROM Empleado WHERE baja=0";
+            Conexion cx = new Conexion();
+            try {
+                cx.SetComandoSQL(q);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtListAll);
+                }
+            catch (SqlException e) {
+                dtListAll = null;
+                Console.WriteLine("Error en la base de datos. [Listado Empleado]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
 
+            return dtListAll;
+        }
     }
 }

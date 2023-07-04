@@ -42,7 +42,7 @@ namespace TpFinalProg {
         }
 
         private void listarEmpleados() {
-            DataTable listadoEmpleados = Controlador.EmpleadoControlador.listarTodo();
+            DataTable listadoEmpleados = Controlador.EmpleadoControlador.listarTodoTodo();
             dgvEmpleado.DataSource = listadoEmpleados;
         }
 
@@ -140,7 +140,7 @@ namespace TpFinalProg {
         private void btnReiniciar_Click(object sender, EventArgs e) {
             reiniciarFormulario();
         }
-        
+
 
         private void btnEliminar_Click(object sender, EventArgs e) {
             if (idRowSeleccionadoEliminar >= 0) {

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalProg.Clases;
 using TpFinalProg.Dominio.Entidades;
+using TpFinalProg.Utilidades;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace PruebaTpFinal.Dominio.Mappers
@@ -83,7 +84,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             string query = "SELECT Proyecto.id_proyecto, Proyecto.nombre,Propietario.razon_social, Empleado.nombre+ ' '+apellido, " +
                 "Proyecto.monto_estimado, Proyecto.tiempo_estimado, Proyecto.baja FROM Proyecto INNER JOIN " +
                 "Propietario ON Propietario.id_propietario = Proyecto.id_propietario_FK INNER JOIN " +
-                "Empleado ON Empleado.legajo = Proyecto.legajo_FK where Proyecto.baja = 0 and Empleado.baja=0";
+                "Empleado ON Empleado.legajo = Proyecto.legajo_FK where Proyecto.baja = 0 and Empleado.baja=0 and Propietario.baja = 0";
             Conexion cx = new Conexion();
 
             try {

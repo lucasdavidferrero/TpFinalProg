@@ -40,6 +40,7 @@
             btnObesrvacion = new Button();
             btnGuardar = new Button();
             dgvEmpleado = new DataGridView();
+            btnEliminar = new Button();
             legajo = new DataGridViewTextBoxColumn();
             fecha_ingreso = new DataGridViewTextBoxColumn();
             nombre = new DataGridViewTextBoxColumn();
@@ -47,7 +48,6 @@
             celular = new DataGridViewTextBoxColumn();
             email = new DataGridViewTextBoxColumn();
             baja = new DataGridViewTextBoxColumn();
-            btnEliminar = new Button();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -59,7 +59,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(407, 108);
+            label2.Location = new Point(459, 113);
             label2.Name = "label2";
             label2.Size = new Size(39, 15);
             label2.TabIndex = 38;
@@ -68,7 +68,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(52, 69);
+            label3.Location = new Point(104, 74);
             label3.Name = "label3";
             label3.Size = new Size(54, 15);
             label3.TabIndex = 39;
@@ -77,7 +77,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(48, 109);
+            label4.Location = new Point(100, 114);
             label4.Name = "label4";
             label4.Size = new Size(54, 15);
             label4.TabIndex = 40;
@@ -86,7 +86,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(391, 69);
+            label5.Location = new Point(443, 74);
             label5.Name = "label5";
             label5.Size = new Size(55, 15);
             label5.TabIndex = 43;
@@ -95,7 +95,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(363, 27);
+            label7.Location = new Point(415, 32);
             label7.Name = "label7";
             label7.Size = new Size(83, 15);
             label7.TabIndex = 44;
@@ -105,7 +105,7 @@
             // 
             label1.AutoSize = true;
             label1.ImageAlign = ContentAlignment.BottomLeft;
-            label1.Location = new Point(59, 31);
+            label1.Location = new Point(111, 36);
             label1.Name = "label1";
             label1.Size = new Size(45, 15);
             label1.TabIndex = 36;
@@ -114,35 +114,35 @@
             // txtLegajo
             // 
             txtLegajo.Enabled = false;
-            txtLegajo.Location = new Point(117, 27);
+            txtLegajo.Location = new Point(169, 32);
             txtLegajo.Name = "txtLegajo";
             txtLegajo.Size = new Size(199, 23);
             txtLegajo.TabIndex = 37;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(117, 65);
+            txtNombre.Location = new Point(169, 70);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(199, 23);
             txtNombre.TabIndex = 41;
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(117, 105);
+            txtApellido.Location = new Point(169, 110);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(199, 23);
             txtApellido.TabIndex = 42;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(452, 105);
+            txtEmail.Location = new Point(504, 110);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(217, 23);
             txtEmail.TabIndex = 45;
             // 
             // txtCelular
             // 
-            txtCelular.Location = new Point(452, 65);
+            txtCelular.Location = new Point(504, 70);
             txtCelular.Name = "txtCelular";
             txtCelular.Size = new Size(217, 23);
             txtCelular.TabIndex = 46;
@@ -150,7 +150,7 @@
             // dateFechaIngreso
             // 
             dateFechaIngreso.Format = DateTimePickerFormat.Short;
-            dateFechaIngreso.Location = new Point(452, 23);
+            dateFechaIngreso.Location = new Point(504, 28);
             dateFechaIngreso.Name = "dateFechaIngreso";
             dateFechaIngreso.Size = new Size(217, 23);
             dateFechaIngreso.TabIndex = 150;
@@ -170,7 +170,7 @@
             btnReiniciar.BackColor = Color.Transparent;
             btnReiniciar.BackgroundImageLayout = ImageLayout.None;
             btnReiniciar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnReiniciar.Location = new Point(353, 167);
+            btnReiniciar.Location = new Point(426, 167);
             btnReiniciar.Name = "btnReiniciar";
             btnReiniciar.Size = new Size(110, 30);
             btnReiniciar.TabIndex = 58;
@@ -183,7 +183,7 @@
             btnObesrvacion.BackColor = Color.Transparent;
             btnObesrvacion.BackgroundImageLayout = ImageLayout.None;
             btnObesrvacion.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnObesrvacion.Location = new Point(469, 167);
+            btnObesrvacion.Location = new Point(542, 167);
             btnObesrvacion.Name = "btnObesrvacion";
             btnObesrvacion.Size = new Size(110, 30);
             btnObesrvacion.TabIndex = 60;
@@ -196,7 +196,7 @@
             btnGuardar.BackColor = Color.Transparent;
             btnGuardar.BackgroundImageLayout = ImageLayout.None;
             btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardar.Location = new Point(117, 167);
+            btnGuardar.Location = new Point(190, 167);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(110, 30);
             btnGuardar.TabIndex = 151;
@@ -208,13 +208,27 @@
             // 
             dgvEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmpleado.Columns.AddRange(new DataGridViewColumn[] { legajo, fecha_ingreso, nombre, apellido, celular, email, baja });
-            dgvEmpleado.Location = new Point(27, 222);
+            dgvEmpleado.Location = new Point(32, 223);
             dgvEmpleado.Name = "dgvEmpleado";
+            dgvEmpleado.ReadOnly = true;
             dgvEmpleado.RowTemplate.Height = 25;
-            dgvEmpleado.Size = new Size(683, 150);
+            dgvEmpleado.Size = new Size(774, 204);
             dgvEmpleado.TabIndex = 153;
             dgvEmpleado.RowHeaderMouseClick += dgvEmpleado_RowHeaderMouseClick;
             dgvEmpleado.RowHeaderMouseDoubleClick += dgvEmpleado_RowHeaderMouseDoubleClick;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.BackColor = Color.Transparent;
+            btnEliminar.BackgroundImageLayout = ImageLayout.None;
+            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEliminar.Location = new Point(306, 167);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(110, 30);
+            btnEliminar.TabIndex = 154;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // legajo
             // 
@@ -222,6 +236,7 @@
             legajo.Frozen = true;
             legajo.HeaderText = "Legajo";
             legajo.Name = "legajo";
+            legajo.ReadOnly = true;
             legajo.Width = 80;
             // 
             // fecha_ingreso
@@ -230,6 +245,7 @@
             fecha_ingreso.Frozen = true;
             fecha_ingreso.HeaderText = "Fecha Ingreso";
             fecha_ingreso.Name = "fecha_ingreso";
+            fecha_ingreso.ReadOnly = true;
             // 
             // nombre
             // 
@@ -237,7 +253,8 @@
             nombre.Frozen = true;
             nombre.HeaderText = "Nombre";
             nombre.Name = "nombre";
-            nombre.Width = 120;
+            nombre.ReadOnly = true;
+            nombre.Width = 150;
             // 
             // apellido
             // 
@@ -245,7 +262,8 @@
             apellido.Frozen = true;
             apellido.HeaderText = "Apellido";
             apellido.Name = "apellido";
-            apellido.Width = 120;
+            apellido.ReadOnly = true;
+            apellido.Width = 150;
             // 
             // celular
             // 
@@ -253,6 +271,7 @@
             celular.Frozen = true;
             celular.HeaderText = "Celular";
             celular.Name = "celular";
+            celular.ReadOnly = true;
             // 
             // email
             // 
@@ -260,7 +279,8 @@
             email.Frozen = true;
             email.HeaderText = "Email";
             email.Name = "email";
-            email.Width = 120;
+            email.ReadOnly = true;
+            email.Width = 150;
             // 
             // baja
             // 
@@ -268,27 +288,15 @@
             baja.Frozen = true;
             baja.HeaderText = "baja";
             baja.Name = "baja";
+            baja.ReadOnly = true;
             baja.Visible = false;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.BackColor = Color.Transparent;
-            btnEliminar.BackgroundImageLayout = ImageLayout.None;
-            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEliminar.Location = new Point(233, 167);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(110, 30);
-            btnEliminar.TabIndex = 154;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = false;
-            btnEliminar.Click += btnEliminar_Click;
             // 
             // EmpleadoFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(735, 398);
+            ClientSize = new Size(840, 441);
             Controls.Add(btnEliminar);
             Controls.Add(dgvEmpleado);
             Controls.Add(btnGuardar);
