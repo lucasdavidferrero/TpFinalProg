@@ -28,6 +28,14 @@
             cbTarea = new ComboBox();
             label2 = new Label();
             dgvTarea = new DataGridView();
+            cbFuncion = new ComboBox();
+            label4 = new Label();
+            label5 = new Label();
+            cbProyecto = new ComboBox();
+            btnLimpiar = new Button();
+            btnBorrar = new Button();
+            btnGuardar = new Button();
+            btnModificar = new Button();
             id_proyecto = new DataGridViewTextBoxColumn();
             nombre_proyecto = new DataGridViewTextBoxColumn();
             id_tarea = new DataGridViewTextBoxColumn();
@@ -37,14 +45,6 @@
             id_funcion_fk = new DataGridViewTextBoxColumn();
             nombre_funcion = new DataGridViewTextBoxColumn();
             BAJA = new DataGridViewTextBoxColumn();
-            cbFuncion = new ComboBox();
-            label4 = new Label();
-            label5 = new Label();
-            cbProyecto = new ComboBox();
-            btnLimpiar = new Button();
-            btnBorrar = new Button();
-            btnGuardar = new Button();
-            btnModificar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvTarea).BeginInit();
             SuspendLayout();
             // 
@@ -95,79 +95,6 @@
             dgvTarea.CellContentClick += dgvTarea_CellContentClick;
             dgvTarea.CellFormatting += dgvTarea_CellFormatting;
             dgvTarea.SelectionChanged += dgvTarea_SelectionChanged;
-            // 
-            // id_proyecto
-            // 
-            id_proyecto.DataPropertyName = "id_proyecto";
-            id_proyecto.HeaderText = "id_proyecto";
-            id_proyecto.Name = "id_proyecto";
-            id_proyecto.ReadOnly = true;
-            id_proyecto.Visible = false;
-            id_proyecto.Width = 120;
-            // 
-            // nombre_proyecto
-            // 
-            nombre_proyecto.DataPropertyName = "proyecto";
-            nombre_proyecto.HeaderText = "Proyecto";
-            nombre_proyecto.Name = "nombre_proyecto";
-            nombre_proyecto.ReadOnly = true;
-            nombre_proyecto.Width = 150;
-            // 
-            // id_tarea
-            // 
-            id_tarea.DataPropertyName = "id_tarea";
-            id_tarea.HeaderText = "TareaId";
-            id_tarea.Name = "id_tarea";
-            id_tarea.ReadOnly = true;
-            id_tarea.Visible = false;
-            // 
-            // descripcion
-            // 
-            descripcion.HeaderText = "Tarea";
-            descripcion.Name = "descripcion";
-            descripcion.ReadOnly = true;
-            descripcion.Width = 120;
-            // 
-            // legajo
-            // 
-            legajo.DataPropertyName = "legajo";
-            legajo.HeaderText = "legajo_empleado";
-            legajo.Name = "legajo";
-            legajo.ReadOnly = true;
-            legajo.Visible = false;
-            legajo.Width = 120;
-            // 
-            // nombre_empleado
-            // 
-            nombre_empleado.DataPropertyName = "empleado";
-            nombre_empleado.HeaderText = "Empleado";
-            nombre_empleado.Name = "nombre_empleado";
-            nombre_empleado.ReadOnly = true;
-            nombre_empleado.Width = 150;
-            // 
-            // id_funcion_fk
-            // 
-            id_funcion_fk.DataPropertyName = "id_funcion_fk";
-            id_funcion_fk.HeaderText = "id_funcion";
-            id_funcion_fk.Name = "id_funcion_fk";
-            id_funcion_fk.ReadOnly = true;
-            id_funcion_fk.Visible = false;
-            // 
-            // nombre_funcion
-            // 
-            nombre_funcion.DataPropertyName = "funcion";
-            nombre_funcion.HeaderText = "Funcion";
-            nombre_funcion.Name = "nombre_funcion";
-            nombre_funcion.ReadOnly = true;
-            nombre_funcion.Width = 150;
-            // 
-            // BAJA
-            // 
-            BAJA.DataPropertyName = "baja";
-            BAJA.HeaderText = "Baja";
-            BAJA.Name = "BAJA";
-            BAJA.ReadOnly = true;
-            BAJA.Visible = false;
             // 
             // cbFuncion
             // 
@@ -261,6 +188,7 @@
             id_proyecto.DataPropertyName = "id_proyecto";
             id_proyecto.HeaderText = "id_proyecto";
             id_proyecto.Name = "id_proyecto";
+            id_proyecto.ReadOnly = true;
             id_proyecto.Visible = false;
             id_proyecto.Width = 120;
             // 
@@ -269,6 +197,7 @@
             nombre_proyecto.DataPropertyName = "proyecto";
             nombre_proyecto.HeaderText = "Proyecto";
             nombre_proyecto.Name = "nombre_proyecto";
+            nombre_proyecto.ReadOnly = true;
             nombre_proyecto.Width = 150;
             // 
             // id_tarea
@@ -276,18 +205,23 @@
             id_tarea.DataPropertyName = "id_tarea";
             id_tarea.HeaderText = "TareaId";
             id_tarea.Name = "id_tarea";
+            id_tarea.ReadOnly = true;
             id_tarea.Visible = false;
             // 
             // descripcion
             // 
+            descripcion.DataPropertyName = "descripcion";
             descripcion.HeaderText = "Tarea";
             descripcion.Name = "descripcion";
+            descripcion.ReadOnly = true;
+            descripcion.Width = 120;
             // 
             // legajo
             // 
             legajo.DataPropertyName = "legajo";
             legajo.HeaderText = "legajo_empleado";
             legajo.Name = "legajo";
+            legajo.ReadOnly = true;
             legajo.Visible = false;
             legajo.Width = 120;
             // 
@@ -296,6 +230,7 @@
             nombre_empleado.DataPropertyName = "empleado";
             nombre_empleado.HeaderText = "Empleado";
             nombre_empleado.Name = "nombre_empleado";
+            nombre_empleado.ReadOnly = true;
             nombre_empleado.Width = 150;
             // 
             // id_funcion_fk
@@ -303,6 +238,7 @@
             id_funcion_fk.DataPropertyName = "id_funcion_fk";
             id_funcion_fk.HeaderText = "id_funcion";
             id_funcion_fk.Name = "id_funcion_fk";
+            id_funcion_fk.ReadOnly = true;
             id_funcion_fk.Visible = false;
             // 
             // nombre_funcion
@@ -310,6 +246,7 @@
             nombre_funcion.DataPropertyName = "funcion";
             nombre_funcion.HeaderText = "Funcion";
             nombre_funcion.Name = "nombre_funcion";
+            nombre_funcion.ReadOnly = true;
             nombre_funcion.Width = 150;
             // 
             // BAJA
@@ -317,6 +254,7 @@
             BAJA.DataPropertyName = "baja";
             BAJA.HeaderText = "Baja";
             BAJA.Name = "BAJA";
+            BAJA.ReadOnly = true;
             BAJA.Visible = false;
             // 
             // AsignacionTareaFrm
