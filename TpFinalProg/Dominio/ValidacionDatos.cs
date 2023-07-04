@@ -9,6 +9,31 @@ using TpFinalProg.Clases;
 
 namespace TpFinalProg.Dominio {
     internal class ValidacionDatos {
+
+        public static bool responsableCantidadProyectosActivos (int legajo) {
+            const int MAX_PROYECTOS_A_CARGO = 3;
+            string q = $"SELECT COUNT(id_proyecto) as numProyectos FROM Proyecto WHERE legajo_FK = {legajo} AND fecha_final IS NULL AND baja = 0;";
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            try {
+                cx.SetComandoSQL(q);
+                DataTable dt = new DataTable();
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+                if (dt.Rows.Count > 0) {
+                    int numProyectos = Convert.ToInt16(dt.Rows[0][0]);
+                    if (numProyectos <= MAX_PROYECTOS_A_CARGO) {
+                        return true;
+                    }
+                }
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Validación Responsable Cant. Proyectos Activos]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+            return false;
+        }
         public static bool PropietarioAdmiteProyecto(int idPropietario) {
 
             // Las Reglas de negocio (validaciones de datos) van en las entidades.
