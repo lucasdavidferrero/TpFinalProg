@@ -40,7 +40,6 @@
             btnObesrvacion = new Button();
             btnGuardar = new Button();
             dgvEmpleado = new DataGridView();
-            btnEliminar = new Button();
             legajo = new DataGridViewTextBoxColumn();
             fecha_ingreso = new DataGridViewTextBoxColumn();
             nombre = new DataGridViewTextBoxColumn();
@@ -48,6 +47,7 @@
             celular = new DataGridViewTextBoxColumn();
             email = new DataGridViewTextBoxColumn();
             baja = new DataGridViewTextBoxColumn();
+            btnEliminar = new Button();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -117,35 +117,35 @@
             txtLegajo.Location = new Point(169, 32);
             txtLegajo.Name = "txtLegajo";
             txtLegajo.Size = new Size(199, 23);
-            txtLegajo.TabIndex = 37;
+            txtLegajo.TabIndex = 0;
             // 
             // txtNombre
             // 
             txtNombre.Location = new Point(169, 70);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(199, 23);
-            txtNombre.TabIndex = 41;
+            txtNombre.TabIndex = 1;
             // 
             // txtApellido
             // 
             txtApellido.Location = new Point(169, 110);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(199, 23);
-            txtApellido.TabIndex = 42;
+            txtApellido.TabIndex = 2;
             // 
             // txtEmail
             // 
             txtEmail.Location = new Point(504, 110);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(217, 23);
-            txtEmail.TabIndex = 45;
+            txtEmail.TabIndex = 4;
             // 
             // txtCelular
             // 
             txtCelular.Location = new Point(504, 70);
             txtCelular.Name = "txtCelular";
             txtCelular.Size = new Size(217, 23);
-            txtCelular.TabIndex = 46;
+            txtCelular.TabIndex = 3;
             // 
             // dateFechaIngreso
             // 
@@ -153,7 +153,7 @@
             dateFechaIngreso.Location = new Point(504, 28);
             dateFechaIngreso.Name = "dateFechaIngreso";
             dateFechaIngreso.Size = new Size(217, 23);
-            dateFechaIngreso.TabIndex = 150;
+            dateFechaIngreso.TabIndex = 5;
             // 
             // label8
             // 
@@ -173,7 +173,7 @@
             btnReiniciar.Location = new Point(426, 167);
             btnReiniciar.Name = "btnReiniciar";
             btnReiniciar.Size = new Size(110, 30);
-            btnReiniciar.TabIndex = 58;
+            btnReiniciar.TabIndex = 7;
             btnReiniciar.Text = "Reiniciar";
             btnReiniciar.UseVisualStyleBackColor = false;
             btnReiniciar.Click += btnReiniciar_Click;
@@ -199,7 +199,7 @@
             btnGuardar.Location = new Point(190, 167);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(110, 30);
-            btnGuardar.TabIndex = 151;
+            btnGuardar.TabIndex = 6;
             btnGuardar.Text = "Crear";
             btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
@@ -216,19 +216,6 @@
             dgvEmpleado.TabIndex = 153;
             dgvEmpleado.RowHeaderMouseClick += dgvEmpleado_RowHeaderMouseClick;
             dgvEmpleado.RowHeaderMouseDoubleClick += dgvEmpleado_RowHeaderMouseDoubleClick;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.BackColor = Color.Transparent;
-            btnEliminar.BackgroundImageLayout = ImageLayout.None;
-            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEliminar.Location = new Point(306, 167);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(110, 30);
-            btnEliminar.TabIndex = 154;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = false;
-            btnEliminar.Click += btnEliminar_Click;
             // 
             // legajo
             // 
@@ -290,6 +277,19 @@
             baja.Name = "baja";
             baja.ReadOnly = true;
             baja.Visible = false;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.BackColor = Color.Transparent;
+            btnEliminar.BackgroundImageLayout = ImageLayout.None;
+            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEliminar.Location = new Point(306, 167);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(110, 30);
+            btnEliminar.TabIndex = 154;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // EmpleadoFrm
             // 
