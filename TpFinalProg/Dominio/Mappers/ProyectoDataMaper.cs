@@ -81,7 +81,7 @@ namespace PruebaTpFinal.Dominio.Mappers
         }
         public static DataTable obtenerTodosParametros() {
             DataTable dtListAll = new DataTable("ListarProyectos");
-            string query = "SELECT Proyecto.id_proyecto, Proyecto.nombre,Propietario.razon_social, Empleado.nombre+ ' '+apellido, " +
+            string query = "SELECT Proyecto.id_proyecto, Proyecto.nombre,Propietario.razon_social, Empleado.legajo, Empleado.nombre+ ' '+apellido, " +
                 "Proyecto.monto_estimado, Proyecto.tiempo_estimado, Proyecto.baja FROM Proyecto INNER JOIN " +
                 "Propietario ON Propietario.id_propietario = Proyecto.id_propietario_FK INNER JOIN " +
                 "Empleado ON Empleado.legajo = Proyecto.legajo_FK where Proyecto.baja = 0 and Empleado.baja=0 and Propietario.baja = 0";

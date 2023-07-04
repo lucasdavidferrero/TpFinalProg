@@ -17,6 +17,7 @@ using TpFinalProg.Dominio;
 namespace TpFinalProg {
     public partial class ProyectoFrm : Form {
         private int idRowSeleccionado = -1;
+        private int idLegajoAnterior = -1;
         private int idRowSeleccionadoEliminar = -1;
 
         public ProyectoFrm() {
@@ -83,6 +84,7 @@ namespace TpFinalProg {
             limpiarCampos();
             this.idRowSeleccionado = -1;
             this.idRowSeleccionadoEliminar = -1;
+            this.idLegajoAnterior = -1;
             btnGuardar.Text = "Crear";
             btnEliminar.Enabled = false;
         }
@@ -96,17 +98,19 @@ namespace TpFinalProg {
                 return;
             }
 
-
+            int maxProyectosACargo = 3;
             string nombre = txtNombre.Text.Trim();
             decimal montoEstimado = Convert.ToDecimal(txtMonto.Text.Trim());
             int tiempoEstimado = Convert.ToInt32(txtTiempo.Text.Trim());
             int idPropietario = Convert.ToInt32(cbPropietario.SelectedValue);
             int legajo = Convert.ToInt32(cbResponsable.SelectedValue);
 
+            if (this.idLegajoAnterior == legajo) {
+                maxProyectosACargo++;
+            }
 
-            if (ValidacionDatos.responsableCantidadProyectosActivos(legajo)) {
-                try {
-
+            try {
+                if (ValidacionDatos.responsableCantidadProyectosActivos(legajo) < maxProyectosACargo) {
                     if (this.idRowSeleccionado < 0) {
                         Controlador.ProyectoControlador.crear(nombre, montoEstimado, tiempoEstimado, idPropietario, legajo);
                         Mensaje.Correcto("Guardado Exitosamente");
@@ -115,16 +119,16 @@ namespace TpFinalProg {
                         ProyectoControlador.actualizar(idProy, nombre, montoEstimado, tiempoEstimado, idPropietario, legajo);
                         Mensaje.Correcto("Modificado Exitosamente");
                     }
-
-                    listarProyecto();
-                    reiniciarFormulario();
-
+                } else {
+                    Mensaje.Error("El Responsable seleccionado ya posee 3 proyectos en curso asignados.");
+                }
+                
+                listarProyecto();
+                reiniciarFormulario();
                 } catch (Exception ex) {
                     Mensaje.Advertencia(ex.Message);
                 }
-            } else {
-                Mensaje.Error("El responsable tiene más de 3 proyectos a cargo en este momento.");
-            }
+
         }
 
         private void btnEliminar_Click(object sender, EventArgs e) {
@@ -157,6 +161,8 @@ namespace TpFinalProg {
             txtNombre.Text = celdas["nombre"].Value.ToString();
             txtMonto.Text = celdas["MONTO_ESTIMADO"].Value.ToString();
             txtTiempo.Text = celdas["tiempo_estimado"].Value.ToString();
+
+            this.idLegajoAnterior = Convert.ToInt16(celdas["legajo"].Value.ToString());
 
             cbPropietario.Text = celdas["razon_social"].Value.ToString();
             cbResponsable.Text = celdas["RESPONSABLE"].Value.ToString();
