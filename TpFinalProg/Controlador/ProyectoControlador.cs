@@ -37,6 +37,11 @@ namespace TpFinalProg.Controlador {
             return proyectos;
         }
 
+        public static DataTable obtenerProyectosActivosConTareasDisponiblesParaAsignar () {
+            Proyecto clsProyecto = new Proyecto();
+            return clsProyecto.obtenerProyectosActivosConTareasDisponiblesParaAsignar();
+        }
+
     }
 
    

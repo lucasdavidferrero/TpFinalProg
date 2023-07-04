@@ -99,6 +99,27 @@ namespace PruebaTpFinal.Dominio.Mappers
 
             return dtListAll;
         }
+
+        public static DataTable obtenerProyectosActivosConTareasDisponiblesParaAsignar () {
+            DataTable dtListAll = new DataTable("ListarProyectos");
+            string query = "SELECT Proyecto.id_proyecto, Proyecto.nombre as proyecto_nombre " +
+                "FROM Proyecto INNER JOIN Tarea ON Proyecto.id_proyecto = Tarea.id_proyecto " +
+                "WHERE Proyecto.baja = 0 AND Proyecto.fecha_final IS NULL AND Tarea.baja = 0 AND Tarea.fecha_final IS NULL;";
+            Conexion cx = new Conexion();
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtListAll);
+            } catch (SqlException e) {
+                dtListAll = null;
+                Console.WriteLine("Error en la base de datos. [Listado Proyectos]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return dtListAll;
+        }
         
         public static int modificar(Proyecto proyecto)
         {

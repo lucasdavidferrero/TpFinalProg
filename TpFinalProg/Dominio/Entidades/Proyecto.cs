@@ -51,6 +51,10 @@ namespace TpFinalProg.Dominio.Entidades {
             return ProyectoDataMapper.obtenerTodosParametros();
         }
 
+        public DataTable obtenerProyectosActivosConTareasDisponiblesParaAsignar () {
+            return ProyectoDataMapper.obtenerProyectosActivosConTareasDisponiblesParaAsignar();
+        }
+
         public void eliminarPorId(int id) {
             ProyectoDataMapper.eliminar(id);
         }

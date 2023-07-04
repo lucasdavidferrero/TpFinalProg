@@ -41,6 +41,7 @@
             id_proyecto = new DataGridViewTextBoxColumn();
             nombre_proyecto = new DataGridViewTextBoxColumn();
             id_tarea = new DataGridViewTextBoxColumn();
+            descripcion = new DataGridViewTextBoxColumn();
             legajo = new DataGridViewTextBoxColumn();
             nombre_empleado = new DataGridViewTextBoxColumn();
             id_funcion_fk = new DataGridViewTextBoxColumn();
@@ -104,7 +105,7 @@
             // dgvTarea
             // 
             dgvTarea.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTarea.Columns.AddRange(new DataGridViewColumn[] { id_proyecto, nombre_proyecto, id_tarea, legajo, nombre_empleado, id_funcion_fk, nombre_funcion, BAJA });
+            dgvTarea.Columns.AddRange(new DataGridViewColumn[] { id_proyecto, nombre_proyecto, id_tarea, descripcion, legajo, nombre_empleado, id_funcion_fk, nombre_funcion, BAJA });
             dgvTarea.Location = new Point(59, 273);
             dgvTarea.Name = "dgvTarea";
             dgvTarea.RowTemplate.Height = 25;
@@ -219,8 +220,14 @@
             // id_tarea
             // 
             id_tarea.DataPropertyName = "id_tarea";
-            id_tarea.HeaderText = "Tarea";
+            id_tarea.HeaderText = "TareaId";
             id_tarea.Name = "id_tarea";
+            id_tarea.Visible = false;
+            // 
+            // descripcion
+            // 
+            descripcion.HeaderText = "Tarea";
+            descripcion.Name = "descripcion";
             // 
             // legajo
             // 
@@ -311,5 +318,6 @@
         private DataGridViewTextBoxColumn id_funcion_fk;
         private DataGridViewTextBoxColumn nombre_funcion;
         private DataGridViewTextBoxColumn BAJA;
+        private DataGridViewTextBoxColumn descripcion;
     }
 }
