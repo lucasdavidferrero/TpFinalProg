@@ -40,60 +40,6 @@ namespace TpFinalProg {
             cbPropietario.ValueMember = "id_propietario";
             cbPropietario.DisplayMember = "descripcion";
         }
-
-        /*  private void cargarCbPropietario() {
-
-              // Obtén el DataTable desde tu fuente de datos
-              DataTable dataTable = Controlador.PropietarioControlador.listarTodo();
-
-              // Asigna el DataTable como origen de datos del ComboBox
-              cbPropietario.DataSource = dataTable;
-
-              // Especifica la columna que deseas mostrar en el ComboBox
-              cbPropietario.DisplayMember = "razon_social";
-
-              // Opcionalmente, especifica la columna que deseas utilizar como valor seleccionado
-              cbPropietario.ValueMember = "id_propietario";
-          }
-          private void cargarCbResponsable() {
-
-              // Obtén el DataTable desde tu fuente de datos
-              DataTable dataTable = Controlador.EmpleadoControlador.listarTodo();
-
-              // Asigna el DataTable como origen de datos del ComboBox
-              cbResponsable.DataSource = dataTable;
-
-              // Especifica la columna que deseas mostrar en el ComboBox
-              cbResponsable.DisplayMember = "nombre";
-
-              // Opcionalmente, especifica la columna que deseas utilizar como valor seleccionado
-              cbResponsable.ValueMember = "legajo";
-          }
-        */
-
-        /*   private void cbPropietario_SelectedIndexChanged(object sender, EventArgs e) {
-               // Agrega una fila vacía al DataGridView si no tiene filas
-               if (dgvProyecto.Rows.Count == 0) {
-                   dgvProyecto.Rows.Add();
-               }
-               // Obtén el elemento seleccionado del ComboBox
-               DataRowView selectedRow = cbPropietario.SelectedItem as DataRowView;
-
-               if (selectedRow != null) {
-                   // Obtén el valor del elemento seleccionado
-                   int selectedId = Convert.ToInt32(selectedRow["id_propietario"]);
-
-                   // Filtra los datos del DataTable original para obtener un nuevo DataTable con los datos seleccionados
-                   Propietario pSeleccionado = PropietarioDataMapper.obtenerPorId(selectedId);
-
-                  /* // Recorre las filas del DataGridView
-                   foreach (DataGridViewRow row in dgvProyecto.Rows) {
-                       // Asigna el valor del propietario a la columna correspondiente
-                       row.Cells["PROPIETARIO"].Value = pSeleccionado.razonSocial;*/
-
-
-        //  }
-        //   }
         private bool validarFrm() {
             string mensajeError = "";
             bool hayAlMenosUnError = false;
@@ -102,8 +48,8 @@ namespace TpFinalProg {
                 hayAlMenosUnError = true;
             }
 
-            if (string.IsNullOrEmpty(txtMonto.Text)) {
-                mensajeError += "- El Monto esta vacío o es inválido. \n";
+            if (string.IsNullOrEmpty(txtMonto.Text) || !Validar.dinero(txtMonto.Text)) {
+                mensajeError += "- El Monto esta vacío o posee un formato inválido. \n";
                 hayAlMenosUnError = true;
             }
 
@@ -188,11 +134,11 @@ namespace TpFinalProg {
 
         private void btnLimpiar_Click(object sender, EventArgs e) {
             reiniciarFormulario();
+            listarProyecto();
         }
 
         private void dgvProyecto_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
             btnEliminar.Enabled = false;
-            // El último row siempre esta vacío. No hacemos nada en ese caso.
             if (dgvProyecto.Rows.Count - 1 == e.RowIndex)
                 return;
 
@@ -207,21 +153,6 @@ namespace TpFinalProg {
             cbPropietario.Text = celdas["razon_social"].Value.ToString();
             cbResponsable.Text = celdas["RESPONSABLE"].Value.ToString();
 
-            /*  int idPropietario = Convert.ToInt32(celdas["id_propietario"].Value);
-               cbPropietario.SelectedValue = idPropietario;
-
-               PropietarioDataMapper.encontrarPorIdRazonSocial(idPropietario);
-
-               cbPropietario.SelectedValue = idPropietario;
-
-               int idResponsable = Convert.ToInt32(celdas["legajo"].Value);
-               cbResponsable.SelectedValue = idResponsable;
-
-               EmpleadoDataMapper.encontrarPorIdNombre(idResponsable);
-
-               cbResponsable.SelectedValue = idResponsable;*/
-
-
             btnGuardar.Text = "Guardar cambios";
         }
 
@@ -229,36 +160,6 @@ namespace TpFinalProg {
             btnEliminar.Enabled = true;
             this.idRowSeleccionadoEliminar = e.RowIndex;
         }
-
-
-
-        /* foreach (DataRow row in listadoProyecto.Rows) {
-             // Accede a los valores de cada columna en la fila actual
-             foreach (DataColumn column in listadoProyecto.Columns) {
-                 // Accede al valor de la columna en la fila actual
-                 object value = row["id_propietario"];
-
-                 // Haz algo con el valor, como mostrarlo en la consola
-                 Console.WriteLine(value.ToString());
-             }
-         }
-
-
-         // Obtén el elemento seleccionado del ComboBox
-         DataRowView selectedRow = cbPropietario.SelectedItem as DataRowView;
-
-         if (selectedRow != null) {
-             // Obtén el valor del elemento seleccionado
-             int selectedId = Convert.ToInt32(selectedRow["id_propietario"]);
-
-             // Filtra los datos del DataTable original para obtener un nuevo DataTable con los datos seleccionados
-             Propietario pSeleccionado = PropietarioDataMapper.obtenerPorId(selectedId);
-
-             foreach (DataGridViewRow row in dgvProyecto.Rows) {
-                 // Asigna el valor del propietario a la columna correspondiente
-                 row.Cells["PROPIETARIO"].Value = pSeleccionado.razonSocial;
-             }
-         }*/
     }
 
 

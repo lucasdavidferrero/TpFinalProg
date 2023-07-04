@@ -158,7 +158,7 @@ namespace PruebaTpFinal.Dominio.Mappers
         }
 
         public static bool eliminar(Trabaja trabaja) {
-            string query = "UPDATE Trabaja SET baja = 1 WHERE legajo = @nroLegajo AND id_proyecto = @idProyecto AND id_tarea = @idTarea AND baja = 0";
+            string query = "DELETE FROM Trabaja WHERE legajo = @nroLegajo AND id_proyecto = @idProyecto AND id_tarea = @idTarea";
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 
