@@ -17,14 +17,14 @@ namespace TpFinalProg.Dominio.Entidades {
         public int horasEstimadas { get; }
 
         public int horasAvance { get; }
-        public float costoEstimado { get; }
+        public decimal costoEstimado { get; }
         public int horasReales { get; }
-        public float costoReal { get; }
+        public decimal costoReal { get; }
         public DateTime fechaFinal { get; }
 
         public Tarea() { }
 
-        public Tarea(int idProyecto, int idTarea, string descripcion, int horasEstimadas, int horasAvance, float costoEstimado, int horasReales, float costoReal, DateTime fechaFinal) {
+        public Tarea(int idProyecto, int idTarea, string descripcion, int horasEstimadas, int horasAvance, decimal costoEstimado, int horasReales, decimal costoReal, DateTime fechaFinal) {
             this.idProyecto = idProyecto;
             this.idTarea = idTarea;
             this.descripcion = descripcion;
@@ -36,21 +36,18 @@ namespace TpFinalProg.Dominio.Entidades {
             this.fechaFinal = fechaFinal;
         }
 
-        public int guardar() {
-            /*if (TrabajaDataMapper.insertarNuevo(t) != 0) {
-                MessageBox.Show("Tarea agregada");
-            } else {
-                MessageBox.Show("Ocurrió un erro al agregar tarea");
-            }*/
-
-            Tarea tarEncontrada = TareaDataMapper.encontrarPorId(this.idProyecto, this.idTarea);
-            if (tarEncontrada != null) {
-                TareaDataMapper.modificar(this);
-                return idTarea;
-            } else {
-                return -1; 
-            }
+        public Tarea(int idProyecto, int idTarea, string descripcion, int horasEstimadas, int horasAvance, decimal costoEstimado, int horasReales, decimal costoReal) {
+            this.idProyecto = idProyecto;
+            this.idTarea = idTarea;
+            this.descripcion = descripcion;
+            this.horasEstimadas = horasEstimadas;
+            this.horasAvance = horasAvance;
+            this.costoEstimado = costoEstimado;
+            this.horasReales = horasReales;
+            this.costoReal = costoReal;
         }
+
+
 
         public DataTable obtenerTodos() {
             return TareaDataMapper.obtenerTodos();

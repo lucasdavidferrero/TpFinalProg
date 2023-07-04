@@ -26,6 +26,7 @@
             txtDescripcion = new TextBox();
             dgvTarea = new DataGridView();
             PROYECTO = new DataGridViewTextBoxColumn();
+            nombre_proyecto = new DataGridViewTextBoxColumn();
             NUMERO = new DataGridViewTextBoxColumn();
             descripcion = new DataGridViewTextBoxColumn();
             HORAESTIMADA = new DataGridViewTextBoxColumn();
@@ -40,7 +41,6 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            label1 = new Label();
             label6 = new Label();
             txtCostoReal = new TextBox();
             label7 = new Label();
@@ -48,7 +48,6 @@
             label8 = new Label();
             txtHoraEstimada = new TextBox();
             txtCostoEstimado = new TextBox();
-            txtNumero = new TextBox();
             cbProyecto = new ComboBox();
             btnLimpiar = new Button();
             btnEliminar = new Button();
@@ -56,12 +55,14 @@
             label9 = new Label();
             txtHoraAvance = new TextBox();
             label10 = new Label();
+            txtNroTarea = new TextBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvTarea).BeginInit();
             SuspendLayout();
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(267, 112);
+            txtDescripcion.Location = new Point(267, 91);
             txtDescripcion.Multiline = true;
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(477, 88);
@@ -72,7 +73,7 @@
             dgvTarea.AllowUserToAddRows = false;
             dgvTarea.AllowUserToDeleteRows = false;
             dgvTarea.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTarea.Columns.AddRange(new DataGridViewColumn[] { PROYECTO, NUMERO, descripcion, HORAESTIMADA, COSTOESTIMADO, HORAREAL, COSTOREAL, fecha_final, horas_avance, id, baja });
+            dgvTarea.Columns.AddRange(new DataGridViewColumn[] { PROYECTO, nombre_proyecto, NUMERO, descripcion, HORAESTIMADA, COSTOESTIMADO, HORAREAL, COSTOREAL, fecha_final, horas_avance, id, baja });
             dgvTarea.Location = new Point(12, 389);
             dgvTarea.Name = "dgvTarea";
             dgvTarea.ReadOnly = true;
@@ -86,9 +87,18 @@
             // 
             PROYECTO.DataPropertyName = "id_proyecto";
             PROYECTO.Frozen = true;
-            PROYECTO.HeaderText = "Proyecto";
+            PROYECTO.HeaderText = "id_proyecto";
             PROYECTO.Name = "PROYECTO";
             PROYECTO.ReadOnly = true;
+            PROYECTO.Visible = false;
+            // 
+            // nombre_proyecto
+            // 
+            nombre_proyecto.DataPropertyName = "proyecto";
+            nombre_proyecto.Frozen = true;
+            nombre_proyecto.HeaderText = "Proyecto";
+            nombre_proyecto.Name = "nombre_proyecto";
+            nombre_proyecto.ReadOnly = true;
             // 
             // NUMERO
             // 
@@ -200,20 +210,12 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(178, 149);
+            label2.Location = new Point(182, 127);
             label2.Name = "label2";
             label2.Size = new Size(72, 15);
             label2.TabIndex = 37;
             label2.Text = "Descripción:";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(160, 72);
-            label1.Name = "label1";
-            label1.Size = new Size(90, 15);
-            label1.TabIndex = 36;
-            label1.Text = "Número Orden:";
+            label2.Click += label2_Click;
             // 
             // label6
             // 
@@ -270,13 +272,6 @@
             txtCostoEstimado.Name = "txtCostoEstimado";
             txtCostoEstimado.Size = new Size(129, 23);
             txtCostoEstimado.TabIndex = 53;
-            // 
-            // txtNumero
-            // 
-            txtNumero.Location = new Point(267, 69);
-            txtNumero.Name = "txtNumero";
-            txtNumero.Size = new Size(477, 23);
-            txtNumero.TabIndex = 54;
             // 
             // cbProyecto
             // 
@@ -351,12 +346,33 @@
             label10.TabIndex = 164;
             label10.Text = "|";
             // 
+            // txtNroTarea
+            // 
+            txtNroTarea.Location = new Point(789, 104);
+            txtNroTarea.Name = "txtNroTarea";
+            txtNroTarea.Size = new Size(129, 23);
+            txtNroTarea.TabIndex = 165;
+            txtNroTarea.Visible = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(789, 86);
+            label1.Name = "label1";
+            label1.Size = new Size(164, 15);
+            label1.TabIndex = 166;
+            label1.Text = "No borrar, sirva para nro tarea";
+            label1.Visible = false;
+            label1.Click += label1_Click;
+            // 
             // TareaFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(978, 688);
+            Controls.Add(label1);
+            Controls.Add(txtNroTarea);
             Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(txtHoraAvance);
@@ -364,7 +380,6 @@
             Controls.Add(btnEliminar);
             Controls.Add(btnGuardar);
             Controls.Add(cbProyecto);
-            Controls.Add(txtNumero);
             Controls.Add(txtCostoEstimado);
             Controls.Add(txtHoraEstimada);
             Controls.Add(label8);
@@ -377,7 +392,6 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(txtHoraReal);
             Name = "TareaFrm";
             Text = "Tarea";
@@ -395,7 +409,6 @@
         private Label label4;
         private Label label3;
         private Label label2;
-        private Label label1;
         private TextBox txtContacto;
         private TextBox txtRazonSocial;
         private Label label6;
@@ -405,12 +418,15 @@
         private Label label8;
         private TextBox txtHoraEstimada;
         private TextBox txtCostoEstimado;
-        private TextBox txtNumero;
         private ComboBox cbProyecto;
         private Button btnLimpiar;
         private Button btnEliminar;
         private Button btnGuardar;
+        private Label label9;
+        private TextBox txtHoraAvance;
+        private Label label10;
         private DataGridViewTextBoxColumn PROYECTO;
+        private DataGridViewTextBoxColumn nombre_proyecto;
         private DataGridViewTextBoxColumn NUMERO;
         private DataGridViewTextBoxColumn descripcion;
         private DataGridViewTextBoxColumn HORAESTIMADA;
@@ -421,8 +437,7 @@
         private DataGridViewTextBoxColumn horas_avance;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn baja;
-        private Label label9;
-        private TextBox txtHoraAvance;
-        private Label label10;
+        private TextBox txtNroTarea;
+        private Label label1;
     }
 }

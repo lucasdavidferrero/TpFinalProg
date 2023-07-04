@@ -20,9 +20,9 @@ namespace TpFinalProg {
         public TareaFrm() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-
+            cargarDgvTarea();
             cargarCbProyecto();
-            listarTarea();
+            ;
             btnEliminar.Enabled = false;
         }
 
@@ -32,14 +32,37 @@ namespace TpFinalProg {
                 return;
             }
             int idProyecto = Convert.ToInt32(cbProyecto.SelectedValue);
-            int idTarea = Convert.ToInt32(txtNumero.Text.Trim());
             string descripcion = txtDescripcion.Text.Trim();
             int horasEstimadas = Convert.ToInt32(txtHoraEstimada.Text.Trim());
             int horasAvance = Convert.ToInt32(txtHoraAvance.Text.Trim());
             decimal costoEstimado = Convert.ToDecimal(txtCostoEstimado.Text.Trim());
             int horasReales = Convert.ToInt32(txtHoraReal.Text.Trim());
             decimal costoReal = Convert.ToDecimal(txtCostoReal.Text.Trim());
-            //Ver si falta fecha
+
+            if (btnGuardar.Text == "Guardar cambios") {
+
+                int idTarea = Convert.ToInt32(txtNroTarea.Text.Trim());
+
+                bool modificado = TareaControlador.actualizar(idProyecto, idTarea, descripcion, horasEstimadas, horasAvance, costoEstimado, horasReales, costoReal);
+                if (!modificado) {
+                    MessageBox.Show("Ocurrió un error al modificar la tarea");
+                } else {
+                    MessageBox.Show("Tarea modificada exitosamente");
+                }
+            } else {
+
+
+                bool creado = TareaControlador.crear(idProyecto, descripcion, horasEstimadas, horasAvance, costoEstimado, horasReales, costoReal);
+
+                if (!creado) {
+                    MessageBox.Show("Ocurrió un error al guardar la tarea");
+                } else {
+                    MessageBox.Show("Tarea guardada exitosamente");
+                }
+            }
+
+
+            cargarDgvTarea();
         }
 
 
@@ -51,10 +74,7 @@ namespace TpFinalProg {
                 mensajeError += "- Seleccione un Proyecto a asignar la tarea. \n";
                 hayAlMenosUnError = true;
             }
-            if (string.IsNullOrEmpty(txtNumero.Text)) {
-                mensajeError += "- Debe ingresar número de tarea. \n";
-                hayAlMenosUnError = true;
-            }
+
             if (string.IsNullOrEmpty(txtDescripcion.Text)) {
                 mensajeError += "- Descripción es obligatoria. \n";
                 hayAlMenosUnError = true;
@@ -80,7 +100,6 @@ namespace TpFinalProg {
         }
 
         private void limpiarCampos() {
-            txtNumero.Text = "";
             txtHoraEstimada.Text = "";
             txtDescripcion.Text = "";
             txtCostoEstimado.Text = "";
@@ -98,10 +117,8 @@ namespace TpFinalProg {
             btnEliminar.Enabled = false;
         }
 
-        private void listarTarea() {
-            DataTable listadoTarea = Controlador.TareaControlador.listarTodo();
-            dgvTarea.DataSource = listadoTarea;
-        }
+
+
 
         private void cargarCbProyecto() {
             DataTable ta = Tarea.CargarCombo();
@@ -109,6 +126,7 @@ namespace TpFinalProg {
             cbProyecto.ValueMember = "id_proyecto";
             cbProyecto.DisplayMember = "nombre";
         }
+
         public static DataTable CargarCombo() {
             DataSet ds = PropietarioDataMapper.cargarCombo();
             DataTable dtListaAll = null;
@@ -126,13 +144,14 @@ namespace TpFinalProg {
             reiniciarFormulario();
         }
 
+
         private void btnEliminar_Click(object sender, EventArgs e) {
             if (idRowSeleccionadoEliminar >= 0) {
                 int id_proyecto = Convert.ToInt32(dgvTarea.Rows[idRowSeleccionadoEliminar].Cells["PROYECTO"].Value.ToString());
                 int id_tarea = Convert.ToInt32(dgvTarea.Rows[idRowSeleccionadoEliminar].Cells["NUMERO"].Value.ToString());
-                TareaControlador.eliminar(id_proyecto, id_tarea);
+                //TareaControlador.eliminar(id_proyecto, id_tarea);
                 reiniciarFormulario();
-                listarTarea();
+                cargarDgvTarea();
             }
         }
 
@@ -151,8 +170,8 @@ namespace TpFinalProg {
 
             // Llenar los Textboxs con los correspondientes datos del Row seleccionado.
             DataGridViewCellCollection celdas = dgvTarea.Rows[idRowSeleccionado].Cells;
-            cbProyecto.Text = celdas["PROYECTO"].Value.ToString();
-            txtNumero.Text = celdas["NUMERO"].Value.ToString();
+            cbProyecto.Text = celdas["nombre_proyecto"].Value.ToString();
+            txtNroTarea.Text = celdas["NUMERO"].Value.ToString();
             txtHoraEstimada.Text = celdas["HORAESTIMADA"].Value.ToString();
             txtDescripcion.Text = celdas["descripcion"].Value.ToString();
             txtCostoEstimado.Text = celdas["COSTOESTIMADO"].Value.ToString();
@@ -162,6 +181,19 @@ namespace TpFinalProg {
 
 
             btnGuardar.Text = "Guardar cambios";
+        }
+
+        private void cargarDgvTarea() {
+            DataTable dt = TareaControlador.cargarDtv();
+            dgvTarea.DataSource = dt;
+        }
+
+        private void label2_Click(object sender, EventArgs e) {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e) {
+
         }
     }
 }

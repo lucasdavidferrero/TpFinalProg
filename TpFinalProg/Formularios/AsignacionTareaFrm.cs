@@ -131,19 +131,7 @@ namespace TpFinalProg {
             cargarTodo();
         }
 
-        private void cargarCbProyecto(int id) {
-            DataTable proyecto = ProyectoControlador.listarPorId(id);
-            cbProyecto.DataSource = proyecto;
-            cbProyecto.DisplayMember = "nombre";
-            cbProyecto.ValueMember = "id_proyecto";
-        }
 
-        private void cargarCbEmpleado(int id) {
-            DataTable empleado = EmpleadoControlador.listarPorId(id);
-            cbProyecto.DataSource = empleado;
-            cbProyecto.DisplayMember = "nombreCompleto";
-            cbProyecto.ValueMember = "legajo";
-        }
 
         private void dgvTarea_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
 

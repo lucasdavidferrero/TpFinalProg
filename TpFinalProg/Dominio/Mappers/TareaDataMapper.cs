@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TpFinalProg.Clases;
 using TpFinalProg.Dominio.Entidades;
+using static System.Windows.Forms.MonthCalendar;
 
 namespace PruebaTpFinal.Dominio.Mappers
 {
@@ -16,11 +17,11 @@ namespace PruebaTpFinal.Dominio.Mappers
         public static Tuple<int, int> insertarNuevo(Tarea tarea)
         {
             string query = @"
-        INSERT INTO Tarea (id_proyecto, nro_tarea, descripcion, horas_estimadas, horas_avance, costo_estimado, horas_reales, costo_real, fecha_final)
+        INSERT INTO Tarea (id_proyecto, nro_tarea, descripcion, horas_estimadas, horas_avance, costo_estimado, horas_reales, costo_real)
         OUTPUT INSERTED.id_proyecto, INSERTED.nro_tarea
-        VALUES (@idProyecto, @idTarea, @descripcion, @horasEstimadas, @horasAvance, @costoEstimado, @horasReales, @costoReal, @fechaFinal)";
+        VALUES (@idProyecto, @idTarea, @descripcion, @horasEstimadas, @horasAvance, @costoEstimado, @horasReales, @costoReal)";
 
-            Tuple<int, int> generatedId = null;
+            Tuple<int, int>? generatedId = null;
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 
@@ -29,10 +30,9 @@ namespace PruebaTpFinal.Dominio.Mappers
             cmd.Parameters.Add("@descripcion", SqlDbType.NVarChar);
             cmd.Parameters.Add("@horasEstimadas", SqlDbType.Int);
             cmd.Parameters.Add("@horasAvance", SqlDbType.Int);
-            cmd.Parameters.Add("@costoEstimado", SqlDbType.Float);
+            cmd.Parameters.Add("@costoEstimado", SqlDbType.Decimal);
             cmd.Parameters.Add("@horasReales", SqlDbType.Int);
-            cmd.Parameters.Add("@costoReal", SqlDbType.Float);
-            cmd.Parameters.Add("@fechaFinal", SqlDbType.Date);
+            cmd.Parameters.Add("@costoReal", SqlDbType.Decimal);
 
             cmd.Parameters["@idProyecto"].Value = tarea.idProyecto;
             cmd.Parameters["@idTarea"].Value = tarea.idTarea;
@@ -42,7 +42,6 @@ namespace PruebaTpFinal.Dominio.Mappers
             cmd.Parameters["@costoEstimado"].Value = tarea.costoEstimado;
             cmd.Parameters["@horasReales"].Value = tarea.horasReales;
             cmd.Parameters["@costoReal"].Value = tarea.costoReal;
-            cmd.Parameters["@fechaFinal"].Value = tarea.fechaFinal;
 
             try
             {
@@ -96,10 +95,10 @@ namespace PruebaTpFinal.Dominio.Mappers
             return dt;
         }
 
-        public static Tuple<int, int> modificar(Tarea tarea)
+        public static Tuple<int, int>? modificar(Tarea tarea)
         {
             string query = "UPDATE Tarea SET descripcion = @descripcion, horas_estimadas = @horasEstimadas, horas_avance = @horasAvance, " +
-                           "costo_estimado = @costoEstimado, horas_reales = @horasReales, costo_real = @costoReal, fecha_final = @fechaFinal " +
+                           "costo_estimado = @costoEstimado, horas_reales = @horasReales, costo_real = @costoReal " +
                            "WHERE id_proyecto = @idProyecto AND nro_tarea = @idTarea AND baja = 0";
 
             Conexion cx = new Conexion();
@@ -108,10 +107,9 @@ namespace PruebaTpFinal.Dominio.Mappers
             cmd.Parameters.Add("@descripcion", SqlDbType.NVarChar);
             cmd.Parameters.Add("@horasEstimadas", SqlDbType.Int);
             cmd.Parameters.Add("@horasAvance", SqlDbType.Int);
-            cmd.Parameters.Add("@costoEstimado", SqlDbType.Float);
+            cmd.Parameters.Add("@costoEstimado", SqlDbType.Decimal);
             cmd.Parameters.Add("@horasReales", SqlDbType.Int);
-            cmd.Parameters.Add("@costoReal", SqlDbType.Float);
-            cmd.Parameters.Add("@fechaFinal", SqlDbType.Date);
+            cmd.Parameters.Add("@costoReal", SqlDbType.Decimal);
             cmd.Parameters.Add("@idProyecto", SqlDbType.Int);
             cmd.Parameters.Add("@idTarea", SqlDbType.Int);
 
@@ -121,24 +119,17 @@ namespace PruebaTpFinal.Dominio.Mappers
             cmd.Parameters["@costoEstimado"].Value = tarea.costoEstimado;
             cmd.Parameters["@horasReales"].Value = tarea.horasReales;
             cmd.Parameters["@costoReal"].Value = tarea.costoReal;
-            cmd.Parameters["@fechaFinal"].Value = tarea.fechaFinal;
             cmd.Parameters["@idProyecto"].Value = tarea.idProyecto;
             cmd.Parameters["@idTarea"].Value = tarea.idTarea;
 
-            Tuple<int, int> idEncontado = null;
+            Tuple<int, int>? idModificado = null;
 
             try
             {
                 cx.SetComandoSQL(query);
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        int idProyecto = Convert.ToInt32(reader["id_proyecto"]);
-                        int idTarea = Convert.ToInt32(reader["nro_tarea"]);
-                        idEncontado = Tuple.Create(idProyecto, idTarea);
-                    }
-                }
+                cmd.ExecuteReader();
+                idModificado = Tuple.Create(tarea.idProyecto, tarea.idTarea);
+                return idModificado;
             }
             catch (SqlException e)
             {
@@ -148,12 +139,12 @@ namespace PruebaTpFinal.Dominio.Mappers
             {
                 cx.cerrarConexionLiberarRecursos();
             }
-            return idEncontado;
+            return idModificado;
         }
 
         public static Tarea encontrarPorId(int idProyecto, int idTarea)
         {
-            Tarea tareaEncontrada = null;
+            Tarea? tareaEncontrada = null;
             string query = "SELECT * FROM Tarea WHERE id_proyecto = @idProyecto AND nro_tarea = @idTarea AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
@@ -174,9 +165,9 @@ namespace PruebaTpFinal.Dominio.Mappers
                     string descripcion = row["descripcion"].ToString();
                     int horasEstimadas = Convert.ToInt32(row["horas_estimadas"]);
                     int horasAvance = Convert.ToInt32(row["horas_avance"]);
-                    float costoEstimado = Convert.ToSingle(row["costo_estimado"]);
+                    decimal costoEstimado = Convert.ToDecimal(row["costo_estimado"]);
                     int horasReales = Convert.ToInt32(row["horas_reales"]);
-                    float costoReal = Convert.ToSingle(row["costo_real"]);
+                    decimal costoReal = Convert.ToDecimal(row["costo_real"]);
                     DateTime fechaFinal = (DateTime)row["fecha_final"];
 
                     tareaEncontrada = new Tarea(idProyecto, idTarea, descripcion, horasEstimadas, horasAvance, costoEstimado, horasReales, costoReal, fechaFinal);
@@ -260,6 +251,41 @@ namespace PruebaTpFinal.Dominio.Mappers
             } catch (SqlException ex) {
                 return null;
             }
+            return dt;
+        }
+
+
+        public static DataTable? validarExistenciaTareasPorProyecto(int idProyecto) {
+            string query = "SELECT id_proyecto, nro_tarea FROM Tarea WHERE id_proyecto = @idProyecto AND baja = 0";
+            
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+            DataTable dt = new DataTable();
+            
+
+            cmd.Parameters.AddWithValue("@idProyecto", idProyecto);
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+                
+
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Id Tarea]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            if (dt.Rows.Count == 0) {
+                // No se encontraron tareas para el proyecto dado
+                // Realiza la lógica adecuada aquí
+                return null;
+            } 
+            // Se encontraron tareas para el proyecto dado
+            // Puedes acceder a los datos en el DataTable y realizar la lógica adecuada aquí
+            
+
             return dt;
         }
     }

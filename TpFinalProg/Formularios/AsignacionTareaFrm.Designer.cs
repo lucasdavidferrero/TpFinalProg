@@ -64,6 +64,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(164, 23);
             textBox1.TabIndex = 2;
+            textBox1.Visible = false;
             // 
             // cbEmpleado
             // 
@@ -98,6 +99,7 @@
             label3.Size = new Size(76, 15);
             label3.TabIndex = 6;
             label3.Text = "Horas Diarias";
+            label3.Visible = false;
             // 
             // dgvTarea
             // 
