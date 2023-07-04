@@ -21,6 +21,7 @@ namespace TpFinalProg {
             listarEmpleados();
             btnEliminar.Enabled = false;
             txtLegajo.Enabled = false;
+            dateFechaIngreso.MaxDate = DateTime.Now;
         }
 
         private void limpiarCampos() {
