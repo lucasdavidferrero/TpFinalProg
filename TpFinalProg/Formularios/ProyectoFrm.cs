@@ -103,7 +103,7 @@ namespace TpFinalProg {
             int legajo = Convert.ToInt32(cbResponsable.SelectedValue);
 
 
-            if (ValidacionDatos.PropietarioAdmiteProyecto(idPropietario)) {
+            if (ValidacionDatos.responsableCantidadProyectosActivos(legajo)) {
                 try {
                     if (this.idRowSeleccionado < 0) {
                         Controlador.ProyectoControlador.crear(nombre, montoEstimado, tiempoEstimado, idPropietario, legajo);
@@ -119,7 +119,7 @@ namespace TpFinalProg {
                     Mensaje.Advertencia(ex.Message);
                 }
             } else {
-                Mensaje.Error("El propietario tiene mas de 3 proyectos cargados");
+                Mensaje.Error("El responsable tiene más de 3 proyectos a cargo en este momento.");
             }
         }
 
