@@ -22,7 +22,9 @@ namespace TpFinalProg {
             StartPosition = FormStartPosition.CenterScreen;
             cargarDgvTarea();
             cargarCbProyecto();
-            ;
+            txtHoraReal.Text = "0";
+            txtCostoReal.Text = "0";
+            txtHoraAvance.Text = "0";
             btnEliminar.Enabled = false;
         }
 
@@ -103,9 +105,10 @@ namespace TpFinalProg {
             txtHoraEstimada.Text = "";
             txtDescripcion.Text = "";
             txtCostoEstimado.Text = "";
-            txtHoraReal.Text = "";
-            txtCostoReal.Text = "";
-            txtHoraAvance.Text = "";
+            txtHoraReal.Text = "0";
+            txtCostoReal.Text = "0";
+            txtHoraAvance.Text = "0";
+            cargarCbProyecto();
 
         }
 
@@ -163,6 +166,7 @@ namespace TpFinalProg {
 
         private void dgvTarea_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
             btnEliminar.Enabled = false;
+            cbProyecto.Enabled = false;
             // El último row siempre esta vacío. No hacemos nada en ese caso.
             if (dgvTarea.Rows.Count - 1 == e.RowIndex)
                 return;

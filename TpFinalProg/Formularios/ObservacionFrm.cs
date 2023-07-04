@@ -13,6 +13,7 @@ using TpFinalProg.Controlador;
 using TpFinalProg.Dominio.Entidades;
 using TpFinalProg.Dominio.Mappers;
 using TpFinalProg.Utilidades;
+using static System.Windows.Forms.MonthCalendar;
 
 namespace TpFinalProg {
     public partial class ObservacionFrm : Form {
@@ -131,18 +132,16 @@ namespace TpFinalProg {
         }
 
         private void btnBuscar_Click(object sender, EventArgs e) {
+            int legajo = Convert.ToInt32(cbEmpleado.SelectedValue);
 
-            
-
-               // dgvObservacion.DataSource = ObservacionDataMapper.ver(txtNombre.Text);
-
-
-
+            DataTable tareas = ObservacionDataMapper.encontrarPorIdint(legajo);
+            dgvObservacion.DataSource = tareas;
         }
+
+
     }
 
 }
 
 
 
- 

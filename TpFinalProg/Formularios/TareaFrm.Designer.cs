@@ -70,7 +70,6 @@
             // 
             // dgvTarea
             // 
-            dgvTarea.AllowUserToAddRows = false;
             dgvTarea.AllowUserToDeleteRows = false;
             dgvTarea.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTarea.Columns.AddRange(new DataGridViewColumn[] { PROYECTO, nombre_proyecto, NUMERO, descripcion, HORAESTIMADA, COSTOESTIMADO, HORAREAL, COSTOREAL, fecha_final, horas_avance, id, baja });
@@ -325,9 +324,9 @@
             label9.AutoSize = true;
             label9.Location = new Point(789, 247);
             label9.Name = "label9";
-            label9.Size = new Size(76, 15);
+            label9.Size = new Size(80, 15);
             label9.TabIndex = 163;
-            label9.Text = "Horas Diarias";
+            label9.Text = "Horas Avance";
             // 
             // txtHoraAvance
             // 

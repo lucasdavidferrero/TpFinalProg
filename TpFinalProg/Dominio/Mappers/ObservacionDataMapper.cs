@@ -223,33 +223,31 @@ namespace PruebaTpFinal.Dominio.Mappers
 
             return dtListAll;
         }
-
-        public List<Observacion> ver(string id) {
-            
-            List<Observacion> lista = new List<Observacion> ();
-
-            string query = " SELECT Observacion.id_observacion, Observacion.fecha, Observacion.observacion,Observacion.legajo_FK, " +
-                        "Empleado.nombre+ ' '+apellido , Observacion.baja FROM Observacion INNER JOIN  Empleado ON " +
-                        "Empleado.legajo = Observacion.legajo_FK  where Observacion.baja = 0 and Empleado.nombre+ ' '+apellido LIKE ('% @id %')";
+        public static DataTable encontrarPorIdint (int idProyecto) {
+            string query = "SELECT Observacion.id_observacion,Empleado.nombre+ ' '+apellido, Observacion.fecha,Observacion.observacion, " +
+                "Observacion.legajo_FK,Observacion.baja FROM Observacion INNER JOIN Empleado ON Empleado.legajo = Observacion.legajo_FK " +
+                "where Observacion.baja = 0 and Observacion.legajo_FK = @idProyecto";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 
-            cmd.Parameters.AddWithValue("@Empleado.nombre+ ' '+apellido", id);
+            List<Tarea> tareas = new();
+
+            cmd.Parameters.AddWithValue("@idProyecto", idProyecto);
 
             try {
                 cx.SetComandoSQL(query);
-                SqlDataAdapter sqlData = new SqlDataAdapter(cx.getComando());
-                sqlData.Fill(dt);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
 
-                
+
             } catch (SqlException e) {
-                Console.WriteLine("Error en la base de datos. [Obtener por ID de Observacion]");
+                Console.WriteLine("Error en la base de datos. [Obtener por Id Tarea]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
             }
 
-            return lista;
+            return dt;
         }
  
     }

@@ -186,7 +186,7 @@ namespace PruebaTpFinal.Dominio.Mappers
         }
 
         public static DataTable encontrarPorIdProyecto(int idProyecto) {
-            string query = "SELECT * FROM Tarea WHERE id_proyecto = @idProyecto AND baja = 0";
+            string query = "SELECT * FROM Tarea WHERE id_proyecto = @idProyecto AND nro_tarea >0 AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();

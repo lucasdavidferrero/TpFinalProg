@@ -40,7 +40,6 @@
             btnGuardar = new Button();
             cbEmpleado = new ComboBox();
             btnBuscar = new Button();
-            txtNombre = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvObservacion).BeginInit();
             SuspendLayout();
             // 
@@ -196,20 +195,12 @@
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.Click += btnBuscar_Click;
             // 
-            // txtNombre
-            // 
-            txtNombre.Location = new Point(57, 70);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(100, 23);
-            txtNombre.TabIndex = 159;
-            // 
             // ObservacionFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(704, 461);
-            Controls.Add(txtNombre);
             Controls.Add(btnBuscar);
             Controls.Add(cbEmpleado);
             Controls.Add(btnLimpiar);
@@ -246,6 +237,5 @@
         private DataGridViewTextBoxColumn BAJA;
         private DataGridViewTextBoxColumn OBSERVACION;
         private DataGridViewTextBoxColumn legajo;
-        private TextBox txtNombre;
     }
 }

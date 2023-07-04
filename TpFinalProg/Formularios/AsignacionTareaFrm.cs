@@ -89,6 +89,7 @@ namespace TpFinalProg {
 
         private void btnGuardar_Click(object sender, EventArgs e) {
             guardarTarea();
+            cargarDgvTarea();
         }
 
         private bool mensajeDeELiminacion() {
@@ -115,6 +116,7 @@ namespace TpFinalProg {
 
                 TrabajaControlador.eliminar(id_proyecto, nro_tarea, legajo);
                 cargarDgvTarea();
+
             }
 
 
