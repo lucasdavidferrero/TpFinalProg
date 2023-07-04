@@ -62,10 +62,10 @@
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(267, 91);
+            txtDescripcion.Location = new Point(310, 83);
             txtDescripcion.Multiline = true;
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(477, 88);
+            txtDescripcion.Size = new Size(394, 116);
             txtDescripcion.TabIndex = 45;
             // 
             // dgvTarea
@@ -173,6 +173,7 @@
             // 
             // baja
             // 
+            baja.DataPropertyName = "baja";
             baja.Frozen = true;
             baja.HeaderText = "baja";
             baja.Name = "baja";
@@ -182,7 +183,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(140, 283);
+            label5.Location = new Point(97, 287);
             label5.Name = "label5";
             label5.Size = new Size(93, 15);
             label5.TabIndex = 40;
@@ -191,7 +192,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(79, 242);
+            label4.Location = new Point(36, 246);
             label4.Name = "label4";
             label4.Size = new Size(154, 15);
             label4.TabIndex = 39;
@@ -200,7 +201,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(437, 242);
+            label3.Location = new Point(691, 246);
             label3.Name = "label3";
             label3.Size = new Size(74, 15);
             label3.TabIndex = 38;
@@ -209,7 +210,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(182, 127);
+            label2.Location = new Point(210, 132);
             label2.Name = "label2";
             label2.Size = new Size(72, 15);
             label2.TabIndex = 37;
@@ -219,7 +220,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(439, 283);
+            label6.Location = new Point(693, 287);
             label6.Name = "label6";
             label6.Size = new Size(66, 15);
             label6.TabIndex = 47;
@@ -227,7 +228,7 @@
             // 
             // txtCostoReal
             // 
-            txtCostoReal.Location = new Point(543, 280);
+            txtCostoReal.Location = new Point(777, 284);
             txtCostoReal.Name = "txtCostoReal";
             txtCostoReal.Size = new Size(118, 23);
             txtCostoReal.TabIndex = 46;
@@ -235,7 +236,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(182, 36);
+            label7.Location = new Point(225, 33);
             label7.Name = "label7";
             label7.Size = new Size(57, 15);
             label7.TabIndex = 49;
@@ -243,7 +244,7 @@
             // 
             // txtHoraReal
             // 
-            txtHoraReal.Location = new Point(543, 239);
+            txtHoraReal.Location = new Point(777, 243);
             txtHoraReal.Name = "txtHoraReal";
             txtHoraReal.Size = new Size(118, 23);
             txtHoraReal.TabIndex = 34;
@@ -252,7 +253,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(377, 217);
+            label8.Location = new Point(334, 221);
             label8.Name = "label8";
             label8.Size = new Size(52, 86);
             label8.TabIndex = 51;
@@ -260,14 +261,14 @@
             // 
             // txtHoraEstimada
             // 
-            txtHoraEstimada.Location = new Point(239, 239);
+            txtHoraEstimada.Location = new Point(196, 243);
             txtHoraEstimada.Name = "txtHoraEstimada";
             txtHoraEstimada.Size = new Size(129, 23);
             txtHoraEstimada.TabIndex = 52;
             // 
             // txtCostoEstimado
             // 
-            txtCostoEstimado.Location = new Point(239, 280);
+            txtCostoEstimado.Location = new Point(196, 284);
             txtCostoEstimado.Name = "txtCostoEstimado";
             txtCostoEstimado.Size = new Size(129, 23);
             txtCostoEstimado.TabIndex = 53;
@@ -275,9 +276,9 @@
             // cbProyecto
             // 
             cbProyecto.FormattingEnabled = true;
-            cbProyecto.Location = new Point(267, 33);
+            cbProyecto.Location = new Point(310, 30);
             cbProyecto.Name = "cbProyecto";
-            cbProyecto.Size = new Size(477, 23);
+            cbProyecto.Size = new Size(394, 23);
             cbProyecto.TabIndex = 55;
             // 
             // btnLimpiar
@@ -285,7 +286,7 @@
             btnLimpiar.BackColor = Color.Transparent;
             btnLimpiar.BackgroundImageLayout = ImageLayout.None;
             btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(555, 334);
+            btnLimpiar.Location = new Point(582, 337);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(110, 30);
             btnLimpiar.TabIndex = 161;
@@ -298,7 +299,7 @@
             btnEliminar.BackColor = Color.Transparent;
             btnEliminar.BackgroundImageLayout = ImageLayout.None;
             btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEliminar.Location = new Point(439, 334);
+            btnEliminar.Location = new Point(466, 337);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(110, 30);
             btnEliminar.TabIndex = 160;
@@ -311,7 +312,7 @@
             btnGuardar.BackColor = Color.Transparent;
             btnGuardar.BackgroundImageLayout = ImageLayout.None;
             btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardar.Location = new Point(323, 334);
+            btnGuardar.Location = new Point(350, 337);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(110, 30);
             btnGuardar.TabIndex = 159;
@@ -322,7 +323,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(789, 247);
+            label9.Location = new Point(466, 247);
             label9.Name = "label9";
             label9.Size = new Size(80, 15);
             label9.TabIndex = 163;
@@ -330,7 +331,7 @@
             // 
             // txtHoraAvance
             // 
-            txtHoraAvance.Location = new Point(750, 275);
+            txtHoraAvance.Location = new Point(427, 275);
             txtHoraAvance.Name = "txtHoraAvance";
             txtHoraAvance.Size = new Size(164, 23);
             txtHoraAvance.TabIndex = 162;
@@ -339,7 +340,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(679, 217);
+            label10.Location = new Point(636, 221);
             label10.Name = "label10";
             label10.Size = new Size(52, 86);
             label10.TabIndex = 164;
@@ -347,16 +348,16 @@
             // 
             // txtNroTarea
             // 
-            txtNroTarea.Location = new Point(789, 104);
+            txtNroTarea.Location = new Point(79, 33);
             txtNroTarea.Name = "txtNroTarea";
-            txtNroTarea.Size = new Size(129, 23);
+            txtNroTarea.Size = new Size(45, 23);
             txtNroTarea.TabIndex = 165;
             txtNroTarea.Visible = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(789, 86);
+            label1.Location = new Point(21, 15);
             label1.Name = "label1";
             label1.Size = new Size(164, 15);
             label1.TabIndex = 166;
@@ -424,6 +425,8 @@
         private Label label9;
         private TextBox txtHoraAvance;
         private Label label10;
+        private TextBox txtNroTarea;
+        private Label label1;
         private DataGridViewTextBoxColumn PROYECTO;
         private DataGridViewTextBoxColumn nombre_proyecto;
         private DataGridViewTextBoxColumn NUMERO;
@@ -436,7 +439,5 @@
         private DataGridViewTextBoxColumn horas_avance;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn baja;
-        private TextBox txtNroTarea;
-        private Label label1;
     }
 }

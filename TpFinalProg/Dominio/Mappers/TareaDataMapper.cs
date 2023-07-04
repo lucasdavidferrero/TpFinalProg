@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TpFinalProg.Clases;
 using TpFinalProg.Dominio.Entidades;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 using static System.Windows.Forms.MonthCalendar;
 
 namespace PruebaTpFinal.Dominio.Mappers

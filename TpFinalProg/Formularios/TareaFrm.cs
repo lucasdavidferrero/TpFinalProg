@@ -12,6 +12,7 @@ using TpFinalProg.Controlador;
 using TpFinalProg.Utilidades;
 using TpFinalProg.Dominio.Mappers;
 using TpFinalProg.Dominio;
+using PruebaTpFinal.Dominio.Mappers;
 
 namespace TpFinalProg {
     public partial class TareaFrm : Form {
@@ -63,7 +64,7 @@ namespace TpFinalProg {
                 }
             }
 
-
+            reiniciarFormulario();
             cargarDgvTarea();
         }
 
@@ -118,9 +119,11 @@ namespace TpFinalProg {
             // this.idRowSeleccionadoEliminar = -1;
             btnGuardar.Text = "Crear";
             btnEliminar.Enabled = false;
+            cbProyecto.Enabled = true;
+            txtCostoEstimado.Enabled = true;
+            txtHoraEstimada.Enabled = true;
+            txtDescripcion.Enabled = true;
         }
-
-
 
 
         private void cargarCbProyecto() {
@@ -167,6 +170,11 @@ namespace TpFinalProg {
         private void dgvTarea_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
             btnEliminar.Enabled = false;
             cbProyecto.Enabled = false;
+            txtCostoEstimado.Enabled = false;
+            txtHoraEstimada.Enabled = false;
+            txtDescripcion.Enabled = false;
+
+
             // El último row siempre esta vacío. No hacemos nada en ese caso.
             if (dgvTarea.Rows.Count - 1 == e.RowIndex)
                 return;
@@ -200,5 +208,6 @@ namespace TpFinalProg {
         private void label1_Click(object sender, EventArgs e) {
 
         }
+
     }
 }

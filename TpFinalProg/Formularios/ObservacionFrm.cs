@@ -105,6 +105,7 @@ namespace TpFinalProg {
 
         private void btnLimpiar_Click(object sender, EventArgs e) {
             reiniciarFormulario();
+            listarObservacion();
         }
 
         private void dgvObservacion_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
