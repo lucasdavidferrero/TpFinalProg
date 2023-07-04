@@ -211,6 +211,25 @@ namespace PruebaTpFinal.Dominio.Mappers
             return dt;
         }
 
+        public static DataTable obtenerTareasActivasPorIdProyecto (int idProyecto) {
+            string query = $"SELECT nro_tarea,descripcion FROM Tarea " +
+                $"WHERE id_proyecto = {idProyecto} AND fecha_final IS NULL AND baja = 0;";
+            DataTable dt = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Id Tarea]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+            return dt;
+        }
+
         public static int eliminar(int idProyecto, int idTarea) {
             string query = @"UPDATE Tarea SET baja = 1 WHERE id_proyecto = @idProyecto AND nro_tarea = @idTarea AND baja = 0";
 

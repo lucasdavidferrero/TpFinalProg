@@ -27,16 +27,16 @@ namespace TpFinalProg {
 
         private void cargarCbProyecto() {
 
-            DataTable proyectos = ProyectoDataMapper.obtenerTodos();
+            DataTable proyectos = ProyectoControlador.obtenerProyectosActivosConTareasDisponiblesParaAsignar();
             cbProyecto.DataSource = proyectos;
-            cbProyecto.DisplayMember = "nombre";
+            cbProyecto.DisplayMember = "proyecto_nombre";
             cbProyecto.ValueMember = "id_proyecto";
         }
 
         private void cargarCbTarea(int idProyecto) {
-            DataTable tareas = TareaDataMapper.encontrarPorIdProyecto(idProyecto);
+            DataTable tareas = TareaDataMapper.obtenerTareasActivasPorIdProyecto(idProyecto);
             cbTarea.DataSource = tareas;
-            cbTarea.DisplayMember = "nombre";
+            cbTarea.DisplayMember = "descripcion";
             cbTarea.ValueMember = "nro_tarea";
         }
 
