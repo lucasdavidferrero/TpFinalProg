@@ -28,6 +28,7 @@ namespace TpFinalProg {
             listarProyecto();
             btnEliminar.Enabled = false;
         }
+
         private void cargarCbResponsable() {
             DataTable ta = Empleado.CargarCombo();
             cbResponsable.DataSource = ta.DefaultView;
@@ -77,7 +78,6 @@ namespace TpFinalProg {
             cargarCbResponsable();
             cargarCbPropietario();
         }
-
         private void reiniciarFormulario() {
             limpiarCampos();
             this.idRowSeleccionado = -1;
@@ -85,7 +85,6 @@ namespace TpFinalProg {
             btnGuardar.Text = "Crear";
             btnEliminar.Enabled = false;
         }
-
         private void listarProyecto() {
             DataTable listadoProyecto = Controlador.ProyectoControlador.listarTodoParametro();
             dgvProyecto.DataSource = listadoProyecto;
@@ -105,11 +104,14 @@ namespace TpFinalProg {
 
             if (ValidacionDatos.responsableCantidadProyectosActivos(legajo)) {
                 try {
+
                     if (this.idRowSeleccionado < 0) {
                         Controlador.ProyectoControlador.crear(nombre, montoEstimado, tiempoEstimado, idPropietario, legajo);
+                        Mensaje.Correcto("Guardado Exitosamente");
                     } else {
                         int idProy = Convert.ToInt32(dgvProyecto.Rows[this.idRowSeleccionado].Cells["id_proyecto"].Value);
                         ProyectoControlador.actualizar(idProy, nombre, montoEstimado, tiempoEstimado, idPropietario, legajo);
+                        Mensaje.Correcto("Modificado Exitosamente");
                     }
 
                     listarProyecto();
@@ -125,10 +127,13 @@ namespace TpFinalProg {
 
         private void btnEliminar_Click(object sender, EventArgs e) {
             if (idRowSeleccionadoEliminar >= 0) {
-                int id_proyecto = Convert.ToInt32(dgvProyecto.Rows[idRowSeleccionadoEliminar].Cells["id_proyecto"].Value.ToString());
-                ProyectoControlador.eliminar(id_proyecto);
-                reiniciarFormulario();
-                listarProyecto();
+                if (Mensaje.Consulta("Estas seguro que quiere eliminar?")) {
+                    int id_proyecto = Convert.ToInt32(dgvProyecto.Rows[idRowSeleccionadoEliminar].Cells["id_proyecto"].Value.ToString());
+                    ProyectoControlador.eliminar(id_proyecto);
+                    Mensaje.Correcto("Eliminado Exitosamente");
+                    reiniciarFormulario();
+                    listarProyecto();
+                }
             }
         }
 
@@ -152,21 +157,6 @@ namespace TpFinalProg {
 
             cbPropietario.Text = celdas["razon_social"].Value.ToString();
             cbResponsable.Text = celdas["RESPONSABLE"].Value.ToString();
-
-            /*  int idPropietario = Convert.ToInt32(celdas["id_propietario"].Value);
-               cbPropietario.SelectedValue = idPropietario;
-
-               PropietarioDataMapper.encontrarPorIdRazonSocial(idPropietario);
-
-               cbPropietario.SelectedValue = idPropietario;
-
-               int idResponsable = Convert.ToInt32(celdas["legajo"].Value);
-               cbResponsable.SelectedValue = idResponsable;
-
-               EmpleadoDataMapper.encontrarPorIdNombre(idResponsable);
-
-               cbResponsable.SelectedValue = idResponsable;*/
-
 
             btnGuardar.Text = "Guardar cambios";
         }

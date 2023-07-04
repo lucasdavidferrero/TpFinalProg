@@ -96,9 +96,11 @@ namespace TpFinalProg {
             try {
                 if (this.idRowSeleccionado < 0) {
                     Controlador.PropietarioControlador.crear(razonSocial, cuit, telefono, email, contacto);
+                    Mensaje.Correcto("Guardado Exitosamente");
                 } else {
                     int idProp = Convert.ToInt32(dgvPropietario.Rows[this.idRowSeleccionado].Cells["id_propietario"].Value);
                     PropietarioControlador.actualizar(idProp, razonSocial, cuit, telefono, email, contacto);
+                    Mensaje.Correcto("Modificado Exitosamente");
                 }
 
                 listarPropietarios();
@@ -135,10 +137,13 @@ namespace TpFinalProg {
         }
         private void btnEliminar_Click(object sender, EventArgs e) {
             if (idRowSeleccionadoEliminar >= 0) {
-                int idPropietario = Convert.ToInt32(dgvPropietario.Rows[idRowSeleccionadoEliminar].Cells["id_propietario"].Value.ToString());
-                PropietarioControlador.eliminar(idPropietario);
-                reiniciarFormulario();
-                listarPropietarios();
+                if (Mensaje.Consulta("Estas seguro que quiere eliminar?")) {
+                    int idPropietario = Convert.ToInt32(dgvPropietario.Rows[idRowSeleccionadoEliminar].Cells["id_propietario"].Value.ToString());
+                    PropietarioControlador.eliminar(idPropietario);
+                    Mensaje.Correcto("Eliminado Exitosamente");
+                    reiniciarFormulario();
+                    listarPropietarios();
+                }
             }
         }
 

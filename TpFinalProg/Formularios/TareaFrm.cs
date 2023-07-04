@@ -153,12 +153,14 @@ namespace TpFinalProg {
 
         private void btnEliminar_Click(object sender, EventArgs e) {
             if (idRowSeleccionadoEliminar >= 0) {
-                int id_proyecto = Convert.ToInt32(dgvTarea.Rows[idRowSeleccionadoEliminar].Cells["PROYECTO"].Value.ToString());
-                int id_tarea = Convert.ToInt32(dgvTarea.Rows[idRowSeleccionadoEliminar].Cells["NUMERO"].Value.ToString());
-
-                TareaControlador.eliminar(id_proyecto, id_tarea);
-                reiniciarFormulario();
-                cargarDgvTarea();
+                if (Mensaje.Consulta("Estas seguro que quiere eliminar?")) {
+                    int id_proyecto = Convert.ToInt32(dgvTarea.Rows[idRowSeleccionadoEliminar].Cells["PROYECTO"].Value.ToString());
+                    int id_tarea = Convert.ToInt32(dgvTarea.Rows[idRowSeleccionadoEliminar].Cells["NUMERO"].Value.ToString());
+                    TareaControlador.eliminar(id_proyecto, id_tarea);
+                    Mensaje.Correcto("Eliminado Exitosamente");
+                    reiniciarFormulario();
+                    cargarDgvTarea();
+                }
             }
         }
 
