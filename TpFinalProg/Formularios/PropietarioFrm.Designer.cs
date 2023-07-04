@@ -55,7 +55,7 @@
             btnEliminar.Location = new Point(546, 133);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(110, 30);
-            btnEliminar.TabIndex = 7;
+            btnEliminar.TabIndex = 17;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += btnEliminar_Click;
@@ -111,14 +111,14 @@
             txtContacto.Location = new Point(559, 79);
             txtContacto.Name = "txtContacto";
             txtContacto.Size = new Size(206, 23);
-            txtContacto.TabIndex = 4;
+            txtContacto.TabIndex = 14;
             // 
             // txtEmail
             // 
             txtEmail.Location = new Point(559, 37);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(206, 23);
-            txtEmail.TabIndex = 3;
+            txtEmail.TabIndex = 13;
             // 
             // btnGuardar
             // 
@@ -128,7 +128,7 @@
             btnGuardar.Location = new Point(430, 133);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(110, 30);
-            btnGuardar.TabIndex = 5;
+            btnGuardar.TabIndex = 15;
             btnGuardar.Text = "Crear";
             btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
@@ -138,21 +138,21 @@
             txtRazonSocial.Location = new Point(150, 79);
             txtRazonSocial.Name = "txtRazonSocial";
             txtRazonSocial.Size = new Size(206, 23);
-            txtRazonSocial.TabIndex = 0;
+            txtRazonSocial.TabIndex = 11;
             // 
             // txtTelefono
             // 
             txtTelefono.Location = new Point(150, 120);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(206, 23);
-            txtTelefono.TabIndex = 2;
+            txtTelefono.TabIndex = 12;
             // 
             // txtCuit
             // 
             txtCuit.Location = new Point(150, 32);
             txtCuit.Name = "txtCuit";
             txtCuit.Size = new Size(206, 23);
-            txtCuit.TabIndex = 1;
+            txtCuit.TabIndex = 10;
             // 
             // dgvPropietario
             // 
@@ -230,7 +230,7 @@
             btnLimpiar.Location = new Point(662, 133);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(110, 30);
-            btnLimpiar.TabIndex = 35;
+            btnLimpiar.TabIndex = 16;
             btnLimpiar.Text = "Reiniciar";
             btnLimpiar.UseVisualStyleBackColor = false;
             btnLimpiar.Click += btnLimpiar_Click;
