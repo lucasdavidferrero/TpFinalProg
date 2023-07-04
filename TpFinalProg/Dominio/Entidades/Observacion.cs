@@ -51,8 +51,8 @@ namespace TpFinalProg.Dominio.Entidades {
         public void eliminarPorId(int id) {
             ObservacionDataMapper.eliminar(id);
         }
-        public void encontrarLegajo(int id) {
-            ObservacionDataMapper.encontrarLegajo(id);
+        public DataTable obtenerTodosParametros() {
+            return ObservacionDataMapper.obtenerTodosParametros();
         }
     }
 }

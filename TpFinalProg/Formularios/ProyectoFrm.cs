@@ -153,6 +153,21 @@ namespace TpFinalProg {
             cbPropietario.Text = celdas["razon_social"].Value.ToString();
             cbResponsable.Text = celdas["RESPONSABLE"].Value.ToString();
 
+            /*  int idPropietario = Convert.ToInt32(celdas["id_propietario"].Value);
+               cbPropietario.SelectedValue = idPropietario;
+
+               PropietarioDataMapper.encontrarPorIdRazonSocial(idPropietario);
+
+               cbPropietario.SelectedValue = idPropietario;
+
+               int idResponsable = Convert.ToInt32(celdas["legajo"].Value);
+               cbResponsable.SelectedValue = idResponsable;
+
+               EmpleadoDataMapper.encontrarPorIdNombre(idResponsable);
+
+               cbResponsable.SelectedValue = idResponsable;*/
+
+
             btnGuardar.Text = "Guardar cambios";
         }
 
