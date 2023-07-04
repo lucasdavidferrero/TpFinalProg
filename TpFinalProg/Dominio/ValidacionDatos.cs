@@ -23,7 +23,7 @@ namespace TpFinalProg.Dominio {
                 sqlDat.Fill(dt);
                 if (dt.Rows.Count > 0) {
                     int numProyectos = Convert.ToInt16(dt.Rows[0][0]);
-                    if (numProyectos <= MAX_PROYECTOS_A_CARGO) {
+                    if (numProyectos < MAX_PROYECTOS_A_CARGO) {
                         return true;
                     }
                 }
