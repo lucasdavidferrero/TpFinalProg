@@ -96,7 +96,6 @@ namespace TpFinalProg {
                 return;
             }
 
-
             string nombre = txtNombre.Text.Trim();
             decimal montoEstimado = Convert.ToDecimal(txtMonto.Text.Trim());
             int tiempoEstimado = Convert.ToInt32(txtTiempo.Text.Trim());
