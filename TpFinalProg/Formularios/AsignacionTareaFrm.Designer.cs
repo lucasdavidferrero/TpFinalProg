@@ -226,6 +226,7 @@
             // 
             // descripcion
             // 
+            descripcion.DataPropertyName = "descripcion";
             descripcion.HeaderText = "Tarea";
             descripcion.Name = "descripcion";
             // 
@@ -313,11 +314,11 @@
         private DataGridViewTextBoxColumn id_proyecto;
         private DataGridViewTextBoxColumn nombre_proyecto;
         private DataGridViewTextBoxColumn id_tarea;
+        private DataGridViewTextBoxColumn descripcion;
         private DataGridViewTextBoxColumn legajo;
         private DataGridViewTextBoxColumn nombre_empleado;
         private DataGridViewTextBoxColumn id_funcion_fk;
         private DataGridViewTextBoxColumn nombre_funcion;
         private DataGridViewTextBoxColumn BAJA;
-        private DataGridViewTextBoxColumn descripcion;
     }
 }
