@@ -238,7 +238,7 @@
             // 
             // RESPONSABLE
             // 
-            RESPONSABLE.DataPropertyName = "column1";
+            RESPONSABLE.DataPropertyName = "Column1";
             RESPONSABLE.Frozen = true;
             RESPONSABLE.HeaderText = "Responsable";
             RESPONSABLE.Name = "RESPONSABLE";

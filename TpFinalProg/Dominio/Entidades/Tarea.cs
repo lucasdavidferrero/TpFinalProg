@@ -1,8 +1,12 @@
-﻿using System;
+﻿using PruebaTpFinal.Dominio.Mappers;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TpFinalProg.Dominio.Mappers;
+using TpFinalProg.Utilidades;
 
 namespace TpFinalProg.Dominio.Entidades {
     internal class Tarea {
@@ -31,5 +35,43 @@ namespace TpFinalProg.Dominio.Entidades {
             this.costoReal = costoReal;
             this.fechaFinal = fechaFinal;
         }
+
+        public int guardar() {
+            /*if (TrabajaDataMapper.insertarNuevo(t) != 0) {
+                MessageBox.Show("Tarea agregada");
+            } else {
+                MessageBox.Show("Ocurrió un erro al agregar tarea");
+            }*/
+
+            Tarea tarEncontrada = TareaDataMapper.encontrarPorId(this.idProyecto, this.idTarea);
+            if (tarEncontrada != null) {
+                TareaDataMapper.modificar(this);
+                return idTarea;
+            } else {
+                return -1; 
+            }
+        }
+
+        public DataTable obtenerTodos() {
+            return TareaDataMapper.obtenerTodos();
+        }
+        
+        public void eliminarPorId(int idProyecto, int idTarea) {
+            TareaDataMapper.eliminar(idProyecto, idTarea);
+        }
+
+        public static DataTable CargarCombo() {
+            DataSet ds = TareaDataMapper.cargarCombo();
+            DataTable dtListaAll = null;
+            if (ds != null) {
+                dtListaAll = ds.Tables[0];
+
+            } else {
+                Mensaje.Error("No hay datos de proyecto en BD");
+            }
+            return dtListaAll;
+
+        }
+
     }
 }

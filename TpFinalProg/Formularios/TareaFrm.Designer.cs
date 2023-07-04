@@ -51,10 +51,10 @@
             txtNumero = new TextBox();
             cbProyecto = new ComboBox();
             btnLimpiar = new Button();
-            btnBorrar = new Button();
+            btnEliminar = new Button();
             btnGuardar = new Button();
             label9 = new Label();
-            textBox1 = new TextBox();
+            txtHoraAvance = new TextBox();
             label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvTarea).BeginInit();
             SuspendLayout();
@@ -79,6 +79,8 @@
             dgvTarea.RowTemplate.Height = 25;
             dgvTarea.Size = new Size(946, 271);
             dgvTarea.TabIndex = 43;
+            dgvTarea.RowHeaderMouseClick += dgvTarea_RowHeaderMouseClick;
+            dgvTarea.RowHeaderMouseDoubleClick += dgvTarea_RowHeaderMouseDoubleClick;
             // 
             // PROYECTO
             // 
@@ -171,56 +173,56 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(51, 283);
+            label5.Location = new Point(140, 283);
             label5.Name = "label5";
-            label5.Size = new Size(183, 15);
+            label5.Size = new Size(93, 15);
             label5.TabIndex = 40;
-            label5.Text = "COSTO ESTIMADO (TOTAL CREO):";
+            label5.Text = "Costo Estimado:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(51, 242);
+            label4.Location = new Point(79, 242);
             label4.Name = "label4";
-            label4.Size = new Size(182, 15);
+            label4.Size = new Size(154, 15);
             label4.TabIndex = 39;
-            label4.Text = "HORAS ESTIMADAS (UNITARIAS):";
+            label4.Text = "Horas Estimadas (Unitarias):";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(430, 242);
+            label3.Location = new Point(437, 242);
             label3.Name = "label3";
-            label3.Size = new Size(91, 15);
+            label3.Size = new Size(74, 15);
             label3.TabIndex = 38;
-            label3.Text = "HORAS REALES:";
+            label3.Text = "Horas reales:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(166, 158);
+            label2.Location = new Point(178, 149);
             label2.Name = "label2";
-            label2.Size = new Size(84, 15);
+            label2.Size = new Size(72, 15);
             label2.TabIndex = 37;
-            label2.Text = "DESCRIPCION:";
+            label2.Text = "Descripción:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(148, 72);
+            label1.Location = new Point(160, 72);
             label1.Name = "label1";
-            label1.Size = new Size(102, 15);
+            label1.Size = new Size(90, 15);
             label1.TabIndex = 36;
-            label1.Text = "NUMERO ORDEN:";
+            label1.Text = "Número Orden:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(437, 283);
+            label6.Location = new Point(439, 283);
             label6.Name = "label6";
-            label6.Size = new Size(77, 15);
+            label6.Size = new Size(66, 15);
             label6.TabIndex = 47;
-            label6.Text = "COSTO REAL:";
+            label6.Text = "Costo Real:";
             // 
             // txtCostoReal
             // 
@@ -228,16 +230,15 @@
             txtCostoReal.Name = "txtCostoReal";
             txtCostoReal.Size = new Size(118, 23);
             txtCostoReal.TabIndex = 46;
-            txtCostoReal.TextChanged += txtCostoReal_TextChanged;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Location = new Point(182, 36);
             label7.Name = "label7";
-            label7.Size = new Size(68, 15);
+            label7.Size = new Size(57, 15);
             label7.TabIndex = 49;
-            label7.Text = "PROYECTO:";
+            label7.Text = "Proyecto:";
             // 
             // txtHoraReal
             // 
@@ -245,7 +246,6 @@
             txtHoraReal.Name = "txtHoraReal";
             txtHoraReal.Size = new Size(118, 23);
             txtHoraReal.TabIndex = 34;
-            txtHoraReal.TextChanged += txtHoraReal_TextChanged;
             // 
             // label8
             // 
@@ -263,7 +263,6 @@
             txtHoraEstimada.Name = "txtHoraEstimada";
             txtHoraEstimada.Size = new Size(129, 23);
             txtHoraEstimada.TabIndex = 52;
-            txtHoraEstimada.TextChanged += txtHoraEstimada_TextChanged;
             // 
             // txtCostoEstimado
             // 
@@ -271,7 +270,6 @@
             txtCostoEstimado.Name = "txtCostoEstimado";
             txtCostoEstimado.Size = new Size(129, 23);
             txtCostoEstimado.TabIndex = 53;
-            txtCostoEstimado.TextChanged += txtCostoEstimado_TextChanged;
             // 
             // txtNumero
             // 
@@ -279,7 +277,6 @@
             txtNumero.Name = "txtNumero";
             txtNumero.Size = new Size(477, 23);
             txtNumero.TabIndex = 54;
-            txtNumero.TextChanged += txtNumero_TextChanged;
             // 
             // cbProyecto
             // 
@@ -298,20 +295,22 @@
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(110, 30);
             btnLimpiar.TabIndex = 161;
-            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.Text = "Reiniciar";
             btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
-            // btnBorrar
+            // btnEliminar
             // 
-            btnBorrar.BackColor = Color.Transparent;
-            btnBorrar.BackgroundImageLayout = ImageLayout.None;
-            btnBorrar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBorrar.Location = new Point(439, 334);
-            btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(110, 30);
-            btnBorrar.TabIndex = 160;
-            btnBorrar.Text = "Eliminar";
-            btnBorrar.UseVisualStyleBackColor = false;
+            btnEliminar.BackColor = Color.Transparent;
+            btnEliminar.BackgroundImageLayout = ImageLayout.None;
+            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEliminar.Location = new Point(439, 334);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(110, 30);
+            btnEliminar.TabIndex = 160;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnGuardar
             // 
@@ -335,12 +334,12 @@
             label9.TabIndex = 163;
             label9.Text = "Horas Diarias";
             // 
-            // textBox1
+            // txtHoraAvance
             // 
-            textBox1.Location = new Point(750, 275);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(164, 23);
-            textBox1.TabIndex = 162;
+            txtHoraAvance.Location = new Point(750, 275);
+            txtHoraAvance.Name = "txtHoraAvance";
+            txtHoraAvance.Size = new Size(164, 23);
+            txtHoraAvance.TabIndex = 162;
             // 
             // label10
             // 
@@ -360,9 +359,9 @@
             ClientSize = new Size(978, 688);
             Controls.Add(label10);
             Controls.Add(label9);
-            Controls.Add(textBox1);
+            Controls.Add(txtHoraAvance);
             Controls.Add(btnLimpiar);
-            Controls.Add(btnBorrar);
+            Controls.Add(btnEliminar);
             Controls.Add(btnGuardar);
             Controls.Add(cbProyecto);
             Controls.Add(txtNumero);
@@ -409,7 +408,7 @@
         private TextBox txtNumero;
         private ComboBox cbProyecto;
         private Button btnLimpiar;
-        private Button btnBorrar;
+        private Button btnEliminar;
         private Button btnGuardar;
         private DataGridViewTextBoxColumn PROYECTO;
         private DataGridViewTextBoxColumn NUMERO;
@@ -423,7 +422,7 @@
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn baja;
         private Label label9;
-        private TextBox textBox1;
+        private TextBox txtHoraAvance;
         private Label label10;
     }
 }

@@ -218,6 +218,50 @@ namespace PruebaTpFinal.Dominio.Mappers
 
             return dt;
         }
+
+        public static int eliminar(int idProyecto, int idTarea) {
+            string query = @"UPDATE Tarea SET baja = 1 WHERE id_proyecto = @idProyecto AND nro_tarea = @idTarea AND baja = 0";
+
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.Add("@idProyecto", SqlDbType.Int);
+            cmd.Parameters["@idProyecto"].Value = idProyecto;
+            cmd.Parameters.Add("@idTarea", SqlDbType.Int);
+            cmd.Parameters["@idTarea"].Value = idTarea;
+
+            int rowsAffected = 0;
+
+            try {
+                cx.SetComandoSQL(query);
+                rowsAffected = cmd.ExecuteNonQuery();
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Eliminar Proyecto]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return rowsAffected;
+        }
+
+        public static DataSet cargarCombo() {
+            DataSet dt = new DataSet();
+            string sql = "Select 0 as id_proyecto, 'Seleccione...' as nombre " +
+                "Union SELECT id_proyecto, nombre FROM Proyecto where baja= 0 order by id_proyecto";
+
+            try {
+                Conexion cx = new Conexion();
+                SqlCommand cmd = cx.getComando();
+                cx.SetComandoSQL(sql);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+                cx.cerrarConexionLiberarRecursos();
+
+            } catch (SqlException ex) {
+                return null;
+            }
+            return dt;
+        }
     }
 
 }
