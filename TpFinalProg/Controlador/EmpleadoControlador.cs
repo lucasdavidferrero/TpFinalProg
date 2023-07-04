@@ -34,6 +34,12 @@ namespace TpFinalProg.Controlador {
             return empleados;
         }
 
+        public static DataTable listarTodoTodo() {
+            Empleado clsEmpleado = new Empleado();
+            DataTable empleados = clsEmpleado.obtenerTodosTodos();
+            return empleados;
+        }
+
         public static DataTable listarPorId(int id) {
             Empleado empleado = EmpleadoDataMapper.encontrarPorId(id);
             DataTable dt = new DataTable();

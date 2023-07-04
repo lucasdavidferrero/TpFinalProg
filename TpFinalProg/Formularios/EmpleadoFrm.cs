@@ -42,7 +42,7 @@ namespace TpFinalProg {
         }
 
         private void listarEmpleados() {
-            DataTable listadoEmpleados = Controlador.EmpleadoControlador.listarTodo();
+            DataTable listadoEmpleados = Controlador.EmpleadoControlador.listarTodoTodo();
             dgvEmpleado.DataSource = listadoEmpleados;
         }
 
@@ -101,9 +101,11 @@ namespace TpFinalProg {
 
             if (this.idRowSeleccionado < 0) {
                 Controlador.EmpleadoControlador.crear(fechaingreso, nombre, apellido, celular, email);
+                Mensaje.Correcto("Guardado Exitosamente");
             } else {
                 int idEmp = Convert.ToInt32(dgvEmpleado.Rows[this.idRowSeleccionado].Cells["legajo"].Value);
                 EmpleadoControlador.actualizar(idEmp, fechaingreso, nombre, apellido, celular, email);
+                Mensaje.Correcto("Modificado Exitosamente");
             }
 
             listarEmpleados();
@@ -139,12 +141,16 @@ namespace TpFinalProg {
             reiniciarFormulario();
         }
 
+
         private void btnEliminar_Click(object sender, EventArgs e) {
             if (idRowSeleccionadoEliminar >= 0) {
-                int idEmpleado = Convert.ToInt32(dgvEmpleado.Rows[idRowSeleccionadoEliminar].Cells["legajo"].Value.ToString());
-                EmpleadoControlador.eliminar(idEmpleado);
-                reiniciarFormulario();
-                listarEmpleados();
+                if (Mensaje.Consulta("Estas seguro que quiere eliminar?")) {
+                    int idEmpleado = Convert.ToInt32(dgvEmpleado.Rows[idRowSeleccionadoEliminar].Cells["legajo"].Value.ToString());
+                    EmpleadoControlador.eliminar(idEmpleado);
+                    Mensaje.Correcto("Eliminado Exitosamente");
+                    reiniciarFormulario();
+                    listarEmpleados();
+                }
             }
         }
     }

@@ -34,6 +34,7 @@ namespace TpFinalProg.Dominio {
             }
             return false;
         }
+        
         public static bool PropietarioAdmiteProyecto(int idPropietario) {
 
             // Las Reglas de negocio (validaciones de datos) van en las entidades.

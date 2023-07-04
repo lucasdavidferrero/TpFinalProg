@@ -67,25 +67,27 @@ namespace TpFinalProg.Controlador {
             DataTable empleados = EmpleadoDataMapper.obtenerTodos();
             DataTable funciones = FuncionDataMapper.obtenerTodos();
             DataTable proyectos = ProyectoDataMapper.obtenerTodos();
+            DataTable tareas = TareaDataMapper.obtenerTodos();
 
             // Agregar columnas al DataTable "trabaja" para los nombres
             trabaja.Columns.Add("empleado", typeof(string));
             trabaja.Columns.Add("funcion", typeof(string));
-            trabaja.Columns.Add("proyecto", typeof(string));
+            trabaja.Columns.Add("proyecto", typeof(string)); 
+            trabaja.Columns.Add("descripcion", typeof(string));
 
             // Combinar los datos de los DataTables en uno solo
             foreach (DataRow row in trabaja.Rows) {
-                // int nroTarea = Convert.ToInt32(row["nro_tarea"]);
+                int nroTarea = Convert.ToInt32(row["id_tarea"]);
                 int legajo = Convert.ToInt32(row["legajo"]);
                 int idFuncion = Convert.ToInt32(row["id_funcion_fk"]);
                 int idProyecto = Convert.ToInt32(row["id_proyecto"]);
 
-                // Obtener el nombre de tareas
-                /*DataRow tareaRow = tareas.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["nro_tarea"]) == nroTarea);
+                //Obtener el nombre de tareas
+                DataRow tareaRow = tareas.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["nro_tarea"]) == nroTarea);
                 if (tareaRow != null) {
                     string nombreTarea = tareaRow["descripcion"].ToString();
-                    row["tarea"] = nombreTarea;
-                }*/
+                    row["descripcion"] = nombreTarea;
+                }
 
                 // Obtener el nombre del empleado
                 DataRow empleadoRow = empleados.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["legajo"]) == legajo);
@@ -107,6 +109,8 @@ namespace TpFinalProg.Controlador {
                     string nombreProyecto = proyectoRow["nombre"].ToString();
                     row["proyecto"] = nombreProyecto;
                 }
+
+
 
                 
             }

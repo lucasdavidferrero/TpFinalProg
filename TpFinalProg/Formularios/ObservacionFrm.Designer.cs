@@ -75,6 +75,7 @@
             dgvObservacion.Columns.AddRange(new DataGridViewColumn[] { column1, fecha, ID, BAJA, OBSERVACION, legajo });
             dgvObservacion.Location = new Point(57, 259);
             dgvObservacion.Name = "dgvObservacion";
+            dgvObservacion.ReadOnly = true;
             dgvObservacion.RowTemplate.Height = 25;
             dgvObservacion.Size = new Size(594, 180);
             dgvObservacion.TabIndex = 49;
@@ -86,18 +87,21 @@
             column1.DataPropertyName = "column1";
             column1.HeaderText = "Nombre";
             column1.Name = "column1";
+            column1.ReadOnly = true;
             // 
             // fecha
             // 
             fecha.DataPropertyName = "fecha";
             fecha.HeaderText = "Fecha";
             fecha.Name = "fecha";
+            fecha.ReadOnly = true;
             // 
             // ID
             // 
             ID.DataPropertyName = "id_observacion";
             ID.HeaderText = "ID";
             ID.Name = "ID";
+            ID.ReadOnly = true;
             ID.Visible = false;
             // 
             // BAJA
@@ -105,6 +109,7 @@
             BAJA.DataPropertyName = "baja";
             BAJA.HeaderText = "BAJA";
             BAJA.Name = "BAJA";
+            BAJA.ReadOnly = true;
             BAJA.Visible = false;
             // 
             // OBSERVACION
@@ -112,6 +117,7 @@
             OBSERVACION.DataPropertyName = "observacion";
             OBSERVACION.HeaderText = "Observacion";
             OBSERVACION.Name = "OBSERVACION";
+            OBSERVACION.ReadOnly = true;
             OBSERVACION.Width = 350;
             // 
             // legajo
@@ -119,6 +125,7 @@
             legajo.DataPropertyName = "legajo_FK";
             legajo.HeaderText = "Legajo";
             legajo.Name = "legajo";
+            legajo.ReadOnly = true;
             legajo.Visible = false;
             // 
             // label4

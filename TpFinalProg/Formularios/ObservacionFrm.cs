@@ -84,9 +84,11 @@ namespace TpFinalProg {
 
             if (this.idRowSeleccionado < 0) {
                 Controlador.ObservacionControlador.crear(fechaingreso, observacion, legajo);
+                Mensaje.Correcto("Guardado Exitosamente");
             } else {
                 int idObs = Convert.ToInt32(dgvObservacion.Rows[this.idRowSeleccionado].Cells["ID"].Value);
                 ObservacionControlador.actualizar(idObs, fechaingreso, observacion, legajo);
+                Mensaje.Correcto("Modificado Exitosamente");
             }
 
             listarObservacion();
@@ -96,10 +98,13 @@ namespace TpFinalProg {
 
         private void btnBorrar_Click(object sender, EventArgs e) {
             if (idRowSeleccionadoEliminar >= 0) {
-                int idObservacion = Convert.ToInt32(dgvObservacion.Rows[idRowSeleccionadoEliminar].Cells["ID"].Value.ToString());
-                ObservacionControlador.eliminar(idObservacion);
-                reiniciarFormulario();
-                listarObservacion();
+                if (Mensaje.Consulta("Estas seguro que quiere eliminar?")) {
+                    int idObservacion = Convert.ToInt32(dgvObservacion.Rows[idRowSeleccionadoEliminar].Cells["ID"].Value.ToString());
+                    ObservacionControlador.eliminar(idObservacion);
+                    Mensaje.Correcto("Eliminado Exitosamente");
+                    reiniciarFormulario();
+                    listarObservacion();
+                }
             }
         }
 

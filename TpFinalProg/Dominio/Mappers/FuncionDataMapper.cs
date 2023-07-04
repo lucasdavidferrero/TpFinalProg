@@ -64,7 +64,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return dtListAll;
         }
 
-        public static int Update(Funcion f)
+        public static int modificar(Funcion f)
         {
             string query = "UPDATE Funcion SET descripcion = @descripcion WHERE id_funcion = @Id AND baja = 0";
             Conexion cx = new Conexion();
@@ -91,7 +91,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return f.idFuncion;
         }
 
-        public static Funcion FindById(int id)
+        public static Funcion encontrarPorId(int id)
         {
             Funcion funcionEncontrada = null;
             string query = "SELECT * FROM Funcion WHERE id_funcion = @Id AND baja = 0";
@@ -126,7 +126,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return funcionEncontrada;
         }
 
-        public static bool Delete(int id)
+        public static bool eliminar(int id)
         {
             string query = "UPDATE Funcion SET baja = 1 WHERE id_funcion = @Id";
             Conexion cx = new Conexion();

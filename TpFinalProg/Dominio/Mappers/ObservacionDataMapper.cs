@@ -207,7 +207,7 @@ namespace PruebaTpFinal.Dominio.Mappers
         public static DataTable obtenerTodosParametros() {
             DataTable dtListAll = new DataTable("ListarProyectos");
             string query = "SELECT Observacion.id_observacion,Empleado.nombre+ ' '+apellido, Observacion.fecha,Observacion.observacion, " +
-                "Observacion.baja FROM Observacion INNER JOIN Empleado ON Empleado.legajo = Observacion.legajo_FK  where Observacion.baja = 0";
+                "Observacion.baja FROM Observacion INNER JOIN Empleado ON Empleado.legajo = Observacion.legajo_FK  where Observacion.baja = 0 and Empleado.baja=0";
             Conexion cx = new Conexion();
 
             try {
