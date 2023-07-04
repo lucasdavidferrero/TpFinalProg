@@ -134,14 +134,14 @@ namespace TpFinalProg {
 
             
 
-               dgvObservacion.DataSource = ObservacionDataMapper.ver(txtNombre.Text);
+               // dgvObservacion.DataSource = ObservacionDataMapper.ver(txtNombre.Text);
 
 
 
         }
-            }
+    }
 
-        }
+}
 
 
 

@@ -249,7 +249,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.cerrarConexionLiberarRecursos();
             }
 
-            return observacionEncontrada;
+            return lista;
         }
  
     }
