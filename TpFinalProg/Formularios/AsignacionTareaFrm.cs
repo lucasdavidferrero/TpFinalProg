@@ -15,14 +15,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TpFinalProg {
     public partial class AsignacionTareaFrm : Form {
+        private int idRowSeleccionado = -1;
+        private int idRowSeleccionadoEliminar = -1;
         public AsignacionTareaFrm() {
+
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             cargarTodo();
-        }
-
-        private void butGuardar_Click(object sender, EventArgs e) {
-
         }
 
         private void cargarCbProyecto() {
@@ -75,7 +74,6 @@ namespace TpFinalProg {
 
         }
 
-
         private void guardarTarea() {
             int id_proyecto = Convert.ToInt32(cbProyecto.SelectedValue);
             int nro_tarea = Convert.ToInt32(cbTarea.SelectedValue);
@@ -116,10 +114,7 @@ namespace TpFinalProg {
 
                 TrabajaControlador.eliminar(id_proyecto, nro_tarea, legajo);
                 cargarDgvTarea();
-
             }
-
-
         }
 
         private void cargarTodo() {
@@ -133,45 +128,48 @@ namespace TpFinalProg {
             cargarTodo();
         }
 
-
-
-        private void dgvTarea_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-
-        }
-
-        private void dgvTarea_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-
-        }
-
-
         private void seleccionarFila() {
             if (dgvTarea.SelectedRows.Count > 0) // Verifica si hay una fila seleccionada
     {
                 // Obtiene los valores de los IDs de la fila seleccionada
                 int idProyecto = Convert.ToInt32(dgvTarea.SelectedRows[0].Cells["id_proyecto"].Value);
                 int idEmpleado = Convert.ToInt32(dgvTarea.SelectedRows[0].Cells["legajo"].Value);
+                int idtarea = Convert.ToInt32(dgvTarea.SelectedRows[0].Cells["descripcion"].Value);
                 int idFuncion = Convert.ToInt32(dgvTarea.SelectedRows[0].Cells["id_funcion_fk"].Value);
 
                 // Selecciona los elementos correspondientes en los ComboBox
                 cbProyecto.SelectedValue = idProyecto;
+                cbTarea.SelectedValue = idtarea;
                 cbEmpleado.SelectedValue = idEmpleado;
                 cbFuncion.SelectedValue = idFuncion;
             }
         }
 
-        private void dgvTarea_SelectionChanged(object sender, EventArgs e) {
-            seleccionarFila();
+        private void dgvTarea_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
+           if (dgvTarea.Rows.Count - 1 == e.RowIndex)
+                return;
+
+            idRowSeleccionado = e.RowIndex;
+
+            // Llenar los Textboxs con los correspondientes datos del Row seleccionado.
+            DataGridViewCellCollection celdas = dgvTarea.Rows[idRowSeleccionado].Cells;
+            
+            cbProyecto.Text = celdas["nombre_proyecto"].Value.ToString();
+            cbTarea.Text = celdas["descripcion"].Value.ToString();
+            cbEmpleado.Text = celdas["nombre_empleado"].Value.ToString();
+            cbFuncion.Text = celdas["nombre_funcion"].Value.ToString();
         }
 
-        private void btnFinalizacion_Click(object sender, EventArgs e) {
+        private void btnModificar_Click(object sender, EventArgs e) {
             int id_proyecto = Convert.ToInt32(cbProyecto.SelectedValue);
             int nro_tarea = Convert.ToInt32(cbTarea.SelectedValue);
             int legajo = Convert.ToInt32(cbEmpleado.SelectedValue);
             int id_funcion = Convert.ToInt32(cbFuncion.SelectedValue);
 
             TrabajaControlador.modificar(id_proyecto, nro_tarea, legajo, id_funcion);
-
+            
             cargarDgvTarea();
+            cargarTodo();
         }
     }
 }
