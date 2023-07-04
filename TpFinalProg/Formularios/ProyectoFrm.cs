@@ -221,7 +221,6 @@ namespace TpFinalProg {
 
                cbResponsable.SelectedValue = idResponsable;*/
 
-
             btnGuardar.Text = "Guardar cambios";
         }
 

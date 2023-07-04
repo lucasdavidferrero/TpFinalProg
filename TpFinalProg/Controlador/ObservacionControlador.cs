@@ -30,9 +30,10 @@ namespace TpFinalProg.Controlador {
             DataTable Observacion = clsObservacion.obtenerTodos();
             return Observacion;
         }
-        public static void encontrar(int id) {
+        public static DataTable listarTodoParametro() {
             Observacion clsObservacion = new Observacion();
-            clsObservacion.encontrarLegajo(id);
+            DataTable Observaciones = clsObservacion.obtenerTodosParametros();
+            return Observaciones;
         }
     }
 }

@@ -1,10 +1,13 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using TpFinalProg.Clases;
 using TpFinalProg.Dominio.Entidades;
 
@@ -167,9 +170,12 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.cerrarConexionLiberarRecursos();
             }
         }
+
         public static Observacion encontrarLegajo(int id) {
             Observacion observacionEncontrada = null;
-            string query = "  SELECT id_observacion,fecha,Observacion FROM Observacion WHERE legajo_FK = @legajo AND baja = 0";
+            string query = " SELECT Observacion.id_observacion,Empleado.nombre+ ' '+apellido, Observacion.fecha,Observacion.observacion, " +
+                             "Observacion.legajo_FK,Observacion.baja FROM Observacion INNER JOIN Empleado ON Empleado.legajo = Observacion.legajo_FK   " +
+                             "where Observacion.baja = 0 and Observacion.legajo_FK = @legajo";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
@@ -186,8 +192,9 @@ namespace PruebaTpFinal.Dominio.Mappers
                     int pIdObservacion = Convert.ToInt32(row["id_observacion"]);
                     DateTime pFecha = Convert.ToDateTime(row["fecha"]);
                     string pObservacion = row["observacion"].ToString();
+                    int pNroLegajo = Convert.ToInt32(row["legajo_FK"]);
 
-                    observacionEncontrada = new Observacion(pIdObservacion, pFecha, pObservacion);
+                    observacionEncontrada = new Observacion(pIdObservacion, pFecha, pObservacion,pNroLegajo);
                 }
             } catch (SqlException e) {
                 Console.WriteLine("Error en la base de datos. [Obtener por ID de Observacion]");
@@ -197,6 +204,54 @@ namespace PruebaTpFinal.Dominio.Mappers
 
             return observacionEncontrada;
         }
+        public static DataTable obtenerTodosParametros() {
+            DataTable dtListAll = new DataTable("ListarProyectos");
+            string query = "SELECT Observacion.id_observacion,Empleado.nombre+ ' '+apellido, Observacion.fecha,Observacion.observacion, " +
+                "Observacion.baja FROM Observacion INNER JOIN Empleado ON Empleado.legajo = Observacion.legajo_FK  where Observacion.baja = 0";
+            Conexion cx = new Conexion();
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtListAll);
+            } catch (SqlException e) {
+                dtListAll = null;
+                Console.WriteLine("Error en la base de datos. [Listado Observacion]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return dtListAll;
+        }
+
+        public List<Observacion> ver(string id) {
+            
+            List<Observacion> lista = new List<Observacion> ();
+
+            string query = " SELECT Observacion.id_observacion, Observacion.fecha, Observacion.observacion,Observacion.legajo_FK, " +
+                        "Empleado.nombre+ ' '+apellido , Observacion.baja FROM Observacion INNER JOIN  Empleado ON " +
+                        "Empleado.legajo = Observacion.legajo_FK  where Observacion.baja = 0 and Empleado.nombre+ ' '+apellido LIKE ('% @id %')";
+            DataTable dt = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.AddWithValue("@Empleado.nombre+ ' '+apellido", id);
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlData = new SqlDataAdapter(cx.getComando());
+                sqlData.Fill(dt);
+
+                
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Obtener por ID de Observacion]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return observacionEncontrada;
+        }
+ 
     }
 
 }
