@@ -122,11 +122,12 @@ namespace TpFinalProg {
                 } else {
                     Mensaje.Error("El Responsable seleccionado ya posee 3 proyectos en curso asignados.");
                 }
-                
-                listarProyecto();
-                reiniciarFormulario();
+   
                 } catch (Exception ex) {
                     Mensaje.Advertencia(ex.Message);
+                } finally {
+                    listarProyecto();
+                    reiniciarFormulario();
                 }
 
         }
