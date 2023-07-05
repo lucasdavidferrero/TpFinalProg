@@ -77,7 +77,7 @@ namespace TpFinalProg {
         }
 
         private void btnObesrvacion_Click(object sender, EventArgs e) {
-            Form frm_observacion = Application.OpenForms.OfType<Form>().
+            Form? frm_observacion = Application.OpenForms.OfType<Form>().
                             Where(pre => pre.Name == "ObservacionFrm").SingleOrDefault();
 
             if (frm_observacion != null) {

@@ -38,7 +38,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 idGenerado = Convert.ToInt32(cmd.ExecuteScalar());
                 return idGenerado;
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Insertar Trabaja]");
             }
@@ -63,7 +63,7 @@ namespace PruebaTpFinal.Dominio.Mappers
 
                 
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Listado Trabajas]");
             }
@@ -101,7 +101,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 idGenerado = Convert.ToInt32(cmd.ExecuteScalar());
                 return idGenerado;
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Actualizar Trabaja]");
             }
@@ -116,7 +116,7 @@ namespace PruebaTpFinal.Dominio.Mappers
         {
             
             string query = "SELECT * FROM Trabaja WHERE id_trabaja = @idTrabaja AND baja = 0";
-            DataTable? dt = null;
+            DataTable? dt = new();
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 
@@ -130,7 +130,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 sqlDat.Fill(dt);
                 return dt;
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Obtener por Id Trabaja]");
             }
@@ -157,7 +157,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cmd.ExecuteScalar();
                 return true;
 
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Eliminar Trabaja]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -180,7 +180,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dt);
                 
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Id Trabaja]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();

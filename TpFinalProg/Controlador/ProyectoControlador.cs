@@ -25,19 +25,19 @@ namespace TpFinalProg.Controlador {
             clsProyecto.eliminarPorId(id);
          }
 
-         public static DataTable listarTodo() {
+         public static DataTable? listarTodo() {
             Proyecto clsProyecto = new Proyecto();
-             DataTable proyectos = clsProyecto.obtenerTodos();
+             DataTable? proyectos = clsProyecto.obtenerTodos();
              return proyectos;
          }
 
-        public static DataTable listarTodoParametro() {
+        public static DataTable? listarTodoParametro() {
             Proyecto clsProyecto = new Proyecto();
-            DataTable proyectos = clsProyecto.obtenerTodosParametros();
+            DataTable? proyectos = clsProyecto.obtenerTodosParametros();
             return proyectos;
         }
 
-        public static DataTable obtenerProyectosActivosConTareasDisponiblesParaAsignar () {
+        public static DataTable? obtenerProyectosActivosConTareasDisponiblesParaAsignar () {
             Proyecto clsProyecto = new Proyecto();
             return clsProyecto.obtenerProyectosActivosConTareasDisponiblesParaAsignar();
         }

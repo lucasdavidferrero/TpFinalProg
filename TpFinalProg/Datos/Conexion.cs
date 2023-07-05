@@ -13,9 +13,9 @@ namespace TpFinalProg.Clases {
     internal class Conexion {
         SqlConnection conexion = new SqlConnection();
         private SqlCommand cmd = new SqlCommand();
-        private SqlTransaction tran = null;
+        private SqlTransaction? tran = null;
 
-        private string strConx = ConfigurationManager.ConnectionStrings["bd-mateo-test"].ConnectionString;
+        private string? strConx = ConfigurationManager.ConnectionStrings["bd-mateo-test"].ConnectionString;
         public Conexion() { }
 
         private void abrirConexion() {
@@ -56,11 +56,11 @@ namespace TpFinalProg.Clases {
         }
 
         public void ComitTransaccion() {
-            tran.Commit();
+            tran?.Commit();
         }
 
         public void TransaccionRollback() {
-            tran.Rollback();
+            tran?.Rollback();
         }
 
         public void cerrarConexionLiberarRecursos() {

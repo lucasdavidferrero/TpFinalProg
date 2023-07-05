@@ -11,7 +11,7 @@ namespace TpFinalProg.Dominio.Entidades {
     internal class Proyecto {
         public int idProyecto { get; }
 
-        public string nombre { get; set; }
+        public string? nombre { get; set; }
 
         public decimal montoEstimado { get; }
 
@@ -19,7 +19,12 @@ namespace TpFinalProg.Dominio.Entidades {
         public int idPropietario { get; }
         public int nroLegajo { get; }
 
-        public Proyecto(int idProyecto, string nombre, decimal montoEstimado, int tiempoEstimado, int idPropietario, int legajo) {
+
+        public Proyecto() {
+
+        }
+
+        public Proyecto(int idProyecto, string? nombre, decimal montoEstimado, int tiempoEstimado, int idPropietario, int legajo) {
             this.idProyecto = idProyecto;
             this.nombre = nombre;
             this.montoEstimado = montoEstimado;
@@ -28,14 +33,13 @@ namespace TpFinalProg.Dominio.Entidades {
             this.nroLegajo = legajo;
         }
 
-         public Proyecto() { }
         public int guardar() {
             if (idProyecto == 0) {
                 int id = ProyectoDataMapper.insertarNuevo(this);
                 return id;
             }
 
-            Proyecto proEncontrado = ProyectoDataMapper.encontrarPorId(this.idProyecto);
+            Proyecto? proEncontrado = ProyectoDataMapper.encontrarPorId(this.idProyecto);
             if (proEncontrado != null) {
                 ProyectoDataMapper.modificar(this);
                 return idProyecto;
@@ -44,14 +48,14 @@ namespace TpFinalProg.Dominio.Entidades {
             }
         }
 
-        public DataTable obtenerTodos() {
+        public DataTable? obtenerTodos() {
             return ProyectoDataMapper.obtenerTodos();
         }
-        public DataTable obtenerTodosParametros() {
+        public DataTable? obtenerTodosParametros() {
             return ProyectoDataMapper.obtenerTodosParametros();
         }
 
-        public DataTable obtenerProyectosActivosConTareasDisponiblesParaAsignar () {
+        public DataTable? obtenerProyectosActivosConTareasDisponiblesParaAsignar () {
             return ProyectoDataMapper.obtenerProyectosActivosConTareasDisponiblesParaAsignar();
         }
 

@@ -41,7 +41,7 @@ namespace TpFinalProg.Controlador {
         }
 
         public static DataTable listarPorId(int id) {
-            Empleado empleado = EmpleadoDataMapper.encontrarPorId(id);
+            Empleado? empleado = EmpleadoDataMapper.encontrarPorId(id);
             DataTable dt = new DataTable();
             dt.Columns.Add("legajo", typeof(int));
             dt.Columns.Add("nombre", typeof(string));
@@ -54,13 +54,13 @@ namespace TpFinalProg.Controlador {
 
 
             DataRow row = dt.NewRow();
-            row["legajo"] = empleado.legajo;
-            row["nombre"] = empleado.nombre;
-            row["apellido"] = empleado.apellido;
-            row["email"] = empleado.email;
-            row["celular"] = empleado.celular;
-            row["fecha_ingreso"] = empleado.fechaIngreso.ToString();
-            row["nombreCompleto"] = empleado.nombre + " " + empleado.apellido;
+            row["legajo"] = empleado?.legajo;
+            row["nombre"] = empleado?.nombre;
+            row["apellido"] = empleado?.apellido;
+            row["email"] = empleado?.email;
+            row["celular"] = empleado?.celular;
+            row["fecha_ingreso"] = empleado?.fechaIngreso.ToString();
+            row["nombreCompleto"] = empleado?.nombre + " " + empleado?.apellido;
 
 
             dt.Rows.Add(row);

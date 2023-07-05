@@ -18,7 +18,10 @@ namespace TpFinalProg.Dominio.Entidades {
         public long cuit { get; }
         public string personaContacto { get; }
 
-        public Propietario() { }
+
+        public Propietario() {
+
+        }
 
         public Propietario(int id_propietario, string razon_social, Int64 cuit, string telefono,
             string email, string persona_contacto) {
@@ -48,7 +51,7 @@ namespace TpFinalProg.Dominio.Entidades {
             }
         }
 
-        public DataTable obtenerTodos() {
+        public DataTable? obtenerTodos() {
             return PropietarioDataMapper.obtenerTodos();
         }
 
@@ -57,9 +60,9 @@ namespace TpFinalProg.Dominio.Entidades {
         }
 
         //DE ACA
-        public static DataTable CargarCombo() {
-            DataSet ds = PropietarioDataMapper.cargarCombo();
-            DataTable dtListaAll = null;
+        public static DataTable? CargarCombo() {
+            DataSet? ds = PropietarioDataMapper.cargarCombo();
+            DataTable? dtListaAll = null;
             if (ds != null) {
                 dtListaAll = ds.Tables[0];
 

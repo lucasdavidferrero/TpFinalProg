@@ -15,7 +15,7 @@ namespace PruebaTpFinal.Dominio.Mappers
 {
     internal class TareaDataMapper
     {
-        public static Tuple<int, int> insertarNuevo(Tarea tarea)
+        public static Tuple<int, int>? insertarNuevo(Tarea tarea)
         {
             string query = @"
         INSERT INTO Tarea (id_proyecto, nro_tarea, descripcion, horas_estimadas, horas_avance, costo_estimado, horas_reales, costo_real)
@@ -59,7 +59,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                     return generatedId;
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Insertar Tarea]");
             }
@@ -84,7 +84,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 sqlDat.Fill(dt);
 
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Listado Tareas]");
             }
@@ -132,7 +132,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 idModificado = Tuple.Create(tarea.idProyecto, tarea.idTarea);
                 return idModificado;
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Actualizar Tarea]");
             }
@@ -143,7 +143,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return idModificado;
         }
 
-        public static Tarea encontrarPorId(int idProyecto, int idTarea)
+        public static Tarea? encontrarPorId(int idProyecto, int idTarea)
         {
             Tarea? tareaEncontrada = null;
             string query = "SELECT * FROM Tarea WHERE id_proyecto = @idProyecto AND nro_tarea = @idTarea AND baja = 0";
@@ -163,7 +163,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 if (dt.Rows.Count != 0)
                 {
                     DataRow row = dt.Rows[0];
-                    string descripcion = row["descripcion"].ToString();
+                    string? descripcion = row["descripcion"].ToString();
                     int horasEstimadas = Convert.ToInt32(row["horas_estimadas"]);
                     int horasAvance = Convert.ToInt32(row["horas_avance"]);
                     decimal costoEstimado = Convert.ToDecimal(row["costo_estimado"]);
@@ -174,7 +174,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                     tareaEncontrada = new Tarea(idProyecto, idTarea, descripcion, horasEstimadas, horasAvance, costoEstimado, horasReales, costoReal, fechaFinal);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Obtener por Id Tarea]");
             }
@@ -202,7 +202,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 sqlDat.Fill(dt);
 
                 
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Id Tarea]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -222,7 +222,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.SetComandoSQL(query);
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dt);
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Id Tarea]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -246,7 +246,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             try {
                 cx.SetComandoSQL(query);
                 rowsAffected = cmd.ExecuteNonQuery();
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Eliminar Proyecto]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -255,7 +255,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             return rowsAffected;
         }
 
-        public static DataSet cargarCombo() {
+        public static DataSet? cargarCombo() {
             DataSet dt = new DataSet();
             string sql = "Select 0 as id_proyecto, 'Seleccione...' as nombre " +
                 "Union SELECT id_proyecto, nombre FROM Proyecto where baja= 0 order by id_proyecto";
@@ -268,7 +268,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 sqlDat.Fill(dt);
                 cx.cerrarConexionLiberarRecursos();
 
-            } catch (SqlException ex) {
+            } catch (SqlException) {
                 return null;
             }
             return dt;
@@ -291,7 +291,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 sqlDat.Fill(dt);
                 
 
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Id Tarea]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -325,7 +325,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 sqlDat.Fill(dt);
 
 
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Id Tarea]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();

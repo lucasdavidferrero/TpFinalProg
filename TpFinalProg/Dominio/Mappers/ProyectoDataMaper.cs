@@ -43,7 +43,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.SetComandoSQL(query);
                 generatedId = Convert.ToInt32(cmd.ExecuteScalar());
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Insertar Proyecto]");
             }
@@ -55,9 +55,9 @@ namespace PruebaTpFinal.Dominio.Mappers
             return generatedId;
         }
 
-       public static DataTable obtenerTodos()
+       public static DataTable? obtenerTodos()
         {
-            DataTable dtListAll = new DataTable("ListarProyectos");
+            DataTable? dtListAll = new DataTable("ListarProyectos");
             string query = "SELECT * FROM Proyecto WHERE baja = 0";
             Conexion cx = new Conexion();
 
@@ -67,7 +67,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dtListAll);
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 dtListAll = null;
                 Console.WriteLine("Error en la base de datos. [Listado Proyectos]");
@@ -79,8 +79,8 @@ namespace PruebaTpFinal.Dominio.Mappers
 
             return dtListAll;
         }
-        public static DataTable obtenerTodosParametros() {
-            DataTable dtListAll = new DataTable("ListarProyectos");
+        public static DataTable? obtenerTodosParametros() {
+            DataTable? dtListAll = new DataTable("ListarProyectos");
             string query = "SELECT Proyecto.id_proyecto, Proyecto.nombre,Propietario.razon_social, Empleado.legajo, Empleado.nombre+ ' '+apellido, " +
                 "Proyecto.monto_estimado, Proyecto.tiempo_estimado, Proyecto.baja FROM Proyecto INNER JOIN " +
                 "Propietario ON Propietario.id_propietario = Proyecto.id_propietario_FK INNER JOIN " +
@@ -91,7 +91,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.SetComandoSQL(query);
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dtListAll);
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 dtListAll = null;
                 Console.WriteLine("Error en la base de datos. [Listado Proyectos]");
             } finally {
@@ -101,8 +101,8 @@ namespace PruebaTpFinal.Dominio.Mappers
             return dtListAll;
         }
 
-        public static DataTable obtenerProyectosActivosConTareasDisponiblesParaAsignar () {
-            DataTable dtListAll = new DataTable("ListarProyectos");
+        public static DataTable? obtenerProyectosActivosConTareasDisponiblesParaAsignar () {
+            DataTable? dtListAll = new DataTable("ListarProyectos");
             string query = "SELECT DISTINCT Proyecto.id_proyecto, Proyecto.nombre as proyecto_nombre " +
                 "FROM Proyecto INNER JOIN Tarea ON Proyecto.id_proyecto = Tarea.id_proyecto " +
                 "WHERE Proyecto.baja = 0 AND Proyecto.fecha_final IS NULL AND Tarea.baja = 0 AND Tarea.fecha_final IS NULL;";
@@ -112,7 +112,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.SetComandoSQL(query);
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dtListAll);
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 dtListAll = null;
                 Console.WriteLine("Error en la base de datos. [Listado Proyectos]");
             } finally {
@@ -156,7 +156,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.SetComandoSQL(query);
                 rowsAffected = cmd.ExecuteNonQuery();
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Actualizar Proyecto]");
             }
@@ -169,9 +169,9 @@ namespace PruebaTpFinal.Dominio.Mappers
         }
 
 
-        public static Proyecto encontrarPorId(int id)
+        public static Proyecto? encontrarPorId(int id)
         {
-            Proyecto proyectoEncontrado = null;
+            Proyecto? proyectoEncontrado = null;
             string query = "SELECT * FROM Proyecto WHERE id_proyecto = @Id AND baja = 0";
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
@@ -189,7 +189,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 {
                     DataRow row = dt.Rows[0];
                     int pId = Convert.ToInt32(row["id_proyecto"]);
-                    string pNombre = row["nombre"].ToString();
+                    string? pNombre = row["nombre"].ToString();
                     Decimal pMontoEstimado = Convert.ToDecimal(row["monto_estimado"]);
                     int pTiempoEstimado = Convert.ToInt32(row["tiempo_estimado"]);
                     int pIdPropietario = Convert.ToInt32(row["id_propietario_FK"]);
@@ -198,7 +198,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                     proyectoEncontrado = new Proyecto(pId, pNombre, pMontoEstimado, pTiempoEstimado, pIdPropietario, pNroLegajo);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Obtener por ID de Proyecto]");
             }
@@ -228,7 +228,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.SetComandoSQL(query);
                 rowsAffected = cmd.ExecuteNonQuery();
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Eliminar Proyecto]");
             }

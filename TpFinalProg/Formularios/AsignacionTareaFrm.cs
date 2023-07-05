@@ -16,7 +16,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace TpFinalProg {
     public partial class AsignacionTareaFrm : Form {
         private int idRowSeleccionado = -1;
-        private int idRowSeleccionadoEliminar = -1;
+        //private int idRowSeleccionadoEliminar = -1;
         public AsignacionTareaFrm() {
 
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace TpFinalProg {
 
         private void cargarCbProyecto() {
 
-            DataTable proyectos = ProyectoControlador.obtenerProyectosActivosConTareasDisponiblesParaAsignar();
+            DataTable? proyectos = ProyectoControlador.obtenerProyectosActivosConTareasDisponiblesParaAsignar();
             cbProyecto.DataSource = proyectos;
             cbProyecto.DisplayMember = "proyecto_nombre";
             cbProyecto.ValueMember = "id_proyecto";
@@ -40,14 +40,14 @@ namespace TpFinalProg {
         }
 
         private void cargarCbEmpleado() {
-            DataTable empleados = EmpleadoDataMapper.obtenerTodos();
+            DataTable? empleados = EmpleadoDataMapper.obtenerTodos();
             cbEmpleado.DataSource = empleados;
             cbEmpleado.DisplayMember = "nombreCompleto";
             cbEmpleado.ValueMember = "legajo";
         }
 
         private void cargarCbFuncion() {
-            DataTable funciones = FuncionDataMapper.obtenerTodos();
+            DataTable? funciones = FuncionDataMapper.obtenerTodos();
             cbFuncion.DataSource = funciones;
             cbFuncion.DisplayMember = "descripcion";
             cbFuncion.ValueMember = "id_funcion";
@@ -57,7 +57,7 @@ namespace TpFinalProg {
         private void cbProyecto_SelectedIndexChanged(object sender, EventArgs e) {
             cbTarea.Text = "";
             // Obtén el elemento seleccionado del ComboBox
-            DataRowView selectedRow = cbProyecto.SelectedItem as DataRowView;
+            DataRowView? selectedRow = cbProyecto.SelectedItem as DataRowView;
 
             if (selectedRow != null) {
                 // Obtén el valor del elemento seleccionado

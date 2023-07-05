@@ -35,7 +35,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                     i++;
                 }
             }
-            catch (SqlException e) {
+            catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Insertar Funcion]");
             }
             finally {
@@ -43,8 +43,8 @@ namespace PruebaTpFinal.Dominio.Mappers
             }
         }
 
-        public static DataTable obtenerTodos() {
-            DataTable dtListAll = new DataTable("ListarFunciones");
+        public static DataTable? obtenerTodos() {
+            DataTable? dtListAll = new DataTable("ListarFunciones");
             string query = "SELECT * FROM Funcion WHERE baja = 0";
             Conexion cx = new Conexion();
             try {
@@ -52,7 +52,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dtListAll);
             }
-            catch (SqlException e) {
+            catch (SqlException) {
                 dtListAll = null;
                 Console.WriteLine("Error en la base de datos. [Listado Funciones]");
             }
@@ -80,7 +80,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.SetComandoSQL(query);
                 cmd.ExecuteScalar();
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Actualizar Funcion]");
             }
@@ -91,9 +91,9 @@ namespace PruebaTpFinal.Dominio.Mappers
             return f.idFuncion;
         }
 
-        public static Funcion encontrarPorId(int id)
+        public static Funcion? encontrarPorId(int id)
         {
-            Funcion funcionEncontrada = null;
+            Funcion? funcionEncontrada = null;
             string query = "SELECT * FROM Funcion WHERE id_funcion = @Id AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
@@ -110,11 +110,11 @@ namespace PruebaTpFinal.Dominio.Mappers
                 {
                     DataRow row = dt.Rows[0];
                     int fId = Convert.ToInt32(row["id_funcion"]);
-                    string fDescripcion = row["descripcion"].ToString();
+                    string? fDescripcion = row["descripcion"].ToString();
                     funcionEncontrada = new Funcion(fId, fDescripcion);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Obtener por Id Funcion]");
             }
@@ -141,7 +141,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 Console.WriteLine("Funcion eliminada correctamente");
                 return true;
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Eliminar Funcion]");
                 return false;

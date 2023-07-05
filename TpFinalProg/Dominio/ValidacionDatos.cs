@@ -25,7 +25,7 @@ namespace TpFinalProg.Dominio {
                     int numProyectos = Convert.ToInt16(dt.Rows[0][0]);
                     return numProyectos;
                 }
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Validación Responsable Cant. Proyectos Activos]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -54,7 +54,7 @@ namespace TpFinalProg.Dominio {
                 if (dt.Rows.Count <= 3) {
                     return true;
                 }
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Insertar Propietario]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -90,7 +90,7 @@ namespace TpFinalProg.Dominio {
                         return false;
                     }
                 }
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Insertar Propietario]");
                 return false;
             } finally {

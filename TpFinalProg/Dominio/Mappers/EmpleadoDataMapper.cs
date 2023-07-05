@@ -38,15 +38,15 @@ namespace TpFinalProg.Dominio.Mappers {
                 cx.SetComandoSQL(q);
                 idGenerado = Convert.ToInt32(cmd.ExecuteScalar());
                 return idGenerado;
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Insertar Empleado]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
             }
             return idGenerado;
         }
-        public static DataTable obtenerTodos() {
-            DataTable dtListAll = new DataTable("ListarEmpleado");
+        public static DataTable? obtenerTodos() {
+            DataTable? dtListAll = new DataTable("ListarEmpleado");
             string q = "SELECT * FROM Empleado WHERE baja=0";
             Conexion cx = new Conexion();
             try {
@@ -59,8 +59,8 @@ namespace TpFinalProg.Dominio.Mappers {
 
                 // Recorre las filas del DataTable y concatena los valores de las columnas "nombre" y "apellido"
                 foreach (DataRow row in dtListAll.Rows) {
-                    string nombre = row["nombre"].ToString();
-                    string apellido = row["apellido"].ToString();
+                    string? nombre = row["nombre"].ToString();
+                    string? apellido = row["apellido"].ToString();
 
                     // Concatena el nombre y apellido separados por un espacio
                     string nombreCompleto = nombre + " " + apellido;
@@ -70,7 +70,7 @@ namespace TpFinalProg.Dominio.Mappers {
                 }
 
 
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 dtListAll = null;
                 Console.WriteLine("Error en la base de datos. [Listado Empleado]");
             } finally {
@@ -106,7 +106,7 @@ namespace TpFinalProg.Dominio.Mappers {
             try {
                 cx.SetComandoSQL(q);
                 cmd.ExecuteScalar();
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Insertar Empleado]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -114,8 +114,8 @@ namespace TpFinalProg.Dominio.Mappers {
             return em.legajo;
         }
 
-        public static Empleado encontrarPorId(int id) {
-            Empleado empEncontrado = null;
+        public static Empleado? encontrarPorId(int id) {
+            Empleado? empEncontrado = null;
             string q = "SELECT * FROM Empleado WHERE legajo = @Id AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
@@ -138,7 +138,7 @@ namespace TpFinalProg.Dominio.Mappers {
                     
                     empEncontrado = new Empleado(eId, eFechaIngreso, eNombre, eApellido, eCelular, eEmail);
                 }
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Legajo]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -160,14 +160,14 @@ namespace TpFinalProg.Dominio.Mappers {
             try {
                 cx.SetComandoSQL(q);
                 cmd.ExecuteScalar();
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Legajo]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
             }
         }
 
-        public static DataSet cargarCombo() {
+        public static DataSet? cargarCombo() {
             DataSet dt = new DataSet();
             string sql = "  Select 0 as legajo, 'Seleccione...' as descripcion " +
                 "Union SELECT legajo, nombre +' '+ apellido FROM Empleado WHERE baja=0 order by legajo";
@@ -180,14 +180,14 @@ namespace TpFinalProg.Dominio.Mappers {
                 sqlDat.Fill(dt);
                 cx.cerrarConexionLiberarRecursos();
 
-            } catch (SqlException ex) {
+            } catch (SqlException) {
                 return null;
             }
             return dt;
         }
 
-        public static Empleado encontrarPorIdNombre(int id) {
-            Empleado empEncontrado = null;
+        public static Empleado? encontrarPorIdNombre(int id) {
+            Empleado? empEncontrado = null;
             string q = "  SELECT nombre +' '+ apellido  FROM Empleado WHERE legajo = @Id";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
@@ -199,7 +199,7 @@ namespace TpFinalProg.Dominio.Mappers {
                 cx.SetComandoSQL(q);
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 cmd.ExecuteScalar();
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Empleado Legajo]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -207,8 +207,8 @@ namespace TpFinalProg.Dominio.Mappers {
 
             return empEncontrado;
         }
-        public static DataTable obtenerTodosTodos() {
-            DataTable dtListAll = new DataTable("ListarEmpleado");
+        public static DataTable? obtenerTodosTodos() {
+            DataTable? dtListAll = new DataTable("ListarEmpleado");
             string q = "SELECT * FROM Empleado WHERE baja=0";
             Conexion cx = new Conexion();
             try {
@@ -216,7 +216,7 @@ namespace TpFinalProg.Dominio.Mappers {
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dtListAll);
                 }
-            catch (SqlException e) {
+            catch (SqlException) {
                 dtListAll = null;
                 Console.WriteLine("Error en la base de datos. [Listado Empleado]");
             } finally {

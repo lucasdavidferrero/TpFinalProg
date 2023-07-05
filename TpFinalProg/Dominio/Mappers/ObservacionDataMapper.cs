@@ -37,7 +37,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.SetComandoSQL(query);
                 generatedId = Convert.ToInt32(cmd.ExecuteScalar());
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Insertar Observacion]");
             }
@@ -49,9 +49,9 @@ namespace PruebaTpFinal.Dominio.Mappers
             return generatedId;
         }
 
-        public static DataTable obtenerTodos()
+        public static DataTable? obtenerTodos()
         {
-            DataTable dtListAll = new DataTable("ListarObservaciones");
+            DataTable? dtListAll = new DataTable("ListarObservaciones");
             string query = "SELECT * FROM Observacion WHERE baja = 0";
             Conexion cx = new Conexion();
 
@@ -61,7 +61,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 SqlDataAdapter sqlData = new SqlDataAdapter(cx.getComando());
                 sqlData.Fill(dtListAll);
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 dtListAll = null;
                 Console.WriteLine("Error en la base de datos. [Listado Observaciones]");
@@ -95,7 +95,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.SetComandoSQL(query);
                 cmd.ExecuteNonQuery();
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Actualizar Observacion]");
             }
@@ -107,9 +107,9 @@ namespace PruebaTpFinal.Dominio.Mappers
             return observacion.idObservacion;
         }
 
-        public static Observacion encontrarPorId(int id)
+        public static Observacion? encontrarPorId(int id)
         {
-            Observacion observacionEncontrada = null;
+            Observacion? observacionEncontrada = null;
             string query = "SELECT * FROM Observacion WHERE id_observacion = @idObservacion AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
@@ -128,13 +128,13 @@ namespace PruebaTpFinal.Dominio.Mappers
                     DataRow row = dt.Rows[0];
                     int pIdObservacion = Convert.ToInt32(row["id_observacion"]);
                     DateTime pFecha = Convert.ToDateTime(row["fecha"]);
-                    string pObservacion = row["observacion"].ToString();
+                    string? pObservacion = row["observacion"].ToString();
                     int pNroLegajo = Convert.ToInt32(row["legajo_FK"]);
 
                     observacionEncontrada = new Observacion(pIdObservacion, pFecha, pObservacion, pNroLegajo);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Obtener por ID de Observacion]");
             }
@@ -160,7 +160,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cmd.ExecuteNonQuery();
                 return true;
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Eliminar Observacion]");
                 return false;
@@ -171,8 +171,8 @@ namespace PruebaTpFinal.Dominio.Mappers
             }
         }
 
-        public static Observacion encontrarLegajo(int id) {
-            Observacion observacionEncontrada = null;
+        public static Observacion? encontrarLegajo(int id) {
+            Observacion? observacionEncontrada = null;
             string query = " SELECT Observacion.id_observacion,Empleado.nombre+ ' '+apellido, Observacion.fecha,Observacion.observacion, " +
                              "Observacion.legajo_FK,Observacion.baja FROM Observacion INNER JOIN Empleado ON Empleado.legajo = Observacion.legajo_FK   " +
                              "where Observacion.baja = 0 and Observacion.legajo_FK = @legajo";
@@ -191,12 +191,12 @@ namespace PruebaTpFinal.Dominio.Mappers
                     DataRow row = dt.Rows[0];
                     int pIdObservacion = Convert.ToInt32(row["id_observacion"]);
                     DateTime pFecha = Convert.ToDateTime(row["fecha"]);
-                    string pObservacion = row["observacion"].ToString();
+                    string? pObservacion = row["observacion"].ToString();
                     int pNroLegajo = Convert.ToInt32(row["legajo_FK"]);
 
                     observacionEncontrada = new Observacion(pIdObservacion, pFecha, pObservacion,pNroLegajo);
                 }
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Obtener por ID de Observacion]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -204,8 +204,8 @@ namespace PruebaTpFinal.Dominio.Mappers
 
             return observacionEncontrada;
         }
-        public static DataTable obtenerTodosParametros() {
-            DataTable dtListAll = new DataTable("ListarProyectos");
+        public static DataTable? obtenerTodosParametros() {
+            DataTable? dtListAll = new DataTable("ListarProyectos");
             string query = "SELECT Observacion.id_observacion,Empleado.nombre+ ' '+apellido, Observacion.fecha,Observacion.observacion, " +
                 "Observacion.baja FROM Observacion INNER JOIN Empleado ON Empleado.legajo = Observacion.legajo_FK  where Observacion.baja = 0 and Empleado.baja=0";
             Conexion cx = new Conexion();
@@ -214,7 +214,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.SetComandoSQL(query);
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dtListAll);
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 dtListAll = null;
                 Console.WriteLine("Error en la base de datos. [Listado Observacion]");
             } finally {
@@ -241,7 +241,7 @@ namespace PruebaTpFinal.Dominio.Mappers
                 sqlDat.Fill(dt);
 
 
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Id Tarea]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();

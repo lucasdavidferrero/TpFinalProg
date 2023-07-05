@@ -44,7 +44,7 @@ namespace TpFinalProg {
         }
 
         private void listarPropietarios() {
-            DataTable listadoPropietarios = Controlador.PropietarioControlador.listarTodo();
+            DataTable? listadoPropietarios = Controlador.PropietarioControlador.listarTodo();
             dgvPropietario.DataSource = listadoPropietarios;
         }
 

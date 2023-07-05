@@ -13,7 +13,7 @@ namespace TpFinalProg.Controlador {
         public static bool crear(int idProyecto, string descripcion, int horasEstimadas, int horasAvance, decimal costoEstimado, int horasReales, decimal costoReal) {
             int nroTareaCalculado = obtenerNuevoNroTarea(idProyecto);
             Tarea objTarea = new Tarea(idProyecto, nroTareaCalculado, descripcion, horasEstimadas, horasAvance, costoEstimado, horasReales, costoReal);
-            Tuple<int, int> idGenerado = TareaDataMapper.insertarNuevo(objTarea);
+            Tuple<int, int>? idGenerado = TareaDataMapper.insertarNuevo(objTarea);
             
             if (idGenerado == null ) {
                 return false;
@@ -24,7 +24,7 @@ namespace TpFinalProg.Controlador {
         
         public static bool actualizar(int idProyecto, int idTarea, string descripcion, int horasEstimadas, int horasAvance, decimal costoEstimado, int horasReales, decimal costoReal) {
             Tarea t = new Tarea(idProyecto, idTarea, descripcion, horasEstimadas, horasAvance, costoEstimado, horasReales, costoReal);
-            Tuple<int,int> idModificado = TareaDataMapper.modificar(t);
+            Tuple<int,int>? idModificado = TareaDataMapper.modificar(t);
             
             if (idModificado == null) {
                 return false;
@@ -54,7 +54,7 @@ namespace TpFinalProg.Controlador {
 
         public static DataTable cargarDtv() {
             DataTable dt = TareaDataMapper.obtenerTodos();
-            DataTable deProyecto = ProyectoDataMapper.obtenerTodos();
+            DataTable? deProyecto = ProyectoDataMapper.obtenerTodos();
             DataTable dtNuevo = new();
             dtNuevo.Columns.Add("id_proyecto", typeof(int));
             dtNuevo.Columns.Add("proyecto", typeof(string));
@@ -69,9 +69,9 @@ namespace TpFinalProg.Controlador {
 
             foreach (DataRow row in dt.Rows) {
                 int idProyecto = Convert.ToInt32(row["id_proyecto"]);
-                string proyecto = deProyecto.Rows.Cast<DataRow>().FirstOrDefault(r => Convert.ToInt32(r["id_proyecto"]) == idProyecto)?["nombre"].ToString();
+                string? proyecto = deProyecto?.Rows.Cast<DataRow>().FirstOrDefault(r => Convert.ToInt32(r["id_proyecto"]) == idProyecto)?["nombre"].ToString();
                 int nroTarea = Convert.ToInt32(row["nro_tarea"]);
-                string descripcion = row["descripcion"].ToString();
+                string? descripcion = row["descripcion"].ToString();
                 int horaEstimada = Convert.ToInt32(row["horas_estimadas"]);
                 double costoEstimado = Convert.ToDouble(row["costo_estimado"]);
                 int horaReal = Convert.ToInt32(row["horas_reales"]);

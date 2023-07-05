@@ -25,14 +25,14 @@ namespace TpFinalProg.Controlador {
             clsObservacion.eliminarPorId(id);
         }
 
-        public static DataTable listarTodo() {
+        public static DataTable? listarTodo() {
             Observacion clsObservacion = new Observacion();
-            DataTable Observacion = clsObservacion.obtenerTodos();
+            DataTable? Observacion = clsObservacion.obtenerTodos();
             return Observacion;
         }
-        public static DataTable listarTodoParametro() {
+        public static DataTable? listarTodoParametro() {
             Observacion clsObservacion = new Observacion();
-            DataTable Observaciones = clsObservacion.obtenerTodosParametros();
+            DataTable? Observaciones = clsObservacion.obtenerTodosParametros();
             return Observaciones;
         }
     }

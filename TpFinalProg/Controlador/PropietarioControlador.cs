@@ -29,9 +29,9 @@ namespace TpFinalProg.Controlador {
             clsPropietario.eliminarPorId(id);
         }
 
-        public static DataTable listarTodo() {
+        public static DataTable? listarTodo() {
             Propietario clsPropietario = new Propietario();
-            DataTable propietarios = clsPropietario.obtenerTodos();
+            DataTable? propietarios = clsPropietario.obtenerTodos();
             return propietarios;
         }
         public static void encontrarPorIdRazonSocial(int id) {

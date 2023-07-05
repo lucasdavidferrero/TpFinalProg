@@ -10,11 +10,14 @@ using System.Threading.Tasks;
 namespace TpFinalProg.Dominio.Entidades {
     public class Funcion {
         public int idFuncion { get; }
-        public string descripcion { get; }
+        public string? descripcion { get; }
 
-        public Funcion () { }
 
-        public Funcion(int idFuncion, string descripcion) {
+        public Funcion() {
+
+        }
+
+        public Funcion(int idFuncion, string? descripcion) {
             this.idFuncion = idFuncion;
             this.descripcion = descripcion;
         }
