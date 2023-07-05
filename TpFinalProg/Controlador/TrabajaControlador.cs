@@ -18,18 +18,18 @@ namespace TpFinalProg.Controlador {
                 if (idFuncion != 1) {
                     Trabaja obj = new(legajo, idProyecto, nroTarea, idFuncion);
 
-                    Tuple<int, int, int> respuesta = TrabajaDataMapper.insertarNuevo(obj);
+                    int id = TrabajaDataMapper.insertarNuevo(obj);
 
-                    if (respuesta == null) {
+                    if (id == -1) {
                         MessageBox.Show("Ocurrió un error al asignar tarea");
                     }
 
                 } else if (ValidacionDatos.TareaAdmiteLider(idProyecto, nroTarea)) {
                     Trabaja obj = new(legajo, idProyecto, nroTarea, idFuncion);
 
-                    Tuple<int, int, int> respuesta = TrabajaDataMapper.insertarNuevo(obj);
+                    int id = TrabajaDataMapper.insertarNuevo(obj);
 
-                    if (respuesta == null) {
+                    if (id == -1) {
                         MessageBox.Show("Ocurrió un error al asignar tarea");
                     }
                 } else {
@@ -43,8 +43,8 @@ namespace TpFinalProg.Controlador {
         }
 
 
-        public static void eliminar(int idProyecto, int nroTarea, int legajo) {
-            Trabaja obj = new(legajo, idProyecto, nroTarea, 0);
+        public static void eliminar(int idTrabaja) {
+            Trabaja obj = new(idTrabaja, 0, 0, 0, 0);
 
             if (!TrabajaDataMapper.eliminar(obj)) {
                 MessageBox.Show("Ocurrió un error al eliminar asignación de tarea");
@@ -53,7 +53,8 @@ namespace TpFinalProg.Controlador {
 
 
         public static bool verificarExistencia(int idProyecto, int nroTarea, int legajo) {
-            if (TrabajaDataMapper.encontrarPorId(legajo, idProyecto, nroTarea) != null) {
+            DataTable registros = TrabajaDataMapper.buscarPorCaracteristicas(legajo, idProyecto, nroTarea);
+            if (registros.Rows.Count > 0) {
                 return true;
             }
             return false;
@@ -119,6 +120,7 @@ namespace TpFinalProg.Controlador {
             return trabaja;
         }
 
+        /*
         public static bool modificar(int idProyecto, int nroTarea, int legajo, int idFuncion) {
             if (TrabajaControlador.verificarExistencia(idProyecto, nroTarea, legajo)) {
 
@@ -140,7 +142,7 @@ namespace TpFinalProg.Controlador {
                 MessageBox.Show("No se puede modificar una asignacion inexistente");
             }
             return false;
-        }
+        }*/
 
     }
 }

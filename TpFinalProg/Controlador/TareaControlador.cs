@@ -95,7 +95,7 @@ namespace TpFinalProg.Controlador {
 
         private static int obtenerNuevoNroTarea(int idProyecto) {
 
-            DataTable? dt = TareaDataMapper.validarExistenciaTareasPorProyecto(idProyecto);
+            DataTable? dt = TareaDataMapper.obtenerUltimoIdTarea(idProyecto);
 
             if (dt == null) {
                 return 1;

@@ -107,12 +107,15 @@ namespace TpFinalProg {
         }
 
         private void btnBorrar_Click(object sender, EventArgs e) {
-            if (mensajeDeELiminacion()) {
-                int id_proyecto = Convert.ToInt32(cbProyecto.SelectedValue);
-                int nro_tarea = Convert.ToInt32(cbTarea.SelectedValue);
-                int legajo = Convert.ToInt32(cbEmpleado.SelectedValue);
+            
+            idRowSeleccionado = e.RowIndex;
 
-                TrabajaControlador.eliminar(id_proyecto, nro_tarea, legajo);
+            // Llenar los Textboxs con los correspondientes datos del Row seleccionado.
+            DataGridViewCellCollection celdas = dgvTarea.Rows[idRowSeleccionado].Cells;
+            txtIdTrabaja.Text = celdas["id_trabaja"].Value.ToString();
+            if (mensajeDeELiminacion()) {
+                int id_trabaja = Convert.ToInt32(txtIdTrabaja.Text.Trim());
+                TrabajaControlador.eliminar(id_trabaja);
                 cargarDgvTarea();
             }
         }
@@ -146,14 +149,15 @@ namespace TpFinalProg {
         }
 
         private void dgvTarea_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
-           if (dgvTarea.Rows.Count - 1 == e.RowIndex)
+            if (dgvTarea.Rows.Count - 1 == e.RowIndex)
                 return;
 
             idRowSeleccionado = e.RowIndex;
 
             // Llenar los Textboxs con los correspondientes datos del Row seleccionado.
             DataGridViewCellCollection celdas = dgvTarea.Rows[idRowSeleccionado].Cells;
-            
+
+            txtIdTrabaja.Text = celdas["id_trabaja"].Value.ToString();
             cbProyecto.Text = celdas["nombre_proyecto"].Value.ToString();
             cbTarea.Text = celdas["descripcion"].Value.ToString();
             cbEmpleado.Text = celdas["nombre_empleado"].Value.ToString();
@@ -161,15 +165,18 @@ namespace TpFinalProg {
         }
 
         private void btnModificar_Click(object sender, EventArgs e) {
+            /*
+            int id_trabaja = Convert.ToInt32(txtIdTrabaja.Text.Trim());
             int id_proyecto = Convert.ToInt32(cbProyecto.SelectedValue);
             int nro_tarea = Convert.ToInt32(cbTarea.SelectedValue);
             int legajo = Convert.ToInt32(cbEmpleado.SelectedValue);
             int id_funcion = Convert.ToInt32(cbFuncion.SelectedValue);
 
-            TrabajaControlador.modificar(id_proyecto, nro_tarea, legajo, id_funcion);
-            
+            TrabajaControlador.modificar(id_trabaja, id_proyecto, nro_tarea, legajo, id_funcion);
+
             cargarDgvTarea();
             cargarTodo();
+            */
         }
     }
 }

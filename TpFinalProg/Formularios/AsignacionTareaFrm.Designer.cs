@@ -28,6 +28,15 @@
             cbTarea = new ComboBox();
             label2 = new Label();
             dgvTarea = new DataGridView();
+            cbFuncion = new ComboBox();
+            label4 = new Label();
+            label5 = new Label();
+            cbProyecto = new ComboBox();
+            btnLimpiar = new Button();
+            btnEliminar = new Button();
+            btnGuardar = new Button();
+            btnModificar = new Button();
+            id_trabaja = new DataGridViewTextBoxColumn();
             id_proyecto = new DataGridViewTextBoxColumn();
             nombre_proyecto = new DataGridViewTextBoxColumn();
             id_tarea = new DataGridViewTextBoxColumn();
@@ -37,14 +46,7 @@
             id_funcion_fk = new DataGridViewTextBoxColumn();
             nombre_funcion = new DataGridViewTextBoxColumn();
             BAJA = new DataGridViewTextBoxColumn();
-            cbFuncion = new ComboBox();
-            label4 = new Label();
-            label5 = new Label();
-            cbProyecto = new ComboBox();
-            btnLimpiar = new Button();
-            btnEliminar = new Button();
-            btnGuardar = new Button();
-            btnModificar = new Button();
+            txtIdTrabaja = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvTarea).BeginInit();
             SuspendLayout();
             // 
@@ -85,7 +87,7 @@
             // dgvTarea
             // 
             dgvTarea.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTarea.Columns.AddRange(new DataGridViewColumn[] { id_proyecto, nombre_proyecto, id_tarea, descripcion, legajo, nombre_empleado, id_funcion_fk, nombre_funcion, BAJA });
+            dgvTarea.Columns.AddRange(new DataGridViewColumn[] { id_trabaja, id_proyecto, nombre_proyecto, id_tarea, descripcion, legajo, nombre_empleado, id_funcion_fk, nombre_funcion, BAJA });
             dgvTarea.Location = new Point(36, 232);
             dgvTarea.Name = "dgvTarea";
             dgvTarea.ReadOnly = true;
@@ -93,80 +95,6 @@
             dgvTarea.Size = new Size(614, 183);
             dgvTarea.TabIndex = 7;
             dgvTarea.RowHeaderMouseDoubleClick += dgvTarea_RowHeaderMouseDoubleClick;
-            // 
-            // id_proyecto
-            // 
-            id_proyecto.DataPropertyName = "id_proyecto";
-            id_proyecto.HeaderText = "id_proyecto";
-            id_proyecto.Name = "id_proyecto";
-            id_proyecto.ReadOnly = true;
-            id_proyecto.Visible = false;
-            id_proyecto.Width = 120;
-            // 
-            // nombre_proyecto
-            // 
-            nombre_proyecto.DataPropertyName = "proyecto";
-            nombre_proyecto.HeaderText = "Proyecto";
-            nombre_proyecto.Name = "nombre_proyecto";
-            nombre_proyecto.ReadOnly = true;
-            nombre_proyecto.Width = 150;
-            // 
-            // id_tarea
-            // 
-            id_tarea.DataPropertyName = "id_tarea";
-            id_tarea.HeaderText = "TareaId";
-            id_tarea.Name = "id_tarea";
-            id_tarea.ReadOnly = true;
-            id_tarea.Visible = false;
-            // 
-            // descripcion
-            // 
-            descripcion.DataPropertyName = "descripcion";
-            descripcion.HeaderText = "Tarea";
-            descripcion.Name = "descripcion";
-            descripcion.ReadOnly = true;
-            descripcion.Width = 120;
-            // 
-            // legajo
-            // 
-            legajo.DataPropertyName = "legajo";
-            legajo.HeaderText = "legajo_empleado";
-            legajo.Name = "legajo";
-            legajo.ReadOnly = true;
-            legajo.Visible = false;
-            legajo.Width = 120;
-            // 
-            // nombre_empleado
-            // 
-            nombre_empleado.DataPropertyName = "empleado";
-            nombre_empleado.HeaderText = "Empleado";
-            nombre_empleado.Name = "nombre_empleado";
-            nombre_empleado.ReadOnly = true;
-            nombre_empleado.Width = 150;
-            // 
-            // id_funcion_fk
-            // 
-            id_funcion_fk.DataPropertyName = "id_funcion_fk";
-            id_funcion_fk.HeaderText = "id_funcion";
-            id_funcion_fk.Name = "id_funcion_fk";
-            id_funcion_fk.ReadOnly = true;
-            id_funcion_fk.Visible = false;
-            // 
-            // nombre_funcion
-            // 
-            nombre_funcion.DataPropertyName = "funcion";
-            nombre_funcion.HeaderText = "Funcion";
-            nombre_funcion.Name = "nombre_funcion";
-            nombre_funcion.ReadOnly = true;
-            nombre_funcion.Width = 150;
-            // 
-            // BAJA
-            // 
-            BAJA.DataPropertyName = "baja";
-            BAJA.HeaderText = "Baja";
-            BAJA.Name = "BAJA";
-            BAJA.ReadOnly = true;
-            BAJA.Visible = false;
             // 
             // cbFuncion
             // 
@@ -255,12 +183,101 @@
             btnModificar.UseVisualStyleBackColor = false;
             btnModificar.Click += btnModificar_Click;
             // 
+            // id_trabaja
+            // 
+            id_trabaja.DataPropertyName = "id_trabaja";
+            id_trabaja.HeaderText = "id_trabaja";
+            id_trabaja.Name = "id_trabaja";
+            id_trabaja.ReadOnly = true;
+            // 
+            // id_proyecto
+            // 
+            id_proyecto.DataPropertyName = "id_proyecto";
+            id_proyecto.HeaderText = "id_proyecto";
+            id_proyecto.Name = "id_proyecto";
+            id_proyecto.ReadOnly = true;
+            id_proyecto.Visible = false;
+            id_proyecto.Width = 120;
+            // 
+            // nombre_proyecto
+            // 
+            nombre_proyecto.DataPropertyName = "proyecto";
+            nombre_proyecto.HeaderText = "Proyecto";
+            nombre_proyecto.Name = "nombre_proyecto";
+            nombre_proyecto.ReadOnly = true;
+            nombre_proyecto.Width = 150;
+            // 
+            // id_tarea
+            // 
+            id_tarea.DataPropertyName = "id_tarea";
+            id_tarea.HeaderText = "TareaId";
+            id_tarea.Name = "id_tarea";
+            id_tarea.ReadOnly = true;
+            id_tarea.Visible = false;
+            // 
+            // descripcion
+            // 
+            descripcion.DataPropertyName = "descripcion";
+            descripcion.HeaderText = "Tarea";
+            descripcion.Name = "descripcion";
+            descripcion.ReadOnly = true;
+            descripcion.Width = 120;
+            // 
+            // legajo
+            // 
+            legajo.DataPropertyName = "legajo";
+            legajo.HeaderText = "legajo_empleado";
+            legajo.Name = "legajo";
+            legajo.ReadOnly = true;
+            legajo.Visible = false;
+            legajo.Width = 120;
+            // 
+            // nombre_empleado
+            // 
+            nombre_empleado.DataPropertyName = "empleado";
+            nombre_empleado.HeaderText = "Empleado";
+            nombre_empleado.Name = "nombre_empleado";
+            nombre_empleado.ReadOnly = true;
+            nombre_empleado.Width = 150;
+            // 
+            // id_funcion_fk
+            // 
+            id_funcion_fk.DataPropertyName = "id_funcion_fk";
+            id_funcion_fk.HeaderText = "id_funcion";
+            id_funcion_fk.Name = "id_funcion_fk";
+            id_funcion_fk.ReadOnly = true;
+            id_funcion_fk.Visible = false;
+            // 
+            // nombre_funcion
+            // 
+            nombre_funcion.DataPropertyName = "funcion";
+            nombre_funcion.HeaderText = "Funcion";
+            nombre_funcion.Name = "nombre_funcion";
+            nombre_funcion.ReadOnly = true;
+            nombre_funcion.Width = 150;
+            // 
+            // BAJA
+            // 
+            BAJA.DataPropertyName = "baja";
+            BAJA.HeaderText = "Baja";
+            BAJA.Name = "BAJA";
+            BAJA.ReadOnly = true;
+            BAJA.Visible = false;
+            // 
+            // txtIdTrabaja
+            // 
+            txtIdTrabaja.Location = new Point(66, 31);
+            txtIdTrabaja.Name = "txtIdTrabaja";
+            txtIdTrabaja.Size = new Size(54, 23);
+            txtIdTrabaja.TabIndex = 160;
+            // 
             // AsignacionTareaFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(680, 450);
+            Controls.Add(txtIdTrabaja);
             Controls.Add(btnModificar);
             Controls.Add(btnLimpiar);
             Controls.Add(btnEliminar);
@@ -296,6 +313,7 @@
         private Button btnEliminar;
         private Button btnGuardar;
         private Button btnModificar;
+        private DataGridViewTextBoxColumn id_trabaja;
         private DataGridViewTextBoxColumn id_proyecto;
         private DataGridViewTextBoxColumn nombre_proyecto;
         private DataGridViewTextBoxColumn id_tarea;
@@ -305,5 +323,6 @@
         private DataGridViewTextBoxColumn id_funcion_fk;
         private DataGridViewTextBoxColumn nombre_funcion;
         private DataGridViewTextBoxColumn BAJA;
+        private TextBox txtIdTrabaja;
     }
 }

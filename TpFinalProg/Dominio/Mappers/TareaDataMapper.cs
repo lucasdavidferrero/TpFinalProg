@@ -308,6 +308,40 @@ namespace PruebaTpFinal.Dominio.Mappers
 
             return dt;
         }
+
+        public static DataTable? obtenerUltimoIdTarea(int idProyecto) {
+            string query = "SELECT nro_tarea FROM Tarea WHERE id_proyecto = @idProyecto";
+
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+            DataTable dt = new DataTable();
+
+
+            cmd.Parameters.AddWithValue("@idProyecto", idProyecto);
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+
+
+            } catch (SqlException e) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Id Tarea]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            if (dt.Rows.Count == 0) {
+                // No se encontraron tareas para el proyecto dado
+                // Realiza la lógica adecuada aquí
+                return null;
+            }
+            // Se encontraron tareas para el proyecto dado
+            // Puedes acceder a los datos en el DataTable y realizar la lógica adecuada aquí
+
+
+            return dt;
+        }
     }
 
 }
