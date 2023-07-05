@@ -28,6 +28,7 @@
             cbTarea = new ComboBox();
             label2 = new Label();
             dgvTarea = new DataGridView();
+            id_trabaja = new DataGridViewTextBoxColumn();
             id_proyecto = new DataGridViewTextBoxColumn();
             nombre_proyecto = new DataGridViewTextBoxColumn();
             id_tarea = new DataGridViewTextBoxColumn();
@@ -44,7 +45,7 @@
             btnLimpiar = new Button();
             btnEliminar = new Button();
             btnGuardar = new Button();
-            btnModificar = new Button();
+            txtIdTrabaja = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvTarea).BeginInit();
             SuspendLayout();
             // 
@@ -85,14 +86,23 @@
             // dgvTarea
             // 
             dgvTarea.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTarea.Columns.AddRange(new DataGridViewColumn[] { id_proyecto, nombre_proyecto, id_tarea, descripcion, legajo, nombre_empleado, id_funcion_fk, nombre_funcion, BAJA });
+            dgvTarea.Columns.AddRange(new DataGridViewColumn[] { id_trabaja, id_proyecto, nombre_proyecto, id_tarea, descripcion, legajo, nombre_empleado, id_funcion_fk, nombre_funcion, BAJA });
             dgvTarea.Location = new Point(36, 232);
             dgvTarea.Name = "dgvTarea";
             dgvTarea.ReadOnly = true;
             dgvTarea.RowTemplate.Height = 25;
             dgvTarea.Size = new Size(614, 183);
             dgvTarea.TabIndex = 7;
+            dgvTarea.RowHeaderMouseClick += dgvTarea_RowHeaderMouseClick;
             dgvTarea.RowHeaderMouseDoubleClick += dgvTarea_RowHeaderMouseDoubleClick;
+            // 
+            // id_trabaja
+            // 
+            id_trabaja.DataPropertyName = "id_trabaja";
+            id_trabaja.HeaderText = "id_trabaja";
+            id_trabaja.Name = "id_trabaja";
+            id_trabaja.ReadOnly = true;
+            id_trabaja.Visible = false;
             // 
             // id_proyecto
             // 
@@ -208,7 +218,7 @@
             btnLimpiar.BackColor = Color.Transparent;
             btnLimpiar.BackgroundImageLayout = ImageLayout.None;
             btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(456, 186);
+            btnLimpiar.Location = new Point(461, 186);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(110, 30);
             btnLimpiar.TabIndex = 156;
@@ -221,7 +231,7 @@
             btnEliminar.BackColor = Color.Transparent;
             btnEliminar.BackgroundImageLayout = ImageLayout.None;
             btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEliminar.Location = new Point(340, 186);
+            btnEliminar.Location = new Point(300, 186);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(110, 30);
             btnEliminar.TabIndex = 155;
@@ -234,7 +244,7 @@
             btnGuardar.BackColor = Color.Transparent;
             btnGuardar.BackgroundImageLayout = ImageLayout.None;
             btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardar.Location = new Point(108, 186);
+            btnGuardar.Location = new Point(125, 186);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(110, 30);
             btnGuardar.TabIndex = 154;
@@ -242,19 +252,13 @@
             btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
             // 
-            // btnModificar
+            // txtIdTrabaja
             // 
-            btnModificar.BackColor = Color.Transparent;
-            btnModificar.BackgroundImageLayout = ImageLayout.None;
-            btnModificar.Enabled = false;
-            btnModificar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnModificar.Location = new Point(224, 186);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(110, 30);
-            btnModificar.TabIndex = 159;
-            btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = false;
-            btnModificar.Click += btnModificar_Click;
+            txtIdTrabaja.Location = new Point(66, 31);
+            txtIdTrabaja.Name = "txtIdTrabaja";
+            txtIdTrabaja.Size = new Size(54, 23);
+            txtIdTrabaja.TabIndex = 160;
+            txtIdTrabaja.Visible = false;
             // 
             // AsignacionTareaFrm
             // 
@@ -262,7 +266,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(680, 450);
-            Controls.Add(btnModificar);
+            Controls.Add(txtIdTrabaja);
             Controls.Add(btnLimpiar);
             Controls.Add(btnEliminar);
             Controls.Add(btnGuardar);
@@ -296,7 +300,8 @@
         private Button btnLimpiar;
         private Button btnEliminar;
         private Button btnGuardar;
-        private Button btnModificar;
+        private TextBox txtIdTrabaja;
+        private DataGridViewTextBoxColumn id_trabaja;
         private DataGridViewTextBoxColumn id_proyecto;
         private DataGridViewTextBoxColumn nombre_proyecto;
         private DataGridViewTextBoxColumn id_tarea;

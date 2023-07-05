@@ -13,14 +13,12 @@ namespace PruebaTpFinal.Dominio.Mappers
 {
     internal class TrabajaDataMapper
     {
-        public static Tuple<int, int, int> insertarNuevo(Trabaja trabaja)
+        public static int insertarNuevo(Trabaja trabaja)
         {
-            string query = @"INSERT INTO Trabaja(legajo, id_proyecto, id_tarea, id_funcion_fk)
-                OUTPUT inserted.legajo, inserted.id_proyecto, inserted.id_tarea
-                VALUES (@nroLegajo, @idProyecto, @idTarea, @idFuncion)";
+            string query = @"INSERT INTO Trabaja(legajo, id_proyecto, id_tarea, id_funcion_fk) VALUES (@nroLegajo, @idProyecto, @idTarea, @idFuncion);SELECT SCOPE_IDENTITY();";
 
 
-            Tuple<int, int, int> generatedId = null;
+            int idGenerado = -1;
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 
@@ -37,20 +35,10 @@ namespace PruebaTpFinal.Dominio.Mappers
             try
             {
                 cx.SetComandoSQL(query);
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        int legajo = Convert.ToInt32(reader["legajo"]);
-                        int idProyecto = Convert.ToInt32(reader["id_proyecto"]);
-                        int idTarea = Convert.ToInt32(reader["id_tarea"]);
-                        generatedId = Tuple.Create(legajo, idProyecto, idTarea);
-                    }
-
-                    return generatedId;
-                }
+                idGenerado = Convert.ToInt32(cmd.ExecuteScalar());
+                return idGenerado;
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Insertar Trabaja]");
             }
@@ -58,7 +46,7 @@ namespace PruebaTpFinal.Dominio.Mappers
             {
                 cx.cerrarConexionLiberarRecursos();
             }
-            return generatedId;
+            return idGenerado;
         }
 
         public static DataTable obtenerTodos()
@@ -75,7 +63,7 @@ namespace PruebaTpFinal.Dominio.Mappers
 
                 
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Listado Trabajas]");
             }
@@ -87,17 +75,21 @@ namespace PruebaTpFinal.Dominio.Mappers
             return dt;
         }
 
-        public static Tuple<int, int, int> modificar(Trabaja trabaja)
+        public static int modificar(Trabaja trabaja)
         {
-            string query = "UPDATE Trabaja SET id_funcion_fk = @idFuncion WHERE legajo = @nroLegajo AND id_proyecto = @idProyecto AND id_tarea = @idTarea AND baja = 0";
+            string query = "UPDATE Trabaja SET id_funcion_fk = @idFuncion, legajo = @nroLegajo, id_proyecto = @idProyecto, id_tarea = @idTarea WHERE id_trabaja = @idTrabaja AND baja = 0";
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 
+            int idGenerado = -1;
+
+            cmd.Parameters.Add("@idTrabaja", SqlDbType.Int);
             cmd.Parameters.Add("@idFuncion", SqlDbType.Int);
             cmd.Parameters.Add("@nroLegajo", SqlDbType.Int);
             cmd.Parameters.Add("@idProyecto", SqlDbType.Int);
             cmd.Parameters.Add("@idTarea", SqlDbType.Int);
 
+            cmd.Parameters["@idTrabaja"].Value = trabaja.idTrabaja;
             cmd.Parameters["@idFuncion"].Value = trabaja.idFuncion;
             cmd.Parameters["@nroLegajo"].Value = trabaja.nroLegajo;
             cmd.Parameters["@idProyecto"].Value = trabaja.idProyecto;
@@ -106,9 +98,10 @@ namespace PruebaTpFinal.Dominio.Mappers
             try
             {
                 cx.SetComandoSQL(query);
-                cmd.ExecuteScalar();
+                idGenerado = Convert.ToInt32(cmd.ExecuteScalar());
+                return idGenerado;
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Actualizar Trabaja]");
             }
@@ -116,36 +109,28 @@ namespace PruebaTpFinal.Dominio.Mappers
             {
                 cx.cerrarConexionLiberarRecursos();
             }
-            return Tuple.Create(trabaja.nroLegajo, trabaja.idProyecto, trabaja.idTarea);
+            return idGenerado;
         }
 
-        public static Trabaja encontrarPorId(int nroLegajo, int idProyecto, int idTarea)
+        public static DataTable? encontrarPorId(int idTrabaja)
         {
-            Trabaja trabajaEncontrada = null;
-            string query = "SELECT * FROM Trabaja WHERE legajo = @nroLegajo AND id_proyecto = @idProyecto AND id_tarea = @idTarea AND baja = 0";
-            DataTable dt = new DataTable();
+            
+            string query = "SELECT * FROM Trabaja WHERE id_trabaja = @idTrabaja AND baja = 0";
+            DataTable? dt = new();
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 
-            cmd.Parameters.AddWithValue("@nroLegajo", nroLegajo);
-            cmd.Parameters.AddWithValue("@idProyecto", idProyecto);
-            cmd.Parameters.AddWithValue("@idTarea", idTarea);
+            cmd.Parameters.AddWithValue("@idTrabaja", idTrabaja);
+            
 
             try
             {
                 cx.SetComandoSQL(query);
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dt);
-
-                if (dt.Rows.Count != 0)
-                {
-                    DataRow row = dt.Rows[0];
-                    int idFuncion = Convert.ToInt32(row["id_funcion_fk"]);
-
-                    trabajaEncontrada = new Trabaja(nroLegajo, idProyecto, idTarea, idFuncion);
-                }
+                return dt;
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Error en la base de datos. [Obtener por Id Trabaja]");
             }
@@ -154,35 +139,56 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.cerrarConexionLiberarRecursos();
             }
 
-            return trabajaEncontrada;
+            return dt;
         }
 
         public static bool eliminar(Trabaja trabaja) {
-            string query = "DELETE FROM Trabaja WHERE legajo = @nroLegajo AND id_proyecto = @idProyecto AND id_tarea = @idTarea";
+            string query = "DELETE FROM Trabaja WHERE id_trabaja = @idTrabaja";
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 
             
-            cmd.Parameters.Add("@nroLegajo", SqlDbType.Int);
-            cmd.Parameters.Add("@idProyecto", SqlDbType.Int);
-            cmd.Parameters.Add("@idTarea", SqlDbType.Int);
-
-            cmd.Parameters["@nroLegajo"].Value = trabaja.nroLegajo;
-            cmd.Parameters["@idProyecto"].Value = trabaja.idProyecto;
-            cmd.Parameters["@idTarea"].Value = trabaja.idTarea;
+            cmd.Parameters.Add("@idTrabaja", SqlDbType.Int);
+            cmd.Parameters["@idtrabaja"].Value = trabaja.idTrabaja;
+            
 
             try {
                 cx.SetComandoSQL(query);
                 cmd.ExecuteScalar();
                 return true;
 
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Eliminar Trabaja]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
             }
             return false;
         }
+
+        public static DataTable buscarPorCaracteristicas(int legajo, int idProyecto, int nroTarea) {
+
+            string query = $"SELECT * FROM Trabaja WHERE legajo = {legajo} AND id_proyecto = {idProyecto} AND id_tarea = {nroTarea} AND baja = 0";
+            DataTable? dt = new();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            
+
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+                
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Id Trabaja]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return dt;
+        }
+
     }
 
 }

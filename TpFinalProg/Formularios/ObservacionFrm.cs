@@ -26,8 +26,8 @@ namespace TpFinalProg {
             cargarCbEmpleado();
         }
         private void cargarCbEmpleado() {
-            DataTable ta = Empleado.CargarCombo();
-            cbEmpleado.DataSource = ta.DefaultView;
+            DataTable? ta = Empleado.CargarCombo();
+            cbEmpleado.DataSource = ta?.DefaultView;
             cbEmpleado.ValueMember = "legajo";
             cbEmpleado.DisplayMember = "descripcion";
         }
@@ -50,7 +50,7 @@ namespace TpFinalProg {
         }
 
         private void listarObservacion() {
-            DataTable listadoObservacion = Controlador.ObservacionControlador.listarTodoParametro();
+            DataTable? listadoObservacion = Controlador.ObservacionControlador.listarTodoParametro();
             dgvObservacion.DataSource = listadoObservacion;
         }
 

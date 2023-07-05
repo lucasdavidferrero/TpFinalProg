@@ -18,18 +18,18 @@ namespace TpFinalProg.Controlador {
                 if (idFuncion != 1) {
                     Trabaja obj = new(legajo, idProyecto, nroTarea, idFuncion);
 
-                    Tuple<int, int, int> respuesta = TrabajaDataMapper.insertarNuevo(obj);
+                    int id = TrabajaDataMapper.insertarNuevo(obj);
 
-                    if (respuesta == null) {
+                    if (id == -1) {
                         MessageBox.Show("Ocurrió un error al asignar tarea");
                     }
 
                 } else if (ValidacionDatos.TareaAdmiteLider(idProyecto, nroTarea)) {
                     Trabaja obj = new(legajo, idProyecto, nroTarea, idFuncion);
 
-                    Tuple<int, int, int> respuesta = TrabajaDataMapper.insertarNuevo(obj);
+                    int id = TrabajaDataMapper.insertarNuevo(obj);
 
-                    if (respuesta == null) {
+                    if (id == -1) {
                         MessageBox.Show("Ocurrió un error al asignar tarea");
                     }
                 } else {
@@ -43,8 +43,8 @@ namespace TpFinalProg.Controlador {
         }
 
 
-        public static void eliminar(int idProyecto, int nroTarea, int legajo) {
-            Trabaja obj = new(legajo, idProyecto, nroTarea, 0);
+        public static void eliminar(int idTrabaja) {
+            Trabaja obj = new(idTrabaja, 0, 0, 0, 0);
 
             if (!TrabajaDataMapper.eliminar(obj)) {
                 MessageBox.Show("Ocurrió un error al eliminar asignación de tarea");
@@ -53,7 +53,8 @@ namespace TpFinalProg.Controlador {
 
 
         public static bool verificarExistencia(int idProyecto, int nroTarea, int legajo) {
-            if (TrabajaDataMapper.encontrarPorId(legajo, idProyecto, nroTarea) != null) {
+            DataTable registros = TrabajaDataMapper.buscarPorCaracteristicas(legajo, idProyecto, nroTarea);
+            if (registros.Rows.Count > 0) {
                 return true;
             }
             return false;
@@ -64,9 +65,9 @@ namespace TpFinalProg.Controlador {
         public static DataTable cargarDgvTrabaja() {
             // DataTable tareas = TareaDataMapper.obtenerTodos();
             DataTable trabaja = TrabajaDataMapper.obtenerTodos();
-            DataTable empleados = EmpleadoDataMapper.obtenerTodos();
-            DataTable funciones = FuncionDataMapper.obtenerTodos();
-            DataTable proyectos = ProyectoDataMapper.obtenerTodos();
+            DataTable? empleados = EmpleadoDataMapper.obtenerTodos();
+            DataTable? funciones = FuncionDataMapper.obtenerTodos();
+            DataTable? proyectos = ProyectoDataMapper.obtenerTodos();
             DataTable tareas = TareaDataMapper.obtenerTodos();
 
             // Agregar columnas al DataTable "trabaja" para los nombres
@@ -83,30 +84,30 @@ namespace TpFinalProg.Controlador {
                 int idProyecto = Convert.ToInt32(row["id_proyecto"]);
 
                 //Obtener el nombre de tareas
-                DataRow tareaRow = tareas.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["nro_tarea"]) == nroTarea);
+                DataRow? tareaRow = tareas.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["nro_tarea"]) == nroTarea);
                 if (tareaRow != null) {
-                    string nombreTarea = tareaRow["descripcion"].ToString();
+                    string? nombreTarea = tareaRow["descripcion"].ToString();
                     row["descripcion"] = nombreTarea;
                 }
 
                 // Obtener el nombre del empleado
-                DataRow empleadoRow = empleados.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["legajo"]) == legajo);
+                DataRow? empleadoRow = empleados?.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["legajo"]) == legajo);
                 if (empleadoRow != null) {
-                    string nombreEmpleado = empleadoRow["nombreCompleto"].ToString();
+                    string? nombreEmpleado = empleadoRow["nombreCompleto"].ToString();
                     row["empleado"] = nombreEmpleado;
                 }
 
                 // Obtener el nombre de la función
-                DataRow funcionRow = funciones.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["id_funcion"]) == idFuncion);
+                DataRow? funcionRow = funciones?.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["id_funcion"]) == idFuncion);
                 if (funcionRow != null) {
-                    string nombreFuncion = funcionRow["descripcion"].ToString();
+                    string? nombreFuncion = funcionRow["descripcion"].ToString();
                     row["funcion"] = nombreFuncion;
                 }
 
                 // Obtener el nombre del proyecto
-                DataRow proyectoRow = proyectos.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["id_proyecto"]) == idProyecto);
+                DataRow? proyectoRow = proyectos?.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["id_proyecto"]) == idProyecto);
                 if (proyectoRow != null) {
-                    string nombreProyecto = proyectoRow["nombre"].ToString();
+                    string? nombreProyecto = proyectoRow["nombre"].ToString();
                     row["proyecto"] = nombreProyecto;
                 }
 
@@ -119,6 +120,7 @@ namespace TpFinalProg.Controlador {
             return trabaja;
         }
 
+        /*
         public static bool modificar(int idProyecto, int nroTarea, int legajo, int idFuncion) {
             if (TrabajaControlador.verificarExistencia(idProyecto, nroTarea, legajo)) {
 
@@ -140,7 +142,7 @@ namespace TpFinalProg.Controlador {
                 MessageBox.Show("No se puede modificar una asignacion inexistente");
             }
             return false;
-        }
+        }*/
 
     }
 }

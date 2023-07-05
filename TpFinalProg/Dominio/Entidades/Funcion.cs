@@ -10,11 +10,14 @@ using System.Threading.Tasks;
 namespace TpFinalProg.Dominio.Entidades {
     public class Funcion {
         public int idFuncion { get; }
-        public string descripcion { get; }
+        public string? descripcion { get; }
 
-        public Funcion () { }
 
-        public Funcion(int idFuncion, string descripcion) {
+        public Funcion() {
+
+        }
+
+        public Funcion(int idFuncion, string? descripcion) {
             this.idFuncion = idFuncion;
             this.descripcion = descripcion;
         }
@@ -23,8 +26,8 @@ namespace TpFinalProg.Dominio.Entidades {
          * La creación de las funcioens se hace por única vez en el inicio del programa (La primera vez que se inicia.)
          */
         public void crearFunciones () {
-            DataTable dt = this.listarFunciones();
-            if (dt.Rows.Count > 0) {
+            DataTable? dt = this.listarFunciones();
+            if (dt?.Rows.Count > 0) {
                 return;
             }
             // Crear las funciones con sus respectivos IDS. Los IDS son utilizados para validar, por ejemplo, si un Empleado es Lider.
@@ -37,8 +40,8 @@ namespace TpFinalProg.Dominio.Entidades {
             FuncionDataMapper.crearFunciones(funciones);
         }
 
-        public DataTable listarFunciones () {
-            DataTable dt = FuncionDataMapper.obtenerTodos();
+        public DataTable? listarFunciones () {
+            DataTable? dt = FuncionDataMapper.obtenerTodos();
             return dt;
         }
     }

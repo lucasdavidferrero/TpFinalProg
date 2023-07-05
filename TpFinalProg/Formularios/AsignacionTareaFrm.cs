@@ -16,7 +16,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace TpFinalProg {
     public partial class AsignacionTareaFrm : Form {
         private int idRowSeleccionado = -1;
-        private int idRowSeleccionadoEliminar = -1;
+        //private int idRowSeleccionadoEliminar = -1;
         public AsignacionTareaFrm() {
 
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace TpFinalProg {
 
         private void cargarCbProyecto() {
 
-            DataTable proyectos = ProyectoControlador.obtenerProyectosActivosConTareasDisponiblesParaAsignar();
+            DataTable? proyectos = ProyectoControlador.obtenerProyectosActivosConTareasDisponiblesParaAsignar();
             cbProyecto.DataSource = proyectos;
             cbProyecto.DisplayMember = "proyecto_nombre";
             cbProyecto.ValueMember = "id_proyecto";
@@ -40,14 +40,14 @@ namespace TpFinalProg {
         }
 
         private void cargarCbEmpleado() {
-            DataTable empleados = EmpleadoDataMapper.obtenerTodos();
+            DataTable? empleados = EmpleadoDataMapper.obtenerTodos();
             cbEmpleado.DataSource = empleados;
             cbEmpleado.DisplayMember = "nombreCompleto";
             cbEmpleado.ValueMember = "legajo";
         }
 
         private void cargarCbFuncion() {
-            DataTable funciones = FuncionDataMapper.obtenerTodos();
+            DataTable? funciones = FuncionDataMapper.obtenerTodos();
             cbFuncion.DataSource = funciones;
             cbFuncion.DisplayMember = "descripcion";
             cbFuncion.ValueMember = "id_funcion";
@@ -57,7 +57,7 @@ namespace TpFinalProg {
         private void cbProyecto_SelectedIndexChanged(object sender, EventArgs e) {
             cbTarea.Text = "";
             // Obtén el elemento seleccionado del ComboBox
-            DataRowView selectedRow = cbProyecto.SelectedItem as DataRowView;
+            DataRowView? selectedRow = cbProyecto.SelectedItem as DataRowView;
 
             if (selectedRow != null) {
                 // Obtén el valor del elemento seleccionado
@@ -107,12 +107,10 @@ namespace TpFinalProg {
         }
 
         private void btnBorrar_Click(object sender, EventArgs e) {
-            if (mensajeDeELiminacion()) {
-                int id_proyecto = Convert.ToInt32(cbProyecto.SelectedValue);
-                int nro_tarea = Convert.ToInt32(cbTarea.SelectedValue);
-                int legajo = Convert.ToInt32(cbEmpleado.SelectedValue);
 
-                TrabajaControlador.eliminar(id_proyecto, nro_tarea, legajo);
+            if (mensajeDeELiminacion()) {
+                int id_trabaja = Convert.ToInt32(txtIdTrabaja.Text.Trim());
+                TrabajaControlador.eliminar(id_trabaja);
                 cargarDgvTarea();
             }
         }
@@ -154,22 +152,24 @@ namespace TpFinalProg {
             // Llenar los Textboxs con los correspondientes datos del Row seleccionado.
             DataGridViewCellCollection celdas = dgvTarea.Rows[idRowSeleccionado].Cells;
 
+            txtIdTrabaja.Text = celdas["id_trabaja"].Value.ToString();
             cbProyecto.Text = celdas["nombre_proyecto"].Value.ToString();
             cbTarea.Text = celdas["descripcion"].Value.ToString();
             cbEmpleado.Text = celdas["nombre_empleado"].Value.ToString();
             cbFuncion.Text = celdas["nombre_funcion"].Value.ToString();
         }
 
-        private void btnModificar_Click(object sender, EventArgs e) {
-            int id_proyecto = Convert.ToInt32(cbProyecto.SelectedValue);
-            int nro_tarea = Convert.ToInt32(cbTarea.SelectedValue);
-            int legajo = Convert.ToInt32(cbEmpleado.SelectedValue);
-            int id_funcion = Convert.ToInt32(cbFuncion.SelectedValue);
 
-            TrabajaControlador.modificar(id_proyecto, nro_tarea, legajo, id_funcion);
+        private void dgvTarea_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
+            if (dgvTarea.Rows.Count - 1 == e.RowIndex)
+                return;
 
-            cargarDgvTarea();
-            cargarTodo();
+            idRowSeleccionado = e.RowIndex;
+
+            // Llenar los Textboxs con los correspondientes datos del Row seleccionado.
+            DataGridViewCellCollection celdas = dgvTarea.Rows[idRowSeleccionado].Cells;
+
+            txtIdTrabaja.Text = celdas["id_trabaja"].Value.ToString();
         }
     }
 }

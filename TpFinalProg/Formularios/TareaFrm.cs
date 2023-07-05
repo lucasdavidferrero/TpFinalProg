@@ -127,15 +127,15 @@ namespace TpFinalProg {
 
 
         private void cargarCbProyecto() {
-            DataTable ta = Tarea.CargarCombo();
-            cbProyecto.DataSource = ta.DefaultView;
+            DataTable? ta = Tarea.CargarCombo();
+            cbProyecto.DataSource = ta?.DefaultView;
             cbProyecto.ValueMember = "id_proyecto";
             cbProyecto.DisplayMember = "nombre";
         }
 
-        public static DataTable CargarCombo() {
-            DataSet ds = PropietarioDataMapper.cargarCombo();
-            DataTable dtListaAll = null;
+        public static DataTable? CargarCombo() {
+            DataSet? ds = PropietarioDataMapper.cargarCombo();
+            DataTable? dtListaAll = null;
             if (ds != null) {
                 dtListaAll = ds.Tables[0];
 

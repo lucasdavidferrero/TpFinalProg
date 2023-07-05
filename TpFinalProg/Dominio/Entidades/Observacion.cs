@@ -12,10 +12,13 @@ namespace TpFinalProg.Dominio.Entidades {
     public class Observacion {
         public int idObservacion { get; }
         public DateTime fecha { get; }
-        public string observacion { get; }
+        public string? observacion { get; }
         public int nroLegajo { get; }
 
-        public Observacion() { }
+        
+        public Observacion() {
+
+        }
 
         public Observacion(int idObservacion, DateTime fecha, string observacion) {
             this.idObservacion = idObservacion;
@@ -23,7 +26,7 @@ namespace TpFinalProg.Dominio.Entidades {
             this.observacion = observacion;
         }
 
-        public Observacion(int idObservacion, DateTime fecha, string observacion, int legajo) {
+        public Observacion(int idObservacion, DateTime fecha, string? observacion, int legajo) {
             this.idObservacion = idObservacion;
             this.fecha = fecha;
             this.observacion = observacion;
@@ -35,7 +38,7 @@ namespace TpFinalProg.Dominio.Entidades {
                 return id;
             }
 
-            Observacion obsEncontrado = ObservacionDataMapper.encontrarPorId(this.idObservacion);
+            Observacion? obsEncontrado = ObservacionDataMapper.encontrarPorId(this.idObservacion);
             if (obsEncontrado != null) {
                 ObservacionDataMapper.modificar(this);
                 return idObservacion;
@@ -44,14 +47,14 @@ namespace TpFinalProg.Dominio.Entidades {
             }
         }
 
-        public DataTable obtenerTodos() {
+        public DataTable? obtenerTodos() {
             return ObservacionDataMapper.obtenerTodos();
         }
 
         public void eliminarPorId(int id) {
             ObservacionDataMapper.eliminar(id);
         }
-        public DataTable obtenerTodosParametros() {
+        public DataTable? obtenerTodosParametros() {
             return ObservacionDataMapper.obtenerTodosParametros();
         }
     }

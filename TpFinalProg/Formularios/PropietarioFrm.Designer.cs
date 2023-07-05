@@ -29,7 +29,6 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            txtContacto = new TextBox();
             txtEmail = new TextBox();
             btnGuardar = new Button();
             txtRazonSocial = new TextBox();
@@ -44,6 +43,7 @@
             persona_contacto = new DataGridViewTextBoxColumn();
             baja = new DataGridViewTextBoxColumn();
             btnLimpiar = new Button();
+            txtContacto = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvPropietario).BeginInit();
             SuspendLayout();
             // 
@@ -105,13 +105,6 @@
             label1.TabIndex = 21;
             label1.Text = "Razón Social:";
             label1.Click += label1_Click;
-            // 
-            // txtContacto
-            // 
-            txtContacto.Location = new Point(559, 79);
-            txtContacto.Name = "txtContacto";
-            txtContacto.Size = new Size(206, 23);
-            txtContacto.TabIndex = 14;
             // 
             // txtEmail
             // 
@@ -235,6 +228,13 @@
             btnLimpiar.UseVisualStyleBackColor = false;
             btnLimpiar.Click += btnLimpiar_Click;
             // 
+            // txtContacto
+            // 
+            txtContacto.Location = new Point(559, 79);
+            txtContacto.Name = "txtContacto";
+            txtContacto.Size = new Size(206, 23);
+            txtContacto.TabIndex = 14;
+            // 
             // PropietarioFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -276,7 +276,6 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private TextBox txtContacto;
         private TextBox txtEmail;
         private TextBox txtPropietario;
         private Button btnGuardar;
@@ -293,5 +292,6 @@
         private DataGridViewTextBoxColumn email;
         private DataGridViewTextBoxColumn persona_contacto;
         private DataGridViewTextBoxColumn baja;
+        private TextBox txtContacto;
     }
 }

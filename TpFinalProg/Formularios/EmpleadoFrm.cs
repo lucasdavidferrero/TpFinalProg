@@ -43,7 +43,7 @@ namespace TpFinalProg {
         }
 
         private void listarEmpleados() {
-            DataTable listadoEmpleados = Controlador.EmpleadoControlador.listarTodoTodo();
+            DataTable? listadoEmpleados = Controlador.EmpleadoControlador.listarTodoTodo();
             dgvEmpleado.DataSource = listadoEmpleados;
         }
 
@@ -77,7 +77,7 @@ namespace TpFinalProg {
         }
 
         private void btnObesrvacion_Click(object sender, EventArgs e) {
-            Form frm_observacion = Application.OpenForms.OfType<Form>().
+            Form? frm_observacion = Application.OpenForms.OfType<Form>().
                             Where(pre => pre.Name == "ObservacionFrm").SingleOrDefault();
 
             if (frm_observacion != null) {

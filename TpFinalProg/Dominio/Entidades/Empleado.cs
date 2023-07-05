@@ -17,8 +17,10 @@ namespace TpFinalProg.Dominio.Entidades {
         public string email { get; }
         public bool baja { get; }
 
-        public Empleado() { }
+        
+        public Empleado() {
 
+        }
         public Empleado(int legajo, DateTime fechaIngreso, string nombre, string apellido, string celular, string email) {
             this.legajo = legajo;
             this.fechaIngreso = fechaIngreso;
@@ -43,7 +45,7 @@ namespace TpFinalProg.Dominio.Entidades {
                 return id;
             }
 
-            Empleado empEncontrado = EmpleadoDataMapper.encontrarPorId(this.legajo);
+            Empleado? empEncontrado = EmpleadoDataMapper.encontrarPorId(this.legajo);
             if (empEncontrado != null) {
                 EmpleadoDataMapper.modificar(this);
                 return legajo;
@@ -52,19 +54,19 @@ namespace TpFinalProg.Dominio.Entidades {
             }
         }
 
-        public DataTable obtenerTodos() {
+        public DataTable? obtenerTodos() {
             return EmpleadoDataMapper.obtenerTodos();
         }
-        public DataTable obtenerTodosTodos() {
+        public DataTable? obtenerTodosTodos() {
             return EmpleadoDataMapper.obtenerTodosTodos();
         }
 
         public void eliminarPorId(int id) {
             EmpleadoDataMapper.eliminar(id);
         }
-        public static DataTable CargarCombo() {
-            DataSet ds = EmpleadoDataMapper.cargarCombo();
-            DataTable dtListaAll = null;
+        public static DataTable? CargarCombo() {
+            DataSet? ds = EmpleadoDataMapper.cargarCombo();
+            DataTable? dtListaAll = null;
             if (ds != null) {
                 dtListaAll = ds.Tables[0];
 

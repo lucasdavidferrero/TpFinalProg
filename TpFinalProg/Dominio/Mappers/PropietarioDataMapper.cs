@@ -39,15 +39,15 @@ namespace TpFinalProg.Dominio.Mappers {
                 cx.SetComandoSQL(q);
                 idGenerado = Convert.ToInt32(cmd.ExecuteScalar());
                 return idGenerado;
-            } catch(SqlException e) {
+            } catch(SqlException) {
                 Console.WriteLine("Error en la base de datos. [Insertar Propietario]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
             }
             return idGenerado;
         }
-        public static DataTable obtenerTodos() {
-            DataTable dtListAll = new DataTable("ListarPropietarios");
+        public static DataTable? obtenerTodos() {
+            DataTable? dtListAll = new DataTable("ListarPropietarios");
             string q = "SELECT * FROM Propietario WHERE baja = 0";
             Conexion cx = new Conexion();
             try {
@@ -55,7 +55,7 @@ namespace TpFinalProg.Dominio.Mappers {
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 sqlDat.Fill(dtListAll);
 
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 dtListAll = null;
                 Console.WriteLine("Error en la base de datos. [Listado Propietarios]");
             } finally {
@@ -89,7 +89,7 @@ namespace TpFinalProg.Dominio.Mappers {
             try {
                 cx.SetComandoSQL(q);
                 cmd.ExecuteScalar();
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Insertar Propietario]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -97,8 +97,8 @@ namespace TpFinalProg.Dominio.Mappers {
             return p.idPropietario;
         }
 
-        public static Propietario obtenerPorId (int id) {
-            Propietario propEncontrado = null;
+        public static Propietario? obtenerPorId (int id) {
+            Propietario? propEncontrado = null;
             string q = "SELECT * FROM Propietario WHERE id_propietario = @Id AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
@@ -113,7 +113,7 @@ namespace TpFinalProg.Dominio.Mappers {
                 if (dt.Rows.Count != 0) {
                     propEncontrado = construirPropietarioDesdeDataRow(dt.Rows[0]);
                 }
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Id Propietario]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -122,8 +122,8 @@ namespace TpFinalProg.Dominio.Mappers {
             return propEncontrado;
         }
 
-        public static Propietario obtenerPorCuit (long cuit) {
-            Propietario propEncontrado = null;
+        public static Propietario? obtenerPorCuit (long cuit) {
+            Propietario? propEncontrado = null;
             string q = "SELECT * FROM Propietario WHERE cuit = @cuit AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
@@ -138,7 +138,7 @@ namespace TpFinalProg.Dominio.Mappers {
                 if (dt.Rows.Count != 0) {
                     propEncontrado = construirPropietarioDesdeDataRow(dt.Rows[0]);
                 }
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Cuit Propietario]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -160,7 +160,7 @@ namespace TpFinalProg.Dominio.Mappers {
             try {
                 cx.SetComandoSQL(q);
                 cmd.ExecuteScalar();
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Id Propietario]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();
@@ -177,7 +177,7 @@ namespace TpFinalProg.Dominio.Mappers {
             return new Propietario(pId, pRazonSocial, pCuit, pTel, pEmail, pPersonaContacto);
         }
 
-        public static DataSet cargarCombo() {
+        public static DataSet? cargarCombo() {
             DataSet dt = new DataSet();
             string sql = "Select 0 as id_propietario, 'Seleccione...' as descripcion " +
                 "Union SELECT id_propietario, razon_social FROM Propietario WHERE baja=0 order by id_propietario ";
@@ -190,14 +190,14 @@ namespace TpFinalProg.Dominio.Mappers {
                 sqlDat.Fill(dt);
                 cx.cerrarConexionLiberarRecursos();
 
-            } catch (SqlException ex) {
+            } catch (SqlException) {
                 return null;
             }
             return dt;
         }
 
-        public static Propietario encontrarPorIdRazonSocial(int id) {
-            Propietario propEncontrado = null;
+        public static Propietario? encontrarPorIdRazonSocial(int id) {
+            Propietario? propEncontrado = null;
             string q = "SELECT razon_social FROM Propietario WHERE id_propietario = @Id AND baja = 0";
             DataTable dt = new DataTable();
             Conexion cx = new Conexion();
@@ -209,7 +209,7 @@ namespace TpFinalProg.Dominio.Mappers {
                 cx.SetComandoSQL(q);
                 SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
                 cmd.ExecuteScalar();
-            } catch (SqlException e) {
+            } catch (SqlException) {
                 Console.WriteLine("Error en la base de datos. [Obtener por Razon Social]");
             } finally {
                 cx.cerrarConexionLiberarRecursos();

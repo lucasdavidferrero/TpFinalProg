@@ -12,7 +12,7 @@ namespace TpFinalProg.Dominio.Entidades {
     internal class Tarea {
         public int idProyecto { get; }
         public int idTarea { get; }
-        public string descripcion { get; set; }
+        public string? descripcion { get; set; }
 
         public int horasEstimadas { get; }
 
@@ -22,9 +22,11 @@ namespace TpFinalProg.Dominio.Entidades {
         public decimal costoReal { get; }
         public DateTime fechaFinal { get; }
 
-        public Tarea() { }
+        public Tarea() {
 
-        public Tarea(int idProyecto, int idTarea, string descripcion, int horasEstimadas, int horasAvance, decimal costoEstimado, int horasReales, decimal costoReal, DateTime fechaFinal) {
+        }
+
+        public Tarea(int idProyecto, int idTarea, string? descripcion, int horasEstimadas, int horasAvance, decimal costoEstimado, int horasReales, decimal costoReal, DateTime fechaFinal) {
             this.idProyecto = idProyecto;
             this.idTarea = idTarea;
             this.descripcion = descripcion;
@@ -57,9 +59,9 @@ namespace TpFinalProg.Dominio.Entidades {
             TareaDataMapper.eliminar(idProyecto, idTarea);
         }
 
-        public static DataTable CargarCombo() {
-            DataSet ds = TareaDataMapper.cargarCombo();
-            DataTable dtListaAll = null;
+        public static DataTable? CargarCombo() {
+            DataSet? ds = TareaDataMapper.cargarCombo();
+            DataTable? dtListaAll = null;
             if (ds != null) {
                 dtListaAll = ds.Tables[0];
 

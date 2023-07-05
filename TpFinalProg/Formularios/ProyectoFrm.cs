@@ -31,14 +31,14 @@ namespace TpFinalProg {
         }
 
         private void cargarCbResponsable() {
-            DataTable ta = Empleado.CargarCombo();
-            cbResponsable.DataSource = ta.DefaultView;
+            DataTable? ta = Empleado.CargarCombo();
+            cbResponsable.DataSource = ta?.DefaultView;
             cbResponsable.ValueMember = "legajo";
             cbResponsable.DisplayMember = "descripcion";
         }
         private void cargarCbPropietario() {
-            DataTable ta = Propietario.CargarCombo();
-            cbPropietario.DataSource = ta.DefaultView;
+            DataTable? ta = Propietario.CargarCombo();
+            cbPropietario.DataSource = ta?.DefaultView;
             cbPropietario.ValueMember = "id_propietario";
             cbPropietario.DisplayMember = "descripcion";
         }
@@ -89,7 +89,7 @@ namespace TpFinalProg {
             btnEliminar.Enabled = false;
         }
         private void listarProyecto() {
-            DataTable listadoProyecto = Controlador.ProyectoControlador.listarTodoParametro();
+            DataTable? listadoProyecto = Controlador.ProyectoControlador.listarTodoParametro();
             dgvProyecto.DataSource = listadoProyecto;
         }
 

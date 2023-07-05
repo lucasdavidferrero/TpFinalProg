@@ -18,7 +18,10 @@ namespace TpFinalProg.Dominio.Entidades {
         public long cuit { get; }
         public string personaContacto { get; }
 
-        public Propietario() { }
+
+        public Propietario() {
+
+        }
 
         public Propietario(int id_propietario, string razon_social, Int64 cuit, string telefono,
             string email, string persona_contacto) {
@@ -31,7 +34,7 @@ namespace TpFinalProg.Dominio.Entidades {
         }
         public int guardar() {
             if (idPropietario == 0) {
-                Propietario propietarioEncontradoPorCuit = PropietarioDataMapper.obtenerPorCuit(this.cuit);
+                Propietario? propietarioEncontradoPorCuit = PropietarioDataMapper.obtenerPorCuit(this.cuit);
                 if (propietarioEncontradoPorCuit != null) {
                     throw new Exception("Ya existe un propietario con el CUIT ingresado.");
                 }
@@ -39,7 +42,7 @@ namespace TpFinalProg.Dominio.Entidades {
                 return id;
             }
 
-            Propietario propEncontrado = PropietarioDataMapper.obtenerPorId(this.idPropietario);
+            Propietario? propEncontrado = PropietarioDataMapper.obtenerPorId(this.idPropietario);
             if (propEncontrado != null) {
                 PropietarioDataMapper.modificar(this);
                 return idPropietario;
@@ -48,7 +51,7 @@ namespace TpFinalProg.Dominio.Entidades {
             }
         }
 
-        public DataTable obtenerTodos() {
+        public DataTable? obtenerTodos() {
             return PropietarioDataMapper.obtenerTodos();
         }
 
@@ -57,9 +60,9 @@ namespace TpFinalProg.Dominio.Entidades {
         }
 
         //DE ACA
-        public static DataTable CargarCombo() {
-            DataSet ds = PropietarioDataMapper.cargarCombo();
-            DataTable dtListaAll = null;
+        public static DataTable? CargarCombo() {
+            DataSet? ds = PropietarioDataMapper.cargarCombo();
+            DataTable? dtListaAll = null;
             if (ds != null) {
                 dtListaAll = ds.Tables[0];
 
