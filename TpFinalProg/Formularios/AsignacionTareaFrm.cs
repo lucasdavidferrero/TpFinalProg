@@ -159,19 +159,17 @@ namespace TpFinalProg {
             cbFuncion.Text = celdas["nombre_funcion"].Value.ToString();
         }
 
-        private void btnModificar_Click(object sender, EventArgs e) {
-            /*
-            int id_trabaja = Convert.ToInt32(txtIdTrabaja.Text.Trim());
-            int id_proyecto = Convert.ToInt32(cbProyecto.SelectedValue);
-            int nro_tarea = Convert.ToInt32(cbTarea.SelectedValue);
-            int legajo = Convert.ToInt32(cbEmpleado.SelectedValue);
-            int id_funcion = Convert.ToInt32(cbFuncion.SelectedValue);
 
-            TrabajaControlador.modificar(id_trabaja, id_proyecto, nro_tarea, legajo, id_funcion);
+        private void dgvTarea_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
+            if (dgvTarea.Rows.Count - 1 == e.RowIndex)
+                return;
 
-            cargarDgvTarea();
-            cargarTodo();
-            */
+            idRowSeleccionado = e.RowIndex;
+
+            // Llenar los Textboxs con los correspondientes datos del Row seleccionado.
+            DataGridViewCellCollection celdas = dgvTarea.Rows[idRowSeleccionado].Cells;
+
+            txtIdTrabaja.Text = celdas["id_trabaja"].Value.ToString();
         }
     }
 }
