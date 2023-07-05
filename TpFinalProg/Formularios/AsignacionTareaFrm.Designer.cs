@@ -246,6 +246,7 @@
             // 
             btnModificar.BackColor = Color.Transparent;
             btnModificar.BackgroundImageLayout = ImageLayout.None;
+            btnModificar.Enabled = false;
             btnModificar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnModificar.Location = new Point(224, 186);
             btnModificar.Name = "btnModificar";

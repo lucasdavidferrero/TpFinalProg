@@ -146,14 +146,14 @@ namespace TpFinalProg {
         }
 
         private void dgvTarea_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
-           if (dgvTarea.Rows.Count - 1 == e.RowIndex)
+            if (dgvTarea.Rows.Count - 1 == e.RowIndex)
                 return;
 
             idRowSeleccionado = e.RowIndex;
 
             // Llenar los Textboxs con los correspondientes datos del Row seleccionado.
             DataGridViewCellCollection celdas = dgvTarea.Rows[idRowSeleccionado].Cells;
-            
+
             cbProyecto.Text = celdas["nombre_proyecto"].Value.ToString();
             cbTarea.Text = celdas["descripcion"].Value.ToString();
             cbEmpleado.Text = celdas["nombre_empleado"].Value.ToString();
@@ -167,7 +167,7 @@ namespace TpFinalProg {
             int id_funcion = Convert.ToInt32(cbFuncion.SelectedValue);
 
             TrabajaControlador.modificar(id_proyecto, nro_tarea, legajo, id_funcion);
-            
+
             cargarDgvTarea();
             cargarTodo();
         }
