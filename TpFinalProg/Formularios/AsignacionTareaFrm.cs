@@ -107,12 +107,7 @@ namespace TpFinalProg {
         }
 
         private void btnBorrar_Click(object sender, EventArgs e) {
-            
-            idRowSeleccionado = e.RowIndex;
 
-            // Llenar los Textboxs con los correspondientes datos del Row seleccionado.
-            DataGridViewCellCollection celdas = dgvTarea.Rows[idRowSeleccionado].Cells;
-            txtIdTrabaja.Text = celdas["id_trabaja"].Value.ToString();
             if (mensajeDeELiminacion()) {
                 int id_trabaja = Convert.ToInt32(txtIdTrabaja.Text.Trim());
                 TrabajaControlador.eliminar(id_trabaja);
