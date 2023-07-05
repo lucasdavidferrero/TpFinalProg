@@ -87,11 +87,11 @@
             // 
             dgvTarea.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTarea.Columns.AddRange(new DataGridViewColumn[] { id_trabaja, id_proyecto, nombre_proyecto, id_tarea, descripcion, legajo, nombre_empleado, id_funcion_fk, nombre_funcion, BAJA });
-            dgvTarea.Location = new Point(36, 232);
+            dgvTarea.Location = new Point(37, 242);
             dgvTarea.Name = "dgvTarea";
             dgvTarea.ReadOnly = true;
             dgvTarea.RowTemplate.Height = 25;
-            dgvTarea.Size = new Size(614, 183);
+            dgvTarea.Size = new Size(684, 298);
             dgvTarea.TabIndex = 7;
             dgvTarea.RowHeaderMouseClick += dgvTarea_RowHeaderMouseClick;
             dgvTarea.RowHeaderMouseDoubleClick += dgvTarea_RowHeaderMouseDoubleClick;
@@ -135,7 +135,7 @@
             descripcion.HeaderText = "Tarea";
             descripcion.Name = "descripcion";
             descripcion.ReadOnly = true;
-            descripcion.Width = 120;
+            descripcion.Width = 180;
             // 
             // legajo
             // 
@@ -218,7 +218,7 @@
             btnLimpiar.BackColor = Color.Transparent;
             btnLimpiar.BackgroundImageLayout = ImageLayout.None;
             btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(461, 186);
+            btnLimpiar.Location = new Point(420, 191);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(110, 30);
             btnLimpiar.TabIndex = 156;
@@ -231,7 +231,7 @@
             btnEliminar.BackColor = Color.Transparent;
             btnEliminar.BackgroundImageLayout = ImageLayout.None;
             btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEliminar.Location = new Point(300, 186);
+            btnEliminar.Location = new Point(304, 191);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(110, 30);
             btnEliminar.TabIndex = 155;
@@ -244,7 +244,7 @@
             btnGuardar.BackColor = Color.Transparent;
             btnGuardar.BackgroundImageLayout = ImageLayout.None;
             btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardar.Location = new Point(125, 186);
+            btnGuardar.Location = new Point(185, 191);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(110, 30);
             btnGuardar.TabIndex = 154;
@@ -265,7 +265,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(680, 450);
+            ClientSize = new Size(743, 586);
             Controls.Add(txtIdTrabaja);
             Controls.Add(btnLimpiar);
             Controls.Add(btnEliminar);
