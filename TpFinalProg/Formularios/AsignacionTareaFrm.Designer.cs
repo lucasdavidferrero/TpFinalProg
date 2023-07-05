@@ -28,14 +28,6 @@
             cbTarea = new ComboBox();
             label2 = new Label();
             dgvTarea = new DataGridView();
-            cbFuncion = new ComboBox();
-            label4 = new Label();
-            label5 = new Label();
-            cbProyecto = new ComboBox();
-            btnLimpiar = new Button();
-            btnBorrar = new Button();
-            btnGuardar = new Button();
-            btnModificar = new Button();
             id_proyecto = new DataGridViewTextBoxColumn();
             nombre_proyecto = new DataGridViewTextBoxColumn();
             id_tarea = new DataGridViewTextBoxColumn();
@@ -45,6 +37,14 @@
             id_funcion_fk = new DataGridViewTextBoxColumn();
             nombre_funcion = new DataGridViewTextBoxColumn();
             BAJA = new DataGridViewTextBoxColumn();
+            cbFuncion = new ComboBox();
+            label4 = new Label();
+            label5 = new Label();
+            cbProyecto = new ComboBox();
+            btnLimpiar = new Button();
+            btnEliminar = new Button();
+            btnGuardar = new Button();
+            btnModificar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvTarea).BeginInit();
             SuspendLayout();
             // 
@@ -92,96 +92,7 @@
             dgvTarea.RowTemplate.Height = 25;
             dgvTarea.Size = new Size(614, 183);
             dgvTarea.TabIndex = 7;
-            dgvTarea.CellContentClick += dgvTarea_CellContentClick;
-            dgvTarea.CellFormatting += dgvTarea_CellFormatting;
-            dgvTarea.SelectionChanged += dgvTarea_SelectionChanged;
-            // 
-            // cbFuncion
-            // 
-            cbFuncion.FormattingEnabled = true;
-            cbFuncion.Location = new Point(247, 143);
-            cbFuncion.Name = "cbFuncion";
-            cbFuncion.Size = new Size(222, 23);
-            cbFuncion.TabIndex = 9;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(185, 146);
-            label4.Name = "label4";
-            label4.Size = new Size(50, 15);
-            label4.TabIndex = 8;
-            label4.Text = "Funcion";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(181, 31);
-            label5.Name = "label5";
-            label5.Size = new Size(54, 15);
-            label5.TabIndex = 11;
-            label5.Text = "Proyecto";
-            // 
-            // cbProyecto
-            // 
-            cbProyecto.FormattingEnabled = true;
-            cbProyecto.Location = new Point(247, 28);
-            cbProyecto.Name = "cbProyecto";
-            cbProyecto.Size = new Size(222, 23);
-            cbProyecto.TabIndex = 10;
-            cbProyecto.SelectedIndexChanged += cbProyecto_SelectedIndexChanged;
-            // 
-            // btnLimpiar
-            // 
-            btnLimpiar.BackColor = Color.Transparent;
-            btnLimpiar.BackgroundImageLayout = ImageLayout.None;
-            btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(456, 186);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(110, 30);
-            btnLimpiar.TabIndex = 156;
-            btnLimpiar.Text = "Reiniciar";
-            btnLimpiar.UseVisualStyleBackColor = false;
-            btnLimpiar.Click += btnLimpiar_Click;
-            // 
-            // btnBorrar
-            // 
-            btnBorrar.BackColor = Color.Transparent;
-            btnBorrar.BackgroundImageLayout = ImageLayout.None;
-            btnBorrar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBorrar.Location = new Point(340, 186);
-            btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(110, 30);
-            btnBorrar.TabIndex = 155;
-            btnBorrar.Text = "Eliminar";
-            btnBorrar.UseVisualStyleBackColor = false;
-            btnBorrar.Click += btnBorrar_Click;
-            // 
-            // btnGuardar
-            // 
-            btnGuardar.BackColor = Color.Transparent;
-            btnGuardar.BackgroundImageLayout = ImageLayout.None;
-            btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardar.Location = new Point(108, 186);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(110, 30);
-            btnGuardar.TabIndex = 154;
-            btnGuardar.Text = "Crear";
-            btnGuardar.UseVisualStyleBackColor = false;
-            btnGuardar.Click += btnGuardar_Click;
-            // 
-            // btnModificar
-            // 
-            btnModificar.BackColor = Color.Transparent;
-            btnModificar.BackgroundImageLayout = ImageLayout.None;
-            btnModificar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnModificar.Location = new Point(224, 186);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(110, 30);
-            btnModificar.TabIndex = 159;
-            btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = false;
-            btnModificar.Click += btnFinalizacion_Click;
+            dgvTarea.RowHeaderMouseDoubleClick += dgvTarea_RowHeaderMouseDoubleClick;
             // 
             // id_proyecto
             // 
@@ -257,6 +168,93 @@
             BAJA.ReadOnly = true;
             BAJA.Visible = false;
             // 
+            // cbFuncion
+            // 
+            cbFuncion.FormattingEnabled = true;
+            cbFuncion.Location = new Point(247, 143);
+            cbFuncion.Name = "cbFuncion";
+            cbFuncion.Size = new Size(222, 23);
+            cbFuncion.TabIndex = 9;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(185, 146);
+            label4.Name = "label4";
+            label4.Size = new Size(50, 15);
+            label4.TabIndex = 8;
+            label4.Text = "Funcion";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(181, 31);
+            label5.Name = "label5";
+            label5.Size = new Size(54, 15);
+            label5.TabIndex = 11;
+            label5.Text = "Proyecto";
+            // 
+            // cbProyecto
+            // 
+            cbProyecto.FormattingEnabled = true;
+            cbProyecto.Location = new Point(247, 28);
+            cbProyecto.Name = "cbProyecto";
+            cbProyecto.Size = new Size(222, 23);
+            cbProyecto.TabIndex = 10;
+            cbProyecto.SelectedIndexChanged += cbProyecto_SelectedIndexChanged;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.BackColor = Color.Transparent;
+            btnLimpiar.BackgroundImageLayout = ImageLayout.None;
+            btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLimpiar.Location = new Point(456, 186);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(110, 30);
+            btnLimpiar.TabIndex = 156;
+            btnLimpiar.Text = "Reiniciar";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.BackColor = Color.Transparent;
+            btnEliminar.BackgroundImageLayout = ImageLayout.None;
+            btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEliminar.Location = new Point(340, 186);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(110, 30);
+            btnEliminar.TabIndex = 155;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnBorrar_Click;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.BackColor = Color.Transparent;
+            btnGuardar.BackgroundImageLayout = ImageLayout.None;
+            btnGuardar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGuardar.Location = new Point(108, 186);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(110, 30);
+            btnGuardar.TabIndex = 154;
+            btnGuardar.Text = "Crear";
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
+            // 
+            // btnModificar
+            // 
+            btnModificar.BackColor = Color.Transparent;
+            btnModificar.BackgroundImageLayout = ImageLayout.None;
+            btnModificar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnModificar.Location = new Point(224, 186);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(110, 30);
+            btnModificar.TabIndex = 159;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = false;
+            btnModificar.Click += btnModificar_Click;
+            // 
             // AsignacionTareaFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -265,7 +263,7 @@
             ClientSize = new Size(680, 450);
             Controls.Add(btnModificar);
             Controls.Add(btnLimpiar);
-            Controls.Add(btnBorrar);
+            Controls.Add(btnEliminar);
             Controls.Add(btnGuardar);
             Controls.Add(label5);
             Controls.Add(cbProyecto);
@@ -295,7 +293,7 @@
         private Label label5;
         private ComboBox cbProyecto;
         private Button btnLimpiar;
-        private Button btnBorrar;
+        private Button btnEliminar;
         private Button btnGuardar;
         private Button btnModificar;
         private DataGridViewTextBoxColumn id_proyecto;
