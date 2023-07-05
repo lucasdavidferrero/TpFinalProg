@@ -34,7 +34,7 @@ namespace TpFinalProg.Dominio.Entidades {
         }
         public int guardar() {
             if (idPropietario == 0) {
-                Propietario propietarioEncontradoPorCuit = PropietarioDataMapper.obtenerPorCuit(this.cuit);
+                Propietario? propietarioEncontradoPorCuit = PropietarioDataMapper.obtenerPorCuit(this.cuit);
                 if (propietarioEncontradoPorCuit != null) {
                     throw new Exception("Ya existe un propietario con el CUIT ingresado.");
                 }
@@ -42,7 +42,7 @@ namespace TpFinalProg.Dominio.Entidades {
                 return id;
             }
 
-            Propietario propEncontrado = PropietarioDataMapper.obtenerPorId(this.idPropietario);
+            Propietario? propEncontrado = PropietarioDataMapper.obtenerPorId(this.idPropietario);
             if (propEncontrado != null) {
                 PropietarioDataMapper.modificar(this);
                 return idPropietario;

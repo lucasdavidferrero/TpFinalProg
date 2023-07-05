@@ -28,15 +28,15 @@ namespace TpFinalProg.Controlador {
             clsEmpleado.eliminarPorId(id);
         }
 
-        public static DataTable listarTodo() {
+        public static DataTable? listarTodo() {
             Empleado clsEmpleado = new Empleado();
-            DataTable empleados = clsEmpleado.obtenerTodos();
+            DataTable? empleados = clsEmpleado.obtenerTodos();
             return empleados;
         }
 
-        public static DataTable listarTodoTodo() {
+        public static DataTable? listarTodoTodo() {
             Empleado clsEmpleado = new Empleado();
-            DataTable empleados = clsEmpleado.obtenerTodosTodos();
+            DataTable? empleados = clsEmpleado.obtenerTodosTodos();
             return empleados;
         }
 

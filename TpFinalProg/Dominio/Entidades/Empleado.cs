@@ -45,7 +45,7 @@ namespace TpFinalProg.Dominio.Entidades {
                 return id;
             }
 
-            Empleado empEncontrado = EmpleadoDataMapper.encontrarPorId(this.legajo);
+            Empleado? empEncontrado = EmpleadoDataMapper.encontrarPorId(this.legajo);
             if (empEncontrado != null) {
                 EmpleadoDataMapper.modificar(this);
                 return legajo;
@@ -54,10 +54,10 @@ namespace TpFinalProg.Dominio.Entidades {
             }
         }
 
-        public DataTable obtenerTodos() {
+        public DataTable? obtenerTodos() {
             return EmpleadoDataMapper.obtenerTodos();
         }
-        public DataTable obtenerTodosTodos() {
+        public DataTable? obtenerTodosTodos() {
             return EmpleadoDataMapper.obtenerTodosTodos();
         }
 
@@ -65,7 +65,7 @@ namespace TpFinalProg.Dominio.Entidades {
             EmpleadoDataMapper.eliminar(id);
         }
         public static DataTable? CargarCombo() {
-            DataSet ds = EmpleadoDataMapper.cargarCombo();
+            DataSet? ds = EmpleadoDataMapper.cargarCombo();
             DataTable? dtListaAll = null;
             if (ds != null) {
                 dtListaAll = ds.Tables[0];

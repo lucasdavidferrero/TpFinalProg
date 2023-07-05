@@ -43,7 +43,7 @@ namespace TpFinalProg {
         }
 
         private void listarEmpleados() {
-            DataTable listadoEmpleados = Controlador.EmpleadoControlador.listarTodoTodo();
+            DataTable? listadoEmpleados = Controlador.EmpleadoControlador.listarTodoTodo();
             dgvEmpleado.DataSource = listadoEmpleados;
         }
 
