@@ -82,7 +82,7 @@ namespace TpFinalProg {
             int id_funcion = Convert.ToInt32(cbFuncion.SelectedValue);
 
             if (id_proyecto == 0 || nro_tarea == 0 || legajo == 0 || id_funcion == 0) {
-                MessageBox.Show("Error, todos los campos son obligatorios...");
+                MessageBox.Show("Error, todos los campos son obligatorios...", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -103,6 +103,8 @@ namespace TpFinalProg {
             // Verificar la respuesta del usuario
             if (result == DialogResult.Yes) {
                 // Usuario ha confirmado, realizar la eliminación
+                MessageBox.Show("Asignación eliminada exitosamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 return true;
             } else if (result == DialogResult.No) {
                 // Usuario ha cancelado, no hacer nada

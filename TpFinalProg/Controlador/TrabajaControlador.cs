@@ -22,7 +22,7 @@ namespace TpFinalProg.Controlador {
                     int id = TrabajaDataMapper.insertarNuevo(obj);
 
                     if (id == -1) {
-                        MessageBox.Show("Ocurrió un error al asignar tarea");
+                        MessageBox.Show("Ocurrió un error al asignar tarea", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                 } else if (ValidacionDatos.TareaAdmiteLider(idProyecto, nroTarea)) {
@@ -31,15 +31,15 @@ namespace TpFinalProg.Controlador {
                     int id = TrabajaDataMapper.insertarNuevo(obj);
 
                     if (id == -1) {
-                        MessageBox.Show("Ocurrió un error al asignar tarea");
+                        MessageBox.Show("Ocurrió un error al asignar tarea", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 } else {
-                    MessageBox.Show("Para esta tarea ya hay un lider asignado, solo puede asignar un lider");
+                    MessageBox.Show("Para esta tarea ya hay un lider asignado, solo puede asignar un lider", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             
             }
             else {
-                MessageBox.Show("Ya existe una tarea asignada con estas caracteristicas");
+                MessageBox.Show("Ya existe una tarea asignada con estas caracteristicas", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -48,7 +48,7 @@ namespace TpFinalProg.Controlador {
             Trabaja obj = new(idTrabaja, 0, 0, 0, 0);
 
             if (!TrabajaDataMapper.eliminar(obj)) {
-                MessageBox.Show("Ocurrió un error al eliminar asignación de tarea");
+                MessageBox.Show("Ocurrió un error al eliminar asignación de tarea", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
