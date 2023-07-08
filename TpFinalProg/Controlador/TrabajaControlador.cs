@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using TpFinalProg.Clases;
 using TpFinalProg.Dominio;
 using TpFinalProg.Dominio.Entidades;
 using TpFinalProg.Dominio.Mappers;
@@ -62,7 +63,8 @@ namespace TpFinalProg.Controlador {
         }
 
 
-        public static DataTable cargarDgvTrabaja() {
+        public static DataTable? cargarDgvTrabaja() {
+            /*
             // DataTable tareas = TareaDataMapper.obtenerTodos();
             DataTable trabaja = TrabajaDataMapper.obtenerTodos();
             DataTable? empleados = EmpleadoDataMapper.obtenerTodos();
@@ -117,7 +119,10 @@ namespace TpFinalProg.Controlador {
             }
 
             
-            return trabaja;
+            return trabaja;*/
+
+            DataTable? dt = TrabajaDataMapper.cargarDgv();
+            return dt;
         }
 
         /*
