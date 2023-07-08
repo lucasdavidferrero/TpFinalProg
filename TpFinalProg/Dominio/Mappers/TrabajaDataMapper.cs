@@ -191,8 +191,9 @@ namespace PruebaTpFinal.Dominio.Mappers
 
         public static DataTable? cargarDgv() {
             DataTable? dtListAll = new DataTable("RelacionesTrabaja");
-            string query = "SELECT Trabaja.id_trabaja, Trabaja.legajo, Trabaja.id_proyecto, Trabaja.id_tarea, Trabaja.id_funcion_fk, Trabaja.baja," +
-                "Empleado.nombre+ ' '+apellido AS nombreCompleto, Proyecto.nombre, Tarea.descripcion, Funcion.descripcion " +
+            string query = 
+                "SELECT Trabaja.id_trabaja, Trabaja.legajo, Trabaja.id_proyecto, Trabaja.id_tarea, Trabaja.id_funcion_fk, Trabaja.baja," +
+                "Empleado.nombre+ ' '+apellido AS nombreCompleto, Proyecto.nombre, Tarea.descripcion AS descripcionTarea, Funcion.descripcion AS descripcionFuncion " +
                 "FROM Proyecto INNER JOIN Trabaja ON Proyecto.id_proyecto = Trabaja.id_proyecto INNER JOIN " +
                 "Empleado ON Empleado.legajo = Trabaja.legajo  INNER JOIN " +
                 "Funcion ON Funcion.id_funcion = Trabaja.id_funcion_fk  INNER JOIN " +

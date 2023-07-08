@@ -108,5 +108,10 @@ namespace TpFinalProg.Controlador {
             return ultimoNroTarea + 1;
         }
 
+        public static DataTable? cargarCbAsignacionTarea(int id_proyecto) {
+            DataTable? dt = TareaDataMapper.encontrarPorIdProyecto(id_proyecto);
+            return dt;
+        }
+
     }   
 }

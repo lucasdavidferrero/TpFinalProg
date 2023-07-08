@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PruebaTpFinal.Dominio.Mappers;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -40,6 +41,11 @@ namespace TpFinalProg.Controlador {
         public static DataTable? obtenerProyectosActivosConTareasDisponiblesParaAsignar () {
             Proyecto clsProyecto = new Proyecto();
             return clsProyecto.obtenerProyectosActivosConTareasDisponiblesParaAsignar();
+        }
+
+        public static DataTable? cargarCb() {
+            DataTable? dt = ProyectoDataMapper.cargarCb();
+            return dt;
         }
 
     }

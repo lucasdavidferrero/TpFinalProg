@@ -151,6 +151,25 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.cerrarConexionLiberarRecursos();
             }
         }
+
+
+        public static DataTable? cargarCb() {
+            DataTable? dtListAll = new DataTable("ListarFunciones");
+            string query = "SELECT 0 AS id_funcion, 'Seleccione...' as descripcion\r\nUNION\r\nSELECT id_funcion, descripcion FROM Funcion WHERE baja = 0\r\n";
+            Conexion cx = new Conexion();
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtListAll);
+            } catch (SqlException) {
+                dtListAll = null;
+                Console.WriteLine("Error en la base de datos. [Listado Funciones]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return dtListAll;
+        }
     }
 
     

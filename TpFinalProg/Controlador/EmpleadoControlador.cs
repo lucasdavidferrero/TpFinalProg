@@ -66,5 +66,10 @@ namespace TpFinalProg.Controlador {
             dt.Rows.Add(row);
             return dt;
         }
+
+        public static DataTable? cargarCb() {
+            DataTable? dt = EmpleadoDataMapper.cargarCb();
+            return dt;
+        }
     }
 }
