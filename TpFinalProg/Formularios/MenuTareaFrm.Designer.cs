@@ -25,7 +25,6 @@
         private void InitializeComponent() {
             btnABM = new Button();
             btnAsignacionTarea = new Button();
-            btnListados = new Button();
             SuspendLayout();
             // 
             // btnABM
@@ -55,26 +54,12 @@
             btnAsignacionTarea.UseVisualStyleBackColor = false;
             btnAsignacionTarea.Click += btnAsignacionTarea_Click;
             // 
-            // btnListados
-            // 
-            btnListados.BackColor = Color.Transparent;
-            btnListados.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
-            btnListados.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnListados.Location = new Point(67, 256);
-            btnListados.Name = "btnListados";
-            btnListados.Size = new Size(189, 73);
-            btnListados.TabIndex = 18;
-            btnListados.Text = "LISTADOS";
-            btnListados.UseVisualStyleBackColor = false;
-            btnListados.Click += btnListados_Click;
-            // 
             // MenuTareaFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(314, 385);
-            Controls.Add(btnListados);
+            ClientSize = new Size(314, 271);
             Controls.Add(btnAsignacionTarea);
             Controls.Add(btnABM);
             Name = "MenuTareaFrm";
@@ -86,6 +71,5 @@
 
         private Button btnABM;
         private Button btnAsignacionTarea;
-        private Button btnListados;
     }
 }

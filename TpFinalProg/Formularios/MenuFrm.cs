@@ -36,5 +36,10 @@ namespace TpFinalProg {
             MenuTareaFrm tareas = new MenuTareaFrm();
             tareas.Show();
         }
+
+        private void btnListados_Click(object sender, EventArgs e) {
+            MenuListadoFrm listado = new MenuListadoFrm();
+            listado.Show();
+        }
     }
 }

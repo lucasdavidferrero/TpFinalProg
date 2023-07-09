@@ -217,7 +217,53 @@ namespace TpFinalProg.Dominio.Mappers {
 
             return propEncontrado;
         }
+        public static DataTable encontrarPorCuitNoBaja(long cuit) {
+            string query = "SELECT* FROM Propietario WHERE cuit = @cuit AND baja=0";
+            DataTable dt = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
 
-        
+
+            cmd.Parameters.AddWithValue("@cuit", cuit);
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+
+
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [Obtener por CUIT]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return dt;
+        }
+        public static DataTable encontrarPorCuitBaja(long cuit) {
+            string query = "SELECT* FROM Propietario WHERE cuit = @cuit AND baja=1";
+            DataTable dt = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+
+            cmd.Parameters.AddWithValue("@cuit", cuit);
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+
+
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [Obtener por CUIT]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return dt;
+        }
+
+
     }
 }
