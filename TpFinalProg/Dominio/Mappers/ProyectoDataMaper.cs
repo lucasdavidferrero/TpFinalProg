@@ -79,6 +79,26 @@ namespace PruebaTpFinal.Dominio.Mappers
 
             return dtListAll;
         }
+
+        public static DataTable? cargarCb() {
+            DataTable? dtListAll = new DataTable("ListarProyectos");
+            string query = "SELECT 0 AS id_proyecto, 'Seleccione...' AS nombre\r\nUNION\r\nSELECT id_proyecto, nombre FROM Proyecto WHERE baja = 0\r\n";
+            Conexion cx = new Conexion();
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtListAll);
+            } catch (SqlException) {
+                dtListAll = null;
+                Console.WriteLine("Error en la base de datos. [Listado Proyectos]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return dtListAll;
+        }
+
         public static DataTable? obtenerTodosParametros() {
             DataTable? dtListAll = new DataTable("ListarProyectos");
             string query = "SELECT Proyecto.id_proyecto, Proyecto.nombre,Propietario.razon_social, Empleado.legajo, Empleado.nombre+ ' '+apellido, " +

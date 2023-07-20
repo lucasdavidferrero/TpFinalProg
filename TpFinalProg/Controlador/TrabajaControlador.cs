@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using TpFinalProg.Clases;
 using TpFinalProg.Dominio;
 using TpFinalProg.Dominio.Entidades;
 using TpFinalProg.Dominio.Mappers;
@@ -21,7 +22,7 @@ namespace TpFinalProg.Controlador {
                     int id = TrabajaDataMapper.insertarNuevo(obj);
 
                     if (id == -1) {
-                        MessageBox.Show("Ocurrió un error al asignar tarea");
+                        MessageBox.Show("Ocurrió un error al asignar tarea", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                 } else if (ValidacionDatos.TareaAdmiteLider(idProyecto, nroTarea)) {
@@ -30,15 +31,15 @@ namespace TpFinalProg.Controlador {
                     int id = TrabajaDataMapper.insertarNuevo(obj);
 
                     if (id == -1) {
-                        MessageBox.Show("Ocurrió un error al asignar tarea");
+                        MessageBox.Show("Ocurrió un error al asignar tarea", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 } else {
-                    MessageBox.Show("Para esta tarea ya hay un lider asignado, solo puede asignar un lider");
+                    MessageBox.Show("Para esta tarea ya hay un lider asignado, solo puede asignar un lider", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             
             }
             else {
-                MessageBox.Show("Ya existe una tarea asignada con estas caracteristicas");
+                MessageBox.Show("Ya existe una tarea asignada con estas caracteristicas", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -47,7 +48,7 @@ namespace TpFinalProg.Controlador {
             Trabaja obj = new(idTrabaja, 0, 0, 0, 0);
 
             if (!TrabajaDataMapper.eliminar(obj)) {
-                MessageBox.Show("Ocurrió un error al eliminar asignación de tarea");
+                MessageBox.Show("Ocurrió un error al eliminar asignación de tarea", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -62,87 +63,12 @@ namespace TpFinalProg.Controlador {
         }
 
 
-        public static DataTable cargarDgvTrabaja() {
-            // DataTable tareas = TareaDataMapper.obtenerTodos();
-            DataTable trabaja = TrabajaDataMapper.obtenerTodos();
-            DataTable? empleados = EmpleadoDataMapper.obtenerTodos();
-            DataTable? funciones = FuncionDataMapper.obtenerTodos();
-            DataTable? proyectos = ProyectoDataMapper.obtenerTodos();
-            DataTable tareas = TareaDataMapper.obtenerTodos();
-
-            // Agregar columnas al DataTable "trabaja" para los nombres
-            trabaja.Columns.Add("empleado", typeof(string));
-            trabaja.Columns.Add("funcion", typeof(string));
-            trabaja.Columns.Add("proyecto", typeof(string)); 
-            trabaja.Columns.Add("descripcion", typeof(string));
-
-            // Combinar los datos de los DataTables en uno solo
-            foreach (DataRow row in trabaja.Rows) {
-                int nroTarea = Convert.ToInt32(row["id_tarea"]);
-                int legajo = Convert.ToInt32(row["legajo"]);
-                int idFuncion = Convert.ToInt32(row["id_funcion_fk"]);
-                int idProyecto = Convert.ToInt32(row["id_proyecto"]);
-
-                //Obtener el nombre de tareas
-                DataRow? tareaRow = tareas.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["nro_tarea"]) == nroTarea);
-                if (tareaRow != null) {
-                    string? nombreTarea = tareaRow["descripcion"].ToString();
-                    row["descripcion"] = nombreTarea;
-                }
-
-                // Obtener el nombre del empleado
-                DataRow? empleadoRow = empleados?.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["legajo"]) == legajo);
-                if (empleadoRow != null) {
-                    string? nombreEmpleado = empleadoRow["nombreCompleto"].ToString();
-                    row["empleado"] = nombreEmpleado;
-                }
-
-                // Obtener el nombre de la función
-                DataRow? funcionRow = funciones?.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["id_funcion"]) == idFuncion);
-                if (funcionRow != null) {
-                    string? nombreFuncion = funcionRow["descripcion"].ToString();
-                    row["funcion"] = nombreFuncion;
-                }
-
-                // Obtener el nombre del proyecto
-                DataRow? proyectoRow = proyectos?.AsEnumerable().FirstOrDefault(r => Convert.ToInt32(r["id_proyecto"]) == idProyecto);
-                if (proyectoRow != null) {
-                    string? nombreProyecto = proyectoRow["nombre"].ToString();
-                    row["proyecto"] = nombreProyecto;
-                }
-
-
-
-                
-            }
-
-            
-            return trabaja;
+        public static DataTable? cargarDgvTrabaja() {
+            DataTable? dt = TrabajaDataMapper.cargarDgv();
+            return dt;
         }
 
-        /*
-        public static bool modificar(int idProyecto, int nroTarea, int legajo, int idFuncion) {
-            if (TrabajaControlador.verificarExistencia(idProyecto, nroTarea, legajo)) {
-
-                if(idFuncion == 1) {
-                    if (!ValidacionDatos.TareaAdmiteLider(idProyecto, nroTarea)) {
-                        MessageBox.Show("No se puede asignar mas de un lider");
-                        return false;
-                    }
-                } else {
-                    Trabaja obj = new(legajo, idProyecto, nroTarea, idFuncion);
-                    TrabajaDataMapper.modificar(obj);
-
-                    MessageBox.Show("Asignacion modificada");
-                    return true;
-                }
-                
-
-            } else {
-                MessageBox.Show("No se puede modificar una asignacion inexistente");
-            }
-            return false;
-        }*/
+        
 
     }
 }

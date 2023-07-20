@@ -44,6 +44,7 @@ namespace TpFinalProg {
 
             if (btnGuardar.Text == "Guardar cambios") {
 
+
                 int idTarea = Convert.ToInt32(txtNroTarea.Text.Trim());
 
                 bool modificado = TareaControlador.actualizar(idProyecto, idTarea, descripcion, horasEstimadas, horasAvance, costoEstimado, horasReales, costoReal);

@@ -35,7 +35,7 @@
             btnTareas.BackColor = Color.Transparent;
             btnTareas.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
             btnTareas.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTareas.Location = new Point(68, 337);
+            btnTareas.Location = new Point(72, 320);
             btnTareas.Name = "btnTareas";
             btnTareas.Size = new Size(189, 73);
             btnTareas.TabIndex = 15;
@@ -48,7 +48,7 @@
             btnProyectos.BackColor = Color.Transparent;
             btnProyectos.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
             btnProyectos.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnProyectos.Location = new Point(68, 243);
+            btnProyectos.Location = new Point(72, 226);
             btnProyectos.Name = "btnProyectos";
             btnProyectos.Size = new Size(189, 73);
             btnProyectos.TabIndex = 14;
@@ -61,7 +61,7 @@
             btnPropietarios.BackColor = Color.Transparent;
             btnPropietarios.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
             btnPropietarios.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnPropietarios.Location = new Point(68, 150);
+            btnPropietarios.Location = new Point(72, 133);
             btnPropietarios.Name = "btnPropietarios";
             btnPropietarios.Size = new Size(189, 73);
             btnPropietarios.TabIndex = 13;
@@ -74,7 +74,7 @@
             btnEmpleados.BackColor = Color.Transparent;
             btnEmpleados.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
             btnEmpleados.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEmpleados.Location = new Point(68, 55);
+            btnEmpleados.Location = new Point(72, 38);
             btnEmpleados.Name = "btnEmpleados";
             btnEmpleados.Size = new Size(189, 75);
             btnEmpleados.TabIndex = 12;

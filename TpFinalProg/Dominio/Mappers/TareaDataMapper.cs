@@ -192,7 +192,6 @@ namespace PruebaTpFinal.Dominio.Mappers
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 
-            List<Tarea> tareas = new();
 
             cmd.Parameters.AddWithValue("@idProyecto", idProyecto);
 

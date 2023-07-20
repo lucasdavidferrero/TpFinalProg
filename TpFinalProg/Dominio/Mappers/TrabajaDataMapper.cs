@@ -189,6 +189,33 @@ namespace PruebaTpFinal.Dominio.Mappers
             return dt;
         }
 
+        public static DataTable? cargarDgv() {
+            DataTable? dtListAll = new DataTable("RelacionesTrabaja");
+            string query = 
+                "SELECT Trabaja.id_trabaja, Trabaja.legajo, Trabaja.id_proyecto, Trabaja.id_tarea, Trabaja.id_funcion_fk, Trabaja.baja," +
+                "Empleado.nombre+ ' '+apellido AS nombreCompleto, Proyecto.nombre, Tarea.descripcion AS descripcionTarea, Funcion.descripcion AS descripcionFuncion " +
+                "FROM Proyecto INNER JOIN Trabaja ON Proyecto.id_proyecto = Trabaja.id_proyecto INNER JOIN " +
+                "Empleado ON Empleado.legajo = Trabaja.legajo  INNER JOIN " +
+                "Funcion ON Funcion.id_funcion = Trabaja.id_funcion_fk  INNER JOIN " +
+                "Tarea ON Tarea.id_proyecto = Trabaja.id_proyecto AND Tarea.nro_tarea = Trabaja.id_tarea " +
+                "WHERE Proyecto.baja = 0 AND Empleado.baja = 0 AND Funcion.baja = 0 AND Tarea.baja = 0";
+
+            Conexion cx = new Conexion();
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtListAll);
+            } catch (SqlException) {
+                dtListAll = null;
+                Console.WriteLine("Error en la base de datos. [Listado Proyectos]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return dtListAll;
+        }
+
     }
 
 }

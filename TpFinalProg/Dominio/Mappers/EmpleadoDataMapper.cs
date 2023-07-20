@@ -225,5 +225,25 @@ namespace TpFinalProg.Dominio.Mappers {
 
             return dtListAll;
         }
+
+
+        public static DataTable? cargarCb() {
+            DataTable dt = new();
+            string sql = "SELECT 0 AS legajo, 'Seleccione...' as  nombreCompleto " +
+                "UNION SELECT legajo, nombre +' '+ apellido AS nombreCompleto FROM Empleado WHERE baja = 0";
+
+            try {
+                Conexion cx = new Conexion();
+                SqlCommand cmd = cx.getComando();
+                cx.SetComandoSQL(sql);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+                cx.cerrarConexionLiberarRecursos();
+
+            } catch (SqlException) {
+                return null;
+            }
+            return dt;
+        }
     }
 }
