@@ -12,6 +12,16 @@ namespace TpFinalProg.Formularios {
     public partial class MenuListadosFrm : Form {
         public MenuListadosFrm() {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+        }
+
+        private void btnListadoTareasPorProyecto_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btnListadoPersonas_Click(object sender, EventArgs e) {
+            MenuPersonasFrm per = new MenuPersonasFrm();
+            per.Show();
         }
     }
 }

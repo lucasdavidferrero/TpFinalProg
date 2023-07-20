@@ -17,15 +17,27 @@ namespace TpFinalProg.Formularios {
         public ListadoPropietarioFrm() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
+            listarPropietarios();
         }
-
+        private void listarPropietarios() {
+            DataTable listadoPropietarios = Controlador.PropietarioControlador.listarTodo();
+            dataGridView1.DataSource = listadoPropietarios;
+        }
+        private void reiniciarFormulario() {
+            txtCuit.Text = "";
+        }
         private void btnBuscar_Click(object sender, EventArgs e) {
 
             Int64 cuit = Convert.ToInt64(txtCuit.Text.Trim());
 
             DataTable prop = PropietarioDataMapper.encontrarPorCuitNoBaja(cuit);
-            dgvPropietario.DataSource = prop;
-                
+            dataGridView1.DataSource = prop;
+
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e) {
+            reiniciarFormulario();
+            listarPropietarios();
         }
     }
 }
