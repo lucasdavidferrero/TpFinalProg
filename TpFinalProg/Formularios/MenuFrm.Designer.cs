@@ -27,6 +27,7 @@
             btnProyectos = new Button();
             btnPropietarios = new Button();
             btnEmpleados = new Button();
+            btnListados = new Button();
             SuspendLayout();
             // 
             // btnTareas
@@ -81,12 +82,26 @@
             btnEmpleados.UseVisualStyleBackColor = false;
             btnEmpleados.Click += btnEmpleados_Click_1;
             // 
+            // btnListados
+            // 
+            btnListados.BackColor = Color.Transparent;
+            btnListados.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
+            btnListados.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnListados.Location = new Point(68, 431);
+            btnListados.Name = "btnListados";
+            btnListados.Size = new Size(189, 73);
+            btnListados.TabIndex = 16;
+            btnListados.Text = "LISTADOS";
+            btnListados.UseVisualStyleBackColor = false;
+            btnListados.Click += btnListados_Click;
+            // 
             // MenuFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(342, 454);
+            ClientSize = new Size(342, 545);
+            Controls.Add(btnListados);
             Controls.Add(btnTareas);
             Controls.Add(btnProyectos);
             Controls.Add(btnPropietarios);
@@ -101,5 +116,6 @@
         private Button btnProyectos;
         private Button btnPropietarios;
         private Button btnEmpleados;
+        private Button btnListados;
     }
 }
