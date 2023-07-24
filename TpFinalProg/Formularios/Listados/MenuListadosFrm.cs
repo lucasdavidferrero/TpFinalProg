@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TpFinalProg.Formularios.Listados;
 
 namespace TpFinalProg.Formularios {
     public partial class MenuListadosFrm : Form {
@@ -25,7 +26,7 @@ namespace TpFinalProg.Formularios {
         }
 
         private void btnPropietariosPorProyecto_Click(object sender, EventArgs e) {
-            ListadoPropietarioFrm listadoPropietario = new ListadoPropietarioFrm();
+            ListadoPropietarioCompletoFrm listadoPropietario = new ListadoPropietarioCompletoFrm();
             listadoPropietario.Show();
         }
     }

@@ -44,6 +44,11 @@ namespace TpFinalProg.Controlador {
             return clsPropietario.buscarPorRazonSocial(razonSocial);
         }
 
+        public static DataTable? buscarPorCuit (long cuit) {
+            Propietario clsPropietario = new Propietario();
+            return clsPropietario.buscarPorCuit(cuit);
+        }
+
 
 
 

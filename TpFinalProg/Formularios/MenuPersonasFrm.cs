@@ -21,8 +21,8 @@ namespace TpFinalProg.Formularios {
         }
 
         private void btnPropietario_Click(object sender, EventArgs e) {
-            ListadoPropietarioFrm prop = new ListadoPropietarioFrm();
-            prop.Show();
+            // ListadoPropietarioFrm prop = new ListadoPropietarioFrm();
+            // prop.Show();
         }
     }
 }

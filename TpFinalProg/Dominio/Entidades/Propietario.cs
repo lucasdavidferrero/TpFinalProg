@@ -79,6 +79,10 @@ namespace TpFinalProg.Dominio.Entidades {
             return PropietarioDataMapper.buscarPorRazonSocial(razonSocial);
         }
 
+        public DataTable? buscarPorCuit (long cuit) {
+            return PropietarioDataMapper.buscarPorCuit(cuit);
+        }
+
 
     }
 }
