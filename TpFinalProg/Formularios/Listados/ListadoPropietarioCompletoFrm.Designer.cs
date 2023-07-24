@@ -37,7 +37,6 @@
             btnBuscarCuit = new Button();
             lblCuit = new Label();
             txtCuit = new TextBox();
-            btnLimpiar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPropietario).BeginInit();
             SuspendLayout();
             // 
@@ -162,26 +161,12 @@
             txtCuit.Size = new Size(171, 23);
             txtCuit.TabIndex = 4;
             // 
-            // btnLimpiar
-            // 
-            btnLimpiar.BackColor = Color.Transparent;
-            btnLimpiar.BackgroundImageLayout = ImageLayout.None;
-            btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimpiar.Location = new Point(355, 83);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(110, 23);
-            btnLimpiar.TabIndex = 181;
-            btnLimpiar.Text = "Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = false;
-            btnLimpiar.Click += btnLimpiar_Click_1;
-            // 
             // ListadoPropietarioCompletoFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(800, 409);
-            Controls.Add(btnLimpiar);
             Controls.Add(btnBuscarCuit);
             Controls.Add(lblCuit);
             Controls.Add(txtCuit);
@@ -212,6 +197,5 @@
         private Button btnBuscarCuit;
         private Label lblCuit;
         private TextBox txtCuit;
-        private Button btnLimpiar;
     }
 }

@@ -15,7 +15,6 @@ namespace TpFinalProg.Formularios.Listados {
         public ListadoPropietarioCompletoFrm() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-            listarPropietarios();
         }
         private void reiniciarInputs() {
             txtRazonSocial.Text = "";
@@ -50,7 +49,7 @@ namespace TpFinalProg.Formularios.Listados {
         }
 
         private void btnLimpiar_Click_1(object sender, EventArgs e) {
-            listarPropietarios();
+
         }
     }
 }
