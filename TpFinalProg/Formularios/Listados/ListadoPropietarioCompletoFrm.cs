@@ -14,9 +14,12 @@ namespace TpFinalProg.Formularios.Listados {
     public partial class ListadoPropietarioCompletoFrm : Form {
         public ListadoPropietarioCompletoFrm() {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            listarPropietarios();
         }
         private void reiniciarInputs() {
             txtRazonSocial.Text = "";
+            txtCuit.Text = "";
         }
 
         private bool almenosUnPropietarioEncontrado(DataTable? dt, string txtBusqueda) {
@@ -44,6 +47,10 @@ namespace TpFinalProg.Formularios.Listados {
                 dgvPropietario.DataSource = propietariosTable;
                 reiniciarInputs();
             }
+        }
+
+        private void btnLimpiar_Click_1(object sender, EventArgs e) {
+            listarPropietarios();
         }
     }
 }

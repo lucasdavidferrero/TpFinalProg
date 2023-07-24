@@ -37,21 +37,19 @@
             btnBuscarCuit = new Button();
             lblCuit = new Label();
             txtCuit = new TextBox();
+            btnLimpiar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPropietario).BeginInit();
             SuspendLayout();
             // 
             // dgvPropietario
             // 
-            dgvPropietario.AllowUserToAddRows = false;
-            dgvPropietario.AllowUserToDeleteRows = false;
-            dgvPropietario.AllowUserToOrderColumns = true;
             dgvPropietario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPropietario.Columns.AddRange(new DataGridViewColumn[] { id_propietario, cuit, razon_social, telefono, email, persona_contacto, baja });
-            dgvPropietario.Location = new Point(12, 101);
+            dgvPropietario.Location = new Point(53, 124);
             dgvPropietario.Name = "dgvPropietario";
             dgvPropietario.ReadOnly = true;
             dgvPropietario.RowTemplate.Height = 25;
-            dgvPropietario.Size = new Size(776, 337);
+            dgvPropietario.Size = new Size(679, 228);
             dgvPropietario.TabIndex = 0;
             // 
             // id_propietario
@@ -114,7 +112,7 @@
             // 
             // txtRazonSocial
             // 
-            txtRazonSocial.Location = new Point(92, 51);
+            txtRazonSocial.Location = new Point(160, 35);
             txtRazonSocial.Name = "txtRazonSocial";
             txtRazonSocial.Size = new Size(171, 23);
             txtRazonSocial.TabIndex = 1;
@@ -122,7 +120,7 @@
             // lblRazonSocial
             // 
             lblRazonSocial.AutoSize = true;
-            lblRazonSocial.Location = new Point(13, 54);
+            lblRazonSocial.Location = new Point(81, 38);
             lblRazonSocial.Name = "lblRazonSocial";
             lblRazonSocial.Size = new Size(73, 15);
             lblRazonSocial.TabIndex = 2;
@@ -130,28 +128,28 @@
             // 
             // btnBuscarRazonSocial
             // 
-            btnBuscarRazonSocial.Location = new Point(269, 51);
+            btnBuscarRazonSocial.Location = new Point(337, 35);
             btnBuscarRazonSocial.Name = "btnBuscarRazonSocial";
-            btnBuscarRazonSocial.Size = new Size(75, 23);
+            btnBuscarRazonSocial.Size = new Size(33, 23);
             btnBuscarRazonSocial.TabIndex = 3;
-            btnBuscarRazonSocial.Text = "Buscar";
+            btnBuscarRazonSocial.Text = "🔍︎";
             btnBuscarRazonSocial.UseVisualStyleBackColor = true;
             btnBuscarRazonSocial.Click += btnBuscarRazonSocial_Click;
             // 
             // btnBuscarCuit
             // 
-            btnBuscarCuit.Location = new Point(698, 51);
+            btnBuscarCuit.Location = new Point(659, 38);
             btnBuscarCuit.Name = "btnBuscarCuit";
-            btnBuscarCuit.Size = new Size(75, 23);
+            btnBuscarCuit.Size = new Size(32, 23);
             btnBuscarCuit.TabIndex = 6;
-            btnBuscarCuit.Text = "Buscar";
+            btnBuscarCuit.Text = "🔍︎";
             btnBuscarCuit.UseVisualStyleBackColor = true;
             btnBuscarCuit.Click += btnBuscarCuit_Click;
             // 
             // lblCuit
             // 
             lblCuit.AutoSize = true;
-            lblCuit.Location = new Point(483, 54);
+            lblCuit.Location = new Point(444, 41);
             lblCuit.Name = "lblCuit";
             lblCuit.Size = new Size(32, 15);
             lblCuit.TabIndex = 5;
@@ -159,16 +157,31 @@
             // 
             // txtCuit
             // 
-            txtCuit.Location = new Point(521, 51);
+            txtCuit.Location = new Point(482, 38);
             txtCuit.Name = "txtCuit";
             txtCuit.Size = new Size(171, 23);
             txtCuit.TabIndex = 4;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.BackColor = Color.Transparent;
+            btnLimpiar.BackgroundImageLayout = ImageLayout.None;
+            btnLimpiar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLimpiar.Location = new Point(355, 83);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(110, 23);
+            btnLimpiar.TabIndex = 181;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click_1;
             // 
             // ListadoPropietarioCompletoFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.White;
+            ClientSize = new Size(800, 409);
+            Controls.Add(btnLimpiar);
             Controls.Add(btnBuscarCuit);
             Controls.Add(lblCuit);
             Controls.Add(txtCuit);
@@ -199,5 +212,6 @@
         private Button btnBuscarCuit;
         private Label lblCuit;
         private TextBox txtCuit;
+        private Button btnLimpiar;
     }
 }
