@@ -9,9 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TpFinalProg.Formularios {
-    public partial class ListadoTareasPorProyectoFrm : Form {
-        public ListadoTareasPorProyectoFrm() {
+    public partial class MenuListadosFrm : Form {
+        public MenuListadosFrm() {
             InitializeComponent();
+        }
+
+        private void btnPropietariosPorProyecto_Click(object sender, EventArgs e) {
+            ListadoPropietarioFrm listadoPropietario = new ListadoPropietarioFrm();
+            listadoPropietario.Show();
         }
     }
 }

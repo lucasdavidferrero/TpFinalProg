@@ -62,8 +62,9 @@
             btnPropietariosPorProyecto.Name = "btnPropietariosPorProyecto";
             btnPropietariosPorProyecto.Size = new Size(189, 75);
             btnPropietariosPorProyecto.TabIndex = 15;
-            btnPropietariosPorProyecto.Text = "Propietarios por Proyecto";
+            btnPropietariosPorProyecto.Text = "Buscar Propietario";
             btnPropietariosPorProyecto.UseVisualStyleBackColor = false;
+            btnPropietariosPorProyecto.Click += btnPropietariosPorProyecto_Click;
             // 
             // btnListadoPersonas
             // 

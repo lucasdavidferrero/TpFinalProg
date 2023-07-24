@@ -32,7 +32,7 @@
             email = new DataGridViewTextBoxColumn();
             persona_contacto = new DataGridViewTextBoxColumn();
             baja = new DataGridViewTextBoxColumn();
-            txtCuit = new TextBox();
+            txtRazonSocial = new TextBox();
             label2 = new Label();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvPropietario).BeginInit();
@@ -57,7 +57,7 @@
             dgvPropietario.Name = "dgvPropietario";
             dgvPropietario.ReadOnly = true;
             dgvPropietario.RowTemplate.Height = 25;
-            dgvPropietario.Size = new Size(693, 164);
+            dgvPropietario.Size = new Size(693, 343);
             dgvPropietario.TabIndex = 165;
             // 
             // id_propietario
@@ -114,21 +114,22 @@
             baja.ReadOnly = true;
             baja.Visible = false;
             // 
-            // txtCuit
+            // txtRazonSocial
             // 
-            txtCuit.Location = new Point(274, 28);
-            txtCuit.Name = "txtCuit";
-            txtCuit.Size = new Size(206, 23);
-            txtCuit.TabIndex = 161;
+            txtRazonSocial.Location = new Point(274, 28);
+            txtRazonSocial.Name = "txtRazonSocial";
+            txtRazonSocial.Size = new Size(206, 23);
+            txtRazonSocial.TabIndex = 161;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(230, 33);
+            label2.Location = new Point(196, 32);
             label2.Name = "label2";
-            label2.Size = new Size(35, 15);
+            label2.Size = new Size(72, 15);
             label2.TabIndex = 164;
-            label2.Text = "CUIT:";
+            label2.Text = "Razón social";
+            label2.Click += label2_Click;
             // 
             // label1
             // 
@@ -143,11 +144,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(781, 269);
+            ClientSize = new Size(781, 448);
             Controls.Add(label1);
             Controls.Add(btnBuscar);
             Controls.Add(dgvPropietario);
-            Controls.Add(txtCuit);
+            Controls.Add(txtRazonSocial);
             Controls.Add(label2);
             Name = "ListadoPropietarioFrm";
             Text = "ListadoPropietarioFrm";
@@ -160,7 +161,7 @@
 
         private Button btnBuscar;
         private DataGridView dgvPropietario;
-        private TextBox txtCuit;
+        private TextBox txtRazonSocial;
         private Label label2;
         private DataGridViewTextBoxColumn id_propietario;
         private DataGridViewTextBoxColumn cuit;

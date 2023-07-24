@@ -167,6 +167,25 @@ namespace TpFinalProg.Dominio.Mappers {
             }
         }
 
+        public static DataTable? buscarPorRazonSocial (string razonSocial) {
+            DataTable? dtListAll = new DataTable("ListarPropietarios");
+            string q = $"SELECT * FROM Propietario WHERE razon_social LIKE '%{razonSocial}%' AND baja = 0;";
+            Conexion cx = new Conexion();
+            try {
+                cx.SetComandoSQL(q);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtListAll);
+
+            } catch (SqlException) {
+                dtListAll = null;
+                Console.WriteLine("Error en la base de datos. [Listado Propietarios]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return dtListAll;
+        }
+
         private static Propietario construirPropietarioDesdeDataRow (DataRow dr) {
             int pId = Convert.ToInt32(dr["id_propietario"]);
             string pRazonSocial = dr["razon_social"].ToString()!;

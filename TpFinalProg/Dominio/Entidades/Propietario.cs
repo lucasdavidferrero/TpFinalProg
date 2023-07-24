@@ -59,7 +59,6 @@ namespace TpFinalProg.Dominio.Entidades {
             PropietarioDataMapper.eliminar(id);
         }
 
-        //DE ACA
         public static DataTable? CargarCombo() {
             DataSet? ds = PropietarioDataMapper.cargarCombo();
             DataTable? dtListaAll = null;
@@ -74,6 +73,10 @@ namespace TpFinalProg.Dominio.Entidades {
         }
         public void encontrarPorIdRazonSocial(int id) {
             PropietarioDataMapper.encontrarPorIdRazonSocial(id);
+        }
+
+        public DataTable? buscarPorRazonSocial (string razonSocial) {
+            return PropietarioDataMapper.buscarPorRazonSocial(razonSocial);
         }
 
 
