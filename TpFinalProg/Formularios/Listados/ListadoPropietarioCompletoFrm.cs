@@ -19,7 +19,8 @@ namespace TpFinalProg.Formularios.Listados {
             txtRazonSocial.Text = "";
         }
         private void reiniciarDgv() {
-            dgvPropietario.DataSource = null;
+            DataTable emptyDt = new DataTable();
+            dgvPropietario.DataSource = emptyDt;
         }
         private bool almenosUnPropietarioEncontrado(DataTable? dt, string txtBusqueda) {
             if (dt?.Rows.Count == 0) {
@@ -30,6 +31,7 @@ namespace TpFinalProg.Formularios.Listados {
         }
 
         private void btnBuscarRazonSocial_Click(object sender, EventArgs e) {
+            // TODO: Hacer input CUIT solo números
             reiniciarDgv();
             string razonSocial = txtRazonSocial.Text.Trim();
             DataTable? propietariosDataTable = PropietarioControlador.buscarPorRazonSocial(razonSocial);
