@@ -35,7 +35,7 @@
             btnTareas.BackColor = Color.Transparent;
             btnTareas.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
             btnTareas.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTareas.Location = new Point(72, 320);
+            btnTareas.Location = new Point(72, 317);
             btnTareas.Name = "btnTareas";
             btnTareas.Size = new Size(189, 73);
             btnTareas.TabIndex = 15;
@@ -87,7 +87,7 @@
             btnListados.BackColor = Color.Transparent;
             btnListados.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
             btnListados.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnListados.Location = new Point(68, 431);
+            btnListados.Location = new Point(72, 408);
             btnListados.Name = "btnListados";
             btnListados.Size = new Size(189, 73);
             btnListados.TabIndex = 16;
@@ -100,7 +100,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(342, 545);
+            ClientSize = new Size(342, 523);
             Controls.Add(btnListados);
             Controls.Add(btnTareas);
             Controls.Add(btnProyectos);

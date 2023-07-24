@@ -40,6 +40,7 @@
             btnListadoTareasPorProyecto.TabIndex = 13;
             btnListadoTareasPorProyecto.Text = "Tareas por Proyecto";
             btnListadoTareasPorProyecto.UseVisualStyleBackColor = false;
+            btnListadoTareasPorProyecto.Click += btnListadoTareasPorProyecto_Click;
             // 
             // btnListadoProyectos
             // 
@@ -71,18 +72,20 @@
             btnListadoPersonas.BackColor = Color.Transparent;
             btnListadoPersonas.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
             btnListadoPersonas.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnListadoPersonas.Location = new Point(78, 329);
+            btnListadoPersonas.Location = new Point(78, 321);
             btnListadoPersonas.Name = "btnListadoPersonas";
             btnListadoPersonas.Size = new Size(189, 75);
             btnListadoPersonas.TabIndex = 16;
             btnListadoPersonas.Text = "Personas";
             btnListadoPersonas.UseVisualStyleBackColor = false;
+            btnListadoPersonas.Click += btnListadoPersonas_Click;
             // 
             // MenuListadosFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(357, 450);
+            BackColor = Color.White;
+            ClientSize = new Size(357, 434);
             Controls.Add(btnListadoPersonas);
             Controls.Add(btnPropietariosPorProyecto);
             Controls.Add(btnListadoProyectos);

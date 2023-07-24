@@ -245,5 +245,29 @@ namespace TpFinalProg.Dominio.Mappers {
             }
             return dt;
         }
+
+        public static DataTable encontrarPorIdint(int legajo) {
+            string query = "SELECT * FROM Empleado WHERE legajo = @legajo AND baja = 0"; ;
+            DataTable dt = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+
+            cmd.Parameters.AddWithValue("@legajo", legajo);
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+
+
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Legajo]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return dt;
+        }
     }
 }
