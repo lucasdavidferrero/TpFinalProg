@@ -14,14 +14,23 @@ namespace TpFinalProg.Formularios.Listados {
     public partial class ListadoPropietarioCompletoFrm : Form {
         public ListadoPropietarioCompletoFrm() {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            listarPropietarios();
         }
         private void reiniciarInputs() {
             txtRazonSocial.Text = "";
+            txtCuit.Text = "";
         }
         private void reiniciarDgv() {
             DataTable emptyDt = new DataTable();
             dgvPropietario.DataSource = emptyDt;
         }
+
+        private void listarPropietarios() {
+            DataTable? listadoPropietarios = Controlador.PropietarioControlador.listarTodo();
+            dgvPropietario.DataSource = listadoPropietarios;
+        }
+
         private bool almenosUnPropietarioEncontrado(DataTable? dt, string txtBusqueda) {
             if (dt?.Rows.Count == 0) {
                 Mensaje.Advertencia($"No encontramos ningún Propietario con la busqueda: {txtBusqueda}");
@@ -49,6 +58,10 @@ namespace TpFinalProg.Formularios.Listados {
                 dgvPropietario.DataSource = propietariosTable;
                 reiniciarInputs();
             }
+        }
+
+        private void btnLimpiar_Click_1(object sender, EventArgs e) {
+            listarPropietarios();
         }
     }
 }
