@@ -20,20 +20,46 @@ namespace TpFinalProg.Formularios {
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+        private void reiniciarInputs() {
+            txtRazonSocial.Text = "";
+        }
+        private void reiniciarDgv () {
+            dgvPropietario.DataSource = null;
+        }
+
+        private bool almenosUnPropietarioEncontrado (DataTable? dt, string txtBusqueda) {
+            if (dt?.Rows.Count == 0) {
+                Mensaje.Advertencia($"No encontramos ningún Propietario con la busqueda: {txtBusqueda}");
+                return false;
+            }
+            return true;
+        }
+
         private void btnBuscar_Click(object sender, EventArgs e) {
+            reiniciarDgv();
+            string razonSocial = txtRazonSocial.Text.Trim();
+            DataTable? propietariosDataTable = PropietarioControlador.buscarPorRazonSocial(razonSocial);
+            if (almenosUnPropietarioEncontrado(propietariosDataTable, razonSocial)) {
+                dgvPropietario.DataSource = propietariosDataTable;
+                reiniciarInputs();
+            }
+        }
+
+        private void btnBuscarCuit_Click(object sender, EventArgs e) {
             // Int64 cuit = Convert.ToInt64(txtNombre.Text.Trim());
             // DataTable prop = PropietarioDataMapper.encontrarPorCuitNoBaja(cuit);
             // dgvPropietario.DataSource = prop;
-
-            // Se busca por nombre con LIKE.
-            string razonSocial = txtRazonSocial.Text.Trim();
-            dgvPropietario.DataSource = PropietarioControlador.buscarPorRazonSocial(razonSocial);
-
         }
 
         private void label2_Click(object sender, EventArgs e) {
 
         }
+
+        private void label3_Click(object sender, EventArgs e) {
+
+        }
+
+       
     }
 }
 
