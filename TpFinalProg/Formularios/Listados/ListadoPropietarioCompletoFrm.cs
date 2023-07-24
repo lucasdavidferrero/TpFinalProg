@@ -18,10 +18,7 @@ namespace TpFinalProg.Formularios.Listados {
         private void reiniciarInputs() {
             txtRazonSocial.Text = "";
         }
-        private void reiniciarDgv() {
-            DataTable emptyDt = new DataTable();
-            dgvPropietario.DataSource = emptyDt;
-        }
+
         private bool almenosUnPropietarioEncontrado(DataTable? dt, string txtBusqueda) {
             if (dt?.Rows.Count == 0) {
                 Mensaje.Advertencia($"No encontramos ningún Propietario con la busqueda: {txtBusqueda}");
@@ -31,8 +28,6 @@ namespace TpFinalProg.Formularios.Listados {
         }
 
         private void btnBuscarRazonSocial_Click(object sender, EventArgs e) {
-            // TODO: Hacer input CUIT solo números
-            reiniciarDgv();
             string razonSocial = txtRazonSocial.Text.Trim();
             DataTable? propietariosDataTable = PropietarioControlador.buscarPorRazonSocial(razonSocial);
             if (almenosUnPropietarioEncontrado(propietariosDataTable, razonSocial)) {
@@ -42,7 +37,7 @@ namespace TpFinalProg.Formularios.Listados {
         }
 
         private void btnBuscarCuit_Click(object sender, EventArgs e) {
-            reiniciarDgv();
+            // TODO: Hacer input CUIT solo números. Si cuit vacío mostrar error.
             Int64 cuit = Convert.ToInt64(txtCuit.Text.Trim());
             DataTable? propietariosTable = PropietarioControlador.buscarPorCuit(cuit);
             if (almenosUnPropietarioEncontrado(propietariosTable, cuit.ToString())) {

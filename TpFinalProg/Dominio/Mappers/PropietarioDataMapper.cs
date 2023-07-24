@@ -238,7 +238,7 @@ namespace TpFinalProg.Dominio.Mappers {
         }
         public static DataTable buscarPorCuit(long cuit, int baja = 0) {
             string query = $"SELECT * FROM Propietario WHERE cuit LIKE '{cuit}%' AND baja={baja}";
-            DataTable dt = new DataTable();
+            DataTable dt = new DataTable("ListarPropietarios");
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 
