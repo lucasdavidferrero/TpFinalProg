@@ -39,13 +39,21 @@ namespace TpFinalProg.Formularios.Listados {
         }
 
         private void btnBuscarCuit_Click(object sender, EventArgs e) {
-            // TODO: Hacer input CUIT solo números. Si cuit vacío mostrar error.
+            if (txtCuit.Text.Length == 0) {
+                Mensaje.Error("El campo CUIT se encuentra vacío");
+                return;
+            }
             Int64 cuit = Convert.ToInt64(txtCuit.Text.Trim());
             DataTable? propietariosTable = PropietarioControlador.buscarPorCuit(cuit);
             if (almenosUnPropietarioEncontrado(propietariosTable, cuit.ToString())) {
                 dgvPropietario.DataSource = propietariosTable;
                 reiniciarInputs();
             }
+        }
+
+        private void txtCuit_KeyPress(object sender, KeyPressEventArgs e) {
+            // Solo números
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

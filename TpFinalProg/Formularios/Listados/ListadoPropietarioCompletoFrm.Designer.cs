@@ -160,6 +160,7 @@
             txtCuit.Name = "txtCuit";
             txtCuit.Size = new Size(171, 23);
             txtCuit.TabIndex = 4;
+            txtCuit.KeyPress += txtCuit_KeyPress;
             // 
             // ListadoPropietarioCompletoFrm
             // 
