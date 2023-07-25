@@ -137,6 +137,11 @@ namespace PruebaTpFinal.Dominio.Mappers
                 cx.SetComandoSQL(query);
                 cmd.ExecuteReader();
                 idModificado = Tuple.Create(tarea.idProyecto, tarea.idTarea);
+
+                int cantTareasSinTerminar = obtenerCantidadTareasSinFinalizarPorIdProyecto(tarea.idProyecto);
+                if (cantTareasSinTerminar == 0) {
+                    ProyectoDataMapper.finalizarProyectoPorId(tarea.idProyecto); // todas las tareas fueron finalizadas. Se termina el proyecto.
+                }
                 return idModificado;
             }
             catch (SqlException)
@@ -347,6 +352,22 @@ namespace PruebaTpFinal.Dominio.Mappers
 
 
             return dt;
+        }
+
+        private static int obtenerCantidadTareasSinFinalizarPorIdProyecto (int idProyecto) {
+            string query = $"SELECT COUNT(*) FROM Tarea WHERE id_proyecto = {idProyecto} AND baja = 0 AND fecha_final IS NULL;";
+            int cantidadSinFinalizar = -1;
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+            try {
+                cx.SetComandoSQL(query);
+                cantidadSinFinalizar = (int)cmd.ExecuteScalar();
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [Cantidad Tareas sin finalizar por proyecto]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+            return cantidadSinFinalizar;
         }
     }
 

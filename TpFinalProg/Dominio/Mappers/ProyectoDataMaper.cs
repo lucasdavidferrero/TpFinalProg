@@ -260,6 +260,25 @@ namespace PruebaTpFinal.Dominio.Mappers
             return rowsAffected;
         }
 
+        public static void finalizarProyectoPorId (int idProyecto) {
+            string query = @"UPDATE Proyecto SET fecha_final = @fechaFinal WHERE id_proyecto = @idProyecto";
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.Add("@fechaFinal", SqlDbType.Date);
+            cmd.Parameters["@fechaFinal"].Value = DateTime.Now.Date;
+            cmd.Parameters.AddWithValue("@idProyecto", idProyecto);
+
+            try {
+                cx.SetComandoSQL(query);
+                cmd.ExecuteNonQuery();
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [Finalizar Proyecto por Id]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+        }
+
 
     }
 
