@@ -57,7 +57,6 @@
             label10 = new Label();
             txtNroTarea = new TextBox();
             label1 = new Label();
-            date = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dgvTarea).BeginInit();
             SuspendLayout();
             // 
@@ -368,22 +367,12 @@
             label1.Visible = false;
             label1.Click += label1_Click;
             // 
-            // date
-            // 
-            date.Format = DateTimePickerFormat.Short;
-            date.Location = new Point(798, 43);
-            date.Name = "date";
-            date.Size = new Size(110, 23);
-            date.TabIndex = 168;
-            date.Visible = false;
-            // 
             // TareaFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(978, 688);
-            Controls.Add(date);
             Controls.Add(label1);
             Controls.Add(txtNroTarea);
             Controls.Add(label10);
@@ -452,6 +441,5 @@
         private DataGridViewTextBoxColumn horas_avance;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn baja;
-        private DateTimePicker date;
     }
 }

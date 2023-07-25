@@ -126,6 +126,7 @@ namespace TpFinalProg {
             txtDescripcion.Enabled = true;
             txtHoraReal.Enabled = true;
             txtCostoReal.Enabled = true;
+            txtHoraAvance.Enabled = true;
         }
 
 
@@ -180,6 +181,7 @@ namespace TpFinalProg {
             txtCostoEstimado.Enabled = false;
             txtHoraEstimada.Enabled = false;
             txtDescripcion.Enabled = false;
+            txtHoraAvance.Enabled = true;
 
 
             // El último row siempre esta vacío. No hacemos nada en ese caso.
@@ -204,6 +206,7 @@ namespace TpFinalProg {
             if (horasReales > 0 && costoReal > 0) {
                 txtHoraReal.Enabled = false;
                 txtCostoReal.Enabled = false;
+                txtHoraAvance.Enabled = false;
             }
 
             btnGuardar.Text = "Guardar cambios";
