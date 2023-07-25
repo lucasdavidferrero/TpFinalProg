@@ -124,6 +124,8 @@ namespace TpFinalProg {
             txtCostoEstimado.Enabled = true;
             txtHoraEstimada.Enabled = true;
             txtDescripcion.Enabled = true;
+            txtHoraReal.Enabled = true;
+            txtCostoReal.Enabled = true;
         }
 
 
@@ -171,6 +173,8 @@ namespace TpFinalProg {
         }
 
         private void dgvTarea_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
+            txtHoraReal.Enabled = true;
+            txtCostoReal.Enabled = true;
             btnEliminar.Enabled = false;
             cbProyecto.Enabled = false;
             txtCostoEstimado.Enabled = false;
@@ -195,6 +199,12 @@ namespace TpFinalProg {
             txtCostoReal.Text = celdas["COSTOREAL"].Value.ToString();
             txtHoraAvance.Text = celdas["horas_avance"].Value.ToString();
 
+            int horasReales = (int)celdas["HORAREAL"].Value;
+            double costoReal = (double)celdas["COSTOREAL"].Value;
+            if (horasReales > 0 && costoReal > 0) {
+                txtHoraReal.Enabled = false;
+                txtCostoReal.Enabled = false;
+            }
 
             btnGuardar.Text = "Guardar cambios";
         }
