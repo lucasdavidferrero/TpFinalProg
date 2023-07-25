@@ -99,8 +99,7 @@ namespace PruebaTpFinal.Dominio.Mappers
         public static Tuple<int, int>? modificar(Tarea tarea)
         {
             string query = "UPDATE Tarea SET descripcion = @descripcion, horas_estimadas = @horasEstimadas, horas_avance = @horasAvance, " +
-                           "costo_estimado = @costoEstimado, horas_reales = @horasReales, costo_real = @costoReal " +
-                           "WHERE id_proyecto = @idProyecto AND nro_tarea = @idTarea AND baja = 0";
+                           "costo_estimado = @costoEstimado, horas_reales = @horasReales, costo_real = @costoReal";
 
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
@@ -122,6 +121,14 @@ namespace PruebaTpFinal.Dominio.Mappers
             cmd.Parameters["@costoReal"].Value = tarea.costoReal;
             cmd.Parameters["@idProyecto"].Value = tarea.idProyecto;
             cmd.Parameters["@idTarea"].Value = tarea.idTarea;
+
+            if (tarea.costoReal > 0 && tarea.horasReales > 0) {
+                query += ", fecha_final = @fechaFinal";
+                cmd.Parameters.Add("@fechaFinal", SqlDbType.Date);
+                cmd.Parameters["@fechaFinal"].Value = DateTime.Now.Date;
+            }
+
+            query += " WHERE id_proyecto = @idProyecto AND nro_tarea = @idTarea AND baja = 0";
 
             Tuple<int, int>? idModificado = null;
 
