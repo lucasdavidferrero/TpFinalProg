@@ -76,5 +76,8 @@ namespace TpFinalProg.Dominio.Entidades {
             return dtListaAll;
 
         }
+        public DataTable? buscarPorNombre(string nombre) {
+            return EmpleadoDataMapper.buscarPorNombre(nombre);
+        }
     }
 }

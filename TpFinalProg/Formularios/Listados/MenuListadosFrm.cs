@@ -21,8 +21,8 @@ namespace TpFinalProg.Formularios {
         }
 
         private void btnListadoPersonas_Click(object sender, EventArgs e) {
-            MenuPersonasFrm per = new MenuPersonasFrm();
-            per.Show();
+            ListadoEmpleadoFrm emp = new ListadoEmpleadoFrm();
+            emp.Show();
         }
 
         private void btnPropietariosPorProyecto_Click(object sender, EventArgs e) {

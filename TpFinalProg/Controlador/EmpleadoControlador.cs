@@ -71,5 +71,10 @@ namespace TpFinalProg.Controlador {
             DataTable? dt = EmpleadoDataMapper.cargarCb();
             return dt;
         }
+
+        public static DataTable? buscarPorNombre(string nombre) {
+            Empleado clsEmpleado = new Empleado();
+            return clsEmpleado.buscarPorNombre(nombre);
+        }
     }
 }

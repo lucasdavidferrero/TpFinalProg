@@ -76,7 +76,7 @@
             btnListadoPersonas.Name = "btnListadoPersonas";
             btnListadoPersonas.Size = new Size(189, 75);
             btnListadoPersonas.TabIndex = 16;
-            btnListadoPersonas.Text = "Personas";
+            btnListadoPersonas.Text = "Buscar Empleado";
             btnListadoPersonas.UseVisualStyleBackColor = false;
             btnListadoPersonas.Click += btnListadoPersonas_Click;
             // 

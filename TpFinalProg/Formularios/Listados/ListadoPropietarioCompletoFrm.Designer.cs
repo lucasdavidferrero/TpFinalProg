@@ -111,7 +111,7 @@
             // 
             // txtRazonSocial
             // 
-            txtRazonSocial.Location = new Point(160, 35);
+            txtRazonSocial.Location = new Point(157, 54);
             txtRazonSocial.Name = "txtRazonSocial";
             txtRazonSocial.Size = new Size(171, 23);
             txtRazonSocial.TabIndex = 1;
@@ -119,7 +119,7 @@
             // lblRazonSocial
             // 
             lblRazonSocial.AutoSize = true;
-            lblRazonSocial.Location = new Point(81, 38);
+            lblRazonSocial.Location = new Point(78, 57);
             lblRazonSocial.Name = "lblRazonSocial";
             lblRazonSocial.Size = new Size(73, 15);
             lblRazonSocial.TabIndex = 2;
@@ -127,7 +127,7 @@
             // 
             // btnBuscarRazonSocial
             // 
-            btnBuscarRazonSocial.Location = new Point(337, 35);
+            btnBuscarRazonSocial.Location = new Point(334, 54);
             btnBuscarRazonSocial.Name = "btnBuscarRazonSocial";
             btnBuscarRazonSocial.Size = new Size(33, 23);
             btnBuscarRazonSocial.TabIndex = 3;
@@ -137,7 +137,7 @@
             // 
             // btnBuscarCuit
             // 
-            btnBuscarCuit.Location = new Point(659, 38);
+            btnBuscarCuit.Location = new Point(656, 57);
             btnBuscarCuit.Name = "btnBuscarCuit";
             btnBuscarCuit.Size = new Size(32, 23);
             btnBuscarCuit.TabIndex = 6;
@@ -148,7 +148,7 @@
             // lblCuit
             // 
             lblCuit.AutoSize = true;
-            lblCuit.Location = new Point(444, 41);
+            lblCuit.Location = new Point(441, 60);
             lblCuit.Name = "lblCuit";
             lblCuit.Size = new Size(32, 15);
             lblCuit.TabIndex = 5;
@@ -156,7 +156,7 @@
             // 
             // txtCuit
             // 
-            txtCuit.Location = new Point(482, 38);
+            txtCuit.Location = new Point(479, 57);
             txtCuit.Name = "txtCuit";
             txtCuit.Size = new Size(171, 23);
             txtCuit.TabIndex = 4;
@@ -166,7 +166,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(800, 409);
+            ClientSize = new Size(800, 384);
             Controls.Add(btnBuscarCuit);
             Controls.Add(lblCuit);
             Controls.Add(txtCuit);

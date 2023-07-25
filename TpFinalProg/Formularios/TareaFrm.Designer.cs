@@ -25,6 +25,18 @@
         private void InitializeComponent() {
             txtDescripcion = new TextBox();
             dgvTarea = new DataGridView();
+            PROYECTO = new DataGridViewTextBoxColumn();
+            nombre_proyecto = new DataGridViewTextBoxColumn();
+            NUMERO = new DataGridViewTextBoxColumn();
+            descripcion = new DataGridViewTextBoxColumn();
+            HORAESTIMADA = new DataGridViewTextBoxColumn();
+            COSTOESTIMADO = new DataGridViewTextBoxColumn();
+            HORAREAL = new DataGridViewTextBoxColumn();
+            COSTOREAL = new DataGridViewTextBoxColumn();
+            fecha_final = new DataGridViewTextBoxColumn();
+            horas_avance = new DataGridViewTextBoxColumn();
+            id = new DataGridViewTextBoxColumn();
+            baja = new DataGridViewTextBoxColumn();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -45,18 +57,7 @@
             label10 = new Label();
             txtNroTarea = new TextBox();
             label1 = new Label();
-            PROYECTO = new DataGridViewTextBoxColumn();
-            nombre_proyecto = new DataGridViewTextBoxColumn();
-            NUMERO = new DataGridViewTextBoxColumn();
-            descripcion = new DataGridViewTextBoxColumn();
-            HORAESTIMADA = new DataGridViewTextBoxColumn();
-            COSTOESTIMADO = new DataGridViewTextBoxColumn();
-            HORAREAL = new DataGridViewTextBoxColumn();
-            COSTOREAL = new DataGridViewTextBoxColumn();
-            fecha_final = new DataGridViewTextBoxColumn();
-            horas_avance = new DataGridViewTextBoxColumn();
-            id = new DataGridViewTextBoxColumn();
-            baja = new DataGridViewTextBoxColumn();
+            date = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dgvTarea).BeginInit();
             SuspendLayout();
             // 
@@ -81,6 +82,106 @@
             dgvTarea.TabIndex = 43;
             dgvTarea.RowHeaderMouseClick += dgvTarea_RowHeaderMouseClick;
             dgvTarea.RowHeaderMouseDoubleClick += dgvTarea_RowHeaderMouseDoubleClick;
+            // 
+            // PROYECTO
+            // 
+            PROYECTO.DataPropertyName = "id_proyecto";
+            PROYECTO.Frozen = true;
+            PROYECTO.HeaderText = "id_proyecto";
+            PROYECTO.Name = "PROYECTO";
+            PROYECTO.ReadOnly = true;
+            PROYECTO.Visible = false;
+            // 
+            // nombre_proyecto
+            // 
+            nombre_proyecto.DataPropertyName = "proyecto";
+            nombre_proyecto.Frozen = true;
+            nombre_proyecto.HeaderText = "Proyecto";
+            nombre_proyecto.Name = "nombre_proyecto";
+            nombre_proyecto.ReadOnly = true;
+            // 
+            // NUMERO
+            // 
+            NUMERO.DataPropertyName = "nro_tarea";
+            NUMERO.Frozen = true;
+            NUMERO.HeaderText = "Numero";
+            NUMERO.Name = "NUMERO";
+            NUMERO.ReadOnly = true;
+            NUMERO.Width = 50;
+            // 
+            // descripcion
+            // 
+            descripcion.DataPropertyName = "descripcion";
+            descripcion.Frozen = true;
+            descripcion.HeaderText = "Descripcion";
+            descripcion.Name = "descripcion";
+            descripcion.ReadOnly = true;
+            descripcion.Width = 150;
+            // 
+            // HORAESTIMADA
+            // 
+            HORAESTIMADA.DataPropertyName = "horas_estimadas";
+            HORAESTIMADA.Frozen = true;
+            HORAESTIMADA.HeaderText = "Hora Estimada";
+            HORAESTIMADA.Name = "HORAESTIMADA";
+            HORAESTIMADA.ReadOnly = true;
+            // 
+            // COSTOESTIMADO
+            // 
+            COSTOESTIMADO.DataPropertyName = "costo_estimado";
+            COSTOESTIMADO.Frozen = true;
+            COSTOESTIMADO.HeaderText = "Costo Estimado";
+            COSTOESTIMADO.Name = "COSTOESTIMADO";
+            COSTOESTIMADO.ReadOnly = true;
+            // 
+            // HORAREAL
+            // 
+            HORAREAL.DataPropertyName = "horas_reales";
+            HORAREAL.Frozen = true;
+            HORAREAL.HeaderText = "Hora Real";
+            HORAREAL.Name = "HORAREAL";
+            HORAREAL.ReadOnly = true;
+            // 
+            // COSTOREAL
+            // 
+            COSTOREAL.DataPropertyName = "costo_real";
+            COSTOREAL.Frozen = true;
+            COSTOREAL.HeaderText = "Costo Real";
+            COSTOREAL.Name = "COSTOREAL";
+            COSTOREAL.ReadOnly = true;
+            // 
+            // fecha_final
+            // 
+            fecha_final.DataPropertyName = "fecha_final";
+            fecha_final.Frozen = true;
+            fecha_final.HeaderText = "Fecha Final";
+            fecha_final.Name = "fecha_final";
+            fecha_final.ReadOnly = true;
+            // 
+            // horas_avance
+            // 
+            horas_avance.DataPropertyName = "horas_avance";
+            horas_avance.Frozen = true;
+            horas_avance.HeaderText = "Horas Avance";
+            horas_avance.Name = "horas_avance";
+            horas_avance.ReadOnly = true;
+            // 
+            // id
+            // 
+            id.Frozen = true;
+            id.HeaderText = "id";
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Visible = false;
+            // 
+            // baja
+            // 
+            baja.DataPropertyName = "baja";
+            baja.Frozen = true;
+            baja.HeaderText = "baja";
+            baja.Name = "baja";
+            baja.ReadOnly = true;
+            baja.Visible = false;
             // 
             // label5
             // 
@@ -267,105 +368,14 @@
             label1.Visible = false;
             label1.Click += label1_Click;
             // 
-            // PROYECTO
+            // date
             // 
-            PROYECTO.DataPropertyName = "id_proyecto";
-            PROYECTO.Frozen = true;
-            PROYECTO.HeaderText = "id_proyecto";
-            PROYECTO.Name = "PROYECTO";
-            PROYECTO.ReadOnly = true;
-            PROYECTO.Visible = false;
-            // 
-            // nombre_proyecto
-            // 
-            nombre_proyecto.DataPropertyName = "proyecto";
-            nombre_proyecto.Frozen = true;
-            nombre_proyecto.HeaderText = "Proyecto";
-            nombre_proyecto.Name = "nombre_proyecto";
-            nombre_proyecto.ReadOnly = true;
-            // 
-            // NUMERO
-            // 
-            NUMERO.DataPropertyName = "nro_tarea";
-            NUMERO.Frozen = true;
-            NUMERO.HeaderText = "Numero";
-            NUMERO.Name = "NUMERO";
-            NUMERO.ReadOnly = true;
-            NUMERO.Width = 50;
-            // 
-            // descripcion
-            // 
-            descripcion.DataPropertyName = "descripcion";
-            descripcion.Frozen = true;
-            descripcion.HeaderText = "Descripcion";
-            descripcion.Name = "descripcion";
-            descripcion.ReadOnly = true;
-            descripcion.Width = 150;
-            // 
-            // HORAESTIMADA
-            // 
-            HORAESTIMADA.DataPropertyName = "horas_estimadas";
-            HORAESTIMADA.Frozen = true;
-            HORAESTIMADA.HeaderText = "Hora Estimada";
-            HORAESTIMADA.Name = "HORAESTIMADA";
-            HORAESTIMADA.ReadOnly = true;
-            // 
-            // COSTOESTIMADO
-            // 
-            COSTOESTIMADO.DataPropertyName = "costo_estimado";
-            COSTOESTIMADO.Frozen = true;
-            COSTOESTIMADO.HeaderText = "Costo Estimado";
-            COSTOESTIMADO.Name = "COSTOESTIMADO";
-            COSTOESTIMADO.ReadOnly = true;
-            // 
-            // HORAREAL
-            // 
-            HORAREAL.DataPropertyName = "horas_reales";
-            HORAREAL.Frozen = true;
-            HORAREAL.HeaderText = "Hora Real";
-            HORAREAL.Name = "HORAREAL";
-            HORAREAL.ReadOnly = true;
-            // 
-            // COSTOREAL
-            // 
-            COSTOREAL.DataPropertyName = "costo_real";
-            COSTOREAL.Frozen = true;
-            COSTOREAL.HeaderText = "Costo Real";
-            COSTOREAL.Name = "COSTOREAL";
-            COSTOREAL.ReadOnly = true;
-            // 
-            // fecha_final
-            // 
-            fecha_final.DataPropertyName = "fecha_final";
-            fecha_final.Frozen = true;
-            fecha_final.HeaderText = "Fecha Final";
-            fecha_final.Name = "fecha_final";
-            fecha_final.ReadOnly = true;
-            // 
-            // horas_avance
-            // 
-            horas_avance.DataPropertyName = "horas_avance";
-            horas_avance.Frozen = true;
-            horas_avance.HeaderText = "Horas Avance";
-            horas_avance.Name = "horas_avance";
-            horas_avance.ReadOnly = true;
-            // 
-            // id
-            // 
-            id.Frozen = true;
-            id.HeaderText = "id";
-            id.Name = "id";
-            id.ReadOnly = true;
-            id.Visible = false;
-            // 
-            // baja
-            // 
-            baja.DataPropertyName = "baja";
-            baja.Frozen = true;
-            baja.HeaderText = "baja";
-            baja.Name = "baja";
-            baja.ReadOnly = true;
-            baja.Visible = false;
+            date.Format = DateTimePickerFormat.Short;
+            date.Location = new Point(798, 43);
+            date.Name = "date";
+            date.Size = new Size(110, 23);
+            date.TabIndex = 168;
+            date.Visible = false;
             // 
             // TareaFrm
             // 
@@ -373,6 +383,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(978, 688);
+            Controls.Add(date);
             Controls.Add(label1);
             Controls.Add(txtNroTarea);
             Controls.Add(label10);
@@ -441,5 +452,6 @@
         private DataGridViewTextBoxColumn horas_avance;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn baja;
+        private DateTimePicker date;
     }
 }

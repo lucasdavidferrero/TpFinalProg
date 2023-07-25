@@ -47,9 +47,5 @@ namespace TpFinalProg.Formularios.Listados {
                 reiniciarInputs();
             }
         }
-
-        private void btnLimpiar_Click_1(object sender, EventArgs e) {
-
-        }
     }
 }

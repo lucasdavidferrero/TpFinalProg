@@ -269,5 +269,23 @@ namespace TpFinalProg.Dominio.Mappers {
 
             return dt;
         }
+        public static DataTable? buscarPorNombre(string nombre) {
+            DataTable? dtListAll = new DataTable("ListarPropietarios");
+            string q = $"SELECT * FROM Empleado WHERE nombre + ' ' + apellido LIKE '%{nombre}%' AND baja = 0;";
+            Conexion cx = new Conexion();
+            try {
+                cx.SetComandoSQL(q);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtListAll);
+
+            } catch (SqlException) {
+                dtListAll = null;
+                Console.WriteLine("Error en la base de datos. [Listado Empleado]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return dtListAll;
+        }
     }
 }
