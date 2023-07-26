@@ -370,6 +370,25 @@ namespace PruebaTpFinal.Dominio.Mappers
             return cantidadSinFinalizar;
         }
 
+        public static DataTable? obtenerTareasEnCursoPorIdProyeto (int idProyecto) {
+            string query = $"SELECT nro_tarea, descripcion, horas_estimadas, costo_estimado, horas_avance FROM Tarea WHERE id_proyecto = {idProyecto} AND fecha_final is NULL AND baja = 0";
+            DataTable dtTareas = new DataTable("ListadoTareas");
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtTareas);
+                return dtTareas;
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [Listar Tareas en curso por Proyecto]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+            return null;
+        }
+
 
         public static DataTable? BuscadorTareasPorProyecto(int idProyecto, string descripcionBusqueda) {
             string query = @"SELECT

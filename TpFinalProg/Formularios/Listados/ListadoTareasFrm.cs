@@ -35,7 +35,10 @@ namespace TpFinalProg.Formularios.Listados {
 
         private void cbProyectos_TextChanged(object sender, EventArgs e) {
             if (primeraCargaCbProyectos) return;
-            Mensaje.Advertencia(cbProyectos.SelectedValue.ToString());
+            // cbProyectos.SelectedValue.ToString()
+            /* Con el id del proyecto: buscar sus tareas finalizadas y no finalizadas y ponerlas en sus respectivos DataGridView */
+            int idProyectoSeleccionado = (int)cbProyectos.SelectedValue;
+            dgvTareasEnCurso.DataSource = TareaControlador.obtenerTareasEnCursoPorIdProyeto(idProyectoSeleccionado);
         }
     }
 }

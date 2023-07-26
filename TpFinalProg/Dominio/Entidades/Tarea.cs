@@ -72,5 +72,9 @@ namespace TpFinalProg.Dominio.Entidades {
 
         }
 
+        public DataTable? obtenerTareasEnCursoPorIdProyeto(int idProyecto) {
+            return TareaDataMapper.obtenerTareasEnCursoPorIdProyeto(idProyecto);
+        }
+
     }
 }

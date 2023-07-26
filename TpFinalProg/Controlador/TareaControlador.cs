@@ -118,5 +118,10 @@ namespace TpFinalProg.Controlador {
             return dt;
         }
 
+        public static DataTable? obtenerTareasEnCursoPorIdProyeto (int idProyecto) {
+            Tarea tareaCls = new Tarea();
+            return tareaCls.obtenerTareasEnCursoPorIdProyeto(idProyecto);
+        }
+
     }   
 }
