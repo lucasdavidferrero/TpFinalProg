@@ -15,6 +15,8 @@ namespace TpFinalProg.Formularios.Listados {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             cargarDgvTerminados(ProyectoControlador.BusquedaProyecto(""));
+            cargarDgvNoTerminados(ProyectoControlador.BusquedaProyecto(""));
+
         }
 
         private void btnBuscar_Click(object sender, EventArgs e) {
