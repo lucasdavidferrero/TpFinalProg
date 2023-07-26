@@ -23,12 +23,12 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            dataGridView1 = new DataGridView();
-            dataGridView2 = new DataGridView();
+            dgvTerminados = new DataGridView();
+            dvgNoTerminados = new DataGridView();
             label1 = new Label();
             label3 = new Label();
             label4 = new Label();
-            textBox1 = new TextBox();
+            txtNombre = new TextBox();
             btnBuscar = new Button();
             id = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
@@ -44,31 +44,31 @@
             CostoEstimadont = new DataGridViewTextBoxColumn();
             CostoParcialnt = new DataGridViewTextBoxColumn();
             bajant = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTerminados).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dvgNoTerminados).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dgvTerminados
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { id, Nombre, Empresa, CostoEstimado, CostoReal, Desvio, baja });
-            dataGridView1.Location = new Point(60, 111);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(686, 150);
-            dataGridView1.TabIndex = 0;
+            dgvTerminados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTerminados.Columns.AddRange(new DataGridViewColumn[] { id, Nombre, Empresa, CostoEstimado, CostoReal, Desvio, baja });
+            dgvTerminados.Location = new Point(60, 111);
+            dgvTerminados.Name = "dgvTerminados";
+            dgvTerminados.ReadOnly = true;
+            dgvTerminados.RowTemplate.Height = 25;
+            dgvTerminados.Size = new Size(686, 150);
+            dgvTerminados.TabIndex = 0;
             // 
-            // dataGridView2
+            // dvgNoTerminados
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { idnt, Nombrent, Empresant, GradoAvancent, CostoEstimadont, CostoParcialnt, bajant });
-            dataGridView2.Location = new Point(60, 311);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.ReadOnly = true;
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(686, 150);
-            dataGridView2.TabIndex = 1;
+            dvgNoTerminados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dvgNoTerminados.Columns.AddRange(new DataGridViewColumn[] { idnt, Nombrent, Empresant, GradoAvancent, CostoEstimadont, CostoParcialnt, bajant });
+            dvgNoTerminados.Location = new Point(60, 311);
+            dvgNoTerminados.Name = "dvgNoTerminados";
+            dvgNoTerminados.ReadOnly = true;
+            dvgNoTerminados.RowTemplate.Height = 25;
+            dvgNoTerminados.Size = new Size(686, 150);
+            dvgNoTerminados.TabIndex = 1;
             // 
             // label1
             // 
@@ -99,12 +99,12 @@
             label4.TabIndex = 5;
             label4.Text = "NO TERMINADOS";
             // 
-            // textBox1
+            // txtNombre
             // 
-            textBox1.Location = new Point(272, 33);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(251, 23);
-            textBox1.TabIndex = 6;
+            txtNombre.Location = new Point(272, 33);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(251, 23);
+            txtNombre.TabIndex = 6;
             // 
             // btnBuscar
             // 
@@ -228,28 +228,28 @@
             BackColor = Color.White;
             ClientSize = new Size(800, 491);
             Controls.Add(btnBuscar);
-            Controls.Add(textBox1);
+            Controls.Add(txtNombre);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label1);
-            Controls.Add(dataGridView2);
-            Controls.Add(dataGridView1);
+            Controls.Add(dvgNoTerminados);
+            Controls.Add(dgvTerminados);
             Name = "ListadoProyectoFrm";
             Text = "ListadoProyectoFrm";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTerminados).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dvgNoTerminados).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
-        private DataGridView dataGridView2;
+        private DataGridView dgvTerminados;
+        private DataGridView dvgNoTerminados;
         private Label label1;
         private Label label3;
         private Label label4;
-        private TextBox textBox1;
+        private TextBox txtNombre;
         private Button btnBuscar;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn Nombre;
