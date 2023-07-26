@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using TpFinalProg.Dominio.Entidades;
@@ -121,6 +122,11 @@ namespace TpFinalProg.Controlador {
         public static DataTable? obtenerTareasEnCursoPorIdProyeto (int idProyecto) {
             Tarea tareaCls = new Tarea();
             return tareaCls.obtenerTareasEnCursoPorIdProyeto(idProyecto);
+        }
+
+        public static DataTable? obtenerTareasFinalizadasPorIdProyeto (int idProyecto) {
+            Tarea tareaCls = new Tarea();
+            return tareaCls.obtenerTareasFinalizadasPorIdProyeto(idProyecto);
         }
 
     }   

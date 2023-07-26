@@ -389,6 +389,26 @@ namespace PruebaTpFinal.Dominio.Mappers
             return null;
         }
 
+        public static DataTable? obtenerTareasFinalizadasPorIdProyeto(int idProyecto) {
+            string query = $"SELECT nro_tarea, descripcion, horas_estimadas, costo_estimado, horas_avance, horas_reales, costo_real, CAST(100 - (costo_estimado / costo_real * 100)  AS DECIMAL(18, 2)) AS 'desvio',fecha_final " +
+                $"FROM Tarea WHERE id_proyecto = {idProyecto} AND fecha_final is NOT NULL AND baja = 0";
+            DataTable dtTareas = new DataTable("ListadoTareas");
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtTareas);
+                return dtTareas;
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [Listar Tareas Completadas en curso por Proyecto]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+            return null;
+        }
+
 
         public static DataTable? BuscadorTareasPorProyecto(int idProyecto, string descripcionBusqueda) {
             string query = @"SELECT

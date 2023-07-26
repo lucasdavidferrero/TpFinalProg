@@ -32,16 +32,25 @@
             costo_estimado = new DataGridViewTextBoxColumn();
             horas_avance = new DataGridViewTextBoxColumn();
             label2 = new Label();
-            dataGridView2 = new DataGridView();
+            dgvTareasFinalizadas = new DataGridView();
             label3 = new Label();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            horas_reales = new DataGridViewTextBoxColumn();
+            costo_real = new DataGridViewTextBoxColumn();
+            desvio = new DataGridViewTextBoxColumn();
+            fecha_final = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvTareasEnCurso).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTareasFinalizadas).BeginInit();
             SuspendLayout();
             // 
             // cbProyectos
             // 
             cbProyectos.FormattingEnabled = true;
-            cbProyectos.Location = new Point(243, 12);
+            cbProyectos.Location = new Point(360, 12);
             cbProyectos.Name = "cbProyectos";
             cbProyectos.Size = new Size(311, 23);
             cbProyectos.TabIndex = 0;
@@ -50,7 +59,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(183, 15);
+            label1.Location = new Point(300, 15);
             label1.Name = "label1";
             label1.Size = new Size(54, 15);
             label1.TabIndex = 1;
@@ -63,7 +72,7 @@
             dgvTareasEnCurso.Location = new Point(12, 54);
             dgvTareasEnCurso.Name = "dgvTareasEnCurso";
             dgvTareasEnCurso.RowTemplate.Height = 25;
-            dgvTareasEnCurso.Size = new Size(776, 170);
+            dgvTareasEnCurso.Size = new Size(940, 170);
             dgvTareasEnCurso.TabIndex = 2;
             // 
             // nro_tarea
@@ -115,14 +124,15 @@
             label2.TabIndex = 3;
             label2.Text = "En curso";
             // 
-            // dataGridView2
+            // dgvTareasFinalizadas
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(12, 257);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(776, 181);
-            dataGridView2.TabIndex = 4;
+            dgvTareasFinalizadas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTareasFinalizadas.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, horas_reales, costo_real, desvio, fecha_final });
+            dgvTareasFinalizadas.Location = new Point(12, 257);
+            dgvTareasFinalizadas.Name = "dgvTareasFinalizadas";
+            dgvTareasFinalizadas.RowTemplate.Height = 25;
+            dgvTareasFinalizadas.Size = new Size(940, 181);
+            dgvTareasFinalizadas.TabIndex = 4;
             // 
             // label3
             // 
@@ -133,14 +143,78 @@
             label3.TabIndex = 5;
             label3.Text = "Finalizadas";
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.DataPropertyName = "nro_tarea";
+            dataGridViewTextBoxColumn1.HeaderText = "Nro.Tarea";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            dataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "descripcion";
+            dataGridViewTextBoxColumn2.HeaderText = "Descripcion";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.DataPropertyName = "horas_estimadas";
+            dataGridViewTextBoxColumn3.HeaderText = "Hs.Estimadas";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.DataPropertyName = "costo_estimado";
+            dataGridViewTextBoxColumn4.HeaderText = "Costo estimado";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.DataPropertyName = "horas_avance";
+            dataGridViewTextBoxColumn5.HeaderText = "Hs.Avance";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // horas_reales
+            // 
+            horas_reales.DataPropertyName = "horas_reales";
+            horas_reales.HeaderText = "Hs.Reales";
+            horas_reales.Name = "horas_reales";
+            horas_reales.ReadOnly = true;
+            // 
+            // costo_real
+            // 
+            costo_real.DataPropertyName = "costo_real";
+            costo_real.HeaderText = "Costo real";
+            costo_real.Name = "costo_real";
+            costo_real.ReadOnly = true;
+            // 
+            // desvio
+            // 
+            desvio.DataPropertyName = "desvio";
+            desvio.HeaderText = "Desvio";
+            desvio.Name = "desvio";
+            desvio.ReadOnly = true;
+            // 
+            // fecha_final
+            // 
+            fecha_final.DataPropertyName = "fecha_final";
+            fecha_final.HeaderText = "Fecha Final";
+            fecha_final.Name = "fecha_final";
+            fecha_final.ReadOnly = true;
+            // 
             // ListadoTareasFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(964, 450);
             Controls.Add(label3);
-            Controls.Add(dataGridView2);
+            Controls.Add(dgvTareasFinalizadas);
             Controls.Add(label2);
             Controls.Add(dgvTareasEnCurso);
             Controls.Add(label1);
@@ -148,7 +222,7 @@
             Name = "ListadoTareasFrm";
             Text = "ListadoTareasFrm";
             ((System.ComponentModel.ISupportInitialize)dgvTareasEnCurso).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTareasFinalizadas).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -159,12 +233,21 @@
         private Label label1;
         private DataGridView dgvTareasEnCurso;
         private Label label2;
-        private DataGridView dataGridView2;
+        private DataGridView dgvTareasFinalizadas;
         private Label label3;
         private DataGridViewTextBoxColumn nro_tarea;
         private DataGridViewTextBoxColumn descripcion;
         private DataGridViewTextBoxColumn horas_estimadas;
         private DataGridViewTextBoxColumn costo_estimado;
         private DataGridViewTextBoxColumn horas_avance;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn horas_reales;
+        private DataGridViewTextBoxColumn costo_real;
+        private DataGridViewTextBoxColumn desvio;
+        private DataGridViewTextBoxColumn fecha_final;
     }
 }
