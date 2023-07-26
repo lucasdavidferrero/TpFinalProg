@@ -23,18 +23,27 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            btnBuscar = new Button();
+            cbProyectos = new ComboBox();
+            label1 = new Label();
             SuspendLayout();
             // 
-            // btnBuscar
+            // cbProyectos
             // 
-            btnBuscar.Location = new Point(548, 118);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(26, 23);
-            btnBuscar.TabIndex = 184;
-            btnBuscar.Text = "🔍︎";
-            btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += btnBuscar_Click;
+            cbProyectos.FormattingEnabled = true;
+            cbProyectos.Location = new Point(243, 12);
+            cbProyectos.Name = "cbProyectos";
+            cbProyectos.Size = new Size(311, 23);
+            cbProyectos.TabIndex = 0;
+            cbProyectos.TextChanged += cbProyectos_TextChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(183, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(54, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Proyecto";
             // 
             // ListadoTareasFrm
             // 
@@ -42,14 +51,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnBuscar);
+            Controls.Add(label1);
+            Controls.Add(cbProyectos);
             Name = "ListadoTareasFrm";
             Text = "ListadoTareasFrm";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private Button btnBuscar;
+        private ComboBox cbProyectos;
+        private Label label1;
     }
 }
