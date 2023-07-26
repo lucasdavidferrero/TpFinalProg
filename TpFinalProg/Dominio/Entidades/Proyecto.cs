@@ -63,5 +63,9 @@ namespace TpFinalProg.Dominio.Entidades {
             ProyectoDataMapper.eliminar(id);
         }
 
+        public DataTable? obtenerProyectosSinFinalizarConEmpresa () {
+            return ProyectoDataMapper.obtenerProyectosSinFinalizarConEmpresa();
+        }
+
     }
 }

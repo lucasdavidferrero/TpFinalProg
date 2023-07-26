@@ -48,6 +48,11 @@ namespace TpFinalProg.Controlador {
             return dt;
         }
 
+        public static DataTable? obtenerProyectosSinFinalizarConEmpresa () {
+            Proyecto clsProyecto = new Proyecto();
+            return clsProyecto.obtenerProyectosSinFinalizarConEmpresa();
+        }
+
 
         public static DataTable? BusquedaProyecto(string nombreProyecto) {
             DataTable? dt = ProyectoDataMapper.BuscarProyectos(nombreProyecto);

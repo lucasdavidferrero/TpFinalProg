@@ -14,31 +14,21 @@ namespace TpFinalProg.Formularios.Listados {
         public ListadoProyectoFrm() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-            cargarDgvTerminados(ProyectoControlador.BusquedaProyecto(""));
-            cargarDgvNoTerminados(ProyectoControlador.BusquedaProyecto(""));
-
+            // cargarDgvTerminados(ProyectoControlador.BusquedaProyecto(""));
+            cargarDgvNoTerminados();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e) {
-            String nombre = txtNombre.Text.Trim();
-            DataTable? proyectos = ProyectoControlador.BusquedaProyecto(nombre);
-            if (proyectos != null) {
-                cargarDgvTerminados(proyectos);
-            }
 
         }
 
 
         private void cargarDgvTerminados(DataTable dt) {
-            if (dt != null) {
-                dgvTerminados.DataSource = dt;
-            }
+
         }
 
-        private void cargarDgvNoTerminados(DataTable dt) {
-            if (dt != null) {
-                dvgNoTerminados.DataSource = dt;
-            }
+        private void cargarDgvNoTerminados() {
+            dvgNoTerminados.DataSource = ProyectoControlador.obtenerProyectosSinFinalizarConEmpresa();
         }
     }
 }

@@ -322,6 +322,26 @@ GROUP BY
             return null;
         }
 
+        public static DataTable? obtenerProyectosSinFinalizarConEmpresa () {
+            string query = $"SELECT P.id_proyecto, P.nombre as 'nombre_proyecto', P.monto_estimado, Prop.razon_social as 'nombre_empresa' " +
+                $"FROM Proyecto P INNER JOIN Propietario Prop ON P.id_propietario_FK = Prop.id_propietario WHERE P.baja = 0 AND P.fecha_final IS NULL;";
+            DataTable dtProyectos = new DataTable("ListadoProyectosNoFinalizados");
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtProyectos);
+                return dtProyectos;
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [obtenerProyectosSinFinalizarConEmpresa]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+            return null;
+        }
+
 
     }
 
