@@ -24,13 +24,6 @@
         /// </summary>
         private void InitializeComponent() {
             dgvTerminados = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            Empresa = new DataGridViewTextBoxColumn();
-            CostoEstimado = new DataGridViewTextBoxColumn();
-            CostoReal = new DataGridViewTextBoxColumn();
-            Desvio = new DataGridViewTextBoxColumn();
-            baja = new DataGridViewTextBoxColumn();
             dvgNoTerminados = new DataGridView();
             idnt = new DataGridViewTextBoxColumn();
             Nombrent = new DataGridViewTextBoxColumn();
@@ -44,6 +37,13 @@
             label4 = new Label();
             txtNombre = new TextBox();
             btnBuscar = new Button();
+            id = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Empresa = new DataGridViewTextBoxColumn();
+            CostoEstimado = new DataGridViewTextBoxColumn();
+            CostoReal = new DataGridViewTextBoxColumn();
+            Desvio = new DataGridViewTextBoxColumn();
+            baja = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvTerminados).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dvgNoTerminados).BeginInit();
             SuspendLayout();
@@ -58,59 +58,6 @@
             dgvTerminados.RowTemplate.Height = 25;
             dgvTerminados.Size = new Size(686, 150);
             dgvTerminados.TabIndex = 0;
-            // 
-            // id
-            // 
-            id.Frozen = true;
-            id.HeaderText = "id";
-            id.Name = "id";
-            id.ReadOnly = true;
-            id.Visible = false;
-            // 
-            // Nombre
-            // 
-            Nombre.Frozen = true;
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 180;
-            // 
-            // Empresa
-            // 
-            Empresa.Frozen = true;
-            Empresa.HeaderText = "Empresa";
-            Empresa.Name = "Empresa";
-            Empresa.ReadOnly = true;
-            Empresa.Width = 160;
-            // 
-            // CostoEstimado
-            // 
-            CostoEstimado.Frozen = true;
-            CostoEstimado.HeaderText = "Costo Estimado";
-            CostoEstimado.Name = "CostoEstimado";
-            CostoEstimado.ReadOnly = true;
-            // 
-            // CostoReal
-            // 
-            CostoReal.Frozen = true;
-            CostoReal.HeaderText = "Costo Real";
-            CostoReal.Name = "CostoReal";
-            CostoReal.ReadOnly = true;
-            // 
-            // Desvio
-            // 
-            Desvio.Frozen = true;
-            Desvio.HeaderText = "Desvio";
-            Desvio.Name = "Desvio";
-            Desvio.ReadOnly = true;
-            // 
-            // baja
-            // 
-            baja.Frozen = true;
-            baja.HeaderText = "baja";
-            baja.Name = "baja";
-            baja.ReadOnly = true;
-            baja.Visible = false;
             // 
             // dvgNoTerminados
             // 
@@ -222,6 +169,66 @@
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.Click += btnBuscar_Click;
             // 
+            // id
+            // 
+            id.DataPropertyName = "id_proyecto";
+            id.Frozen = true;
+            id.HeaderText = "id";
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Visible = false;
+            // 
+            // Nombre
+            // 
+            Nombre.DataPropertyName = "nombre_proyecto";
+            Nombre.Frozen = true;
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            Nombre.Width = 180;
+            // 
+            // Empresa
+            // 
+            Empresa.DataPropertyName = "empresa";
+            Empresa.Frozen = true;
+            Empresa.HeaderText = "Empresa";
+            Empresa.Name = "Empresa";
+            Empresa.ReadOnly = true;
+            Empresa.Width = 160;
+            // 
+            // CostoEstimado
+            // 
+            CostoEstimado.DataPropertyName = "costo_estimado";
+            CostoEstimado.Frozen = true;
+            CostoEstimado.HeaderText = "Costo Estimado";
+            CostoEstimado.Name = "CostoEstimado";
+            CostoEstimado.ReadOnly = true;
+            // 
+            // CostoReal
+            // 
+            CostoReal.DataPropertyName = "costo_real";
+            CostoReal.Frozen = true;
+            CostoReal.HeaderText = "Costo Real";
+            CostoReal.Name = "CostoReal";
+            CostoReal.ReadOnly = true;
+            // 
+            // Desvio
+            // 
+            Desvio.DataPropertyName = "desvio";
+            Desvio.Frozen = true;
+            Desvio.HeaderText = "Desvio";
+            Desvio.Name = "Desvio";
+            Desvio.ReadOnly = true;
+            // 
+            // baja
+            // 
+            baja.DataPropertyName = "baja";
+            baja.Frozen = true;
+            baja.HeaderText = "baja";
+            baja.Name = "baja";
+            baja.ReadOnly = true;
+            baja.Visible = false;
+            // 
             // ListadoProyectoFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -252,13 +259,6 @@
         private Label label4;
         private TextBox txtNombre;
         private Button btnBuscar;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn Empresa;
-        private DataGridViewTextBoxColumn CostoEstimado;
-        private DataGridViewTextBoxColumn CostoReal;
-        private DataGridViewTextBoxColumn Desvio;
-        private DataGridViewTextBoxColumn baja;
         private DataGridViewTextBoxColumn idnt;
         private DataGridViewTextBoxColumn Nombrent;
         private DataGridViewTextBoxColumn Empresant;
@@ -266,5 +266,12 @@
         private DataGridViewTextBoxColumn CostoEstimadont;
         private DataGridViewTextBoxColumn CostoParcialnt;
         private DataGridViewTextBoxColumn bajant;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Empresa;
+        private DataGridViewTextBoxColumn CostoEstimado;
+        private DataGridViewTextBoxColumn CostoReal;
+        private DataGridViewTextBoxColumn Desvio;
+        private DataGridViewTextBoxColumn baja;
     }
 }
