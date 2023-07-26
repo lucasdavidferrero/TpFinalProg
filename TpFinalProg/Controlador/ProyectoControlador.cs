@@ -48,9 +48,9 @@ namespace TpFinalProg.Controlador {
             return dt;
         }
 
-        public static DataTable? obtenerProyectosSinFinalizarConEmpresa () {
+        public static DataTable? obtenerProyectosConEmpresa(bool esTerminado) {
             Proyecto clsProyecto = new Proyecto();
-            return clsProyecto.obtenerProyectosSinFinalizarConEmpresa();
+            return clsProyecto.obtenerProyectosConEmpresa(esTerminado);
         }
 
 

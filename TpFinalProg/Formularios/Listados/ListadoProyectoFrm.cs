@@ -14,7 +14,7 @@ namespace TpFinalProg.Formularios.Listados {
         public ListadoProyectoFrm() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-            // cargarDgvTerminados(ProyectoControlador.BusquedaProyecto(""));
+            cargarDgvTerminados();
             cargarDgvNoTerminados();
         }
 
@@ -23,12 +23,12 @@ namespace TpFinalProg.Formularios.Listados {
         }
 
 
-        private void cargarDgvTerminados(DataTable dt) {
-
+        private void cargarDgvTerminados() {
+            dgvTerminados.DataSource = ProyectoControlador.obtenerProyectosConEmpresa(true);
         }
 
         private void cargarDgvNoTerminados() {
-            dvgNoTerminados.DataSource = ProyectoControlador.obtenerProyectosSinFinalizarConEmpresa();
+            dvgNoTerminados.DataSource = ProyectoControlador.obtenerProyectosConEmpresa(false);
         }
     }
 }
