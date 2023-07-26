@@ -369,6 +369,62 @@ namespace PruebaTpFinal.Dominio.Mappers
             }
             return cantidadSinFinalizar;
         }
+
+
+        public static DataTable? BuscadorTareasPorProyecto(int idProyecto, string descripcionBusqueda) {
+            string query = @"SELECT
+    P.nombre AS 'nombre_proyecto',
+    CONVERT(nvarchar(max), T.descripcion) AS 'descripcion',
+    IIF((T.horas_reales >= T.horas_estimadas) OR (T.fecha_final IS NOT NULL), 'Cerrada', 'En Curso') AS 'estado',
+	T.costo_estimado,
+	T.costo_real,
+	CAST(100 - (T.costo_estimado / T.costo_real * 100)  AS DECIMAL(18, 2)) AS 'desvio',
+    CONCAT(Empleado.nombre, ' ', Empleado.apellido) AS 'empleado'
+FROM
+    Proyecto P
+    INNER JOIN Propietario Prop ON P.id_propietario_FK = Prop.id_propietario
+    LEFT JOIN Tarea T ON P.id_proyecto = T.id_proyecto
+    LEFT JOIN Trabaja TR ON T.id_proyecto = TR.id_proyecto AND T.nro_tarea = TR.id_tarea
+    LEFT JOIN Empleado ON TR.legajo = Empleado.legajo
+WHERE
+    P.baja = 0
+	AND P.id_proyecto = @idProyecto
+    AND T.descripcion LIKE '%' + @descripcionBusqueda + '%'
+    AND T.baja = 0
+    AND TR.id_tarea = T.nro_tarea
+GROUP BY
+    P.id_proyecto,
+    P.nombre,
+    CONVERT(nvarchar(max), T.descripcion),
+    T.horas_reales,
+    T.horas_estimadas,
+	T.costo_estimado,
+	T.costo_real,
+    T.fecha_final,
+    Empleado.nombre,
+    Empleado.apellido;";
+
+            DataTable dtTareas = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.AddWithValue("@idProyecto", idProyecto);
+            cmd.Parameters.AddWithValue("@descripcionBusqueda", descripcionBusqueda);
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtTareas);
+                return dtTareas;
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [Listar Tareas por Proyecto]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return null;
+        }
+
     }
 
 }

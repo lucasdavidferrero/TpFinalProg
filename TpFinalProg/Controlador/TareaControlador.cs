@@ -113,5 +113,10 @@ namespace TpFinalProg.Controlador {
             return dt;
         }
 
+        public static DataTable? BuscadorTareasPorProyecto(int idProyecto, string descripcionBusqueda) {
+            DataTable? dt = TareaDataMapper.BuscadorTareasPorProyecto(idProyecto, descripcionBusqueda);
+            return dt;
+        }
+
     }   
 }

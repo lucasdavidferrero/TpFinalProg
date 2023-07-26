@@ -48,6 +48,11 @@ namespace TpFinalProg.Controlador {
             return dt;
         }
 
+
+        public static DataTable? BusquedaProyecto(string nombreProyecto) {
+            DataTable? dt = ProyectoDataMapper.BuscarProyectos(nombreProyecto);
+            return dt;
+        }
     }
 
    

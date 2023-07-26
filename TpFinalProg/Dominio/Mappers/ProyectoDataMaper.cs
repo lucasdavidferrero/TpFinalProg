@@ -279,6 +279,49 @@ namespace PruebaTpFinal.Dominio.Mappers
             }
         }
 
+        public static DataTable? BuscarProyectos(string nombreBusqueda) {
+            string query = @"SELECT
+    P.nombre AS 'Nombre del Proyecto',
+    Prop.razon_social AS 'Empresa',
+    P.monto_estimado AS 'Costo Estimado',
+    SUM(T.costo_real) AS 'Costo Real Total',
+    ROUND((SUM(T.costo_real) - P.monto_estimado) / P.monto_estimado * 100, 2) AS 'Porcentaje de Desvío',
+    SUM(CASE WHEN T.fecha_final IS NOT NULL THEN 1 ELSE 0 END) * 100 / COUNT(*) AS 'Porcentaje de Tareas Terminadas'
+FROM
+    Proyecto P
+    INNER JOIN Propietario Prop ON P.id_propietario_FK = Prop.id_propietario
+    LEFT JOIN Tarea T ON P.id_proyecto = T.id_proyecto
+    LEFT JOIN Trabaja TR ON T.id_proyecto = TR.id_proyecto AND T.nro_tarea = TR.id_tarea 
+WHERE
+    P.baja = 0
+    AND P.nombre LIKE '%' + @nombreBusqueda + '%'
+    AND T.baja = 0
+GROUP BY
+    P.id_proyecto,
+    P.nombre,
+    Prop.razon_social,
+    P.monto_estimado;";
+
+            DataTable dtProyectos = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.AddWithValue("@nombreBusqueda", nombreBusqueda);
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtProyectos);
+                return dtProyectos;
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [Buscar Proyectos]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return null;
+        }
+
 
     }
 
