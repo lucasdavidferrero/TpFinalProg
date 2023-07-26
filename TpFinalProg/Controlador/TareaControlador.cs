@@ -129,5 +129,7 @@ namespace TpFinalProg.Controlador {
             return tareaCls.obtenerTareasFinalizadasPorIdProyeto(idProyecto);
         }
 
+
+
     }   
 }
