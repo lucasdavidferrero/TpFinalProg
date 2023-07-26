@@ -29,5 +29,10 @@ namespace TpFinalProg.Formularios {
             ListadoPropietarioCompletoFrm listadoPropietario = new ListadoPropietarioCompletoFrm();
             listadoPropietario.Show();
         }
+
+        private void btnListadoProyectos_Click(object sender, EventArgs e) {
+            ListadoProyectoFrm proy = new ListadoProyectoFrm();
+            proy.Show();
+        }
     }
 }

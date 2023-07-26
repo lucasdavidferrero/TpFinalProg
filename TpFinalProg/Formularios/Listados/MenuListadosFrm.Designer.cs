@@ -53,6 +53,7 @@
             btnListadoProyectos.TabIndex = 14;
             btnListadoProyectos.Text = "Proyectos";
             btnListadoProyectos.UseVisualStyleBackColor = false;
+            btnListadoProyectos.Click += btnListadoProyectos_Click;
             // 
             // btnPropietariosPorProyecto
             // 
