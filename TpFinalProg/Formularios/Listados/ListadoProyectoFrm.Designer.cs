@@ -24,12 +24,6 @@
         /// </summary>
         private void InitializeComponent() {
             dgvTerminados = new DataGridView();
-            dvgNoTerminados = new DataGridView();
-            label1 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            txtNombre = new TextBox();
-            btnBuscar = new Button();
             id = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Empresa = new DataGridViewTextBoxColumn();
@@ -37,6 +31,7 @@
             CostoReal = new DataGridViewTextBoxColumn();
             Desvio = new DataGridViewTextBoxColumn();
             baja = new DataGridViewTextBoxColumn();
+            dvgNoTerminados = new DataGridView();
             idnt = new DataGridViewTextBoxColumn();
             Nombrent = new DataGridViewTextBoxColumn();
             Empresant = new DataGridViewTextBoxColumn();
@@ -44,6 +39,11 @@
             CostoEstimadont = new DataGridViewTextBoxColumn();
             CostoParcialnt = new DataGridViewTextBoxColumn();
             bajant = new DataGridViewTextBoxColumn();
+            label1 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            txtNombre = new TextBox();
+            btnBuscar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvTerminados).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dvgNoTerminados).BeginInit();
             SuspendLayout();
@@ -58,62 +58,6 @@
             dgvTerminados.RowTemplate.Height = 25;
             dgvTerminados.Size = new Size(686, 150);
             dgvTerminados.TabIndex = 0;
-            // 
-            // dvgNoTerminados
-            // 
-            dvgNoTerminados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dvgNoTerminados.Columns.AddRange(new DataGridViewColumn[] { idnt, Nombrent, Empresant, GradoAvancent, CostoEstimadont, CostoParcialnt, bajant });
-            dvgNoTerminados.Location = new Point(60, 311);
-            dvgNoTerminados.Name = "dvgNoTerminados";
-            dvgNoTerminados.ReadOnly = true;
-            dvgNoTerminados.RowTemplate.Height = 25;
-            dvgNoTerminados.Size = new Size(686, 150);
-            dvgNoTerminados.TabIndex = 1;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(206, 36);
-            label1.Name = "label1";
-            label1.Size = new Size(51, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Nombre";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(334, 87);
-            label3.Name = "label3";
-            label3.Size = new Size(115, 21);
-            label3.TabIndex = 4;
-            label3.Text = "TERMINADOS";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(323, 287);
-            label4.Name = "label4";
-            label4.Size = new Size(144, 21);
-            label4.TabIndex = 5;
-            label4.Text = "NO TERMINADOS";
-            // 
-            // txtNombre
-            // 
-            txtNombre.Location = new Point(272, 33);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(251, 23);
-            txtNombre.TabIndex = 6;
-            // 
-            // btnBuscar
-            // 
-            btnBuscar.Location = new Point(529, 33);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(26, 23);
-            btnBuscar.TabIndex = 183;
-            btnBuscar.Text = "🔍︎";
-            btnBuscar.UseVisualStyleBackColor = true;
             // 
             // id
             // 
@@ -168,6 +112,17 @@
             baja.ReadOnly = true;
             baja.Visible = false;
             // 
+            // dvgNoTerminados
+            // 
+            dvgNoTerminados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dvgNoTerminados.Columns.AddRange(new DataGridViewColumn[] { idnt, Nombrent, Empresant, GradoAvancent, CostoEstimadont, CostoParcialnt, bajant });
+            dvgNoTerminados.Location = new Point(60, 311);
+            dvgNoTerminados.Name = "dvgNoTerminados";
+            dvgNoTerminados.ReadOnly = true;
+            dvgNoTerminados.RowTemplate.Height = 25;
+            dvgNoTerminados.Size = new Size(686, 150);
+            dvgNoTerminados.TabIndex = 1;
+            // 
             // idnt
             // 
             idnt.Frozen = true;
@@ -220,6 +175,52 @@
             bajant.Name = "bajant";
             bajant.ReadOnly = true;
             bajant.Visible = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(206, 36);
+            label1.Name = "label1";
+            label1.Size = new Size(51, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Nombre";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(334, 87);
+            label3.Name = "label3";
+            label3.Size = new Size(115, 21);
+            label3.TabIndex = 4;
+            label3.Text = "TERMINADOS";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(323, 287);
+            label4.Name = "label4";
+            label4.Size = new Size(144, 21);
+            label4.TabIndex = 5;
+            label4.Text = "NO TERMINADOS";
+            // 
+            // txtNombre
+            // 
+            txtNombre.Location = new Point(272, 33);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(251, 23);
+            txtNombre.TabIndex = 6;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Location = new Point(529, 33);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(26, 23);
+            btnBuscar.TabIndex = 183;
+            btnBuscar.Text = "🔍︎";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // ListadoProyectoFrm
             // 

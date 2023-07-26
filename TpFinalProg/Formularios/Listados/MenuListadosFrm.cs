@@ -17,7 +17,8 @@ namespace TpFinalProg.Formularios {
         }
 
         private void btnListadoTareasPorProyecto_Click(object sender, EventArgs e) {
-
+            ListadoTareasFrm tar = new ListadoTareasFrm();
+            tar.Show();
         }
 
         private void btnListadoPersonas_Click(object sender, EventArgs e) {
@@ -33,6 +34,11 @@ namespace TpFinalProg.Formularios {
         private void btnListadoProyectos_Click(object sender, EventArgs e) {
             ListadoProyectoFrm proy = new ListadoProyectoFrm();
             proy.Show();
+        }
+
+        private void btnResponsable_Click(object sender, EventArgs e) {
+            ListadoResponsableFrm resp = new ListadoResponsableFrm();
+            resp.Show();
         }
     }
 }

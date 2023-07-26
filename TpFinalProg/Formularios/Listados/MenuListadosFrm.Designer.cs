@@ -27,6 +27,7 @@
             btnListadoProyectos = new Button();
             btnPropietariosPorProyecto = new Button();
             btnListadoPersonas = new Button();
+            btnResponsable = new Button();
             SuspendLayout();
             // 
             // btnListadoTareasPorProyecto
@@ -38,7 +39,7 @@
             btnListadoTareasPorProyecto.Name = "btnListadoTareasPorProyecto";
             btnListadoTareasPorProyecto.Size = new Size(189, 75);
             btnListadoTareasPorProyecto.TabIndex = 13;
-            btnListadoTareasPorProyecto.Text = "Tareas por Proyecto";
+            btnListadoTareasPorProyecto.Text = "TAREAS POR PROYECTO";
             btnListadoTareasPorProyecto.UseVisualStyleBackColor = false;
             btnListadoTareasPorProyecto.Click += btnListadoTareasPorProyecto_Click;
             // 
@@ -51,7 +52,7 @@
             btnListadoProyectos.Name = "btnListadoProyectos";
             btnListadoProyectos.Size = new Size(189, 75);
             btnListadoProyectos.TabIndex = 14;
-            btnListadoProyectos.Text = "Proyectos";
+            btnListadoProyectos.Text = "PROYECTOS";
             btnListadoProyectos.UseVisualStyleBackColor = false;
             btnListadoProyectos.Click += btnListadoProyectos_Click;
             // 
@@ -60,11 +61,11 @@
             btnPropietariosPorProyecto.BackColor = Color.Transparent;
             btnPropietariosPorProyecto.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
             btnPropietariosPorProyecto.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnPropietariosPorProyecto.Location = new Point(78, 225);
+            btnPropietariosPorProyecto.Location = new Point(78, 326);
             btnPropietariosPorProyecto.Name = "btnPropietariosPorProyecto";
             btnPropietariosPorProyecto.Size = new Size(189, 75);
             btnPropietariosPorProyecto.TabIndex = 15;
-            btnPropietariosPorProyecto.Text = "Buscar Propietario";
+            btnPropietariosPorProyecto.Text = "PROPIETARIO";
             btnPropietariosPorProyecto.UseVisualStyleBackColor = false;
             btnPropietariosPorProyecto.Click += btnPropietariosPorProyecto_Click;
             // 
@@ -73,20 +74,34 @@
             btnListadoPersonas.BackColor = Color.Transparent;
             btnListadoPersonas.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
             btnListadoPersonas.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnListadoPersonas.Location = new Point(78, 321);
+            btnListadoPersonas.Location = new Point(78, 422);
             btnListadoPersonas.Name = "btnListadoPersonas";
             btnListadoPersonas.Size = new Size(189, 75);
             btnListadoPersonas.TabIndex = 16;
-            btnListadoPersonas.Text = "Buscar Empleado";
+            btnListadoPersonas.Text = "EMPLEADO";
             btnListadoPersonas.UseVisualStyleBackColor = false;
             btnListadoPersonas.Click += btnListadoPersonas_Click;
+            // 
+            // btnResponsable
+            // 
+            btnResponsable.BackColor = Color.Transparent;
+            btnResponsable.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
+            btnResponsable.Font = new Font("Microsoft New Tai Lue", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnResponsable.Location = new Point(78, 230);
+            btnResponsable.Name = "btnResponsable";
+            btnResponsable.Size = new Size(189, 75);
+            btnResponsable.TabIndex = 17;
+            btnResponsable.Text = "RESPONSABLE";
+            btnResponsable.UseVisualStyleBackColor = false;
+            btnResponsable.Click += btnResponsable_Click;
             // 
             // MenuListadosFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(357, 434);
+            ClientSize = new Size(357, 543);
+            Controls.Add(btnResponsable);
             Controls.Add(btnListadoPersonas);
             Controls.Add(btnPropietariosPorProyecto);
             Controls.Add(btnListadoProyectos);
@@ -102,5 +117,6 @@
         private Button btnListadoProyectos;
         private Button btnPropietariosPorProyecto;
         private Button btnListadoPersonas;
+        private Button btnResponsable;
     }
 }

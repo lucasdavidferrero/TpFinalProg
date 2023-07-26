@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TpFinalProg.Formularios.Listados {
-    public partial class ListadoProyectoFrm : Form {
-        public ListadoProyectoFrm() {
+    public partial class ListadoTareasFrm : Form {
+        public ListadoTareasFrm() {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
