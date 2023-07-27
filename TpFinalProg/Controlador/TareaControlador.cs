@@ -129,6 +129,11 @@ namespace TpFinalProg.Controlador {
             return tareaCls.obtenerTareasFinalizadasPorIdProyeto(idProyecto);
         }
 
+        public static decimal? obtenerPorcentajeTareasCompletadas(int idProyecto) {
+            Tarea tareaCls = new Tarea();
+            return tareaCls.obtenerPorcentajeTareasCompletadas(idProyecto);
+        }
+
 
 
     }   

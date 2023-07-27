@@ -409,6 +409,88 @@ namespace PruebaTpFinal.Dominio.Mappers
             return null;
         }
 
+        public static string? obtenerCostoRealTotalPorProyecto(int idProyecto) {
+            string query = $"SELECT SUM(costo_real) AS 'costo_real_total' FROM Tarea WHERE id_proyecto = {idProyecto} AND baja = 0;";
+            DataTable dtTareas = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtTareas);
+                if (dtTareas.Rows.Count == 0) return "";
+                return dtTareas.Rows[0]["costo_real_total"].ToString();
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [obtenerCostoRealTotalPorProyecto]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+            return "";
+        }
+
+        public static string? obtenerDesvioPorProyecto(int idProyecto) {
+            string query = $"SELECT SUM(costo_real) - SUM(costo_estimado) AS 'desvio' FROM Tarea WHERE id_proyecto = {idProyecto} AND baja = 0;";
+            DataTable dtTareas = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtTareas);
+                if (dtTareas.Rows.Count == 0) return "";
+                return dtTareas.Rows[0]["desvio"].ToString();
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [obtenerCostoRealTotalPorProyecto]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+            return "";
+        }
+
+        public static int? contarTotalDeTareasPorProyecto(int idProyecto) {
+            string query = $"SELECT COUNT(*) as total_tareas FROM Tarea WHERE id_proyecto = {idProyecto} AND baja = 0;";
+            DataTable dtTareas = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtTareas);
+                if (dtTareas.Rows.Count == 0) return -1;
+                return Convert.ToInt32(dtTareas.Rows[0]["total_tareas"].ToString());
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [contarTotalDeTareasPorProyecto]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+            return -1;
+        }
+
+        public static int? contarTotalDeTareasFinalizadasPorProyecto(int idProyecto) {
+            string query = $"SELECT COUNT(*) as total_tareas_terminadas FROM Tarea WHERE id_proyecto = {idProyecto} AND baja = 0 AND fecha_final IS NOT NULL;";
+            DataTable dtTareas = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dtTareas);
+                if (dtTareas.Rows.Count == 0) return -1;
+                return Convert.ToInt32(dtTareas.Rows[0]["total_tareas_terminadas"].ToString());
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [contarTotalDeTareasFinalizadasPorProyecto]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+            return -1;
+        }
+
+
+
 
         public static DataTable? BuscadorTareasPorProyecto(int idProyecto, string descripcionBusqueda) {
             string query = @"SELECT

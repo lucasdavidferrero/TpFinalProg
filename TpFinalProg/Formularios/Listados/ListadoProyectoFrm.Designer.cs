@@ -24,6 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             dgvTerminados = new DataGridView();
+            idProyectoTerminado = new DataGridViewTextBoxColumn();
+            nombreProyecto = new DataGridViewTextBoxColumn();
+            nombreEmpresa = new DataGridViewTextBoxColumn();
+            montoEstimado = new DataGridViewTextBoxColumn();
             dvgNoTerminados = new DataGridView();
             id_proyecto = new DataGridViewTextBoxColumn();
             nombre_proyecto = new DataGridViewTextBoxColumn();
@@ -38,12 +42,8 @@
             lblAvance = new Label();
             lblDesvio = new Label();
             label5 = new Label();
-            label2 = new Label();
+            lblCostoRealTotal = new Label();
             label6 = new Label();
-            idProyectoTerminado = new DataGridViewTextBoxColumn();
-            nombreProyecto = new DataGridViewTextBoxColumn();
-            nombreEmpresa = new DataGridViewTextBoxColumn();
-            montoEstimado = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvTerminados).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dvgNoTerminados).BeginInit();
             SuspendLayout();
@@ -60,6 +60,42 @@
             dgvTerminados.RowTemplate.Height = 25;
             dgvTerminados.Size = new Size(686, 150);
             dgvTerminados.TabIndex = 0;
+            dgvTerminados.RowHeaderMouseDoubleClick += dgvTerminados_RowHeaderMouseDoubleClick;
+            // 
+            // idProyectoTerminado
+            // 
+            idProyectoTerminado.DataPropertyName = "id_proyecto";
+            idProyectoTerminado.Frozen = true;
+            idProyectoTerminado.HeaderText = "idProyectoTerminado";
+            idProyectoTerminado.Name = "idProyectoTerminado";
+            idProyectoTerminado.ReadOnly = true;
+            idProyectoTerminado.Visible = false;
+            // 
+            // nombreProyecto
+            // 
+            nombreProyecto.DataPropertyName = "nombre_proyecto";
+            nombreProyecto.Frozen = true;
+            nombreProyecto.HeaderText = "Nombre";
+            nombreProyecto.Name = "nombreProyecto";
+            nombreProyecto.ReadOnly = true;
+            nombreProyecto.Width = 180;
+            // 
+            // nombreEmpresa
+            // 
+            nombreEmpresa.DataPropertyName = "nombre_empresa";
+            nombreEmpresa.Frozen = true;
+            nombreEmpresa.HeaderText = "Empresa";
+            nombreEmpresa.Name = "nombreEmpresa";
+            nombreEmpresa.ReadOnly = true;
+            nombreEmpresa.Width = 160;
+            // 
+            // montoEstimado
+            // 
+            montoEstimado.DataPropertyName = "monto_estimado";
+            montoEstimado.Frozen = true;
+            montoEstimado.HeaderText = "Costo Estimado";
+            montoEstimado.Name = "montoEstimado";
+            montoEstimado.ReadOnly = true;
             // 
             // dvgNoTerminados
             // 
@@ -73,6 +109,7 @@
             dvgNoTerminados.RowTemplate.Height = 25;
             dvgNoTerminados.Size = new Size(686, 242);
             dvgNoTerminados.TabIndex = 1;
+            dvgNoTerminados.RowHeaderMouseDoubleClick += dvgNoTerminados_RowHeaderMouseDoubleClick;
             // 
             // id_proyecto
             // 
@@ -170,9 +207,9 @@
             lblAvance.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             lblAvance.Location = new Point(826, 344);
             lblAvance.Name = "lblAvance";
-            lblAvance.Size = new Size(55, 30);
+            lblAvance.Size = new Size(22, 30);
             lblAvance.TabIndex = 185;
-            lblAvance.Text = "50%";
+            lblAvance.Text = "-";
             // 
             // lblDesvio
             // 
@@ -180,28 +217,28 @@
             lblDesvio.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             lblDesvio.Location = new Point(808, 207);
             lblDesvio.Name = "lblDesvio";
-            lblDesvio.Size = new Size(73, 30);
+            lblDesvio.Size = new Size(22, 30);
             lblDesvio.TabIndex = 187;
-            lblDesvio.Text = "50004";
+            lblDesvio.Text = "-";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Location = new Point(763, 192);
             label5.Name = "label5";
-            label5.Size = new Size(170, 15);
+            label5.Size = new Size(186, 15);
             label5.TabIndex = 186;
-            label5.Text = "Desvío proyecto seleccionado: ";
+            label5.Text = "Desvío (costos de todas las tareas)";
             // 
-            // label2
+            // lblCostoRealTotal
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(808, 126);
-            label2.Name = "label2";
-            label2.Size = new Size(73, 30);
-            label2.TabIndex = 189;
-            label2.Text = "50004";
+            lblCostoRealTotal.AutoSize = true;
+            lblCostoRealTotal.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCostoRealTotal.Location = new Point(808, 126);
+            lblCostoRealTotal.Name = "lblCostoRealTotal";
+            lblCostoRealTotal.Size = new Size(22, 30);
+            lblCostoRealTotal.TabIndex = 189;
+            lblCostoRealTotal.Text = "-";
             // 
             // label6
             // 
@@ -212,48 +249,13 @@
             label6.TabIndex = 188;
             label6.Text = "Costo Total Real";
             // 
-            // idProyectoTerminado
-            // 
-            idProyectoTerminado.DataPropertyName = "id_proyecto";
-            idProyectoTerminado.Frozen = true;
-            idProyectoTerminado.HeaderText = "idProyectoTerminado";
-            idProyectoTerminado.Name = "idProyectoTerminado";
-            idProyectoTerminado.ReadOnly = true;
-            idProyectoTerminado.Visible = false;
-            // 
-            // nombreProyecto
-            // 
-            nombreProyecto.DataPropertyName = "nombre_proyecto";
-            nombreProyecto.Frozen = true;
-            nombreProyecto.HeaderText = "Nombre";
-            nombreProyecto.Name = "nombreProyecto";
-            nombreProyecto.ReadOnly = true;
-            nombreProyecto.Width = 180;
-            // 
-            // nombreEmpresa
-            // 
-            nombreEmpresa.DataPropertyName = "nombre_empresa";
-            nombreEmpresa.Frozen = true;
-            nombreEmpresa.HeaderText = "Empresa";
-            nombreEmpresa.Name = "nombreEmpresa";
-            nombreEmpresa.ReadOnly = true;
-            nombreEmpresa.Width = 160;
-            // 
-            // montoEstimado
-            // 
-            montoEstimado.DataPropertyName = "monto_estimado";
-            montoEstimado.Frozen = true;
-            montoEstimado.HeaderText = "Costo Estimado";
-            montoEstimado.Name = "montoEstimado";
-            montoEstimado.ReadOnly = true;
-            // 
             // ListadoProyectoFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1376, 581);
-            Controls.Add(label2);
+            ClientSize = new Size(985, 581);
+            Controls.Add(lblCostoRealTotal);
             Controls.Add(label6);
             Controls.Add(lblDesvio);
             Controls.Add(label5);
@@ -291,7 +293,7 @@
         private DataGridViewTextBoxColumn nombre_proyecto;
         private DataGridViewTextBoxColumn nombre_empresa;
         private DataGridViewTextBoxColumn monto_estimado;
-        private Label label2;
+        private Label lblCostoRealTotal;
         private Label label6;
         private DataGridViewTextBoxColumn idProyectoTerminado;
         private DataGridViewTextBoxColumn nombreProyecto;

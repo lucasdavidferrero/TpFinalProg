@@ -325,7 +325,7 @@ GROUP BY
         public static DataTable? obtenerProyectosConEmpresa (bool esTerminado = false) {
             string query = $"SELECT P.id_proyecto, P.nombre as 'nombre_proyecto', P.monto_estimado, Prop.razon_social as 'nombre_empresa' " +
                 $"FROM Proyecto P INNER JOIN Propietario Prop ON P.id_propietario_FK = Prop.id_propietario WHERE P.baja = 0 AND P.fecha_final {(esTerminado ? "IS NOT" : "IS")} NULL;";
-            DataTable dtProyectos = new DataTable("ListadoProyectosNoFinalizados");
+            DataTable dtProyectos = new DataTable("ListadoProyectos");
             Conexion cx = new Conexion();
             SqlCommand cmd = cx.getComando();
 

@@ -80,5 +80,12 @@ namespace TpFinalProg.Dominio.Entidades {
             return TareaDataMapper.obtenerTareasFinalizadasPorIdProyeto(idProyecto);
         }
 
+        public decimal? obtenerPorcentajeTareasCompletadas(int idProyecto) {
+            int? totalTareas = TareaDataMapper.contarTotalDeTareasPorProyecto(idProyecto);
+            int? totalTareasFinalizadas = TareaDataMapper.contarTotalDeTareasFinalizadasPorProyecto(idProyecto);
+            if (totalTareas == 0) return 0;
+            return Math.Round(((decimal)totalTareasFinalizadas / (decimal)totalTareas) * 100, 2);
+        }
+
     }
 }
