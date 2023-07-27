@@ -36,7 +36,7 @@ namespace TpFinalProg.Formularios {
             proy.Show();
         }
 
-        private void btnResponsable_Click(object sender, EventArgs e) {
+        private void btnResponsable_Click_1(object sender, EventArgs e) {
             ListadoResponsableFrm resp = new ListadoResponsableFrm();
             resp.Show();
         }

@@ -3,10 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using TpFinalProg.Clases;
 using TpFinalProg.Dominio.Entidades;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace TpFinalProg.Dominio.Mappers {
@@ -287,5 +290,56 @@ namespace TpFinalProg.Dominio.Mappers {
 
             return dtListAll;
         }
+        public static DataTable encontrarPorResponsableInterno(int legajo) {
+            string query = " SELECT Trabaja.id_trabaja, Trabaja.legajo, Trabaja.id_proyecto, Trabaja.id_tarea, Trabaja.id_funcion_fk, Trabaja.baja," +
+                "Proyecto.nombre, Tarea.descripcion AS descripcionTarea, Funcion.descripcion AS descripcionFuncion " +
+                " FROM Proyecto INNER JOIN Trabaja ON Proyecto.id_proyecto = Trabaja.id_proyecto INNER JOIN" +
+                " Empleado ON Empleado.legajo = Trabaja.legajo  INNER JOIN" +
+                " Funcion ON Funcion.id_funcion = Trabaja.id_funcion_fk  INNER JOIN" +
+                "  Tarea ON Tarea.id_proyecto = Trabaja.id_proyecto AND Tarea.nro_tarea = Trabaja.id_tarea" +
+                "  WHERE Proyecto.baja = 0 AND Empleado.baja = 0 AND Funcion.baja = 0 AND Tarea.baja = 0 and Trabaja.legajo = @legajo";
+            DataTable dt = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.AddWithValue("@legajo", legajo);
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+
+
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Responsable Interno]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return dt;
+        }
+        public static DataTable encontrarPorResponsableExterno(int legajo) {
+            string query = "SELECT Proyecto.nombre FROM Proyecto where baja = 0 and legajo_FK = @legajo";
+            DataTable dt = new DataTable();
+            Conexion cx = new Conexion();
+            SqlCommand cmd = cx.getComando();
+
+            cmd.Parameters.AddWithValue("@legajo", legajo);
+
+            try {
+                cx.SetComandoSQL(query);
+                SqlDataAdapter sqlDat = new SqlDataAdapter(cx.getComando());
+                sqlDat.Fill(dt);
+
+
+            } catch (SqlException) {
+                Console.WriteLine("Error en la base de datos. [Obtener por Responsable Externo]");
+            } finally {
+                cx.cerrarConexionLiberarRecursos();
+            }
+
+            return dt;
+        }
+
     }
 }
