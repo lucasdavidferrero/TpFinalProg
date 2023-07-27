@@ -1,5 +1,7 @@
-﻿namespace TpFinalProg.Formularios.Listados {
-    partial class ListadoProyectoFrm {
+﻿namespace TpFinalProg.Formularios.Listados
+{
+    partial class ListadoProyectoFrm
+    {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -9,8 +11,10 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing) {
-            if (disposing && (components != null)) {
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -22,7 +26,8 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        private void InitializeComponent()
+        {
             dgvTerminados = new DataGridView();
             idProyectoTerminado = new DataGridViewTextBoxColumn();
             nombreProyecto = new DataGridViewTextBoxColumn();
@@ -33,10 +38,7 @@
             nombre_proyecto = new DataGridViewTextBoxColumn();
             nombre_empresa = new DataGridViewTextBoxColumn();
             monto_estimado = new DataGridViewTextBoxColumn();
-            label1 = new Label();
             label4 = new Label();
-            txtNombre = new TextBox();
-            btnBuscar = new Button();
             label3 = new Label();
             lbl = new Label();
             lblAvance = new Label();
@@ -146,15 +148,6 @@
             monto_estimado.Name = "monto_estimado";
             monto_estimado.ReadOnly = true;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(206, 36);
-            label1.Name = "label1";
-            label1.Size = new Size(51, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Nombre";
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -164,23 +157,6 @@
             label4.Size = new Size(144, 21);
             label4.TabIndex = 5;
             label4.Text = "NO TERMINADOS";
-            // 
-            // txtNombre
-            // 
-            txtNombre.Location = new Point(272, 33);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(251, 23);
-            txtNombre.TabIndex = 6;
-            // 
-            // btnBuscar
-            // 
-            btnBuscar.Location = new Point(529, 33);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(26, 23);
-            btnBuscar.TabIndex = 183;
-            btnBuscar.Text = "🔍︎";
-            btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += btnBuscar_Click;
             // 
             // label3
             // 
@@ -261,11 +237,8 @@
             Controls.Add(label5);
             Controls.Add(lblAvance);
             Controls.Add(lbl);
-            Controls.Add(btnBuscar);
-            Controls.Add(txtNombre);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(label1);
             Controls.Add(dvgNoTerminados);
             Controls.Add(dgvTerminados);
             Name = "ListadoProyectoFrm";
@@ -280,10 +253,7 @@
 
         private DataGridView dgvTerminados;
         private DataGridView dvgNoTerminados;
-        private Label label1;
         private Label label4;
-        private TextBox txtNombre;
-        private Button btnBuscar;
         private Label label3;
         private Label lbl;
         private Label lblAvance;
